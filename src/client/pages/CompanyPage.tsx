@@ -14,6 +14,7 @@ import {
 	formatMoney,
 	type AddressValue,
 } from '#client/format.ts'
+import { useUserName } from '#client/session.ts'
 import {
 	CONFLICT_RELATIVE_DIFFERENCE,
 	FIELD_LABELS,
@@ -110,9 +111,9 @@ function renderValue(field: FieldName, value: unknown) {
 	return typeof value === 'string' ? value : JSON.stringify(value)
 }
 
-function whyThisValue(field: FieldName, value: Field) {
+function whyThisValue(field: FieldName, value: Field, userName: (id: string) => string) {
 	if (value.override)
-		return `Chosen by ${value.override.createdBy} on ${formatDate(value.override.at)}: “${value.override.reason}”`
+		return `Chosen by ${userName(value.override.createdBy)} on ${formatDate(value.override.at)}: “${value.override.reason}”`
 	if (field === 'signals')
 		return value.candidates.length ? 'Every signal any provider reports counts.' : 'No provider reports a signal.'
 	if (!value.provider) return 'No provider reports this.'
@@ -131,6 +132,7 @@ export function CompanyPage() {
 }
 
 function CompanyDetail({ detail }: { detail: Detail }) {
+	const userName = useUserName()
 	const { company } = detail
 	const queryClient = useQueryClient()
 	const navigate = useNavigate()
@@ -235,7 +237,9 @@ function CompanyDetail({ detail }: { detail: Detail }) {
 											<div className="text-muted-foreground">Fetched: {formatDateTime(value.fetchedAt)}</div>
 										)}
 									</TableCell>
-									<TableCell className="max-w-64 text-xs whitespace-normal">{whyThisValue(field, value)}</TableCell>
+									<TableCell className="max-w-64 text-xs whitespace-normal">
+										{whyThisValue(field, value, userName)}
+									</TableCell>
 									<TableCell>
 										{field !== 'signals' &&
 											new Set(value.candidates.map((candidate) => JSON.stringify(candidate.value))).size > 1 && (

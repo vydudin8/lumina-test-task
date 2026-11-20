@@ -28,3 +28,9 @@ export function usePickUser() {
 		onSuccess: () => queryClient.invalidateQueries(),
 	})
 }
+
+// "usr_rep_tom" -> "Tom Okafor"; system actors and unknown ids are shown as they are.
+export function useUserName() {
+	const { data: users = [] } = useUsers()
+	return (id: string) => users.find((user) => user.id === id)?.name ?? id
+}

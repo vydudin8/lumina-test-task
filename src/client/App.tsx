@@ -4,7 +4,9 @@ import { AppHeader } from './components/AppHeader.tsx'
 import { CompaniesPage } from './pages/CompaniesPage.tsx'
 import { CompanyPage } from './pages/CompanyPage.tsx'
 import { HomePage } from './pages/HomePage.tsx'
+import { IcpPage } from './pages/IcpPage.tsx'
 import { ProvidersPage } from './pages/ProvidersPage.tsx'
+import { ScoresPage } from './pages/ScoresPage.tsx'
 
 const queryClient = new QueryClient({ defaultOptions: { queries: { retry: 1, refetchOnWindowFocus: false } } })
 
@@ -27,6 +29,8 @@ const router = createBrowserRouter([
 			{ path: 'providers', element: <ProvidersPage /> },
 			{ path: 'companies', element: <CompaniesPage /> },
 			{ path: 'companies/:id', element: <CompanyPage /> },
+			{ path: 'icp', element: <IcpPage /> },
+			{ path: 'scores', element: <ScoresPage /> },
 		],
 	},
 ])

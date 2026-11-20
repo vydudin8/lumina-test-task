@@ -1,6 +1,7 @@
 import { createFakeWorld } from '#fake-world/app.ts'
 import { createApp, type AppDeps } from '../app.ts'
 import type { Db } from '../db/client.ts'
+import { createStubLlm } from '../llm/stub.ts'
 import { createLogger } from '../log.ts'
 
 export const TEST_SESSION_SECRET = 'test-secret-0123456789abcdef0123456789'
@@ -16,6 +17,7 @@ export function testDeps(db: Db, overrides: Partial<AppDeps> = {}): AppDeps {
 		providerBaseUrl: 'http://fake-world',
 		fetch: (input, init) => Promise.resolve(world.fetch(new Request(input, init))),
 		retry: { rng: () => 0.5, sleep: () => Promise.resolve() },
+		llm: createStubLlm({ hallucinateEvery: 0 }),
 		...overrides,
 	}
 }

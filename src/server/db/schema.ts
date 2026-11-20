@@ -14,6 +14,7 @@ import {
 	timestamp,
 	unique,
 } from 'drizzle-orm/pg-core'
+import type { EvidenceItem, Rejection } from '../llm/types.ts'
 
 export const userRole = pgEnum('user_role', ['rep', 'lead'])
 
@@ -278,5 +279,33 @@ export const matchDecisions = pgTable(
 		check('match_decisions_order', sql`${t.sourceA} < ${t.sourceB}`),
 		check('match_decisions_decision', sql`${t.decision} IN ('merge', 'split')`),
 		check('match_decisions_reason', sql`btrim(${t.reason}) <> ''`),
+	],
+)
+
+// Lazily generated and cached per company, ICP version and evidence: the same facts never cost a second call.
+export const scoreRationales = pgTable(
+	'score_rationales',
+	{
+		id: integer().primaryKey().generatedAlwaysAsIdentity(),
+		companyId: integer()
+			.notNull()
+			.references(() => companies.id),
+		icpVersionId: integer()
+			.notNull()
+			.references(() => icpVersions.id),
+		evidenceHash: text().notNull(),
+		evidence: jsonb().$type<EvidenceItem[]>().notNull(),
+		status: text().$type<'accepted' | 'rejected'>().notNull(),
+		text: text().notNull(),
+		cites: jsonb().$type<string[]>().notNull(),
+		rejections: jsonb().$type<Rejection[]>().notNull(),
+		raw: text(),
+		model: text().notNull(),
+		promptVersion: text().notNull(),
+		createdAt: timestamp({ withTimezone: true }).notNull(),
+	},
+	(t) => [
+		unique('score_rationales_key').on(t.companyId, t.icpVersionId, t.evidenceHash),
+		check('score_rationales_status', sql`${t.status} IN ('accepted', 'rejected')`),
 	],
 )

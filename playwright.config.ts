@@ -13,6 +13,8 @@ const env = {
 export default defineConfig({
 	testDir: './e2e',
 	forbidOnly: Boolean(process.env.CI),
+	// All specs share one seeded database, so they run one at a time.
+	workers: 1,
 	reporter: process.env.CI ? 'list' : 'html',
 	use: { baseURL: `http://localhost:${port}`, trace: 'retain-on-failure' },
 	projects: [{ name: 'chromium', use: { ...devices['Desktop Chrome'] } }],

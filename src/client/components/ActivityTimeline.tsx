@@ -1,4 +1,5 @@
 import { formatDateTime } from '#client/format.ts'
+import { useUserName } from '#client/session.ts'
 
 export interface AuditEvent {
 	id: number
@@ -19,6 +20,7 @@ export interface AuditEvent {
 const compact = (value: unknown) => (value === null || value === undefined ? null : JSON.stringify(value))
 
 export function ActivityTimeline({ events }: { events: AuditEvent[] }) {
+	const userName = useUserName()
 	if (events.length === 0) return <p className="text-sm text-muted-foreground">Nothing has happened here yet.</p>
 	return (
 		<ol className="space-y-3 border-l pl-4">
@@ -29,7 +31,7 @@ export function ActivityTimeline({ events }: { events: AuditEvent[] }) {
 						{event.decision && <span> · {event.decision}</span>}
 						<span className="text-muted-foreground">
 							{' '}
-							by {event.actorId} ({event.actorRole}), {formatDateTime(event.at)}
+							by {userName(event.actorId)} ({event.actorRole}), {formatDateTime(event.at)}
 						</span>
 					</p>
 					{event.reason && <p>Reason: {event.reason}</p>}

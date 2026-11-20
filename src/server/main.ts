@@ -4,6 +4,8 @@ import { createApp } from './app.ts'
 import { loadConfig } from './config.ts'
 import { createDb } from './db/client.ts'
 import { systemClock } from './lib/clock.ts'
+import { createClaudeLlm } from './llm/claude.ts'
+import { createStubLlm } from './llm/stub.ts'
 import { createLogger } from './log.ts'
 
 const config = loadConfig()
@@ -17,6 +19,9 @@ const app = createApp({
 	providerBaseUrl: config.FAKE_WORLD_URL,
 	fetch: (input, init) => fetch(input, init),
 	retry: {},
+	llm: config.ANTHROPIC_API_KEY
+		? createClaudeLlm({ apiKey: config.ANTHROPIC_API_KEY, model: config.LLM_MODEL })
+		: createStubLlm(),
 })
 
 app.all('/api/*', (context) => context.json({ error: 'Not found' }, 404))

@@ -43,6 +43,13 @@
       "when": 1795202037881,
       "tag": "0005_company_master",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1795202724104,
+      "tag": "0006_score_rationales",
+      "breakpoints": true
     }
   ]
 }

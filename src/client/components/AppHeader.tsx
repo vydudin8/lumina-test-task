@@ -6,6 +6,8 @@ import { NavLink } from 'react-router'
 const links = [
 	['/providers', 'Providers'],
 	['/companies', 'Companies'],
+	['/icp', 'ICP'],
+	['/scores', 'Scores'],
 ] as const
 
 export function AppHeader() {
