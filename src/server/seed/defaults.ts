@@ -24,11 +24,11 @@ export const DEFAULT_TEMPLATES = [
 	{
 		name: 'A: site demo',
 		variant: 'A',
-		body: 'Hi {{first_name}}, {{personal_line}} Lumina builds battery-electric excavators and dumpers for sites that want less noise and no diesel deliveries. Book a demo day at your next site: lumina.example/demo',
+		body: 'Hi {{first_name}},\n\n{{personal_line}}\n\nLumina builds battery-electric excavators and dumpers for sites that want less noise and no diesel deliveries. Book a demo day at your next site: lumina.example/demo',
 	},
 	{
 		name: 'B: running costs',
 		variant: 'B',
-		body: 'Dear {{first_name}}, {{personal_line}} Electric plant from Lumina charges overnight on site and needs far less servicing than diesel. See what that means for {{company}}: lumina.example/costs',
+		body: 'Dear {{first_name}},\n\n{{personal_line}}\n\nElectric plant from Lumina charges overnight on site and needs far less servicing than diesel. See what that means for {{company}}: lumina.example/costs',
 	},
 ]

@@ -10,6 +10,7 @@ const links = [
 	['/scores', 'Scores'],
 	['/campaigns', 'Campaigns'],
 	['/suppressions', 'Suppression'],
+	['/audit', 'Audit log'],
 ] as const
 
 export function AppHeader() {

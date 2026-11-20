@@ -1,6 +1,7 @@
 import { Hono } from 'hono'
 import { HTTPException } from 'hono/http-exception'
 import { requestId } from 'hono/request-id'
+import { auditRoutes } from './http/audit.ts'
 import { campaignRoutes } from './http/campaigns.ts'
 import { companyRoutes } from './http/companies.ts'
 import { providerRoutes } from './http/providers.ts'
@@ -55,6 +56,7 @@ export function createApp(deps: AppDeps) {
 	app.route('/api', scoreRoutes(deps))
 	app.route('/api', campaignRoutes(deps))
 	app.route('/api', sendRoutes(deps))
+	app.route('/api', auditRoutes(deps))
 	app.route('/', webhookRoutes(deps))
 
 	return app

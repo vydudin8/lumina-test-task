@@ -27,8 +27,8 @@ import {
 	type ProviderName,
 } from '#common/settings.ts'
 import { useQuery, useQueryClient } from '@tanstack/react-query'
-import { useState } from 'react'
-import { Link, useNavigate, useParams } from 'react-router'
+import { useEffect, useState } from 'react'
+import { Link, useLocation, useNavigate, useParams } from 'react-router'
 
 interface Revenue {
 	amount: string
@@ -133,6 +133,11 @@ export function CompanyPage() {
 
 function CompanyDetail({ detail }: { detail: Detail }) {
 	const userName = useUserName()
+	const { hash } = useLocation()
+	// Arriving from a score: bring the field that decided the rule into view.
+	useEffect(() => {
+		if (hash) document.getElementById(hash.slice(1))?.scrollIntoView({ block: 'center' })
+	}, [hash])
 	const { company } = detail
 	const queryClient = useQueryClient()
 	const navigate = useNavigate()
@@ -191,7 +196,7 @@ function CompanyDetail({ detail }: { detail: Detail }) {
 						{FIELDS.map((field) => {
 							const value = company.fields[field]
 							return (
-								<TableRow key={field} className="align-top">
+								<TableRow key={field} id={`field-${field}`} className="align-top target:bg-accent">
 									<TableCell className="font-medium">
 										{FIELD_LABELS[field]}
 										<div className="mt-1 space-x-1">

@@ -20,7 +20,13 @@ export async function seedHistory(db: Db, now: Date) {
 		const [firstIcp] = await tx.select().from(icpVersions).orderBy(asc(icpVersions.id)).limit(1)
 		const icp = await icpVersion(tx, firstIcp!.id)
 		const [templateA, templateB] = await tx.select().from(templates).orderBy(asc(templates.variant))
-		const scored = scoreCompanies((await loadMaster(tx, now)).companies, icp)
+		const master = (await loadMaster(tx, now)).companies
+		const scored = scoreCompanies(master, icp)
+		const addressOf = (companyId: number) =>
+			(master.find((company) => company.id === companyId)?.fields.address.value ?? null) as Record<
+				string,
+				string | null
+			> | null
 		const scoreOf = (companyId: number) =>
 			scored.ranked.find((row) => row.company.id === companyId)?.score ??
 			scored.outOfProfile.find((row) => row.company.id === companyId)?.score
@@ -92,7 +98,7 @@ export async function seedHistory(db: Db, now: Date) {
 								decidedBy: 'seeded history' as const,
 								candidates: [],
 							},
-							address: null,
+							address: addressOf(person.companyId!),
 							eligibility: 'eligible' as const,
 							variant: card.variant ?? 'A',
 							personalLine:

@@ -284,7 +284,10 @@ function ScoreExplanation({ companyId, version }: { companyId: number; version: 
 										</TableCell>
 										<TableCell className="max-w-48 text-xs whitespace-normal">{describeCondition(c)}</TableCell>
 										<TableCell className="max-w-48 text-xs whitespace-normal">
-											<Link to={`/companies/${data.company.id}`} className="underline-offset-2 hover:underline">
+											<Link
+												to={`/companies/${data.company.id}#field-${c.field === 'revenueGbp' ? 'revenue' : c.field}`}
+												className="underline underline-offset-2"
+											>
 												{describeActual(c)}
 											</Link>
 										</TableCell>
