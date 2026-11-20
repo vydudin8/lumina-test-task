@@ -1,5 +1,8 @@
 import { createDb } from '../db/client.ts'
 import { databaseName, ensureDatabase, runMigrations, withAdminClient } from '../db/migrate.ts'
+import { systemClock } from '../lib/clock.ts'
+import { createLogger } from '../log.ts'
+import { ingestMissingProviders } from '../pipeline/ingest/index.ts'
 import { seed } from './seed.ts'
 
 const url = process.env.DATABASE_URL
@@ -14,5 +17,16 @@ if (process.argv.includes('--reset')) {
 const db = createDb(url)
 await runMigrations(db)
 await seed(db, { now: new Date() })
+await ingestMissingProviders(
+	{
+		db,
+		log: createLogger({ level: process.env.LOG_LEVEL ?? 'info' }).child({ job: 'seed' }),
+		clock: systemClock,
+		providerBaseUrl: process.env.FAKE_WORLD_URL ?? 'http://localhost:4000',
+		fetch: (input, init) => fetch(input, init),
+		retry: {},
+	},
+	'system:seed',
+)
 await db.$client.end()
 console.log('seed complete')

@@ -2,6 +2,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { createBrowserRouter, Outlet, RouterProvider } from 'react-router'
 import { AppHeader } from './components/AppHeader.tsx'
 import { HomePage } from './pages/HomePage.tsx'
+import { ProvidersPage } from './pages/ProvidersPage.tsx'
 
 const queryClient = new QueryClient({ defaultOptions: { queries: { retry: 1, refetchOnWindowFocus: false } } })
 
@@ -16,7 +17,15 @@ function Layout() {
 	)
 }
 
-const router = createBrowserRouter([{ element: <Layout />, children: [{ index: true, element: <HomePage /> }] }])
+const router = createBrowserRouter([
+	{
+		element: <Layout />,
+		children: [
+			{ index: true, element: <HomePage /> },
+			{ path: 'providers', element: <ProvidersPage /> },
+		],
+	},
+])
 
 export function App() {
 	return (

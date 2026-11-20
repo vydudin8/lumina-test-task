@@ -3,6 +3,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '#
 import { roleLabels, usePickUser, useSession, useUsers } from '#client/session.ts'
 import { NavLink } from 'react-router'
 
+const links = [['/providers', 'Providers']] as const
+
 export function AppHeader() {
 	const { data: user } = useSession()
 	const { data: users = [] } = useUsers()
@@ -14,7 +16,17 @@ export function AppHeader() {
 				<NavLink to="/" className="font-semibold">
 					Lumina Outbound
 				</NavLink>
-				<nav aria-label="Main" className="flex flex-wrap gap-4 text-sm" />
+				<nav aria-label="Main" className="flex flex-wrap gap-4 text-sm">
+					{links.map(([to, label]) => (
+						<NavLink
+							key={to}
+							to={to}
+							className={({ isActive }) => (isActive ? 'font-medium' : 'text-muted-foreground hover:text-foreground')}
+						>
+							{label}
+						</NavLink>
+					))}
+				</nav>
 				<div className="ml-auto flex items-center gap-2">
 					<span id="acting-as" className="text-sm text-muted-foreground">
 						Acting as

@@ -1,18 +1,17 @@
 import { Hono } from 'hono'
 import { HTTPException } from 'hono/http-exception'
 import { requestId } from 'hono/request-id'
-import type { Db } from './db/client.ts'
+import { providerRoutes } from './http/providers.ts'
 import { sameOriginOnly } from './http/same-origin.ts'
 import { loadUser, sessionRoutes, type AppEnv } from './http/session.ts'
-import type { Logger } from './log.ts'
+import type { IngestDeps } from './pipeline/ingest/index.ts'
 
-export interface AppDeps {
-	db: Db
-	log: Logger
+export interface AppDeps extends IngestDeps {
 	sessionSecret: string
 }
 
-export function createApp({ db, log, sessionSecret }: AppDeps) {
+export function createApp(deps: AppDeps) {
+	const { db, log, sessionSecret } = deps
 	const app = new Hono<AppEnv>()
 
 	app.use(requestId())
@@ -40,6 +39,7 @@ export function createApp({ db, log, sessionSecret }: AppDeps) {
 	app.use('/api/*', sameOriginOnly, loadUser(sessionSecret))
 	app.get('/api/health', (context) => context.json({ status: 'ok' }))
 	app.route('/api', sessionRoutes(sessionSecret))
+	app.route('/api', providerRoutes(deps))
 
 	return app
 }

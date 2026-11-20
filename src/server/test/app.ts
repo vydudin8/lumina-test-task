@@ -1,15 +1,27 @@
-import { createApp } from '../app.ts'
+import { createFakeWorld } from '#fake-world/app.ts'
+import { createApp, type AppDeps } from '../app.ts'
 import type { Db } from '../db/client.ts'
 import { createLogger } from '../log.ts'
 
 export const TEST_SESSION_SECRET = 'test-secret-0123456789abcdef0123456789'
 
-export function createTestApp(db: Db) {
-	return createApp({
+// Providers are served in-process by fake-world; retries do not really sleep.
+export function testDeps(db: Db, overrides: Partial<AppDeps> = {}): AppDeps {
+	const world = createFakeWorld()
+	return {
 		db,
 		log: createLogger({ level: process.env.TEST_LOG_LEVEL ?? 'silent' }),
 		sessionSecret: TEST_SESSION_SECRET,
-	})
+		clock: () => new Date(),
+		providerBaseUrl: 'http://fake-world',
+		fetch: (input, init) => Promise.resolve(world.fetch(new Request(input, init))),
+		retry: { rng: () => 0.5, sleep: () => Promise.resolve() },
+		...overrides,
+	}
+}
+
+export function createTestApp(db: Db, overrides: Partial<AppDeps> = {}) {
+	return createApp(testDeps(db, overrides))
 }
 
 export interface FetchApp {

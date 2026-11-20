@@ -109,3 +109,59 @@ export const seedRuns = pgTable('seed_runs', {
 	checksum: text().notNull(),
 	at: timestamp({ withTimezone: true }).notNull(),
 })
+
+export const ingestionRuns = pgTable(
+	'ingestion_runs',
+	{
+		id: integer().primaryKey().generatedAlwaysAsIdentity(),
+		provider: text().notNull(),
+		triggeredBy: text().notNull(),
+		status: text().notNull().default('running'),
+		startedAt: timestamp({ withTimezone: true }).notNull(),
+		finishedAt: timestamp({ withTimezone: true }),
+		recordsReceived: integer().notNull().default(0),
+		recordsNew: integer().notNull().default(0),
+		recordsUnchanged: integer().notNull().default(0),
+		recordsRejected: integer().notNull().default(0),
+		creditsUsed: numeric().notNull().default('0'),
+		errors: jsonb().$type<IngestionError[]>().notNull().default([]),
+	},
+	(t) => [
+		check('ingestion_runs_status', sql`${t.status} IN ('running', 'succeeded', 'succeeded_with_errors', 'failed')`),
+		check('ingestion_runs_provider', sql`${t.provider} IN ('apollo', 'factset', 'clay')`),
+		index('ingestion_runs_provider_started').on(t.provider, t.startedAt),
+	],
+)
+
+export interface IngestionError {
+	kind: 'company' | 'contact' | 'fundamental' | 'request'
+	externalId: string | null
+	problem: string
+	payload?: unknown
+}
+
+// One row per distinct version of a provider record. A re-pull of unchanged data only moves last_seen_*.
+export const rawRecords = pgTable(
+	'raw_records',
+	{
+		id: integer().primaryKey().generatedAlwaysAsIdentity(),
+		runId: integer()
+			.notNull()
+			.references(() => ingestionRuns.id),
+		lastSeenRunId: integer()
+			.notNull()
+			.references(() => ingestionRuns.id),
+		provider: text().notNull(),
+		kind: text().notNull(),
+		externalId: text().notNull(),
+		payload: jsonb().$type<Record<string, unknown>>().notNull(),
+		contentHash: text().notNull(),
+		fetchedAt: timestamp({ withTimezone: true }).notNull(),
+		lastSeenAt: timestamp({ withTimezone: true }).notNull(),
+	},
+	(t) => [
+		unique('raw_records_version').on(t.provider, t.kind, t.externalId, t.contentHash),
+		check('raw_records_kind', sql`${t.kind} IN ('company', 'contact')`),
+		index('raw_records_latest').on(t.provider, t.kind, t.externalId, t.fetchedAt),
+	],
+)
