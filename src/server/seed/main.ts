@@ -1,6 +1,6 @@
 import { createDb } from '../db/client.ts'
 import { databaseName, ensureDatabase, runMigrations, withAdminClient } from '../db/migrate.ts'
-import { seedUsers } from './users.ts'
+import { seed } from './seed.ts'
 
 const url = process.env.DATABASE_URL
 if (!url) throw new Error('DATABASE_URL is not set')
@@ -13,8 +13,6 @@ if (process.argv.includes('--reset')) {
 
 const db = createDb(url)
 await runMigrations(db)
-await db.transaction(async (tx) => {
-	await seedUsers(tx)
-})
+await seed(db, { now: new Date() })
 await db.$client.end()
 console.log('seed complete')

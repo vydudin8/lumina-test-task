@@ -1,0 +1,3806 @@
+[
+  {
+    "id": "debd458f5f7921ed496da25d",
+    "name": "Granite Architects Limited",
+    "website_url": "http://www.granitearchitects.ie",
+    "primary_domain": "granitearchitects.ie",
+    "linkedin_url": "http://www.linkedin.com/company/granitearchitects",
+    "founded_year": 1988,
+    "estimated_num_employees": 2848,
+    "annual_revenue": 164132911,
+    "annual_revenue_printed": "164.1M",
+    "industry": "architecture & planning",
+    "industries": [
+      "architecture & planning"
+    ],
+    "street_address": "Unit 8, Westgate Business Park",
+    "city": "Dublin",
+    "state": "Dublin",
+    "postal_code": "D02 KA0T",
+    "country": "Ireland",
+    "raw_address": "Unit 8, Westgate Business Park, Dublin, Dublin, D02 KA0T, Ireland",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "5714a4c0aca9ffc6c79a2852",
+    "name": "Lytham Building Ltd",
+    "website_url": "http://www.lythambuilding.co.uk",
+    "primary_domain": "lythambuilding.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/lythambuilding",
+    "founded_year": 1992,
+    "estimated_num_employees": 597,
+    "annual_revenue": null,
+    "annual_revenue_printed": null,
+    "industry": "construction",
+    "industries": [
+      "construction"
+    ],
+    "street_address": "50 Foundry Lane",
+    "city": "Cardiff",
+    "state": "Cardiff",
+    "postal_code": "CF26 1JS",
+    "country": "United Kingdom",
+    "raw_address": "50 Foundry Lane, Cardiff, Cardiff, CF26 1JS, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics",
+      "Geotab"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "8644a8249930204590505d92",
+    "name": "Alder Plant Hire GmbH",
+    "website_url": "http://www.alderplant.de",
+    "primary_domain": "alderplant.de",
+    "linkedin_url": "http://www.linkedin.com/company/alderplanthire",
+    "founded_year": 1966,
+    "estimated_num_employees": 793,
+    "annual_revenue": 186043038,
+    "annual_revenue_printed": "186.0M",
+    "industry": "equipment rental services",
+    "industries": [
+      "equipment rental services"
+    ],
+    "street_address": "Industriestraße 22",
+    "city": "Hamburg",
+    "state": "Hamburg",
+    "postal_code": "20095",
+    "country": "Germany",
+    "raw_address": "Industriestraße 22, Hamburg, Hamburg, 20095, Germany",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "76bb339254c09b2b5e234ca6",
+    "name": "Fenwick Contractors AG",
+    "website_url": "http://www.fenwickcontractors.ch",
+    "primary_domain": "fenwickcontractors.ch",
+    "linkedin_url": "http://www.linkedin.com/company/fenwickcontractors",
+    "founded_year": 1956,
+    "estimated_num_employees": 647,
+    "annual_revenue": 98921519,
+    "annual_revenue_printed": "98.9M",
+    "industry": "construction",
+    "industries": [
+      "construction"
+    ],
+    "street_address": "Industriestrasse 72",
+    "city": "Zürich",
+    "state": "Zürich",
+    "postal_code": "8001",
+    "country": "Switzerland",
+    "raw_address": "Industriestrasse 72, Zürich, Zürich, 8001, Switzerland",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": 26100000,
+    "latest_funding_stage": "Series B",
+    "latest_funding_round_date": "2022-09-01",
+    "funding_events": []
+  },
+  {
+    "id": "655d4636310f4625173dc8bf",
+    "name": "Ingram Software Ltd",
+    "website_url": "http://www.ingramsoftware.co.uk",
+    "primary_domain": "ingramsoftware.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/ingramsoftware",
+    "founded_year": 2013,
+    "estimated_num_employees": 167,
+    "annual_revenue": 127639241,
+    "annual_revenue_printed": "127.6M",
+    "industry": "computer software",
+    "industries": [
+      "computer software"
+    ],
+    "street_address": "144 Wharf Street",
+    "city": "York",
+    "state": "North Yorkshire",
+    "postal_code": "YO8 8HN",
+    "country": "United Kingdom",
+    "raw_address": "144 Wharf Street, York, North Yorkshire, YO8 8HN, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "95d6c9c424910bc334b3c45c",
+    "name": "Ironbridge Digital Ltd",
+    "website_url": "http://www.ironbridgedigital.co.uk",
+    "primary_domain": "ironbridgedigital.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/ironbridgedigital",
+    "founded_year": 1984,
+    "estimated_num_employees": 624,
+    "annual_revenue": null,
+    "annual_revenue_printed": null,
+    "industry": "computer software",
+    "industries": [
+      "computer software"
+    ],
+    "street_address": "134 Quarry Road",
+    "city": "Birmingham",
+    "state": "West Midlands",
+    "postal_code": "B21 3YG",
+    "country": "United Kingdom",
+    "raw_address": "134 Quarry Road, Birmingham, West Midlands, B21 3YG, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "c5c5f9106d4e909af004f0e5",
+    "name": "Ullswater Tool & Plant Hire Ltd",
+    "website_url": "http://www.ullswatertool.co.uk",
+    "primary_domain": "ullswatertool.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/ullswatertoolplanthire",
+    "founded_year": 1985,
+    "estimated_num_employees": 1444,
+    "annual_revenue": 146650633,
+    "annual_revenue_printed": "146.7M",
+    "industry": "equipment rental services",
+    "industries": [
+      "equipment rental services"
+    ],
+    "street_address": "Unit 20, Riverside Industrial Estate",
+    "city": "Sheffield",
+    "state": "South Yorkshire",
+    "postal_code": "S8 5EJ",
+    "country": "United Kingdom",
+    "raw_address": "Unit 20, Riverside Industrial Estate, Sheffield, South Yorkshire, S8 5EJ, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "e1a192f07e5c155ebc267d4e",
+    "name": "Dunmore Contractors PLC",
+    "website_url": "http://www.dunmorecontractors.co.uk",
+    "primary_domain": "dunmorecontractors.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/dunmorecontractors",
+    "founded_year": 2015,
+    "estimated_num_employees": 479,
+    "annual_revenue": null,
+    "annual_revenue_printed": null,
+    "industry": "construction",
+    "industries": [
+      "construction"
+    ],
+    "street_address": "Unit 25, Brunswick Industrial Estate",
+    "city": "Preston",
+    "state": "Lancashire",
+    "postal_code": "PR12 6QB",
+    "country": "United Kingdom",
+    "raw_address": "Unit 25, Brunswick Industrial Estate, Preston, Lancashire, PR12 6QB, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "869c89dd701728d1e2e7d6d6",
+    "name": "Slaney Quarries SA",
+    "website_url": "http://www.slaneyquarries.fr",
+    "primary_domain": "slaneyquarries.fr",
+    "linkedin_url": "http://www.linkedin.com/company/slaneyquarries",
+    "founded_year": 1990,
+    "estimated_num_employees": 952,
+    "annual_revenue": 44097468,
+    "annual_revenue_printed": "44.1M",
+    "industry": "mining & metals",
+    "industries": [
+      "mining & metals"
+    ],
+    "street_address": "64 rue du Port",
+    "city": "Lille",
+    "state": "Hauts-de-France",
+    "postal_code": "59000",
+    "country": "France",
+    "raw_address": "64 rue du Port, Lille, Hauts-de-France, 59000, France",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "a276149f0ac0a2b6ee68b90e",
+    "name": "Northgate Infrastructure Ltd",
+    "website_url": "http://www.northgateinfrastructure.co.uk",
+    "primary_domain": "northgateinfrastructure.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/northgateinfrastructure",
+    "founded_year": 1978,
+    "estimated_num_employees": 629,
+    "annual_revenue": null,
+    "annual_revenue_printed": null,
+    "industry": "civil engineering",
+    "industries": [
+      "civil engineering"
+    ],
+    "street_address": "Unit 29, Lakeside Industrial Estate",
+    "city": "Edinburgh",
+    "state": "City of Edinburgh",
+    "postal_code": "EH11 7UY",
+    "country": "United Kingdom",
+    "raw_address": "Unit 29, Lakeside Industrial Estate, Edinburgh, City of Edinburgh, EH11 7UY, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": 33600000,
+    "latest_funding_stage": "Series B",
+    "latest_funding_round_date": "2023-09-01",
+    "funding_events": []
+  },
+  {
+    "id": "17aa281819d86f21cd6e7eab",
+    "name": "Severn Stone Ltd",
+    "website_url": "http://www.severnstone.co.uk",
+    "primary_domain": "severnstone.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/severnstone",
+    "founded_year": 1977,
+    "estimated_num_employees": 21,
+    "annual_revenue": 7231646,
+    "annual_revenue_printed": "7.2M",
+    "industry": "mining & metals",
+    "industries": [
+      "mining & metals"
+    ],
+    "street_address": "Unit 13, Lakeside Industrial Estate",
+    "city": "Bristol",
+    "state": "Bristol",
+    "postal_code": "BS25 6GD",
+    "country": "United Kingdom",
+    "raw_address": "Unit 13, Lakeside Industrial Estate, Bristol, Bristol, BS25 6GD, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": 9000000,
+    "latest_funding_stage": "Private Equity",
+    "latest_funding_round_date": "2021-07-01",
+    "funding_events": []
+  },
+  {
+    "id": "7443f788b6319b007f7f3ab5",
+    "name": "Kingsmead Stone Ltd",
+    "website_url": "http://www.kingsmeadstone.co.uk",
+    "primary_domain": "kingsmeadstone.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/kingsmeadstone",
+    "founded_year": 1956,
+    "estimated_num_employees": 629,
+    "annual_revenue": null,
+    "annual_revenue_printed": null,
+    "industry": "mining & metals",
+    "industries": [
+      "mining & metals"
+    ],
+    "street_address": "77 Kingsway",
+    "city": "Edinburgh",
+    "state": "City of Edinburgh",
+    "postal_code": "EH24 1BD",
+    "country": "United Kingdom",
+    "raw_address": "77 Kingsway, Edinburgh, City of Edinburgh, EH24 1BD, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "c135a123d81ac3a0d985a342",
+    "name": "Foxley Quarries Ltd",
+    "website_url": "http://www.foxleyquarries.co.uk",
+    "primary_domain": "foxleyquarries.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/foxleyquarries",
+    "founded_year": 1975,
+    "estimated_num_employees": 513,
+    "annual_revenue": null,
+    "annual_revenue_printed": null,
+    "industry": "mining & metals",
+    "industries": [
+      "mining & metals"
+    ],
+    "street_address": "152 Kingsway",
+    "city": "Sheffield",
+    "state": "South Yorkshire",
+    "postal_code": "S3 9AT",
+    "country": "United Kingdom",
+    "raw_address": "152 Kingsway, Sheffield, South Yorkshire, S3 9AT, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics",
+      "Geotab"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "0a06c8220c815ffad400db87",
+    "name": "Rowntree Groundworks Limited",
+    "website_url": "http://www.rowntreegroundworks.co.uk",
+    "primary_domain": "rowntreegroundworks.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/rowntreegroundworks",
+    "founded_year": 1985,
+    "estimated_num_employees": 1857,
+    "annual_revenue": 178950633,
+    "annual_revenue_printed": "179.0M",
+    "industry": "civil engineering",
+    "industries": [
+      "civil engineering"
+    ],
+    "street_address": "Unit 1, Westgate Industrial Estate",
+    "city": "Nottingham",
+    "state": "Nottinghamshire",
+    "postal_code": "NG27 7TD",
+    "country": "United Kingdom",
+    "raw_address": "Unit 1, Westgate Industrial Estate, Nottingham, Nottinghamshire, NG27 7TD, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "a3ecdaf88df2e3a0bf3f8c33",
+    "name": "Alder Equipment Hire Limited",
+    "website_url": "http://www.alderequipment.co.uk",
+    "primary_domain": "alderequipment.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/alderequipmenthire",
+    "founded_year": 1956,
+    "estimated_num_employees": 2170,
+    "annual_revenue": 42781013,
+    "annual_revenue_printed": "42.8M",
+    "industry": "equipment rental services",
+    "industries": [
+      "equipment rental services"
+    ],
+    "street_address": "52 Wharf Street",
+    "city": "Cardiff",
+    "state": "Cardiff",
+    "postal_code": "CF12 1",
+    "country": "United Kingdom",
+    "raw_address": "52 Wharf Street, Cardiff, Cardiff, CF12 1, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "f1cde9e045b39acb62e04ad1",
+    "name": "Glenmore Building Limited",
+    "website_url": "http://www.glenmorebuilding.ie",
+    "primary_domain": "glenmorebuilding.ie",
+    "linkedin_url": "http://www.linkedin.com/company/glenmorebuilding",
+    "founded_year": 1959,
+    "estimated_num_employees": 181,
+    "annual_revenue": 7129114,
+    "annual_revenue_printed": "7.1M",
+    "industry": "construction",
+    "industries": [
+      "construction"
+    ],
+    "street_address": "Unit 28, Meadowbank Business Park",
+    "city": "Cork",
+    "state": "Cork",
+    "postal_code": "T12 V4TE",
+    "country": "Ireland",
+    "raw_address": "Unit 28, Meadowbank Business Park, Cork, Cork, T12 V4TE, Ireland",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "01df1dd42755961d3d499b3d",
+    "name": "Shannon Aggregates PLC",
+    "website_url": "http://www.shannonaggregates.co.uk",
+    "primary_domain": "shannonaggregates.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/shannonaggregates",
+    "founded_year": 1994,
+    "estimated_num_employees": 242,
+    "annual_revenue": 3669620,
+    "annual_revenue_printed": "3.7M",
+    "industry": "mining & metals",
+    "industries": [
+      "mining & metals"
+    ],
+    "street_address": "Unit 8, Northfield Industrial Estate",
+    "city": "Glasgow",
+    "state": "Glasgow City",
+    "postal_code": "G6 2HP",
+    "country": "United Kingdom",
+    "raw_address": "Unit 8, Northfield Industrial Estate, Glasgow, Glasgow City, G6 2HP, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "ad85da276bd6978d4040ae5c",
+    "name": "Birchwood Digital Limited",
+    "website_url": "http://www.birchwooddigital.co.uk",
+    "primary_domain": "birchwooddigital.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/birchwooddigital",
+    "founded_year": 1977,
+    "estimated_num_employees": null,
+    "annual_revenue": 10144304,
+    "annual_revenue_printed": "10.1M",
+    "industry": "computer software",
+    "industries": [
+      "computer software"
+    ],
+    "street_address": "99 Canal Street",
+    "city": "Birmingham",
+    "state": "West Midlands",
+    "postal_code": "B11 8HJ",
+    "country": "United Kingdom",
+    "raw_address": "99 Canal Street, Birmingham, West Midlands, B11 8HJ, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "ff530733b6b2cd301ae60638",
+    "name": "Quarrington Groundworks GmbH",
+    "website_url": "http://www.quarringtongroundworks.de",
+    "primary_domain": "quarringtongroundworks.de",
+    "linkedin_url": "http://www.linkedin.com/company/quarringtongroundworks",
+    "founded_year": 1991,
+    "estimated_num_employees": 1078,
+    "annual_revenue": null,
+    "annual_revenue_printed": null,
+    "industry": "civil engineering",
+    "industries": [
+      "civil engineering"
+    ],
+    "street_address": "Industriestraße 46",
+    "city": "Hamburg",
+    "state": "Hamburg",
+    "postal_code": "20095",
+    "country": "Germany",
+    "raw_address": "Industriestraße 46, Hamburg, Hamburg, 20095, Germany",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "0b4a8aeeac4fd14a4cd498f6",
+    "name": "Hartley Civil Engineering Limited",
+    "website_url": "http://www.hartleycivil.co.uk",
+    "primary_domain": "hartleycivil.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/hartleycivilengineering",
+    "founded_year": 1979,
+    "estimated_num_employees": 149,
+    "annual_revenue": 216825316,
+    "annual_revenue_printed": "216.8M",
+    "industry": "civil engineering",
+    "industries": [
+      "civil engineering"
+    ],
+    "street_address": null,
+    "city": "Peterborough",
+    "state": "Cambridgeshire",
+    "postal_code": "PE15 4QH",
+    "country": "United Kingdom",
+    "raw_address": "Peterborough, Cambridgeshire, PE15 4QH, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "4ddcd6d41289c52ff7db9cd0",
+    "name": "Langley Plant Limited",
+    "website_url": "http://www.langleyplant.co.uk",
+    "primary_domain": "langleyplant.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/langleyplant",
+    "founded_year": 2019,
+    "estimated_num_employees": 570,
+    "annual_revenue": 8453165,
+    "annual_revenue_printed": "8.5M",
+    "industry": "equipment rental services",
+    "industries": [
+      "equipment rental services"
+    ],
+    "street_address": "Unit 1, Meadowbank Industrial Estate",
+    "city": "Birmingham",
+    "state": "West Midlands",
+    "postal_code": "B26 8NN",
+    "country": "United Kingdom",
+    "raw_address": "Unit 1, Meadowbank Industrial Estate, Birmingham, West Midlands, B26 8NN, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "6e706aa423949c9e1010d927",
+    "name": "Wyvern Civils Ltd",
+    "website_url": "http://www.wyverncivils.co.uk",
+    "primary_domain": "wyverncivils.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/wyverncivils",
+    "founded_year": 2011,
+    "estimated_num_employees": 642,
+    "annual_revenue": 107781013,
+    "annual_revenue_printed": "107.8M",
+    "industry": "civil engineering",
+    "industries": [
+      "civil engineering"
+    ],
+    "street_address": "67 Canal Street",
+    "city": "Derby",
+    "state": "Derbyshire",
+    "postal_code": "DE2 3WW",
+    "country": "United Kingdom",
+    "raw_address": "67 Canal Street, Derby, Derbyshire, DE2 3WW, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "d0c01374aa0f512eacea737d",
+    "name": "Langley Civils B.V.",
+    "website_url": "http://www.langleycivils.nl",
+    "primary_domain": "langleycivils.nl",
+    "linkedin_url": "http://www.linkedin.com/company/langleycivils",
+    "founded_year": 2007,
+    "estimated_num_employees": 1429,
+    "annual_revenue": 141662025,
+    "annual_revenue_printed": "141.7M",
+    "industry": "civil engineering",
+    "industries": [
+      "civil engineering"
+    ],
+    "street_address": "Havenweg 68",
+    "city": "Eindhoven",
+    "state": "Noord-Brabant",
+    "postal_code": "5611 AZ",
+    "country": "Netherlands",
+    "raw_address": "Havenweg 68, Eindhoven, Noord-Brabant, 5611 AZ, Netherlands",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "39634873036709cf1cf323d9",
+    "name": "Langley Minerals Ltd",
+    "website_url": "http://www.langleyminerals.co.uk",
+    "primary_domain": "langleyminerals.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/langleyminerals",
+    "founded_year": 2000,
+    "estimated_num_employees": 733,
+    "annual_revenue": null,
+    "annual_revenue_printed": null,
+    "industry": "mining & metals",
+    "industries": [
+      "mining & metals"
+    ],
+    "street_address": "75 Mill Lane",
+    "city": "Reading",
+    "state": "Berkshire",
+    "postal_code": "RG12 3QL",
+    "country": "United Kingdom",
+    "raw_address": "75 Mill Lane, Reading, Berkshire, RG12 3QL, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "b4bcb4e36d4a1654ae866661",
+    "name": "Langley Civils Ltd",
+    "website_url": "http://www.langleycivils.co.uk",
+    "primary_domain": "langleycivils.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/langleycivils",
+    "founded_year": 1997,
+    "estimated_num_employees": 736,
+    "annual_revenue": 6345570,
+    "annual_revenue_printed": "6.3M",
+    "industry": "civil engineering",
+    "industries": [
+      "civil engineering"
+    ],
+    "street_address": "Unit 7, Brunswick Industrial Estate",
+    "city": "Preston",
+    "state": "Lancashire",
+    "postal_code": "PR19 3UA",
+    "country": "United Kingdom",
+    "raw_address": "Unit 7, Brunswick Industrial Estate, Preston, Lancashire, PR19 3UA, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "bd629c86cbbef8163a396834",
+    "name": "Denholm Plant Hire AG",
+    "website_url": "http://www.denholmplant.de",
+    "primary_domain": "denholmplant.de",
+    "linkedin_url": "http://www.linkedin.com/company/denholmplanthire",
+    "founded_year": 1960,
+    "estimated_num_employees": null,
+    "annual_revenue": 118031646,
+    "annual_revenue_printed": "118.0M",
+    "industry": "equipment rental services",
+    "industries": [
+      "equipment rental services"
+    ],
+    "street_address": "Industriestraße 70",
+    "city": "Köln",
+    "state": "Nordrhein-Westfalen",
+    "postal_code": "50667",
+    "country": "Germany",
+    "raw_address": "Industriestraße 70, Köln, Nordrhein-Westfalen, 50667, Germany",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "e2870f57cc8336316e41b9b3",
+    "name": "Halden Tool & Plant Hire Ltd",
+    "website_url": "http://www.haldentool.co.uk",
+    "primary_domain": "haldentool.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/haldentoolplanthire",
+    "founded_year": 2005,
+    "estimated_num_employees": 176,
+    "annual_revenue": 2546835,
+    "annual_revenue_printed": "2.5M",
+    "industry": "equipment rental services",
+    "industries": [
+      "equipment rental services"
+    ],
+    "street_address": "Unit 10, Brunswick Industrial Estate",
+    "city": "Leeds",
+    "state": "West Yorkshire",
+    "postal_code": null,
+    "country": "United Kingdom",
+    "raw_address": "Unit 10, Brunswick Industrial Estate, Leeds, West Yorkshire, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics",
+      "Samsara"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "dfb31c1cf8542031ab989ab8",
+    "name": "Thames Construction Ltd",
+    "website_url": "http://www.thamesconstruction.co.uk",
+    "primary_domain": "thamesconstruction.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/thamesconstruction",
+    "founded_year": 1985,
+    "estimated_num_employees": 1892,
+    "annual_revenue": 153175949,
+    "annual_revenue_printed": "153.2M",
+    "industry": "construction",
+    "industries": [
+      "construction"
+    ],
+    "street_address": "10 Foundry Lane",
+    "city": "Derby",
+    "state": "Derbyshire",
+    "postal_code": "DE1 4TG",
+    "country": "United Kingdom",
+    "raw_address": "10 Foundry Lane, Derby, Derbyshire, DE1 4TG, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "aefcda89da40dd910116e93d",
+    "name": "Alder Digital Limited",
+    "website_url": "http://www.alderdigital.ie",
+    "primary_domain": "alderdigital.ie",
+    "linkedin_url": "http://www.linkedin.com/company/alderdigital",
+    "founded_year": 1977,
+    "estimated_num_employees": 1643,
+    "annual_revenue": 82098734,
+    "annual_revenue_printed": "82.1M",
+    "industry": "computer software",
+    "industries": [
+      "computer software"
+    ],
+    "street_address": "Unit 13, Riverside Business Park",
+    "city": "Galway",
+    "state": "Galway",
+    "postal_code": "H91 TY79",
+    "country": "Ireland",
+    "raw_address": "Unit 13, Riverside Business Park, Galway, Galway, H91 TY79, Ireland",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics",
+      "Geotab"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "d2bce02a4907eedf760baa52",
+    "name": "Ingram Infrastructure B.V.",
+    "website_url": "http://www.ingraminfrastructure.nl",
+    "primary_domain": "ingraminfrastructure.nl",
+    "linkedin_url": "http://www.linkedin.com/company/ingraminfrastructure",
+    "founded_year": 1973,
+    "estimated_num_employees": 25,
+    "annual_revenue": 98020253,
+    "annual_revenue_printed": "98.0M",
+    "industry": "civil engineering",
+    "industries": [
+      "civil engineering"
+    ],
+    "street_address": "Havenweg 1",
+    "city": "Rotterdam",
+    "state": "Zuid-Holland",
+    "postal_code": "3011 AB",
+    "country": "Netherlands",
+    "raw_address": "Havenweg 1, Rotterdam, Zuid-Holland, 3011 AB, Netherlands",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "35ccf06e0316a650386d466a",
+    "name": "Coldstream Plant Limited",
+    "website_url": "http://www.coldstreamplant.co.uk",
+    "primary_domain": "coldstreamplant.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/coldstreamplant",
+    "founded_year": 1969,
+    "estimated_num_employees": 28,
+    "annual_revenue": 4096203,
+    "annual_revenue_printed": "4.1M",
+    "industry": "equipment rental services",
+    "industries": [
+      "equipment rental services"
+    ],
+    "street_address": "Unit 1, Riverside Industrial Estate",
+    "city": "Manchester",
+    "state": "Greater Manchester",
+    "postal_code": "M1 7HH",
+    "country": "United Kingdom",
+    "raw_address": "Unit 1, Riverside Industrial Estate, Manchester, Greater Manchester, M1 7HH, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "a3bb381a821fdd0b3e444e4e",
+    "name": "Eskdale Haulage Ltd",
+    "website_url": "http://www.eskdalehaulage.ie",
+    "primary_domain": "eskdalehaulage.ie",
+    "linkedin_url": "http://www.linkedin.com/company/eskdalehaulage",
+    "founded_year": 2004,
+    "estimated_num_employees": 545,
+    "annual_revenue": 29691139,
+    "annual_revenue_printed": "29.7M",
+    "industry": "logistics & supply chain",
+    "industries": [
+      "logistics & supply chain"
+    ],
+    "street_address": "Unit 3, Brunswick Business Park",
+    "city": "Galway",
+    "state": "Galway",
+    "postal_code": "H91 XFPW",
+    "country": "Ireland",
+    "raw_address": "Unit 3, Brunswick Business Park, Galway, Galway, H91 XFPW, Ireland",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics",
+      "Geotab"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "b6d55acdbbbcce88099b0b47",
+    "name": "Dovecote Civil Engineering PLC",
+    "website_url": "http://www.dovecotecivil.co.uk",
+    "primary_domain": "dovecotecivil.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/dovecotecivilengineering",
+    "founded_year": 1973,
+    "estimated_num_employees": 1285,
+    "annual_revenue": 54032911,
+    "annual_revenue_printed": "54.0M",
+    "industry": "civil engineering",
+    "industries": [
+      "civil engineering"
+    ],
+    "street_address": "59 Mill Lane",
+    "city": "Newcastle upon Tyne",
+    "state": "Tyne and Wear",
+    "postal_code": "NE9 9GG",
+    "country": "United Kingdom",
+    "raw_address": "59 Mill Lane, Newcastle upon Tyne, Tyne and Wear, NE9 9GG, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": 26300000,
+    "latest_funding_stage": "Series B",
+    "latest_funding_round_date": "2019-04-01",
+    "funding_events": []
+  },
+  {
+    "id": "401307b84728a1f7e5a9c5d0",
+    "name": "Ottery Infrastructure Limited",
+    "website_url": "http://www.otteryinfrastructure.co.uk",
+    "primary_domain": "otteryinfrastructure.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/otteryinfrastructure",
+    "founded_year": 1978,
+    "estimated_num_employees": 742,
+    "annual_revenue": 114922785,
+    "annual_revenue_printed": "114.9M",
+    "industry": "civil engineering",
+    "industries": [
+      "civil engineering"
+    ],
+    "street_address": "Unit 1, Meadowbank Industrial Estate",
+    "city": "Manchester",
+    "state": "Greater Manchester",
+    "postal_code": "M9 3RG",
+    "country": "United Kingdom",
+    "raw_address": "Unit 1, Meadowbank Industrial Estate, Manchester, Greater Manchester, M9 3RG, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "e7d402cb4f5d4320e11c0bfc",
+    "name": "Lytham Equipment Hire Limited",
+    "website_url": "http://www.lythamequipment.co.uk",
+    "primary_domain": "lythamequipment.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/lythamequipmenthire",
+    "founded_year": 2017,
+    "estimated_num_employees": 1472,
+    "annual_revenue": 89202532,
+    "annual_revenue_printed": "89.2M",
+    "industry": "equipment rental services",
+    "industries": [
+      "equipment rental services"
+    ],
+    "street_address": "Unit 26, Lakeside Industrial Estate",
+    "city": "Newcastle upon Tyne",
+    "state": "Tyne and Wear",
+    "postal_code": "NE25 7AB",
+    "country": "United Kingdom",
+    "raw_address": "Unit 26, Lakeside Industrial Estate, Newcastle upon Tyne, Tyne and Wear, NE25 7AB, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "6e2466772ac06192dbb6b65f",
+    "name": "Vale Estates Ltd",
+    "website_url": "http://www.valeestates.co.uk",
+    "primary_domain": "valeestates.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/valeestates",
+    "founded_year": 1977,
+    "estimated_num_employees": null,
+    "annual_revenue": 181332911,
+    "annual_revenue_printed": "181.3M",
+    "industry": "real estate",
+    "industries": [
+      "real estate"
+    ],
+    "street_address": "37 Quarry Road",
+    "city": "Preston",
+    "state": "Lancashire",
+    "postal_code": "PR6 6UT",
+    "country": "United Kingdom",
+    "raw_address": "37 Quarry Road, Preston, Lancashire, PR6 6UT, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "cd03dc584122b7b02018ee54",
+    "name": "Halden Civils PLC",
+    "website_url": "http://www.haldencivils.co.uk",
+    "primary_domain": "haldencivils.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/haldencivils",
+    "founded_year": 1958,
+    "estimated_num_employees": 2071,
+    "annual_revenue": 54867089,
+    "annual_revenue_printed": "54.9M",
+    "industry": "civil engineering",
+    "industries": [
+      "civil engineering"
+    ],
+    "street_address": "Unit 2, Brunswick Industrial Estate",
+    "city": "Preston",
+    "state": "Lancashire",
+    "postal_code": "PR8 2GB",
+    "country": "United Kingdom",
+    "raw_address": "Unit 2, Brunswick Industrial Estate, Preston, Lancashire, PR8 2GB, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": 12200000,
+    "latest_funding_stage": "Series A",
+    "latest_funding_round_date": "2020-07-01",
+    "funding_events": []
+  },
+  {
+    "id": "a73820d6fe39935f02a4ea74",
+    "name": "Calder Groundworks Ltd",
+    "website_url": "http://www.caldergroundworks.co.uk",
+    "primary_domain": "caldergroundworks.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/caldergroundworks",
+    "founded_year": 1974,
+    "estimated_num_employees": 724,
+    "annual_revenue": null,
+    "annual_revenue_printed": null,
+    "industry": "civil engineering",
+    "industries": [
+      "civil engineering"
+    ],
+    "street_address": "71 Canal Street",
+    "city": "Peterborough",
+    "state": "Cambridgeshire",
+    "postal_code": "PE6 1LF",
+    "country": "United Kingdom",
+    "raw_address": "71 Canal Street, Peterborough, Cambridgeshire, PE6 1LF, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "9deef65608b727575d3a52ec",
+    "name": "Blackrock Stone Ltd",
+    "website_url": "http://www.blackrockstone.co.uk",
+    "primary_domain": "blackrockstone.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/blackrockstone",
+    "founded_year": 1988,
+    "estimated_num_employees": 669,
+    "annual_revenue": null,
+    "annual_revenue_printed": null,
+    "industry": "mining & metals",
+    "industries": [
+      "mining & metals"
+    ],
+    "street_address": "20 Station Road",
+    "city": "Exeter",
+    "state": "Devon",
+    "postal_code": "EX10 1FA",
+    "country": "United Kingdom",
+    "raw_address": "20 Station Road, Exeter, Devon, EX10 1FA, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "e4ae1d593616680a81f17c84",
+    "name": null,
+    "website_url": null,
+    "primary_domain": null,
+    "estimated_num_employees": null,
+    "annual_revenue": null,
+    "industry": null,
+    "country": "United Kingdom"
+  },
+  {
+    "id": "00163903af990d6e8a600655",
+    "name": "Saltash Construction GmbH",
+    "website_url": "http://www.saltashconstruction.de",
+    "primary_domain": "saltashconstruction.de",
+    "linkedin_url": "http://www.linkedin.com/company/saltashconstruction",
+    "founded_year": 1965,
+    "estimated_num_employees": 1781,
+    "annual_revenue": null,
+    "annual_revenue_printed": null,
+    "industry": "construction",
+    "industries": [
+      "construction"
+    ],
+    "street_address": "Industriestraße 76",
+    "city": "Hamburg",
+    "state": "Hamburg",
+    "postal_code": "20095",
+    "country": "Germany",
+    "raw_address": "Industriestraße 76, Hamburg, Hamburg, 20095, Germany",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "330ad85ff7099f16e8cb0718",
+    "name": "Stanton Tool & Plant Hire Limited",
+    "website_url": "http://www.stantontool.co.uk",
+    "primary_domain": "stantontool.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/stantontoolplanthire",
+    "founded_year": 2008,
+    "estimated_num_employees": 2065,
+    "annual_revenue": 126064557,
+    "annual_revenue_printed": "126.1M",
+    "industry": "equipment rental services",
+    "industries": [
+      "equipment rental services"
+    ],
+    "street_address": "Unit 25, Westgate Industrial Estate",
+    "city": "Peterborough",
+    "state": "Cambridgeshire",
+    "postal_code": "PE3 2UN",
+    "country": "United Kingdom",
+    "raw_address": "Unit 25, Westgate Industrial Estate, Peterborough, Cambridgeshire, PE3 2UN, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "6ddd9fecd06d80a091f19b8e",
+    "name": "Oakridge Building Ltd",
+    "website_url": "http://www.oakridgebuilding.co.uk",
+    "primary_domain": "oakridgebuilding.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/oakridgebuilding",
+    "founded_year": 1990,
+    "estimated_num_employees": 168,
+    "annual_revenue": null,
+    "annual_revenue_printed": null,
+    "industry": "construction",
+    "industries": [
+      "construction"
+    ],
+    "street_address": "Unit 7, Meadowbank Industrial Estate",
+    "city": "Newcastle upon Tyne",
+    "state": "Tyne and Wear",
+    "postal_code": "NE16 7JE",
+    "country": "United Kingdom",
+    "raw_address": "Unit 7, Meadowbank Industrial Estate, Newcastle upon Tyne, Tyne and Wear, NE16 7JE, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics",
+      "Geotab"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "1cac5201eb5683b0e2517313",
+    "name": "Wardle Builders Ltd",
+    "website_url": "http://www.wardlebuilders.co.uk",
+    "primary_domain": "wardlebuilders.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/wardlebuilders",
+    "founded_year": 1957,
+    "estimated_num_employees": 416,
+    "annual_revenue": null,
+    "annual_revenue_printed": null,
+    "industry": "construction",
+    "industries": [
+      "construction"
+    ],
+    "street_address": "Unit 10, Riverside Industrial Estate",
+    "city": "Exeter",
+    "state": "Devon",
+    "postal_code": "EX27 9AU",
+    "country": "United Kingdom",
+    "raw_address": "Unit 10, Riverside Industrial Estate, Exeter, Devon, EX27 9AU, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics",
+      "Geotab"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "f8135b146b03ec731a8179b2",
+    "name": "Ingram Civils Limited",
+    "website_url": "http://www.ingramcivils.ie",
+    "primary_domain": "ingramcivils.ie",
+    "linkedin_url": "http://www.linkedin.com/company/ingramcivils",
+    "founded_year": 1961,
+    "estimated_num_employees": 417,
+    "annual_revenue": 5572152,
+    "annual_revenue_printed": "5.6M",
+    "industry": "civil engineering",
+    "industries": [
+      "civil engineering"
+    ],
+    "street_address": "Unit 19, Lakeside Business Park",
+    "city": "Limerick",
+    "state": "Limerick",
+    "postal_code": "V94 XTD8",
+    "country": "Ireland",
+    "raw_address": "Unit 19, Lakeside Business Park, Limerick, Limerick, V94 XTD8, Ireland",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics",
+      "Geotab"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "c70aacd3e448b89b75bf17af",
+    "name": "Glenmore Design Studio PLC",
+    "website_url": "http://www.glenmoredesign.co.uk",
+    "primary_domain": "glenmoredesign.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/glenmoredesignstudio",
+    "founded_year": 1980,
+    "estimated_num_employees": 1839,
+    "annual_revenue": 163431646,
+    "annual_revenue_printed": "163.4M",
+    "industry": "architecture & planning",
+    "industries": [
+      "architecture & planning"
+    ],
+    "street_address": "Unit 4, Riverside Industrial Estate",
+    "city": "Leicester",
+    "state": "Leicestershire",
+    "postal_code": "LE6 4XZ",
+    "country": "United Kingdom",
+    "raw_address": "Unit 4, Riverside Industrial Estate, Leicester, Leicestershire, LE6 4XZ, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "2d1738b3f6feb30355d1599a",
+    "name": "Mercia Stone Limited",
+    "website_url": "http://www.merciastone.co.uk",
+    "primary_domain": "merciastone.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/merciastone",
+    "founded_year": 1999,
+    "estimated_num_employees": 231,
+    "annual_revenue": null,
+    "annual_revenue_printed": null,
+    "industry": "mining & metals",
+    "industries": [
+      "mining & metals"
+    ],
+    "street_address": "25 Station Road",
+    "city": "Leicester",
+    "state": "Leicestershire",
+    "postal_code": "LE11 3LB",
+    "country": "United Kingdom",
+    "raw_address": "25 Station Road, Leicester, Leicestershire, LE11 3LB, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "577346e0fd8e3258e54dc4a6",
+    "name": "Ironbridge Contractors Limited",
+    "website_url": "http://www.ironbridgecontractors.co.uk",
+    "primary_domain": "ironbridgecontractors.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/ironbridgecontractors",
+    "founded_year": 1977,
+    "estimated_num_employees": 115,
+    "annual_revenue": 118989873,
+    "annual_revenue_printed": "119.0M",
+    "industry": "construction",
+    "industries": [
+      "construction"
+    ],
+    "street_address": "Unit 7, Lakeside Industrial Estate",
+    "city": "Preston",
+    "state": "Lancashire",
+    "postal_code": "PR5 9GY",
+    "country": "United Kingdom",
+    "raw_address": "Unit 7, Lakeside Industrial Estate, Preston, Lancashire, PR5 9GY, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics",
+      "Samsara"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "73a99d84ec38b4dac8ce1b5c",
+    "name": "Ashworth Contractors Limited",
+    "website_url": "http://www.ashworthcontractors.co.uk",
+    "primary_domain": "ashworthcontractors.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/ashworthcontractors",
+    "founded_year": 2016,
+    "estimated_num_employees": 785,
+    "annual_revenue": 8202532,
+    "annual_revenue_printed": "8.2M",
+    "industry": "construction",
+    "industries": [
+      "construction"
+    ],
+    "street_address": "Unit 13, Meadowbank Industrial Estate",
+    "city": "Manchester",
+    "state": "Greater Manchester",
+    "postal_code": "M22 1NR",
+    "country": "United Kingdom",
+    "raw_address": "Unit 13, Meadowbank Industrial Estate, Manchester, Greater Manchester, M22 1NR, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "50b8337ef088128e130871bd",
+    "name": "Netherby Groundworks PLC",
+    "website_url": "http://www.netherbygroundworks.co.uk",
+    "primary_domain": "netherbygroundworks.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/netherbygroundworks",
+    "founded_year": 2017,
+    "estimated_num_employees": 830,
+    "annual_revenue": 113502532,
+    "annual_revenue_printed": "113.5M",
+    "industry": "civil engineering",
+    "industries": [
+      "civil engineering"
+    ],
+    "street_address": "Unit 8, Riverside Industrial Estate",
+    "city": "Leicester",
+    "state": "Leicestershire",
+    "postal_code": "LE13 2BU",
+    "country": "United Kingdom",
+    "raw_address": "Unit 8, Riverside Industrial Estate, Leicester, Leicestershire, LE13 2BU, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "0632852dc281e4d1478bae98",
+    "name": "Boyne Plant Ltd",
+    "website_url": "http://www.boyneplant.co.uk",
+    "primary_domain": "boyneplant.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/boyneplant",
+    "founded_year": 2007,
+    "estimated_num_employees": 760,
+    "annual_revenue": null,
+    "annual_revenue_printed": null,
+    "industry": "equipment rental services",
+    "industries": [
+      "equipment rental services"
+    ],
+    "street_address": "Unit 16, Brunswick Industrial Estate",
+    "city": "Exeter",
+    "state": "Devon",
+    "postal_code": "EX14 6RQ",
+    "country": "United Kingdom",
+    "raw_address": "Unit 16, Brunswick Industrial Estate, Exeter, Devon, EX14 6RQ, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "274ad95726ab3b276354589d",
+    "name": "Brennan Civils Ltd",
+    "website_url": "http://www.brennancivils.co.uk",
+    "primary_domain": "brennancivils.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/brennancivils",
+    "founded_year": 1993,
+    "estimated_num_employees": 328,
+    "annual_revenue": 7102532,
+    "annual_revenue_printed": "7.1M",
+    "industry": "civil engineering",
+    "industries": [
+      "civil engineering"
+    ],
+    "street_address": "85 Kingsway",
+    "city": "York",
+    "state": "North Yorkshire",
+    "postal_code": "YO17 9XU",
+    "country": "United Kingdom",
+    "raw_address": "85 Kingsway, York, North Yorkshire, YO17 9XU, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics",
+      "Samsara"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "28b42d8124f6436adcc16770",
+    "name": "Jarrow Groundworks Limited",
+    "website_url": "http://www.jarrowgroundworks.co.uk",
+    "primary_domain": "jarrowgroundworks.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/jarrowgroundworks",
+    "founded_year": 2005,
+    "estimated_num_employees": 1311,
+    "annual_revenue": 65025316,
+    "annual_revenue_printed": "65.0M",
+    "industry": "civil engineering",
+    "industries": [
+      "civil engineering"
+    ],
+    "street_address": "168 Riverside Way",
+    "city": "Preston",
+    "state": "Lancashire",
+    "postal_code": "PR16 5YB",
+    "country": "United Kingdom",
+    "raw_address": "168 Riverside Way, Preston, Lancashire, PR16 5YB, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "48ae7c969bdf28b843222796",
+    "name": "Stanton Plant Ltd",
+    "website_url": "http://www.stantonplant.co.uk",
+    "primary_domain": "stantonplant.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/stantonplant",
+    "founded_year": 1997,
+    "estimated_num_employees": 258,
+    "annual_revenue": 6882278,
+    "annual_revenue_printed": "6.9M",
+    "industry": "equipment rental services",
+    "industries": [
+      "equipment rental services"
+    ],
+    "street_address": "112 Kingsway",
+    "city": "Edinburgh",
+    "state": "City of Edinburgh",
+    "postal_code": "EH5 1LB",
+    "country": "United Kingdom",
+    "raw_address": "112 Kingsway, Edinburgh, City of Edinburgh, EH5 1LB, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "369c88db5340d10efcf1170e",
+    "name": "Kestrel Minerals PLC",
+    "website_url": "http://www.kestrelminerals.co.uk",
+    "primary_domain": "kestrelminerals.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/kestrelminerals",
+    "founded_year": 2010,
+    "estimated_num_employees": 1950,
+    "annual_revenue": 200451899,
+    "annual_revenue_printed": "200.5M",
+    "industry": "mining & metals",
+    "industries": [
+      "mining & metals"
+    ],
+    "street_address": "22 Quarry Road",
+    "city": "Preston",
+    "state": "Lancashire",
+    "postal_code": "PR2 6YJ",
+    "country": "United Kingdom",
+    "raw_address": "22 Quarry Road, Preston, Lancashire, PR2 6YJ, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics",
+      "Samsara"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "10d89f5218d3fc67a1a834c3",
+    "name": "Quarrington Plant Hire PLC",
+    "website_url": "http://www.quarringtonplant.co.uk",
+    "primary_domain": "quarringtonplant.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/quarringtonplanthire",
+    "founded_year": 2007,
+    "estimated_num_employees": 350,
+    "annual_revenue": 2897468,
+    "annual_revenue_printed": "2.9M",
+    "industry": "equipment rental services",
+    "industries": [
+      "equipment rental services"
+    ],
+    "street_address": "227 Riverside Way",
+    "city": "Edinburgh",
+    "state": "City of Edinburgh",
+    "postal_code": "EH5 3AQ",
+    "country": "United Kingdom",
+    "raw_address": "227 Riverside Way, Edinburgh, City of Edinburgh, EH5 3AQ, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "8754e7e5001f5bb98cd3b4d0",
+    "name": "Kestrel Construction PLC",
+    "website_url": "http://www.kestrelconstruction.co.uk",
+    "primary_domain": "kestrelconstruction.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/kestrelconstruction",
+    "founded_year": 1956,
+    "estimated_num_employees": 558,
+    "annual_revenue": 120325316,
+    "annual_revenue_printed": "120.3M",
+    "industry": "construction",
+    "industries": [
+      "construction"
+    ],
+    "street_address": "152 Mill Lane",
+    "city": "Manchester",
+    "state": "Greater Manchester",
+    "postal_code": "M7 5YY",
+    "country": "United Kingdom",
+    "raw_address": "152 Mill Lane, Manchester, Greater Manchester, M7 5YY, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "5627fedd2f5129fd34324bf4",
+    "name": "Brennan Design Studio PLC",
+    "website_url": "http://www.brennandesign.co.uk",
+    "primary_domain": "brennandesign.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/brennandesignstudio",
+    "founded_year": 1975,
+    "estimated_num_employees": 485,
+    "annual_revenue": 82507595,
+    "annual_revenue_printed": "82.5M",
+    "industry": "architecture & planning",
+    "industries": [
+      "architecture & planning"
+    ],
+    "street_address": "168 Wharf Street",
+    "city": "Derby",
+    "state": "Derbyshire",
+    "postal_code": "DE5 7AP",
+    "country": "United Kingdom",
+    "raw_address": "168 Wharf Street, Derby, Derbyshire, DE5 7AP, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "74ec58dfa852639d95f66436",
+    "name": "Birchwood Construction Ltd",
+    "website_url": "http://www.birchwoodconstruction.co.uk",
+    "primary_domain": "birchwoodconstruction.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/birchwoodconstruction",
+    "founded_year": 1986,
+    "estimated_num_employees": 1513,
+    "annual_revenue": 69935443,
+    "annual_revenue_printed": "69.9M",
+    "industry": "construction",
+    "industries": [
+      "construction"
+    ],
+    "street_address": "31 Riverside Way",
+    "city": "Leeds",
+    "state": "West Yorkshire",
+    "postal_code": "LS8 3NY",
+    "country": "United Kingdom",
+    "raw_address": "31 Riverside Way, Leeds, West Yorkshire, LS8 3NY, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "ddff201e3824ccc7188116cc",
+    "name": "Blackrock Freight Ltd",
+    "website_url": "http://www.blackrockfreight.co.uk",
+    "primary_domain": "blackrockfreight.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/blackrockfreight",
+    "founded_year": 1982,
+    "estimated_num_employees": 117,
+    "annual_revenue": null,
+    "annual_revenue_printed": null,
+    "industry": "logistics & supply chain",
+    "industries": [
+      "logistics & supply chain"
+    ],
+    "street_address": "166 Foundry Lane",
+    "city": "Leicester",
+    "state": "Leicestershire",
+    "postal_code": "LE17 5FQ",
+    "country": "United Kingdom",
+    "raw_address": "166 Foundry Lane, Leicester, Leicestershire, LE17 5FQ, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "3be818ed5e7671d159cf7e52",
+    "name": "Ullswater Freight PLC",
+    "website_url": "http://www.ullswaterfreight.co.uk",
+    "primary_domain": "ullswaterfreight.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/ullswaterfreight",
+    "founded_year": 2012,
+    "estimated_num_employees": 2950,
+    "annual_revenue": 30460759,
+    "annual_revenue_printed": "30.5M",
+    "industry": "logistics & supply chain",
+    "industries": [
+      "logistics & supply chain"
+    ],
+    "street_address": "Unit 22, Riverside Industrial Estate",
+    "city": "Derby",
+    "state": "Derbyshire",
+    "postal_code": "DE24 8DS",
+    "country": "United Kingdom",
+    "raw_address": "Unit 22, Riverside Industrial Estate, Derby, Derbyshire, DE24 8DS, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "4d1c326a1663900d7279bfa0",
+    "name": "Ashworth Civils Ltd",
+    "website_url": "http://www.ashworthcivils.co.uk",
+    "primary_domain": "ashworthcivils.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/ashworthcivils",
+    "founded_year": 1971,
+    "estimated_num_employees": 491,
+    "annual_revenue": 5934177,
+    "annual_revenue_printed": "5.9M",
+    "industry": "civil engineering",
+    "industries": [
+      "civil engineering"
+    ],
+    "street_address": "Unit 17, Westgate Industrial Estate",
+    "city": "Newcastle upon Tyne",
+    "state": "Tyne and Wear",
+    "postal_code": "NE4 1TJ",
+    "country": "United Kingdom",
+    "raw_address": "Unit 17, Westgate Industrial Estate, Newcastle upon Tyne, Tyne and Wear, NE4 1TJ, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics",
+      "Samsara"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "f7714d76f7ae1976b0fc9787",
+    "name": "Pemberton Groundworks Ltd",
+    "website_url": "http://www.pembertongroundworks.co.uk",
+    "primary_domain": "pembertongroundworks.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/pembertongroundworks",
+    "founded_year": 1958,
+    "estimated_num_employees": 38,
+    "annual_revenue": 5845570,
+    "annual_revenue_printed": "5.8M",
+    "industry": "civil engineering",
+    "industries": [
+      "civil engineering"
+    ],
+    "street_address": "Unit 4, Riverside Industrial Estate",
+    "city": "Sheffield",
+    "state": "South Yorkshire",
+    "postal_code": "S3 1GB",
+    "country": "United Kingdom",
+    "raw_address": "Unit 4, Riverside Industrial Estate, Sheffield, South Yorkshire, S3 1GB, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "b38df472ebdc2e08a1888373",
+    "name": "Rowntree Minerals AG",
+    "website_url": "http://www.rowntreeminerals.de",
+    "primary_domain": "rowntreeminerals.de",
+    "linkedin_url": "http://www.linkedin.com/company/rowntreeminerals",
+    "founded_year": 1994,
+    "estimated_num_employees": 2214,
+    "annual_revenue": 78468354,
+    "annual_revenue_printed": "78.5M",
+    "industry": "mining & metals",
+    "industries": [
+      "mining & metals"
+    ],
+    "street_address": "Industriestraße 90",
+    "city": "Hamburg",
+    "state": "Hamburg",
+    "postal_code": "20095",
+    "country": "Germany",
+    "raw_address": "Industriestraße 90, Hamburg, Hamburg, 20095, Germany",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "5b7fdc8e2c4e5c3cf95e0b7a",
+    "name": "Shannon Civil Engineering Ltd",
+    "website_url": "http://www.shannoncivil.co.uk",
+    "primary_domain": "shannoncivil.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/shannoncivilengineering",
+    "founded_year": 1984,
+    "estimated_num_employees": 22,
+    "annual_revenue": 7235443,
+    "annual_revenue_printed": "7.2M",
+    "industry": "civil engineering",
+    "industries": [
+      "civil engineering"
+    ],
+    "street_address": "96 Station Road",
+    "city": "Birmingham",
+    "state": "West Midlands",
+    "postal_code": "B1 3DU",
+    "country": "United Kingdom",
+    "raw_address": "96 Station Road, Birmingham, West Midlands, B1 3DU, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "84fd764fe63009fbff4e3be4",
+    "name": "Northgate Civil Engineering B.V.",
+    "website_url": "http://www.northgatecivil.nl",
+    "primary_domain": "northgatecivil.nl",
+    "linkedin_url": "http://www.linkedin.com/company/northgatecivilengineering",
+    "founded_year": 1966,
+    "estimated_num_employees": 1578,
+    "annual_revenue": 135870886,
+    "annual_revenue_printed": "135.9M",
+    "industry": "civil engineering",
+    "industries": [
+      "civil engineering"
+    ],
+    "street_address": "Havenweg 82",
+    "city": "Utrecht",
+    "state": "Utrecht",
+    "postal_code": "3511 CE",
+    "country": "Netherlands",
+    "raw_address": "Havenweg 82, Utrecht, Utrecht, 3511 CE, Netherlands",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics",
+      "Geotab"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "d89b55f643579ab79c228ac6",
+    "name": "Shannon Plant Hire Ltd",
+    "website_url": "http://www.shannonplant.co.uk",
+    "primary_domain": "shannonplant.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/shannonplanthire",
+    "founded_year": 1959,
+    "estimated_num_employees": 1614,
+    "annual_revenue": 37793671,
+    "annual_revenue_printed": "37.8M",
+    "industry": "equipment rental services",
+    "industries": [
+      "equipment rental services"
+    ],
+    "street_address": "Unit 28, Meadowbank Industrial Estate",
+    "city": "Newcastle upon Tyne",
+    "state": "Tyne and Wear",
+    "postal_code": "NE20 9UY",
+    "country": "United Kingdom",
+    "raw_address": "Unit 28, Meadowbank Industrial Estate, Newcastle upon Tyne, Tyne and Wear, NE20 9UY, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics",
+      "Samsara"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "75a694f15ad40135e23b3dd3",
+    "name": "Elmhurst Architects Ltd",
+    "website_url": "http://www.elmhurstarchitects.co.uk",
+    "primary_domain": "elmhurstarchitects.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/elmhurstarchitects",
+    "founded_year": 2000,
+    "estimated_num_employees": 1286,
+    "annual_revenue": 13191139,
+    "annual_revenue_printed": "13.2M",
+    "industry": "architecture & planning",
+    "industries": [
+      "architecture & planning"
+    ],
+    "street_address": "Unit 17, Meadowbank Industrial Estate",
+    "city": "Peterborough",
+    "state": "Cambridgeshire",
+    "postal_code": "PE1 2DH",
+    "country": "United Kingdom",
+    "raw_address": "Unit 17, Meadowbank Industrial Estate, Peterborough, Cambridgeshire, PE1 2DH, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "dc698dbdeb536c170485327d",
+    "name": "Tyne Systems Ltd",
+    "website_url": "http://www.tynesystems.co.uk",
+    "primary_domain": "tynesystems.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/tynesystems",
+    "founded_year": 2015,
+    "estimated_num_employees": 1695,
+    "annual_revenue": null,
+    "annual_revenue_printed": null,
+    "industry": "computer software",
+    "industries": [
+      "computer software"
+    ],
+    "street_address": "215 Mill Lane",
+    "city": "Nottingham",
+    "state": "Nottinghamshire",
+    "postal_code": "NG5 7AA",
+    "country": "United Kingdom",
+    "raw_address": "215 Mill Lane, Nottingham, Nottinghamshire, NG5 7AA, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "5249615607b6d1d448717623",
+    "name": "Wessex Quarries B.V.",
+    "website_url": "http://www.wessexquarries.nl",
+    "primary_domain": "wessexquarries.nl",
+    "linkedin_url": "http://www.linkedin.com/company/wessexquarries",
+    "founded_year": 1977,
+    "estimated_num_employees": 1075,
+    "annual_revenue": null,
+    "annual_revenue_printed": null,
+    "industry": "mining & metals",
+    "industries": [
+      "mining & metals"
+    ],
+    "street_address": "Havenweg 34",
+    "city": "Eindhoven",
+    "state": "Noord-Brabant",
+    "postal_code": "5611 AZ",
+    "country": "Netherlands",
+    "raw_address": "Havenweg 34, Eindhoven, Noord-Brabant, 5611 AZ, Netherlands",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "2e0c6460ca439bdc32538f44",
+    "name": "Severn Plant Hire Ltd",
+    "website_url": "http://www.severnplant.co.uk",
+    "primary_domain": "severnplant.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/severnplanthire",
+    "founded_year": 1991,
+    "estimated_num_employees": 524,
+    "annual_revenue": 8024051,
+    "annual_revenue_printed": "8.0M",
+    "industry": "equipment rental services",
+    "industries": [
+      "equipment rental services"
+    ],
+    "street_address": "42 Station Road",
+    "city": "Peterborough",
+    "state": "Cambridgeshire",
+    "postal_code": "PE10 8WF",
+    "country": "United Kingdom",
+    "raw_address": "42 Station Road, Peterborough, Cambridgeshire, PE10 8WF, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "788c615d04fa092b6a891b9f",
+    "name": "Kestrel Contractors Ltd",
+    "website_url": "http://www.kestrelcontractors.ie",
+    "primary_domain": "kestrelcontractors.ie",
+    "linkedin_url": "http://www.linkedin.com/company/kestrelcontractors",
+    "founded_year": 1998,
+    "estimated_num_employees": 1159,
+    "annual_revenue": 144736709,
+    "annual_revenue_printed": "144.7M",
+    "industry": "construction",
+    "industries": [
+      "construction"
+    ],
+    "street_address": "Unit 17, Riverside Business Park",
+    "city": "Galway",
+    "state": "Galway",
+    "postal_code": "H91 YFF0",
+    "country": "Ireland",
+    "raw_address": "Unit 17, Riverside Business Park, Galway, Galway, H91 YFF0, Ireland",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": 10100000,
+    "latest_funding_stage": "Private Equity",
+    "latest_funding_round_date": "2022-01-01",
+    "funding_events": []
+  },
+  {
+    "id": "ad20fa241f4e751f2640f361",
+    "name": "Slaney Builders GmbH",
+    "website_url": "http://www.slaneybuilders.de",
+    "primary_domain": "slaneybuilders.de",
+    "linkedin_url": "http://www.linkedin.com/company/slaneybuilders",
+    "founded_year": 2002,
+    "estimated_num_employees": 2597,
+    "annual_revenue": 23312658,
+    "annual_revenue_printed": "23.3M",
+    "industry": "construction",
+    "industries": [
+      "construction"
+    ],
+    "street_address": "Industriestraße 69",
+    "city": "Stuttgart",
+    "state": "Baden-Württemberg",
+    "postal_code": "70173",
+    "country": "Germany",
+    "raw_address": "Industriestraße 69, Stuttgart, Baden-Württemberg, 70173, Germany",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "b01f8856b59385844c2fd481",
+    "name": "Mourne Construction PLC",
+    "website_url": "http://www.mourneconstruction.co.uk",
+    "primary_domain": "mourneconstruction.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/mourneconstruction",
+    "founded_year": 2003,
+    "estimated_num_employees": 193,
+    "annual_revenue": null,
+    "annual_revenue_printed": null,
+    "industry": "construction",
+    "industries": [
+      "construction"
+    ],
+    "street_address": "Unit 11, Northfield Industrial Estate",
+    "city": "Newcastle upon Tyne",
+    "state": "Tyne and Wear",
+    "postal_code": "NE2 2ER",
+    "country": "United Kingdom",
+    "raw_address": "Unit 11, Northfield Industrial Estate, Newcastle upon Tyne, Tyne and Wear, NE2 2ER, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "5043b24daf459faaf1d82c81",
+    "name": "Ashdown Stone Ltd",
+    "website_url": "http://www.ashdownstone.co.uk",
+    "primary_domain": "ashdownstone.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/ashdownstone",
+    "founded_year": 1982,
+    "estimated_num_employees": 830,
+    "annual_revenue": 56892405,
+    "annual_revenue_printed": "56.9M",
+    "industry": "mining & metals",
+    "industries": [
+      "mining & metals"
+    ],
+    "street_address": "19 Quarry Road",
+    "city": "Cardiff",
+    "state": "Cardiff",
+    "postal_code": "CF22 6AD",
+    "country": "United Kingdom",
+    "raw_address": "19 Quarry Road, Cardiff, Cardiff, CF22 6AD, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": 29800000,
+    "latest_funding_stage": "Series B",
+    "latest_funding_round_date": "2020-08-01",
+    "funding_events": []
+  },
+  {
+    "id": "789b06b2762200292fc626e0",
+    "name": "Yardley Design Studio Ltd",
+    "website_url": "http://www.yardleydesign.co.uk",
+    "primary_domain": "yardleydesign.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/yardleydesignstudio",
+    "founded_year": 1996,
+    "estimated_num_employees": 444,
+    "annual_revenue": null,
+    "annual_revenue_printed": null,
+    "industry": "architecture & planning",
+    "industries": [
+      "architecture & planning"
+    ],
+    "street_address": "Unit 22, Northfield Industrial Estate",
+    "city": "Reading",
+    "state": "Berkshire",
+    "postal_code": "RG24 8EY",
+    "country": "United Kingdom",
+    "raw_address": "Unit 22, Northfield Industrial Estate, Reading, Berkshire, RG24 8EY, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "08243ad37025b9883fed55d6",
+    "name": "Pemberton Quarries Ltd",
+    "website_url": "http://www.pembertonquarries.co.uk",
+    "primary_domain": "pembertonquarries.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/pembertonquarries",
+    "founded_year": 1977,
+    "estimated_num_employees": 316,
+    "annual_revenue": 154381013,
+    "annual_revenue_printed": "154.4M",
+    "industry": "mining & metals",
+    "industries": [
+      "mining & metals"
+    ],
+    "street_address": "Unit 21, Brunswick Industrial Estate",
+    "city": "Glasgow",
+    "state": "Glasgow City",
+    "postal_code": "G11 7TE",
+    "country": "United Kingdom",
+    "raw_address": "Unit 21, Brunswick Industrial Estate, Glasgow, Glasgow City, G11 7TE, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "f549354290ca66cbce30a48b",
+    "name": "Liffey Construction PLC",
+    "website_url": "http://www.liffeyconstruction.co.uk",
+    "primary_domain": "liffeyconstruction.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/liffeyconstruction",
+    "founded_year": 1978,
+    "estimated_num_employees": 388,
+    "annual_revenue": null,
+    "annual_revenue_printed": null,
+    "industry": "construction",
+    "industries": [
+      "construction"
+    ],
+    "street_address": "180 Riverside Way",
+    "city": "Bristol",
+    "state": "Bristol",
+    "postal_code": "BS22 6PT",
+    "country": "United Kingdom",
+    "raw_address": "180 Riverside Way, Bristol, Bristol, BS22 6PT, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "cdf5047d2fa9ce1b02699c37",
+    "name": "Hawkridge Estates Ltd",
+    "website_url": "http://www.hawkridgeestates.co.uk",
+    "primary_domain": "hawkridgeestates.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/hawkridgeestates",
+    "founded_year": 1963,
+    "estimated_num_employees": 1268,
+    "annual_revenue": 67139241,
+    "annual_revenue_printed": "67.1M",
+    "industry": "real estate",
+    "industries": [
+      "real estate"
+    ],
+    "street_address": "Unit 6, Northfield Industrial Estate",
+    "city": "Edinburgh",
+    "state": "City of Edinburgh",
+    "postal_code": "EH15 3ZX",
+    "country": "United Kingdom",
+    "raw_address": "Unit 6, Northfield Industrial Estate, Edinburgh, City of Edinburgh, EH15 3ZX, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "4b4d1552244624d35dce44c9",
+    "name": "Holloway Plant Ltd",
+    "website_url": "http://www.hollowayplant.co.uk",
+    "primary_domain": "hollowayplant.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/hollowayplant",
+    "founded_year": 2009,
+    "estimated_num_employees": 10,
+    "annual_revenue": 2760759,
+    "annual_revenue_printed": "2.8M",
+    "industry": "equipment rental services",
+    "industries": [
+      "equipment rental services"
+    ],
+    "street_address": "86 Riverside Way",
+    "city": "Manchester",
+    "state": "Greater Manchester",
+    "postal_code": "M6 8YS",
+    "country": "United Kingdom",
+    "raw_address": "86 Riverside Way, Manchester, Greater Manchester, M6 8YS, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "5b129cc561d45eb9968e7a1d",
+    "name": "Mourne Estates Ltd",
+    "website_url": "http://www.mourneestates.ie",
+    "primary_domain": "mourneestates.ie",
+    "linkedin_url": "http://www.linkedin.com/company/mourneestates",
+    "founded_year": 2003,
+    "estimated_num_employees": 1732,
+    "annual_revenue": 88274684,
+    "annual_revenue_printed": "88.3M",
+    "industry": "real estate",
+    "industries": [
+      "real estate"
+    ],
+    "street_address": "Unit 17, Brunswick Business Park",
+    "city": "Dublin",
+    "state": "Dublin",
+    "postal_code": "D02 CCE5",
+    "country": "Ireland",
+    "raw_address": "Unit 17, Brunswick Business Park, Dublin, Dublin, D02 CCE5, Ireland",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "9db97e903a4d8fc5cc8ec2f2",
+    "name": "Garside Architects Ltd",
+    "website_url": "http://www.garsidearchitects.co.uk",
+    "primary_domain": "garsidearchitects.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/garsidearchitects",
+    "founded_year": 1975,
+    "estimated_num_employees": 1157,
+    "annual_revenue": 24189873,
+    "annual_revenue_printed": "24.2M",
+    "industry": "architecture & planning",
+    "industries": [
+      "architecture & planning"
+    ],
+    "street_address": "73 Canal Street",
+    "city": "Birmingham",
+    "state": "West Midlands",
+    "postal_code": "B3 8GR",
+    "country": "United Kingdom",
+    "raw_address": "73 Canal Street, Birmingham, West Midlands, B3 8GR, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "011829e3c0dd9e2e55de09e7",
+    "name": "Kingsmead Tool & Plant Hire Ltd",
+    "website_url": "http://www.kingsmeadtool.co.uk",
+    "primary_domain": "kingsmeadtool.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/kingsmeadtoolplanthire",
+    "founded_year": 2017,
+    "estimated_num_employees": 842,
+    "annual_revenue": 211634177,
+    "annual_revenue_printed": "211.6M",
+    "industry": "equipment rental services",
+    "industries": [
+      "equipment rental services"
+    ],
+    "street_address": "55 Wharf Street",
+    "city": "Leeds",
+    "state": "West Yorkshire",
+    "postal_code": "LS17 3GS",
+    "country": "United Kingdom",
+    "raw_address": "55 Wharf Street, Leeds, West Yorkshire, LS17 3GS, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics",
+      "Samsara"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "5dd0a874ce833f4376ac6626",
+    "name": "Quarrington Estates PLC",
+    "website_url": "http://www.quarringtonestates.co.uk",
+    "primary_domain": "quarringtonestates.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/quarringtonestates",
+    "founded_year": 2005,
+    "estimated_num_employees": 864,
+    "annual_revenue": 20456962,
+    "annual_revenue_printed": "20.5M",
+    "industry": "real estate",
+    "industries": [
+      "real estate"
+    ],
+    "street_address": "59 Kingsway",
+    "city": "Peterborough",
+    "state": "Cambridgeshire",
+    "postal_code": "PE9 3LT",
+    "country": "United Kingdom",
+    "raw_address": "59 Kingsway, Peterborough, Cambridgeshire, PE9 3LT, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "d162c167298fb382e1ade74f",
+    "name": "Garside Equipment Hire PLC",
+    "website_url": "http://www.garsideequipment.co.uk",
+    "primary_domain": "garsideequipment.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/garsideequipmenthire",
+    "founded_year": 2017,
+    "estimated_num_employees": 442,
+    "annual_revenue": null,
+    "annual_revenue_printed": null,
+    "industry": "equipment rental services",
+    "industries": [
+      "equipment rental services"
+    ],
+    "street_address": "86 Canal Street",
+    "city": "Sheffield",
+    "state": "South Yorkshire",
+    "postal_code": "S28 3AP",
+    "country": "United Kingdom",
+    "raw_address": "86 Canal Street, Sheffield, South Yorkshire, S28 3AP, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "07bf28f47c06074b90930f61",
+    "name": "Marston Construction B.V.",
+    "website_url": "http://www.marstonconstruction.nl",
+    "primary_domain": "marstonconstruction.nl",
+    "linkedin_url": "http://www.linkedin.com/company/marstonconstruction",
+    "founded_year": 2010,
+    "estimated_num_employees": 854,
+    "annual_revenue": 65787342,
+    "annual_revenue_printed": "65.8M",
+    "industry": "construction",
+    "industries": [
+      "construction"
+    ],
+    "street_address": "Havenweg 62",
+    "city": "Utrecht",
+    "state": "Utrecht",
+    "postal_code": "3511 CE",
+    "country": "Netherlands",
+    "raw_address": "Havenweg 62, Utrecht, Utrecht, 3511 CE, Netherlands",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "cfc5183bf75c019eca22c9a6",
+    "name": "Yardley Haulage Ltd",
+    "website_url": "http://www.yardleyhaulage.co.uk",
+    "primary_domain": "yardleyhaulage.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/yardleyhaulage",
+    "founded_year": 2004,
+    "estimated_num_employees": 1679,
+    "annual_revenue": 56018987,
+    "annual_revenue_printed": "56.0M",
+    "industry": "logistics & supply chain",
+    "industries": [
+      "logistics & supply chain"
+    ],
+    "street_address": "Unit 30, Brunswick Industrial Estate",
+    "city": "Reading",
+    "state": "Berkshire",
+    "postal_code": "RG14 6EB",
+    "country": "United Kingdom",
+    "raw_address": "Unit 30, Brunswick Industrial Estate, Reading, Berkshire, RG14 6EB, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "035637e2aff470624222fc7b",
+    "name": "Birchwood Freight PLC",
+    "website_url": "http://www.birchwoodfreight.co.uk",
+    "primary_domain": "birchwoodfreight.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/birchwoodfreight",
+    "founded_year": 1959,
+    "estimated_num_employees": 2333,
+    "annual_revenue": 24032911,
+    "annual_revenue_printed": "24.0M",
+    "industry": "logistics & supply chain",
+    "industries": [
+      "logistics & supply chain"
+    ],
+    "street_address": "29 Riverside Way",
+    "city": "Birmingham",
+    "state": "West Midlands",
+    "postal_code": "B5 8GZ",
+    "country": "United Kingdom",
+    "raw_address": "29 Riverside Way, Birmingham, West Midlands, B5 8GZ, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "2cb270f5b322f70f15b77754",
+    "name": "Jarrow Property Ltd",
+    "website_url": null,
+    "primary_domain": null,
+    "linkedin_url": "http://www.linkedin.com/company/jarrowproperty",
+    "founded_year": 1955,
+    "estimated_num_employees": 2915,
+    "annual_revenue": null,
+    "annual_revenue_printed": null,
+    "industry": "real estate",
+    "industries": [
+      "real estate"
+    ],
+    "street_address": "148 Foundry Lane",
+    "city": "Exeter",
+    "state": "Devon",
+    "postal_code": "EX28 2YU",
+    "country": "United Kingdom",
+    "raw_address": "148 Foundry Lane, Exeter, Devon, EX28 2YU, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "941ded03f8e7f9cedb318eaa",
+    "name": "Glenmore Civil Engineering Ltd",
+    "website_url": "http://www.glenmorecivil.co.uk",
+    "primary_domain": "glenmorecivil.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/glenmorecivilengineering",
+    "founded_year": 2001,
+    "estimated_num_employees": 229,
+    "annual_revenue": null,
+    "annual_revenue_printed": null,
+    "industry": "civil engineering",
+    "industries": [
+      "civil engineering"
+    ],
+    "street_address": "Unit 26, Brunswick Industrial Estate",
+    "city": "Nottingham",
+    "state": "Nottinghamshire",
+    "postal_code": "NG27 3AN",
+    "country": "United Kingdom",
+    "raw_address": "Unit 26, Brunswick Industrial Estate, Nottingham, Nottinghamshire, NG27 3AN, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": 10800000,
+    "latest_funding_stage": "Private Equity",
+    "latest_funding_round_date": "2022-04-01",
+    "funding_events": []
+  },
+  {
+    "id": "585315a99e410da3d908d579",
+    "name": "Mercia Construction DAC",
+    "website_url": "http://www.merciaconstruction.ie",
+    "primary_domain": "merciaconstruction.ie",
+    "linkedin_url": "http://www.linkedin.com/company/merciaconstruction",
+    "founded_year": 1971,
+    "estimated_num_employees": 1615,
+    "annual_revenue": 198058228,
+    "annual_revenue_printed": "198.1M",
+    "industry": "construction",
+    "industries": [
+      "construction"
+    ],
+    "street_address": "Unit 25, Westgate Business Park",
+    "city": "Galway",
+    "state": "Galway",
+    "postal_code": "H91 NRPV",
+    "country": "Ireland",
+    "raw_address": "Unit 25, Westgate Business Park, Galway, Galway, H91 NRPV, Ireland",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics",
+      "Geotab"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "0deba5b46c61879db03f03ed",
+    "name": "Norwood Equipment Hire Ltd",
+    "website_url": "http://www.norwoodequipment.co.uk",
+    "primary_domain": "norwoodequipment.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/norwoodequipmenthire",
+    "founded_year": 1986,
+    "estimated_num_employees": 44,
+    "annual_revenue": 4854430,
+    "annual_revenue_printed": "4.9M",
+    "industry": "equipment rental services",
+    "industries": [
+      "equipment rental services"
+    ],
+    "street_address": "Unit 8, Brunswick Industrial Estate",
+    "city": "Edinburgh",
+    "state": "City of Edinburgh",
+    "postal_code": "EH8 2TH",
+    "country": "United Kingdom",
+    "raw_address": "Unit 8, Brunswick Industrial Estate, Edinburgh, City of Edinburgh, EH8 2TH, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "a07a4873fe6dda4d2041e2eb",
+    "name": "Moorcroft Equipment Hire PLC",
+    "website_url": "http://www.moorcroftequipment.co.uk",
+    "primary_domain": "moorcroftequipment.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/moorcroftequipmenthire",
+    "founded_year": 1974,
+    "estimated_num_employees": 628,
+    "annual_revenue": null,
+    "annual_revenue_printed": null,
+    "industry": "equipment rental services",
+    "industries": [
+      "equipment rental services"
+    ],
+    "street_address": "Unit 4, Lakeside Industrial Estate",
+    "city": "Bristol",
+    "state": "Bristol",
+    "postal_code": "BS14 2ZL",
+    "country": "United Kingdom",
+    "raw_address": "Unit 4, Lakeside Industrial Estate, Bristol, Bristol, BS14 2ZL, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "7ae3424df9ca3f7e67a2d6a2",
+    "name": "Denholm Quarries Ltd",
+    "website_url": "http://www.denholmquarries.co.uk",
+    "primary_domain": "denholmquarries.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/denholmquarries",
+    "founded_year": 1993,
+    "estimated_num_employees": 742,
+    "annual_revenue": 7425316,
+    "annual_revenue_printed": "7.4M",
+    "industry": "mining & metals",
+    "industries": [
+      "mining & metals"
+    ],
+    "street_address": "66 Riverside Way",
+    "city": "Leicester",
+    "state": "Leicestershire",
+    "postal_code": "LE10 8BZ",
+    "country": "United Kingdom",
+    "raw_address": "66 Riverside Way, Leicester, Leicestershire, LE10 8BZ, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": 7500000,
+    "latest_funding_stage": "Series B",
+    "latest_funding_round_date": "2021-05-01",
+    "funding_events": []
+  },
+  {
+    "id": "33322f0a66848e1e9d0c62ec",
+    "name": "Stanton Groundworks Limited",
+    "website_url": "http://www.stantongroundworks.co.uk",
+    "primary_domain": "stantongroundworks.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/stantongroundworks",
+    "founded_year": 2016,
+    "estimated_num_employees": 459,
+    "annual_revenue": null,
+    "annual_revenue_printed": null,
+    "industry": "civil engineering",
+    "industries": [
+      "civil engineering"
+    ],
+    "street_address": "31 Wharf Street",
+    "city": "Cardiff",
+    "state": "Cardiff",
+    "postal_code": "CF7 2UZ",
+    "country": "United Kingdom",
+    "raw_address": "31 Wharf Street, Cardiff, Cardiff, CF7 2UZ, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics",
+      "Samsara"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "a902eae75735548a86c290f3",
+    "name": "Wessex Groundworks PLC",
+    "website_url": "http://www.wessexgroundworks.co.uk",
+    "primary_domain": "wessexgroundworks.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/wessexgroundworks",
+    "founded_year": 1991,
+    "estimated_num_employees": 319,
+    "annual_revenue": null,
+    "annual_revenue_printed": null,
+    "industry": "civil engineering",
+    "industries": [
+      "civil engineering"
+    ],
+    "street_address": "Unit 20, Westgate Industrial Estate",
+    "city": "Cardiff",
+    "state": "Cardiff",
+    "postal_code": "CF14 5HB",
+    "country": "United Kingdom",
+    "raw_address": "Unit 20, Westgate Industrial Estate, Cardiff, Cardiff, CF14 5HB, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics",
+      "Geotab"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "d5124424e5f836950b5cb156",
+    "name": "Wardle Freight PLC",
+    "website_url": "http://www.wardlefreight.co.uk",
+    "primary_domain": "wardlefreight.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/wardlefreight",
+    "founded_year": 2004,
+    "estimated_num_employees": 2893,
+    "annual_revenue": 146064557,
+    "annual_revenue_printed": "146.1M",
+    "industry": "logistics & supply chain",
+    "industries": [
+      "logistics & supply chain"
+    ],
+    "street_address": "13 Riverside Way",
+    "city": "Peterborough",
+    "state": "Cambridgeshire",
+    "postal_code": "PE7 9PA",
+    "country": "United Kingdom",
+    "raw_address": "13 Riverside Way, Peterborough, Cambridgeshire, PE7 9PA, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "94b192c299ba2604d77be642",
+    "name": "Wyvern Contractors Ltd",
+    "website_url": "http://www.wyverncontractors.ie",
+    "primary_domain": "wyverncontractors.ie",
+    "linkedin_url": "http://www.linkedin.com/company/wyverncontractors",
+    "founded_year": 1996,
+    "estimated_num_employees": 1459,
+    "annual_revenue": 26793671,
+    "annual_revenue_printed": "26.8M",
+    "industry": "construction",
+    "industries": [
+      "construction"
+    ],
+    "street_address": "Unit 9, Meadowbank Business Park",
+    "city": "Limerick",
+    "state": "Limerick",
+    "postal_code": "V94 V4H7",
+    "country": "Ireland",
+    "raw_address": "Unit 9, Meadowbank Business Park, Limerick, Limerick, V94 V4H7, Ireland",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "39cb2c50c67968906faac761",
+    "name": "Netherby Digital PLC",
+    "website_url": "http://www.netherbydigital.co.uk",
+    "primary_domain": "netherbydigital.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/netherbydigital",
+    "founded_year": 1961,
+    "estimated_num_employees": 2925,
+    "annual_revenue": 23645570,
+    "annual_revenue_printed": "23.6M",
+    "industry": "computer software",
+    "industries": [
+      "computer software"
+    ],
+    "street_address": "79 Wharf Street",
+    "city": "Bristol",
+    "state": "Bristol",
+    "postal_code": "BS4 8NY",
+    "country": "United Kingdom",
+    "raw_address": "79 Wharf Street, Bristol, Bristol, BS4 8NY, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": 4000000,
+    "latest_funding_stage": "Private Equity",
+    "latest_funding_round_date": "2018-08-01",
+    "funding_events": []
+  },
+  {
+    "id": "82092bd59e4877f6a3ce0fcc",
+    "name": "Penrose Builders Limited",
+    "website_url": "http://www.penrosebuilders.co.uk",
+    "primary_domain": "penrosebuilders.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/penrosebuilders",
+    "founded_year": 2006,
+    "estimated_num_employees": 2330,
+    "annual_revenue": 44343038,
+    "annual_revenue_printed": "44.3M",
+    "industry": "construction",
+    "industries": [
+      "construction"
+    ],
+    "street_address": "Unit 7, Northfield Industrial Estate",
+    "city": "Cardiff",
+    "state": "Cardiff",
+    "postal_code": "CF21 7HW",
+    "country": "United Kingdom",
+    "raw_address": "Unit 7, Northfield Industrial Estate, Cardiff, Cardiff, CF21 7HW, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics",
+      "Geotab"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "089d2ab9ba4c60b29a3a0c6a",
+    "name": "Penrose Infrastructure Ltd",
+    "website_url": "http://www.penroseinfrastructure.co.uk",
+    "primary_domain": "penroseinfrastructure.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/penroseinfrastructure",
+    "founded_year": 1987,
+    "estimated_num_employees": 787,
+    "annual_revenue": 4696203,
+    "annual_revenue_printed": "4.7M",
+    "industry": "civil engineering",
+    "industries": [
+      "civil engineering"
+    ],
+    "street_address": "Unit 19, Northfield Industrial Estate",
+    "city": "Manchester",
+    "state": "Greater Manchester",
+    "postal_code": "M16 2DZ",
+    "country": "United Kingdom",
+    "raw_address": "Unit 19, Northfield Industrial Estate, Manchester, Greater Manchester, M16 2DZ, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics",
+      "Samsara"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "725a07566a6fcc4e08c3a3bc",
+    "name": "Stanton Civil Engineering DAC",
+    "website_url": "http://www.stantoncivil.ie",
+    "primary_domain": "stantoncivil.ie",
+    "linkedin_url": "http://www.linkedin.com/company/stantoncivilengineering",
+    "founded_year": 2016,
+    "estimated_num_employees": 1375,
+    "annual_revenue": 92091139,
+    "annual_revenue_printed": "92.1M",
+    "industry": "civil engineering",
+    "industries": [
+      "civil engineering"
+    ],
+    "street_address": "Unit 28, Meadowbank Business Park",
+    "city": "Limerick",
+    "state": "Limerick",
+    "postal_code": "V94 WFE7",
+    "country": "Ireland",
+    "raw_address": "Unit 28, Meadowbank Business Park, Limerick, Limerick, V94 WFE7, Ireland",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "9ade11d6db40c87ecbcbc023",
+    "name": "Slaney Tool & Plant Hire Limited",
+    "website_url": "http://www.slaneytool.co.uk",
+    "primary_domain": "slaneytool.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/slaneytoolplanthire",
+    "founded_year": 2004,
+    "estimated_num_employees": 19,
+    "annual_revenue": 5454430,
+    "annual_revenue_printed": "5.5M",
+    "industry": "equipment rental services",
+    "industries": [
+      "equipment rental services"
+    ],
+    "street_address": "73 Canal Street",
+    "city": "Derby",
+    "state": "Derbyshire",
+    "postal_code": "DE15 8JG",
+    "country": "United Kingdom",
+    "raw_address": "73 Canal Street, Derby, Derbyshire, DE15 8JG, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "1613dcdacb2b15659d11ea49",
+    "name": "Ormond Infrastructure Limited",
+    "website_url": "http://www.ormondinfrastructure.ie",
+    "primary_domain": "ormondinfrastructure.ie",
+    "linkedin_url": "http://www.linkedin.com/company/ormondinfrastructure",
+    "founded_year": 1985,
+    "estimated_num_employees": 22,
+    "annual_revenue": 5158228,
+    "annual_revenue_printed": "5.2M",
+    "industry": "civil engineering",
+    "industries": [
+      "civil engineering"
+    ],
+    "street_address": "Unit 4, Brunswick Business Park",
+    "city": "Dublin",
+    "state": "Dublin",
+    "postal_code": "D02 RTEP",
+    "country": "Ireland",
+    "raw_address": "Unit 4, Brunswick Business Park, Dublin, Dublin, D02 RTEP, Ireland",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "306d946c022a5818d2b81919",
+    "name": "Hawkridge Groundworks Limited",
+    "website_url": "http://www.hawkridgegroundworks.co.uk",
+    "primary_domain": "hawkridgegroundworks.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/hawkridgegroundworks",
+    "founded_year": 1983,
+    "estimated_num_employees": 275,
+    "annual_revenue": 4191139,
+    "annual_revenue_printed": "4.2M",
+    "industry": "civil engineering",
+    "industries": [
+      "civil engineering"
+    ],
+    "street_address": "49 Foundry Lane",
+    "city": "Glasgow",
+    "state": "Glasgow City",
+    "postal_code": "G1 1RW",
+    "country": "United Kingdom",
+    "raw_address": "49 Foundry Lane, Glasgow, Glasgow City, G1 1RW, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "2966e3b8656e9782fdf229c8",
+    "name": "Barlow Plant Hire Limited",
+    "website_url": "http://www.barlowplant.ie",
+    "primary_domain": "barlowplant.ie",
+    "linkedin_url": "http://www.linkedin.com/company/barlowplanthire",
+    "founded_year": 1962,
+    "estimated_num_employees": 562,
+    "annual_revenue": null,
+    "annual_revenue_printed": null,
+    "industry": "equipment rental services",
+    "industries": [
+      "equipment rental services"
+    ],
+    "street_address": "Unit 21, Brunswick Business Park",
+    "city": "Dublin",
+    "state": "Dublin",
+    "postal_code": "D02 K4ND",
+    "country": "Ireland",
+    "raw_address": "Unit 21, Brunswick Business Park, Dublin, Dublin, D02 K4ND, Ireland",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics",
+      "Samsara"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "a876c90cd5390edaec45a5a2",
+    "name": "Hartley Groundworks Ltd",
+    "website_url": "http://www.hartleygroundworks.co.uk",
+    "primary_domain": "hartleygroundworks.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/hartleygroundworks",
+    "founded_year": 1977,
+    "estimated_num_employees": 435,
+    "annual_revenue": null,
+    "annual_revenue_printed": null,
+    "industry": "civil engineering",
+    "industries": [
+      "civil engineering"
+    ],
+    "street_address": "Unit 24, Riverside Industrial Estate",
+    "city": "Sheffield",
+    "state": "South Yorkshire",
+    "postal_code": "S9 7WL",
+    "country": "United Kingdom",
+    "raw_address": "Unit 24, Riverside Industrial Estate, Sheffield, South Yorkshire, S9 7WL, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "509e47f1b34766b492f6e5ca",
+    "name": "Wardle Quarries Ltd",
+    "website_url": "http://www.wardlequarries.co.uk",
+    "primary_domain": "wardlequarries.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/wardlequarries",
+    "founded_year": 1961,
+    "estimated_num_employees": 1475,
+    "annual_revenue": 182969620,
+    "annual_revenue_printed": "183.0M",
+    "industry": "mining & metals",
+    "industries": [
+      "mining & metals"
+    ],
+    "street_address": "Unit 25, Riverside Industrial Estate",
+    "city": "Newcastle upon Tyne",
+    "state": "Tyne and Wear",
+    "postal_code": "NE20 5HL",
+    "country": "United Kingdom",
+    "raw_address": "Unit 25, Riverside Industrial Estate, Newcastle upon Tyne, Tyne and Wear, NE20 5HL, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics",
+      "Samsara"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "0201b1bd487f111d88140ee5",
+    "name": "Whitcombe Design Studio Ltd",
+    "website_url": "http://www.whitcombedesign.co.uk",
+    "primary_domain": "whitcombedesign.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/whitcombedesignstudio",
+    "founded_year": 2002,
+    "estimated_num_employees": 2861,
+    "annual_revenue": 71436709,
+    "annual_revenue_printed": "71.4M",
+    "industry": "architecture & planning",
+    "industries": [
+      "architecture & planning"
+    ],
+    "street_address": "73 Canal Street",
+    "city": "Preston",
+    "state": "Lancashire",
+    "postal_code": "PR6 7ZJ",
+    "country": "United Kingdom",
+    "raw_address": "73 Canal Street, Preston, Lancashire, PR6 7ZJ, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "204bd6b98880ff098ccafdad",
+    "name": "Birchwood Builders Ltd",
+    "website_url": "http://www.birchwoodbuilders.co.uk",
+    "primary_domain": "birchwoodbuilders.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/birchwoodbuilders",
+    "founded_year": 2019,
+    "estimated_num_employees": 580,
+    "annual_revenue": null,
+    "annual_revenue_printed": null,
+    "industry": "construction",
+    "industries": [
+      "construction"
+    ],
+    "street_address": "Unit 7, Lakeside Industrial Estate",
+    "city": "Reading",
+    "state": "Berkshire",
+    "postal_code": "RG14 8JG",
+    "country": "United Kingdom",
+    "raw_address": "Unit 7, Lakeside Industrial Estate, Reading, Berkshire, RG14 8JG, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": 20100000,
+    "latest_funding_stage": "Series A",
+    "latest_funding_round_date": "2019-02-01",
+    "funding_events": []
+  },
+  {
+    "id": "0619ee04c1035dd40b4732e1",
+    "name": "Wessex Minerals Ltd",
+    "website_url": "http://www.wessexminerals.co.uk",
+    "primary_domain": "wessexminerals.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/wessexminerals",
+    "founded_year": 2011,
+    "estimated_num_employees": 313,
+    "annual_revenue": 24554430,
+    "annual_revenue_printed": "24.6M",
+    "industry": "mining & metals",
+    "industries": [
+      "mining & metals"
+    ],
+    "street_address": "Unit 24, Northfield Industrial Estate",
+    "city": "Derby",
+    "state": "Derbyshire",
+    "postal_code": "DE16 3BP",
+    "country": "United Kingdom",
+    "raw_address": "Unit 24, Northfield Industrial Estate, Derby, Derbyshire, DE16 3BP, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": 22300000,
+    "latest_funding_stage": "Series B",
+    "latest_funding_round_date": "2022-06-01",
+    "funding_events": []
+  },
+  {
+    "id": "f708b80ee2a2297a2e0443f6",
+    "name": "Garside Infrastructure PLC",
+    "website_url": "http://www.garsideinfrastructure.co.uk",
+    "primary_domain": "garsideinfrastructure.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/garsideinfrastructure",
+    "founded_year": 2001,
+    "estimated_num_employees": 473,
+    "annual_revenue": null,
+    "annual_revenue_printed": null,
+    "industry": "civil engineering",
+    "industries": [
+      "civil engineering"
+    ],
+    "street_address": "Unit 4, Westgate Industrial Estate",
+    "city": "Leeds",
+    "state": "West Yorkshire",
+    "postal_code": "LS20 9ZN",
+    "country": "United Kingdom",
+    "raw_address": "Unit 4, Westgate Industrial Estate, Leeds, West Yorkshire, LS20 9ZN, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": 3800000,
+    "latest_funding_stage": "Series B",
+    "latest_funding_round_date": "2018-05-01",
+    "funding_events": []
+  },
+  {
+    "id": "9ad31fe0b5e661178228f9e0",
+    "name": "Upton Aggregates Limited",
+    "website_url": "http://www.uptonaggregates.co.uk",
+    "primary_domain": "uptonaggregates.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/uptonaggregates",
+    "founded_year": 1976,
+    "estimated_num_employees": 1427,
+    "annual_revenue": 24935443,
+    "annual_revenue_printed": "24.9M",
+    "industry": "mining & metals",
+    "industries": [
+      "mining & metals"
+    ],
+    "street_address": "Unit 26, Northfield Industrial Estate",
+    "city": "Birmingham",
+    "state": "West Midlands",
+    "postal_code": "B5 7EZ",
+    "country": "United Kingdom",
+    "raw_address": "Unit 26, Northfield Industrial Estate, Birmingham, West Midlands, B5 7EZ, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics",
+      "Geotab"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "1b2414c926ab85840db6792f",
+    "name": "Langley Aggregates GmbH",
+    "website_url": "http://www.langleyaggregates.de",
+    "primary_domain": "langleyaggregates.de",
+    "linkedin_url": "http://www.linkedin.com/company/langleyaggregates",
+    "founded_year": 2003,
+    "estimated_num_employees": 2741,
+    "annual_revenue": null,
+    "annual_revenue_printed": null,
+    "industry": "mining & metals",
+    "industries": [
+      "mining & metals"
+    ],
+    "street_address": "Industriestraße 64",
+    "city": "Hamburg",
+    "state": "Hamburg",
+    "postal_code": "20095",
+    "country": "Germany",
+    "raw_address": "Industriestraße 64, Hamburg, Hamburg, 20095, Germany",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": 18900000,
+    "latest_funding_stage": "Series B",
+    "latest_funding_round_date": "2022-02-01",
+    "funding_events": []
+  },
+  {
+    "id": "df788bcf95fb59dfd2a86142",
+    "name": "Calder Contractors PLC",
+    "website_url": "http://www.caldercontractors.co.uk",
+    "primary_domain": "caldercontractors.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/caldercontractors",
+    "founded_year": 2012,
+    "estimated_num_employees": 20,
+    "annual_revenue": 7460759,
+    "annual_revenue_printed": "7.5M",
+    "industry": "construction",
+    "industries": [
+      "construction"
+    ],
+    "street_address": "133 Wharf Street",
+    "city": "Reading",
+    "state": "Berkshire",
+    "postal_code": "RG23 8HX",
+    "country": "United Kingdom",
+    "raw_address": "133 Wharf Street, Reading, Berkshire, RG23 8HX, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "d158fb6ba758ee4c10323c56",
+    "name": "Kirkby Freight Ltd",
+    "website_url": "http://www.kirkbyfreight.co.uk",
+    "primary_domain": "kirkbyfreight.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/kirkbyfreight",
+    "founded_year": 1984,
+    "estimated_num_employees": 1265,
+    "annual_revenue": 105194937,
+    "annual_revenue_printed": "105.2M",
+    "industry": "logistics & supply chain",
+    "industries": [
+      "logistics & supply chain"
+    ],
+    "street_address": "169 Foundry Lane",
+    "city": "Exeter",
+    "state": "Devon",
+    "postal_code": "EX11 2GW",
+    "country": "United Kingdom",
+    "raw_address": "169 Foundry Lane, Exeter, Devon, EX11 2GW, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "106209dff7805ce67f987e14",
+    "name": "Quarrington Haulage PLC",
+    "website_url": "http://www.quarringtonhaulage.co.uk",
+    "primary_domain": "quarringtonhaulage.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/quarringtonhaulage",
+    "founded_year": 2011,
+    "estimated_num_employees": 6,
+    "annual_revenue": 93837975,
+    "annual_revenue_printed": "93.8M",
+    "industry": "logistics & supply chain",
+    "industries": [
+      "logistics & supply chain"
+    ],
+    "street_address": "196 Station Road",
+    "city": "Leeds",
+    "state": "West Yorkshire",
+    "postal_code": "LS24 8HZ",
+    "country": "United Kingdom",
+    "raw_address": "196 Station Road, Leeds, West Yorkshire, LS24 8HZ, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "8db836f2e8cb78d978549360",
+    "name": "Barlow Minerals Ltd",
+    "website_url": "http://www.barlowminerals.co.uk",
+    "primary_domain": "barlowminerals.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/barlowminerals",
+    "founded_year": 1988,
+    "estimated_num_employees": 2004,
+    "annual_revenue": 189002532,
+    "annual_revenue_printed": "189.0M",
+    "industry": "mining & metals",
+    "industries": [
+      "mining & metals"
+    ],
+    "street_address": "Unit 25, Riverside Industrial Estate",
+    "city": "Newcastle upon Tyne",
+    "state": "Tyne and Wear",
+    "postal_code": "NE2 1SH",
+    "country": "United Kingdom",
+    "raw_address": "Unit 25, Riverside Industrial Estate, Newcastle upon Tyne, Tyne and Wear, NE2 1SH, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "0a205e4617d5dff74aae8c8b",
+    "name": "Elmhurst Builders Limited",
+    "website_url": "http://www.elmhurstbuilders.co.uk",
+    "primary_domain": "elmhurstbuilders.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/elmhurstbuilders",
+    "founded_year": 1979,
+    "estimated_num_employees": 257,
+    "annual_revenue": 47987342,
+    "annual_revenue_printed": "48.0M",
+    "industry": "construction",
+    "industries": [
+      "construction"
+    ],
+    "street_address": "Unit 3, Lakeside Industrial Estate",
+    "city": "Peterborough",
+    "state": "Cambridgeshire",
+    "postal_code": "PE8 5JE",
+    "country": "United Kingdom",
+    "raw_address": "Unit 3, Lakeside Industrial Estate, Peterborough, Cambridgeshire, PE8 5JE, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "4766c41fa9e725831b5c038b",
+    "name": "Fenwick Infrastructure Ltd",
+    "website_url": "http://www.fenwickinfrastructure.co.uk",
+    "primary_domain": "fenwickinfrastructure.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/fenwickinfrastructure",
+    "founded_year": 1967,
+    "estimated_num_employees": 37,
+    "annual_revenue": 8989873,
+    "annual_revenue_printed": "9.0M",
+    "industry": "civil engineering",
+    "industries": [
+      "civil engineering"
+    ],
+    "street_address": "Unit 16, Meadowbank Industrial Estate",
+    "city": "Sheffield",
+    "state": "South Yorkshire",
+    "postal_code": "S4 6XB",
+    "country": "United Kingdom",
+    "raw_address": "Unit 16, Meadowbank Industrial Estate, Sheffield, South Yorkshire, S4 6XB, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": 23600000,
+    "latest_funding_stage": "Private Equity",
+    "latest_funding_round_date": "2024-08-01",
+    "funding_events": []
+  },
+  {
+    "id": "b39c51a1137178db931939cf",
+    "name": "Saltash Builders PLC",
+    "website_url": "http://www.saltashbuilders.co.uk",
+    "primary_domain": "saltashbuilders.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/saltashbuilders",
+    "founded_year": 1986,
+    "estimated_num_employees": 80,
+    "annual_revenue": null,
+    "annual_revenue_printed": null,
+    "industry": "construction",
+    "industries": [
+      "construction"
+    ],
+    "street_address": "186 Kingsway",
+    "city": "Glasgow",
+    "state": "Glasgow City",
+    "postal_code": "G24 9UR",
+    "country": "United Kingdom",
+    "raw_address": "186 Kingsway, Glasgow, Glasgow City, G24 9UR, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "d15bd5d11168772dbadcd95a",
+    "name": "Ingram Aggregates DAC",
+    "website_url": "http://www.ingramaggregates.ie",
+    "primary_domain": "ingramaggregates.ie",
+    "linkedin_url": "http://www.linkedin.com/company/ingramaggregates",
+    "founded_year": 2011,
+    "estimated_num_employees": 2032,
+    "annual_revenue": 162792405,
+    "annual_revenue_printed": "162.8M",
+    "industry": "mining & metals",
+    "industries": [
+      "mining & metals"
+    ],
+    "street_address": "Unit 18, Riverside Business Park",
+    "city": "Cork",
+    "state": "Cork",
+    "postal_code": "T12 APRF",
+    "country": "Ireland",
+    "raw_address": "Unit 18, Riverside Business Park, Cork, Cork, T12 APRF, Ireland",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "f5cc37b62abd169e5b411ac9",
+    "name": "Thornbury Systems Ltd",
+    "website_url": "http://www.thornburysystems.co.uk",
+    "primary_domain": "thornburysystems.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/thornburysystems",
+    "founded_year": 1997,
+    "estimated_num_employees": 478,
+    "annual_revenue": 115588608,
+    "annual_revenue_printed": "115.6M",
+    "industry": "computer software",
+    "industries": [
+      "computer software"
+    ],
+    "street_address": "Unit 29, Riverside Industrial Estate",
+    "city": "Sheffield",
+    "state": "South Yorkshire",
+    "postal_code": "S21 2FZ",
+    "country": "United Kingdom",
+    "raw_address": "Unit 29, Riverside Industrial Estate, Sheffield, South Yorkshire, S21 2FZ, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "b020e908b383243c54ff8c0a",
+    "name": "Severn Builders DAC",
+    "website_url": "http://www.severnbuilders.ie",
+    "primary_domain": "severnbuilders.ie",
+    "linkedin_url": "http://www.linkedin.com/company/severnbuilders",
+    "founded_year": 1985,
+    "estimated_num_employees": 550,
+    "annual_revenue": 5613924,
+    "annual_revenue_printed": "5.6M",
+    "industry": "construction",
+    "industries": [
+      "construction"
+    ],
+    "street_address": "Unit 1, Westgate Business Park",
+    "city": "Dublin",
+    "state": "Dublin",
+    "postal_code": "D02 XVEE",
+    "country": "Ireland",
+    "raw_address": "Unit 1, Westgate Business Park, Dublin, Dublin, D02 XVEE, Ireland",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": 10700000,
+    "latest_funding_stage": "Private Equity",
+    "latest_funding_round_date": "2020-05-01",
+    "funding_events": []
+  },
+  {
+    "id": "d7b8af924149e48a7fd123a4",
+    "name": "Carrick Stone PLC",
+    "website_url": "http://www.carrickstone.co.uk",
+    "primary_domain": "carrickstone.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/carrickstone",
+    "founded_year": 1976,
+    "estimated_num_employees": 736,
+    "annual_revenue": null,
+    "annual_revenue_printed": null,
+    "industry": "mining & metals",
+    "industries": [
+      "mining & metals"
+    ],
+    "street_address": "192 Kingsway",
+    "city": "Reading",
+    "state": "Berkshire",
+    "postal_code": "RG21 4ER",
+    "country": "United Kingdom",
+    "raw_address": "192 Kingsway, Reading, Berkshire, RG21 4ER, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "c94ca32a954a9cb701175f89",
+    "name": "Liffey Minerals Ltd",
+    "website_url": "http://www.liffeyminerals.co.uk",
+    "primary_domain": "liffeyminerals.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/liffeyminerals",
+    "founded_year": 1955,
+    "estimated_num_employees": 330,
+    "annual_revenue": 68698734,
+    "annual_revenue_printed": "68.7M",
+    "industry": "mining & metals",
+    "industries": [
+      "mining & metals"
+    ],
+    "street_address": "159 Foundry Lane",
+    "city": "Leeds",
+    "state": "West Yorkshire",
+    "postal_code": "LS14 2FX",
+    "country": "United Kingdom",
+    "raw_address": "159 Foundry Lane, Leeds, West Yorkshire, LS14 2FX, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "84714b084a9d59851a0713b6",
+    "name": "Severn Infrastructure B.V.",
+    "website_url": "http://www.severninfrastructure.nl",
+    "primary_domain": "severninfrastructure.nl",
+    "linkedin_url": "http://www.linkedin.com/company/severninfrastructure",
+    "founded_year": 2011,
+    "estimated_num_employees": 1598,
+    "annual_revenue": 52394937,
+    "annual_revenue_printed": "52.4M",
+    "industry": "civil engineering",
+    "industries": [
+      "civil engineering"
+    ],
+    "street_address": "Havenweg 50",
+    "city": "Utrecht",
+    "state": "Utrecht",
+    "postal_code": "3511 CE",
+    "country": "Netherlands",
+    "raw_address": "Havenweg 50, Utrecht, Utrecht, 3511 CE, Netherlands",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": 12400000,
+    "latest_funding_stage": "Series A",
+    "latest_funding_round_date": "2022-07-01",
+    "funding_events": []
+  },
+  {
+    "id": "20bda7083a692c5599d57ac2",
+    "name": "Wyvern Builders SAS",
+    "website_url": "http://www.wyvernbuilders.fr",
+    "primary_domain": "wyvernbuilders.fr",
+    "linkedin_url": "http://www.linkedin.com/company/wyvernbuilders",
+    "founded_year": 1956,
+    "estimated_num_employees": null,
+    "annual_revenue": 129802532,
+    "annual_revenue_printed": "129.8M",
+    "industry": "construction",
+    "industries": [
+      "construction"
+    ],
+    "street_address": "83 rue du Port",
+    "city": "Lille",
+    "state": "Hauts-de-France",
+    "postal_code": "59000",
+    "country": "France",
+    "raw_address": "83 rue du Port, Lille, Hauts-de-France, 59000, France",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics",
+      "Geotab"
+    ],
+    "total_funding": null,
+    "latest_funding_stage": null,
+    "latest_funding_round_date": null,
+    "funding_events": []
+  },
+  {
+    "id": "39fd53f2715fecf63460145f",
+    "name": "Stanton Aggregates Limited",
+    "website_url": "http://www.stantonaggregates.co.uk",
+    "primary_domain": "stantonaggregates.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/stantonaggregates",
+    "founded_year": 2000,
+    "estimated_num_employees": 281,
+    "annual_revenue": 2707595,
+    "annual_revenue_printed": "2.7M",
+    "industry": "mining & metals",
+    "industries": [
+      "mining & metals"
+    ],
+    "street_address": "108 Kingsway",
+    "city": "Derby",
+    "state": "Derbyshire",
+    "postal_code": "DE2 5EJ",
+    "country": "United Kingdom",
+    "raw_address": "108 Kingsway, Derby, Derbyshire, DE2 5EJ, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": 15600000,
+    "latest_funding_stage": "Private Equity",
+    "latest_funding_round_date": "2024-06-01",
+    "funding_events": []
+  },
+  {
+    "id": "ffe8097affb147b9fb2eea46",
+    "name": "Ironbridge Minerals Ltd",
+    "website_url": "http://www.ironbridgeminerals.co.uk",
+    "primary_domain": "ironbridgeminerals.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/ironbridgeminerals",
+    "founded_year": 2016,
+    "estimated_num_employees": 261,
+    "annual_revenue": 64148101,
+    "annual_revenue_printed": "64.1M",
+    "industry": "mining & metals",
+    "industries": [
+      "mining & metals"
+    ],
+    "street_address": "Unit 25, Lakeside Industrial Estate",
+    "city": "Preston",
+    "state": "Lancashire",
+    "postal_code": "PR7 6SG",
+    "country": "United Kingdom",
+    "raw_address": "Unit 25, Lakeside Industrial Estate, Preston, Lancashire, PR7 6SG, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": 15900000,
+    "latest_funding_stage": "Series B",
+    "latest_funding_round_date": "2021-09-01",
+    "funding_events": []
+  },
+  {
+    "id": "514c849a371560f3ca538d29",
+    "name": "Ullswater Builders PLC",
+    "website_url": "http://www.ullswaterbuilders.co.uk",
+    "primary_domain": "ullswaterbuilders.co.uk",
+    "linkedin_url": "http://www.linkedin.com/company/ullswaterbuilders",
+    "founded_year": 1970,
+    "estimated_num_employees": 684,
+    "annual_revenue": null,
+    "annual_revenue_printed": null,
+    "industry": "construction",
+    "industries": [
+      "construction"
+    ],
+    "street_address": "Unit 22, Lakeside Industrial Estate",
+    "city": "Derby",
+    "state": "Derbyshire",
+    "postal_code": "DE10 4PT",
+    "country": "United Kingdom",
+    "raw_address": "Unit 22, Lakeside Industrial Estate, Derby, Derbyshire, DE10 4PT, United Kingdom",
+    "technology_names": [
+      "Microsoft Office 365",
+      "Google Analytics"
+    ],
+    "total_funding": 8900000,
+    "latest_funding_stage": "Series B",
+    "latest_funding_round_date": "2024-04-01",
+    "funding_events": []
+  }
+]

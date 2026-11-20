@@ -1,0 +1,1622 @@
+[
+  {
+    "Company Name": "Ottery Architects",
+    "Domain": "otteryarchitects.co.uk",
+    "Industry": "Architecture and Planning",
+    "Employee Count": 296,
+    "Annual Revenue (GBP)": 14451000,
+    "Street Address": "80 Mill Lane",
+    "City": "Preston",
+    "Postcode": "PR12 7ZT",
+    "Country": "UK",
+    "Net Zero Target": null,
+    "LinkedIn URL": "https://www.linkedin.com/company/otteryarchitects",
+    "Enriched At": "2026-10-17T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 1955,
+      "description": "Ottery Architects is an architecture and planning practice."
+    }
+  },
+  {
+    "Company Name": "Birchwood Civil Engineering",
+    "Domain": "birchwoodcivil.co.uk",
+    "Industry": "Civil Engineering",
+    "Employee Count": 951,
+    "Annual Revenue (GBP)": 116751000,
+    "Street Address": "Unit 18 Brunswick Industrial Estate",
+    "City": "Newcastle upon Tyne",
+    "Postcode": "NE27 2AZ",
+    "Country": "UK",
+    "Net Zero Target": "2030",
+    "LinkedIn URL": "https://www.linkedin.com/company/birchwoodcivilengineering",
+    "Enriched At": "2026-10-17T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 1955,
+      "description": "Birchwood Civil Engineering delivers civil engineering and infrastructure works."
+    }
+  },
+  {
+    "Company Name": "Pennine Building",
+    "Domain": "penninebuilding.co.uk",
+    "Industry": "Construction",
+    "Employee Count": 397,
+    "Annual Revenue (GBP)": 113143000,
+    "Street Address": "Unit 7 Brunswick Industrial Estate",
+    "City": "Birmingham",
+    "Postcode": "B4 6WN",
+    "Country": "UK",
+    "Net Zero Target": null,
+    "LinkedIn URL": "https://www.linkedin.com/company/penninebuilding",
+    "Enriched At": "2026-10-02T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 1992,
+      "description": "Pennine Building is a building contractor for commercial and public sector projects."
+    }
+  },
+  {
+    "Company Name": "Oakridge Construction",
+    "Domain": "oakridgeconstruction.co.uk",
+    "Industry": "Construction",
+    "Employee Count": 573,
+    "Annual Revenue (GBP)": null,
+    "Street Address": "Unit 13 Riverside Industrial Estate",
+    "City": "Manchester",
+    "Postcode": "M27 9SJ",
+    "Country": "UK",
+    "Net Zero Target": "2040",
+    "LinkedIn URL": "https://www.linkedin.com/company/oakridgeconstruction",
+    "Enriched At": "2026-10-05T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 2012,
+      "description": "Oakridge Construction is a building contractor for commercial and public sector projects."
+    }
+  },
+  {
+    "Company Name": "Alder Tool & Plant Hire",
+    "Domain": "aldertool.co.uk",
+    "Industry": "Equipment Rental Services",
+    "Employee Count": 1587,
+    "Annual Revenue (GBP)": 160250000,
+    "Street Address": "Unit 30 Brunswick Industrial Estate",
+    "City": "Sheffield",
+    "Postcode": "S1 7NL",
+    "Country": "UK",
+    "Net Zero Target": "2040",
+    "LinkedIn URL": "https://www.linkedin.com/company/aldertoolplanthire",
+    "Enriched At": "2026-10-15T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 2004,
+      "description": "Alder Tool & Plant Hire hires out excavators, dumpers and other construction plant."
+    }
+  },
+  {
+    "Company Name": "Redmire Aggregates",
+    "Domain": "redmireaggregates.co.uk",
+    "Industry": "Mining",
+    "Employee Count": 207,
+    "Annual Revenue (GBP)": 6728000,
+    "Street Address": "Unit 26 Brunswick Industrial Estate",
+    "City": "Birmingham",
+    "Postcode": "B18 3SX",
+    "Country": "UK",
+    "Net Zero Target": null,
+    "LinkedIn URL": "https://www.linkedin.com/company/redmireaggregates",
+    "Enriched At": "2026-10-02T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 1983,
+      "description": "Redmire Aggregates operates quarries and supplies aggregates."
+    }
+  },
+  {
+    "Company Name": "Kestrel Quarries",
+    "Domain": "kestrelquarries.co.uk",
+    "Industry": "Mining",
+    "Employee Count": 567,
+    "Annual Revenue (GBP)": null,
+    "Street Address": "194 Quarry Road",
+    "City": "Leicester",
+    "Postcode": "LE19 3ZU",
+    "Country": "UK",
+    "Net Zero Target": null,
+    "LinkedIn URL": "https://www.linkedin.com/company/kestrelquarries",
+    "Enriched At": "2026-11-15T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 2015,
+      "description": "Kestrel Quarries operates quarries and supplies aggregates."
+    }
+  },
+  {
+    "Company Name": "JARROW CIVIL ENGINEERING",
+    "Domain": "jarrowcivil.co.uk",
+    "Industry": "Civil Engineering",
+    "Employee Count": 20,
+    "Annual Revenue (GBP)": 5552000,
+    "Street Address": "189 Station Road",
+    "City": "Bristol",
+    "Postcode": "BS13 4HA",
+    "Country": "UK",
+    "Net Zero Target": null,
+    "LinkedIn URL": "https://www.linkedin.com/company/jarrowcivilengineering",
+    "Enriched At": "2026-11-10T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 1975,
+      "description": "Jarrow Civil Engineering delivers civil engineering and infrastructure works."
+    }
+  },
+  {
+    "Company Name": "Norwood Property",
+    "Domain": "norwoodproperty.ie",
+    "Industry": "Real Estate",
+    "Employee Count": 2530,
+    "Annual Revenue (GBP)": null,
+    "Street Address": "Unit 11 Brunswick Business Park",
+    "City": "Waterford",
+    "Postcode": "X91 RD8C",
+    "Country": "Ireland",
+    "Net Zero Target": null,
+    "LinkedIn URL": "https://www.linkedin.com/company/norwoodproperty",
+    "Enriched At": "2026-11-03T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 1980,
+      "description": "Norwood Property develops and manages commercial property."
+    }
+  },
+  {
+    "Company Name": "Yardley Groundworks",
+    "Domain": "yardleygroundworks.co.uk",
+    "Industry": "Civil Engineering",
+    "Employee Count": 691,
+    "Annual Revenue (GBP)": 7325000,
+    "Street Address": "35 Kingsway",
+    "City": "Reading",
+    "Postcode": "RG7 4AD",
+    "Country": "UK",
+    "Net Zero Target": "2035",
+    "LinkedIn URL": "https://www.linkedin.com/company/yardleygroundworks",
+    "Enriched At": "2026-09-02T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 1982,
+      "description": "Yardley Groundworks delivers civil engineering and infrastructure works."
+    }
+  },
+  {
+    "Company Name": "Netherby Building",
+    "Domain": "netherbybuilding.ie",
+    "Industry": "Construction",
+    "Employee Count": 531,
+    "Annual Revenue (GBP)": null,
+    "Street Address": "Unit 11 Lakeside Business Park",
+    "City": "Waterford",
+    "Postcode": "X91 EVPF",
+    "Country": "Ireland",
+    "Net Zero Target": "2040",
+    "LinkedIn URL": "https://www.linkedin.com/company/netherbybuilding",
+    "Enriched At": "2026-10-16T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 1979,
+      "description": "Netherby Building is a building contractor for commercial and public sector projects."
+    }
+  },
+  {
+    "Company Name": "Lomax Aggregates",
+    "Domain": "lomaxaggregates.co.uk",
+    "Industry": "Mining",
+    "Employee Count": 1499,
+    "Annual Revenue (GBP)": 114131000,
+    "Street Address": "84 Foundry Lane",
+    "City": "Peterborough",
+    "Postcode": "PE9 8WB",
+    "Country": "UK",
+    "Net Zero Target": null,
+    "LinkedIn URL": "https://www.linkedin.com/company/lomaxaggregates",
+    "Enriched At": "2026-11-18T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 1958,
+      "description": "Lomax Aggregates operates quarries and supplies aggregates."
+    }
+  },
+  {
+    "Company Name": "Ottery Plant",
+    "Domain": "otteryplant.co.uk",
+    "Industry": "Equipment Rental Services",
+    "Employee Count": 530,
+    "Annual Revenue (GBP)": null,
+    "Street Address": "Unit 26 Riverside Industrial Estate",
+    "City": "Peterborough",
+    "Postcode": "PE21 2HU",
+    "Country": "UK",
+    "Net Zero Target": "2030",
+    "LinkedIn URL": "https://www.linkedin.com/company/otteryplant",
+    "Enriched At": "2026-10-18T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 1995,
+      "description": "Ottery Plant hires out excavators, dumpers and other construction plant."
+    }
+  },
+  {
+    "Company Name": "Ormond Tool & Plant Hire",
+    "Domain": "ormondtool.co.uk",
+    "Industry": "Equipment Rental Services",
+    "Employee Count": 1777,
+    "Annual Revenue (GBP)": 80577000,
+    "Street Address": "226 Mill Lane",
+    "City": "Nottingham",
+    "Postcode": "NG22 2XN",
+    "Country": "UK",
+    "Net Zero Target": "2040",
+    "LinkedIn URL": "https://www.linkedin.com/company/ormondtoolplanthire",
+    "Enriched At": "2026-09-05T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 2003,
+      "description": "Ormond Tool & Plant Hire hires out excavators, dumpers and other construction plant."
+    }
+  },
+  {
+    "Company Name": "Kingsmead Contractors",
+    "Domain": "kingsmeadcontractors.co.uk",
+    "Industry": "Construction",
+    "Employee Count": 768,
+    "Annual Revenue (GBP)": null,
+    "Street Address": "Unit 28 Meadowbank Industrial Estate",
+    "City": "Leeds",
+    "Postcode": "LS22 5LG",
+    "Country": "UK",
+    "Net Zero Target": "2040",
+    "LinkedIn URL": "https://www.linkedin.com/company/kingsmeadcontractors",
+    "Enriched At": "2026-11-15T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 2001,
+      "description": "Kingsmead Contractors is a building contractor for commercial and public sector projects."
+    }
+  },
+  {
+    "Company Name": "Penrose Systems",
+    "Domain": "penrosesystems.co.uk",
+    "Industry": "Software Development",
+    "Employee Count": 2686,
+    "Annual Revenue (GBP)": 93177000,
+    "Street Address": "Unit 25 Meadowbank Industrial Estate",
+    "City": "Derby",
+    "Postcode": "DE5 5YD",
+    "Country": "UK",
+    "Net Zero Target": null,
+    "LinkedIn URL": "https://www.linkedin.com/company/penrosesystems",
+    "Enriched At": "2026-10-18T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 2017,
+      "description": "Penrose Systems builds software for the built environment."
+    }
+  },
+  {
+    "Company Name": "Quarrington Tool & Plant Hire",
+    "Domain": "quarringtontool.co.uk",
+    "Industry": "Equipment Rental Services",
+    "Employee Count": 1986,
+    "Annual Revenue (GBP)": 147802000,
+    "Street Address": "227 Station Road",
+    "City": "Reading",
+    "Postcode": "RG5 6AT",
+    "Country": "UK",
+    "Net Zero Target": null,
+    "LinkedIn URL": "https://www.linkedin.com/company/quarringtontoolplanthire",
+    "Enriched At": "2026-10-12T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 2017,
+      "description": "Quarrington Tool & Plant Hire hires out excavators, dumpers and other construction plant."
+    }
+  },
+  {
+    "Company Name": "Denholm Civil Engineering",
+    "Domain": "denholmcivil.co.uk",
+    "Industry": "Civil Engineering",
+    "Employee Count": 794,
+    "Annual Revenue (GBP)": null,
+    "Street Address": "35 Riverside Way",
+    "City": "Peterborough",
+    "Postcode": "PE10 4UP",
+    "Country": "UK",
+    "Net Zero Target": null,
+    "LinkedIn URL": "https://www.linkedin.com/company/denholmcivilengineering",
+    "Enriched At": "2026-09-08T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 1977,
+      "description": "Denholm Civil Engineering delivers civil engineering and infrastructure works."
+    }
+  },
+  {
+    "Company Name": "Carrick Plant",
+    "Domain": "carrickplant.ie",
+    "Industry": "Equipment Rental Services",
+    "Employee Count": 440,
+    "Annual Revenue (GBP)": null,
+    "Street Address": "Unit 13 Meadowbank Business Park",
+    "City": "Galway",
+    "Postcode": "H91 YW74",
+    "Country": "Ireland",
+    "Net Zero Target": "2040",
+    "LinkedIn URL": "https://www.linkedin.com/company/carrickplant",
+    "Enriched At": "2026-09-13T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 1958,
+      "description": "Carrick Plant hires out excavators, dumpers and other construction plant."
+    }
+  },
+  {
+    "Company Name": "Stanton Property",
+    "Domain": "stantonproperty.ie",
+    "Industry": "Real Estate",
+    "Employee Count": 1664,
+    "Annual Revenue (GBP)": 102834000,
+    "Street Address": "Unit 14 Northfield Business Park",
+    "City": "Galway",
+    "Postcode": "H91 FXND",
+    "Country": "Ireland",
+    "Net Zero Target": null,
+    "LinkedIn URL": "https://www.linkedin.com/company/stantonproperty",
+    "Enriched At": "2026-11-03T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 1998,
+      "description": "Stanton Property develops and manages commercial property."
+    }
+  },
+  {
+    "Company Name": "Stanton Minerals",
+    "Domain": "stantonminerals.co.uk",
+    "Industry": "Mining",
+    "Employee Count": 30,
+    "Annual Revenue (GBP)": 6876000,
+    "Street Address": "Unit 30 Lakeside Industrial Estate",
+    "City": "Sheffield",
+    "Postcode": "S2 1NL",
+    "Country": "UK",
+    "Net Zero Target": "2040",
+    "LinkedIn URL": "https://www.linkedin.com/company/stantonminerals",
+    "Enriched At": "2026-11-10T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 1972,
+      "description": "Stanton Minerals operates quarries and supplies aggregates."
+    }
+  },
+  {
+    "Company Name": "Fenwick Construction",
+    "Domain": "fenwickconstruction.co.uk",
+    "Industry": "Construction",
+    "Employee Count": 2219,
+    "Annual Revenue (GBP)": 114224000,
+    "Street Address": "Unit 3 Riverside Industrial Estate",
+    "City": null,
+    "Postcode": "PR8 2EP",
+    "Country": "UK",
+    "Net Zero Target": "2030",
+    "LinkedIn URL": "https://www.linkedin.com/company/fenwickconstruction",
+    "Enriched At": "2026-11-02T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 1985,
+      "description": "Fenwick Construction is a building contractor for commercial and public sector projects."
+    }
+  },
+  {
+    "Company Name": "Hartley Quarries",
+    "Domain": "hartleyquarries.de",
+    "Industry": "Mining",
+    "Employee Count": 1243,
+    "Annual Revenue (GBP)": 735000,
+    "Street Address": "Industriestraße 60",
+    "City": "Stuttgart",
+    "Postcode": "70173",
+    "Country": "Germany",
+    "Net Zero Target": null,
+    "LinkedIn URL": "https://www.linkedin.com/company/hartleyquarries",
+    "Enriched At": "2026-09-12T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 1958,
+      "description": "Hartley Quarries operates quarries and supplies aggregates."
+    }
+  },
+  {
+    "Company Name": "Ullswater Property",
+    "Domain": "ullswaterproperty.co.uk",
+    "Industry": "Real Estate",
+    "Employee Count": 1113,
+    "Annual Revenue (GBP)": 105446000,
+    "Street Address": "Unit 19 Brunswick Industrial Estate",
+    "City": "York",
+    "Postcode": "YO15 9ZB",
+    "Country": "UK",
+    "Net Zero Target": "2030",
+    "LinkedIn URL": "https://www.linkedin.com/company/ullswaterproperty",
+    "Enriched At": "2026-11-09T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 1977,
+      "description": "Ullswater Property develops and manages commercial property."
+    }
+  },
+  {
+    "Company Name": "Thames Estates",
+    "Domain": "thamesestates.co.uk",
+    "Industry": "Real Estate",
+    "Employee Count": 724,
+    "Annual Revenue (GBP)": 77883000,
+    "Street Address": "Unit 6 Brunswick Industrial Estate",
+    "City": "Newcastle upon Tyne",
+    "Postcode": "NE22 7FG",
+    "Country": "UK",
+    "Net Zero Target": null,
+    "LinkedIn URL": "https://www.linkedin.com/company/thamesestates",
+    "Enriched At": "2026-09-06T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 1974,
+      "description": "Thames Estates develops and manages commercial property."
+    }
+  },
+  {
+    "Company Name": "ROWNTREE MINERALS",
+    "Domain": "www.rowntreeminerals.de",
+    "Industry": "Mining",
+    "Employee Count": 2249,
+    "Annual Revenue (GBP)": 61990000,
+    "Street Address": "Industriestraße 90",
+    "City": "Hamburg",
+    "Postcode": "20095",
+    "Country": "Germany",
+    "Net Zero Target": null,
+    "LinkedIn URL": "https://www.linkedin.com/company/rowntreeminerals",
+    "Enriched At": "2026-10-11T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 2000,
+      "description": "Rowntree Minerals operates quarries and supplies aggregates."
+    }
+  },
+  {
+    "Company Name": "Granite Contractors",
+    "Domain": "granitecontractors.co.uk",
+    "Industry": "Construction",
+    "Employee Count": 191,
+    "Annual Revenue (GBP)": null,
+    "Street Address": "189 Canal Street",
+    "City": "Glasgow",
+    "Postcode": "G28 8FL",
+    "Country": "UK",
+    "Net Zero Target": "2030",
+    "LinkedIn URL": "https://www.linkedin.com/company/granitecontractors",
+    "Enriched At": "2026-11-14T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 1978,
+      "description": "Granite Contractors is a building contractor for commercial and public sector projects."
+    }
+  },
+  {
+    "Company Name": "DOVECOTE CIVIL ENGINEERING",
+    "Domain": "http://dovecotecivil.co.uk/",
+    "Industry": "Civil Engineering",
+    "Employee Count": 1286,
+    "Annual Revenue (GBP)": 42686000,
+    "Street Address": "59 Mill Lane",
+    "City": "Newcastle upon Tyne",
+    "Postcode": "NE9 9GG",
+    "Country": "UK",
+    "Net Zero Target": null,
+    "LinkedIn URL": "https://www.linkedin.com/company/dovecotecivilengineering",
+    "Enriched At": "2026-09-02T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 1958,
+      "description": "Dovecote Civil Engineering delivers civil engineering and infrastructure works."
+    }
+  },
+  {
+    "Company Name": "Elmhurst Civil Engineering",
+    "Domain": "elmhurstcivil.co.uk",
+    "Industry": "Civil Engineering",
+    "Employee Count": 232,
+    "Annual Revenue (GBP)": null,
+    "Street Address": "214 Wharf Street",
+    "City": "York",
+    "Postcode": "YO3 8LW",
+    "Country": "UK",
+    "Net Zero Target": "2035",
+    "LinkedIn URL": "https://www.linkedin.com/company/elmhurstcivilengineering",
+    "Enriched At": "2026-09-13T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 2016,
+      "description": "Elmhurst Civil Engineering delivers civil engineering and infrastructure works."
+    }
+  },
+  {
+    "Company Name": "Jarrow Minerals",
+    "Domain": "jarrowminerals.ie",
+    "Industry": "Mining",
+    "Employee Count": 447,
+    "Annual Revenue (GBP)": null,
+    "Street Address": "Unit 21 Westgate Business Park",
+    "City": "Cork",
+    "Postcode": "T12 PP30",
+    "Country": "Ireland",
+    "Net Zero Target": null,
+    "LinkedIn URL": "https://www.linkedin.com/company/jarrowminerals",
+    "Enriched At": "2026-10-05T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 2012,
+      "description": "Jarrow Minerals operates quarries and supplies aggregates."
+    }
+  },
+  {
+    "Company Name": "Langley Software",
+    "Domain": "langleysoftware.co.uk",
+    "Industry": "Software Development",
+    "Employee Count": 2315,
+    "Annual Revenue (GBP)": 145441000,
+    "Street Address": "Unit 19 Westgate Industrial Estate",
+    "City": "Glasgow",
+    "Postcode": "G4 2AP",
+    "Country": "UK",
+    "Net Zero Target": "2040",
+    "LinkedIn URL": "https://www.linkedin.com/company/langleysoftware",
+    "Enriched At": "2026-09-07T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 1991,
+      "description": "Langley Software builds software for the built environment."
+    }
+  },
+  {
+    "Company Name": "Liffey Civil Engineering",
+    "Domain": "liffeycivil.co.uk",
+    "Industry": "Civil Engineering",
+    "Employee Count": 37,
+    "Annual Revenue (GBP)": 4993000,
+    "Street Address": "183 Mill Lane",
+    "City": "Edinburgh",
+    "Postcode": "EH6 5XQ",
+    "Country": "UK",
+    "Net Zero Target": "2035",
+    "LinkedIn URL": "https://www.linkedin.com/company/liffeycivilengineering",
+    "Enriched At": "2026-11-01T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 2001,
+      "description": "Liffey Civil Engineering delivers civil engineering and infrastructure works."
+    }
+  },
+  {
+    "Company Name": "Alder Aggregates",
+    "Domain": "alderaggregates.co.uk",
+    "Industry": "Mining",
+    "Employee Count": 1778,
+    "Annual Revenue (GBP)": 64378000,
+    "Street Address": "Unit 17 Brunswick Industrial Estate",
+    "City": "Newcastle upon Tyne",
+    "Postcode": "NE13 9ZG",
+    "Country": "UK",
+    "Net Zero Target": null,
+    "LinkedIn URL": "https://www.linkedin.com/company/alderaggregates",
+    "Enriched At": "2026-10-15T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 2009,
+      "description": "Alder Aggregates operates quarries and supplies aggregates."
+    }
+  },
+  {
+    "Company Name": "Fenwick Builders",
+    "Domain": "fenwickbuilders.co.uk",
+    "Industry": "Construction",
+    "Employee Count": 671,
+    "Annual Revenue (GBP)": null,
+    "Street Address": "60 Riverside Way",
+    "City": "Birmingham",
+    "Postcode": "B28 9LP",
+    "Country": "UK",
+    "Net Zero Target": "2040",
+    "LinkedIn URL": "https://www.linkedin.com/company/fenwickbuilders",
+    "Enriched At": "2026-11-16T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 1990,
+      "description": "Fenwick Builders is a building contractor for commercial and public sector projects."
+    }
+  },
+  {
+    "Company Name": "Farley Construction",
+    "Domain": "farleyconstruction.nl",
+    "Industry": "Construction",
+    "Employee Count": 2810,
+    "Annual Revenue (GBP)": 113461000,
+    "Street Address": "Havenweg 52",
+    "City": "Rotterdam",
+    "Postcode": "3011 AB",
+    "Country": "Netherlands",
+    "Net Zero Target": null,
+    "LinkedIn URL": "https://www.linkedin.com/company/farleyconstruction",
+    "Enriched At": "2026-10-15T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 1960,
+      "description": "Farley Construction is a building contractor for commercial and public sector projects."
+    }
+  },
+  {
+    "Company Name": "Saltash Groundworks",
+    "Domain": "saltashgroundworks.co.uk",
+    "Industry": "Civil Engineering",
+    "Employee Count": 1397,
+    "Annual Revenue (GBP)": 19577000,
+    "Street Address": "204 Station Road",
+    "City": "Peterborough",
+    "Postcode": "PE12 4PW",
+    "Country": "UK",
+    "Net Zero Target": "2030",
+    "LinkedIn URL": "https://www.linkedin.com/company/saltashgroundworks",
+    "Enriched At": "2026-09-18T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 1972,
+      "description": "Saltash Groundworks delivers civil engineering and infrastructure works."
+    }
+  },
+  {
+    "Company Name": "Ironbridge Civil Engineering",
+    "Domain": "ironbridgecivil.co.uk",
+    "Industry": "Civil Engineering",
+    "Employee Count": 2227,
+    "Annual Revenue (GBP)": 90850000,
+    "Street Address": "Unit 29 Brunswick Industrial Estate",
+    "City": "Edinburgh",
+    "Postcode": "EH18 3SS",
+    "Country": "UK",
+    "Net Zero Target": null,
+    "LinkedIn URL": "https://www.linkedin.com/company/ironbridgecivilengineering",
+    "Enriched At": "2026-11-04T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 2018,
+      "description": "Ironbridge Civil Engineering delivers civil engineering and infrastructure works."
+    }
+  },
+  {
+    "Company Name": "Penrose Stone",
+    "Domain": "penrosestone.nl",
+    "Industry": "Mining",
+    "Employee Count": 1990,
+    "Annual Revenue (GBP)": null,
+    "Street Address": "Havenweg 83",
+    "City": "Rotterdam",
+    "Postcode": "3011 AB",
+    "Country": "Netherlands",
+    "Net Zero Target": "2035",
+    "LinkedIn URL": "https://www.linkedin.com/company/penrosestone",
+    "Enriched At": "2026-11-14T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 1965,
+      "description": "Penrose Stone operates quarries and supplies aggregates."
+    }
+  },
+  {
+    "Company Name": "Birchwood Plant Hire",
+    "Domain": "birchwoodplant.co.uk",
+    "Industry": "Equipment Rental Services",
+    "Employee Count": 554,
+    "Annual Revenue (GBP)": null,
+    "Street Address": "Unit 6 Brunswick Industrial Estate",
+    "City": "Preston",
+    "Postcode": "PR7 8XQ",
+    "Country": "UK",
+    "Net Zero Target": "2040",
+    "LinkedIn URL": "https://www.linkedin.com/company/birchwoodplanthire",
+    "Enriched At": "2026-09-01T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 1991,
+      "description": "Birchwood Plant Hire hires out excavators, dumpers and other construction plant."
+    }
+  },
+  {
+    "Company Name": "Quarrington Property",
+    "Domain": "quarringtonproperty.co.uk",
+    "Industry": "Real Estate",
+    "Employee Count": 1389,
+    "Annual Revenue (GBP)": 65570000,
+    "Street Address": "Unit 2 Riverside Industrial Estate",
+    "City": "Exeter",
+    "Postcode": "EX24 8ET",
+    "Country": "UK",
+    "Net Zero Target": "2030",
+    "LinkedIn URL": "https://www.linkedin.com/company/quarringtonproperty",
+    "Enriched At": "2026-11-15T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 1979,
+      "description": "Quarrington Property develops and manages commercial property."
+    }
+  },
+  {
+    "Company Name": "Wardle Property",
+    "Domain": "wardleproperty.co.uk",
+    "Industry": "Real Estate",
+    "Employee Count": 860,
+    "Annual Revenue (GBP)": 46276000,
+    "Street Address": "38 Station Road",
+    "City": "Manchester",
+    "Postcode": "M13 5BP",
+    "Country": "UK",
+    "Net Zero Target": null,
+    "LinkedIn URL": "https://www.linkedin.com/company/wardleproperty",
+    "Enriched At": "2026-11-10T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 1973,
+      "description": "Wardle Property develops and manages commercial property."
+    }
+  },
+  {
+    "Company Name": "Kingsmead Equipment Hire",
+    "Domain": "kingsmeadequipment.co.uk",
+    "Industry": "Equipment Rental Services",
+    "Employee Count": 210,
+    "Annual Revenue (GBP)": 6113000,
+    "Street Address": "107 Canal Street",
+    "City": "Sheffield",
+    "Postcode": "S1 3WA",
+    "Country": "UK",
+    "Net Zero Target": null,
+    "LinkedIn URL": "https://www.linkedin.com/company/kingsmeadequipmenthire",
+    "Enriched At": "2026-10-06T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 1972,
+      "description": "Kingsmead Equipment Hire hires out excavators, dumpers and other construction plant."
+    }
+  },
+  {
+    "Company Name": "Rowntree Construction",
+    "Domain": "rowntreeconstruction.ie",
+    "Industry": "Construction",
+    "Employee Count": 44,
+    "Annual Revenue (GBP)": 5639000,
+    "Street Address": "Unit 17 Meadowbank Business Park",
+    "City": "Limerick",
+    "Postcode": "V94 V8D9",
+    "Country": "Ireland",
+    "Net Zero Target": "2040",
+    "LinkedIn URL": "https://www.linkedin.com/company/rowntreeconstruction",
+    "Enriched At": "2026-09-16T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 2003,
+      "description": "Rowntree Construction is a building contractor for commercial and public sector projects."
+    }
+  },
+  {
+    "Company Name": "Rowntree Contractors",
+    "Domain": "rowntreecontractors.co.uk",
+    "Industry": "Construction",
+    "Employee Count": 478,
+    "Annual Revenue (GBP)": 3634000,
+    "Street Address": "Unit 29 Lakeside Industrial Estate",
+    "City": "Edinburgh",
+    "Postcode": "EH5 4JX",
+    "Country": "UK",
+    "Net Zero Target": null,
+    "LinkedIn URL": "https://www.linkedin.com/company/rowntreecontractors",
+    "Enriched At": "2026-09-02T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 1964,
+      "description": "Rowntree Contractors is a building contractor for commercial and public sector projects."
+    }
+  },
+  {
+    "Company Name": "Granite Building",
+    "Domain": "granitebuilding.de",
+    "Industry": "Construction",
+    "Employee Count": 683,
+    "Annual Revenue (GBP)": 135599000,
+    "Street Address": "Industriestraße 10",
+    "City": "Hamburg",
+    "Postcode": "20095",
+    "Country": "Germany",
+    "Net Zero Target": null,
+    "LinkedIn URL": "https://www.linkedin.com/company/granitebuilding",
+    "Enriched At": "2026-10-08T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 2007,
+      "description": "Granite Building is a building contractor for commercial and public sector projects."
+    }
+  },
+  {
+    "Company Name": "Mourne Stone",
+    "Domain": "mournestone.co.uk",
+    "Industry": "Mining",
+    "Employee Count": 1027,
+    "Annual Revenue (GBP)": 113806000,
+    "Street Address": "201 Station Road",
+    "City": "Exeter",
+    "Postcode": "EX15 5YD",
+    "Country": "UK",
+    "Net Zero Target": null,
+    "LinkedIn URL": "https://www.linkedin.com/company/mournestone",
+    "Enriched At": "2026-11-17T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 2014,
+      "description": "Mourne Stone operates quarries and supplies aggregates."
+    }
+  },
+  {
+    "Company Name": "Holloway Estates",
+    "Domain": "hollowayestates.co.uk",
+    "Industry": "Real Estate",
+    "Employee Count": 2585,
+    "Annual Revenue (GBP)": 124027000,
+    "Street Address": "28 Canal Street",
+    "City": "Leicester",
+    "Postcode": "LE14 9ZZ",
+    "Country": "UK",
+    "Net Zero Target": null,
+    "LinkedIn URL": "https://www.linkedin.com/company/hollowayestates",
+    "Enriched At": "2026-11-13T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 1973,
+      "description": "Holloway Estates develops and manages commercial property."
+    }
+  },
+  {
+    "Company Name": "Moorcroft Property",
+    "Domain": "moorcroftproperty.co.uk",
+    "Industry": "Real Estate",
+    "Employee Count": 1488,
+    "Annual Revenue (GBP)": 102700000,
+    "Street Address": "Unit 5 Riverside Industrial Estate",
+    "City": "Leeds",
+    "Postcode": "LS25 4WQ",
+    "Country": "UK",
+    "Net Zero Target": "2035",
+    "LinkedIn URL": "https://www.linkedin.com/company/moorcroftproperty",
+    "Enriched At": "2026-11-05T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 1979,
+      "description": "Moorcroft Property develops and manages commercial property."
+    }
+  },
+  {
+    "Company Name": "Liffey Contractors",
+    "Domain": "liffeycontractors.fr",
+    "Industry": "Construction",
+    "Employee Count": 312,
+    "Annual Revenue (GBP)": 101305000,
+    "Street Address": "87 rue du Port",
+    "City": "Lille",
+    "Postcode": "59000",
+    "Country": "France",
+    "Net Zero Target": null,
+    "LinkedIn URL": "https://www.linkedin.com/company/liffeycontractors",
+    "Enriched At": "2026-11-03T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 1993,
+      "description": "Liffey Contractors is a building contractor for commercial and public sector projects."
+    }
+  },
+  {
+    "Company Name": "Barlow Aggregates",
+    "Domain": "barlowaggregates.ie",
+    "Industry": "Mining",
+    "Employee Count": 76,
+    "Annual Revenue (GBP)": 6566000,
+    "Street Address": "Unit 23 Meadowbank Business Park",
+    "City": "Galway",
+    "Postcode": "H91 WEYT",
+    "Country": "Ireland",
+    "Net Zero Target": "2035",
+    "LinkedIn URL": "https://www.linkedin.com/company/barlowaggregates",
+    "Enriched At": "2026-09-18T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 2011,
+      "description": "Barlow Aggregates operates quarries and supplies aggregates."
+    }
+  },
+  {
+    "Company Name": "Netherby Infrastructure",
+    "Domain": "netherbyinfrastructure.co.uk",
+    "Industry": "Civil Engineering",
+    "Employee Count": 173,
+    "Annual Revenue (GBP)": 4557000,
+    "Street Address": "Unit 26 Brunswick Industrial Estate",
+    "City": "Derby",
+    "Postcode": "DE22 1BL",
+    "Country": "UK",
+    "Net Zero Target": null,
+    "LinkedIn URL": "https://www.linkedin.com/company/netherbyinfrastructure",
+    "Enriched At": "2026-11-01T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 2017,
+      "description": "Netherby Infrastructure delivers civil engineering and infrastructure works."
+    }
+  },
+  {
+    "Company Name": "Liffey Freight",
+    "Domain": "liffeyfreight.co.uk",
+    "Industry": "Transportation, Logistics, Supply Chain and Storage",
+    "Employee Count": 1715,
+    "Annual Revenue (GBP)": 34535000,
+    "Street Address": "219 Station Road",
+    "City": "Manchester",
+    "Postcode": "M12 6LW",
+    "Country": "UK",
+    "Net Zero Target": null,
+    "LinkedIn URL": "https://www.linkedin.com/company/liffeyfreight",
+    "Enriched At": "2026-10-17T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 1959,
+      "description": "Liffey Freight provides haulage and warehousing services."
+    }
+  },
+  {
+    "Company Name": "Glenmore Aggregates",
+    "Domain": "glenmoreaggregates.co.uk",
+    "Industry": "Mining",
+    "Employee Count": 15,
+    "Annual Revenue (GBP)": 7250000,
+    "Street Address": "Unit 26 Brunswick Industrial Estate",
+    "City": "Leicester",
+    "Postcode": "LE12 6NZ",
+    "Country": "UK",
+    "Net Zero Target": "2030",
+    "LinkedIn URL": "https://www.linkedin.com/company/glenmoreaggregates",
+    "Enriched At": "2026-09-14T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 1967,
+      "description": "Glenmore Aggregates operates quarries and supplies aggregates."
+    }
+  },
+  {
+    "Company Name": "Denholm Infrastructure",
+    "Domain": "denholminfrastructure.co.uk",
+    "Industry": "Civil Engineering",
+    "Employee Count": 38,
+    "Annual Revenue (GBP)": 6573000,
+    "Street Address": "Unit 29 Brunswick Industrial Estate",
+    "City": "Newcastle upon Tyne",
+    "Postcode": "NE7 2BY",
+    "Country": "UK",
+    "Net Zero Target": "2030",
+    "LinkedIn URL": "https://www.linkedin.com/company/denholminfrastructure",
+    "Enriched At": "2026-09-02T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 1999,
+      "description": "Denholm Infrastructure delivers civil engineering and infrastructure works."
+    }
+  },
+  {
+    "Company Name": "Brennan Stone",
+    "Domain": "brennanstone.co.uk",
+    "Industry": "Mining",
+    "Employee Count": 249,
+    "Annual Revenue (GBP)": 6533000,
+    "Street Address": "172 Quarry Road",
+    "City": "Birmingham",
+    "Postcode": "B5 9UD",
+    "Country": "UK",
+    "Net Zero Target": "2030",
+    "LinkedIn URL": "https://www.linkedin.com/company/brennanstone",
+    "Enriched At": "2026-09-03T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 1988,
+      "description": "Brennan Stone operates quarries and supplies aggregates."
+    }
+  },
+  {
+    "Company Name": "Birchwood Stone",
+    "Domain": "birchwoodstone.co.uk",
+    "Industry": "Mining",
+    "Employee Count": 428,
+    "Annual Revenue (GBP)": 6416000,
+    "Street Address": "27 Kingsway",
+    "City": "Leeds",
+    "Postcode": "LS6 1HP",
+    "Country": "UK",
+    "Net Zero Target": null,
+    "LinkedIn URL": "https://www.linkedin.com/company/birchwoodstone",
+    "Enriched At": "2026-11-09T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 1992,
+      "description": "Birchwood Stone operates quarries and supplies aggregates."
+    }
+  },
+  {
+    "Company Name": "Netherby Civil Engineering",
+    "Domain": "netherbycivil.co.uk",
+    "Industry": "Civil Engineering",
+    "Employee Count": 14,
+    "Annual Revenue (GBP)": 4506000,
+    "Street Address": "5 Quarry Road",
+    "City": "Sheffield",
+    "Postcode": "S5 2XB",
+    "Country": "UK",
+    "Net Zero Target": null,
+    "LinkedIn URL": "https://www.linkedin.com/company/netherbycivilengineering",
+    "Enriched At": "2026-11-11T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 1986,
+      "description": "Netherby Civil Engineering delivers civil engineering and infrastructure works."
+    }
+  },
+  {
+    "Company Name": "Alder Haulage",
+    "Domain": "alderhaulage.co.uk",
+    "Industry": "Transportation, Logistics, Supply Chain and Storage",
+    "Employee Count": 775,
+    "Annual Revenue (GBP)": null,
+    "Street Address": "Unit 25 Northfield Industrial Estate",
+    "City": "Glasgow",
+    "Postcode": "G4 5EW",
+    "Country": "UK",
+    "Net Zero Target": null,
+    "LinkedIn URL": "https://www.linkedin.com/company/alderhaulage",
+    "Enriched At": "2026-10-11T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 1993,
+      "description": "Alder Haulage provides haulage and warehousing services."
+    }
+  },
+  {
+    "Company Name": "PENROSE BUILDERS",
+    "Domain": "www.penrosebuilders.co.uk",
+    "Industry": "Construction",
+    "Employee Count": 1631,
+    "Annual Revenue (GBP)": 35031000,
+    "Street Address": "Unit 7 Northfield Industrial Estate",
+    "City": "Cardiff",
+    "Postcode": "CF21 7HW",
+    "Country": "UK",
+    "Net Zero Target": null,
+    "LinkedIn URL": "https://www.linkedin.com/company/penrosebuilders",
+    "Enriched At": "2026-11-11T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 1992,
+      "description": "Penrose Builders is a building contractor for commercial and public sector projects."
+    }
+  },
+  {
+    "Company Name": "Ingram Builders",
+    "Domain": "ingrambuilders.co.uk",
+    "Industry": "Construction",
+    "Employee Count": 611,
+    "Annual Revenue (GBP)": null,
+    "Street Address": "76 Riverside Way",
+    "City": "Birmingham",
+    "Postcode": "B20 4WJ",
+    "Country": "UK",
+    "Net Zero Target": null,
+    "LinkedIn URL": "https://www.linkedin.com/company/ingrambuilders",
+    "Enriched At": "2026-11-02T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 1956,
+      "description": "Ingram Builders is a building contractor for commercial and public sector projects."
+    }
+  },
+  {
+    "Company Name": "Halden Contractors",
+    "Domain": "haldencontractors.fr",
+    "Industry": "Construction",
+    "Employee Count": 2125,
+    "Annual Revenue (GBP)": 132627000,
+    "Street Address": "87 rue du Port",
+    "City": "Lyon",
+    "Postcode": "69003",
+    "Country": "France",
+    "Net Zero Target": null,
+    "LinkedIn URL": "https://www.linkedin.com/company/haldencontractors",
+    "Enriched At": "2026-11-09T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 2008,
+      "description": "Halden Contractors is a building contractor for commercial and public sector projects."
+    }
+  },
+  {
+    "Company Name": "Ironbridge Property",
+    "Domain": "ironbridgeproperty.co.uk",
+    "Industry": "Real Estate",
+    "Employee Count": 1386,
+    "Annual Revenue (GBP)": 118056000,
+    "Street Address": "178 Foundry Lane",
+    "City": "Bristol",
+    "Postcode": "BS16 8PZ",
+    "Country": "UK",
+    "Net Zero Target": "2040",
+    "LinkedIn URL": "https://www.linkedin.com/company/ironbridgeproperty",
+    "Enriched At": "2026-09-03T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 1961,
+      "description": "Ironbridge Property develops and manages commercial property."
+    }
+  },
+  {
+    "Company Name": "Halden Quarries",
+    "Domain": "haldenquarries.co.uk",
+    "Industry": "Mining",
+    "Employee Count": 41,
+    "Annual Revenue (GBP)": 6406000,
+    "Street Address": "177 Station Road",
+    "City": "Cardiff",
+    "Postcode": "CF1 3ZR",
+    "Country": "UK",
+    "Net Zero Target": "2030",
+    "LinkedIn URL": "https://www.linkedin.com/company/haldenquarries",
+    "Enriched At": "2026-11-05T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 2016,
+      "description": "Halden Quarries operates quarries and supplies aggregates."
+    }
+  },
+  {
+    "Company Name": "Upton Design Studio",
+    "Domain": "uptondesign.co.uk",
+    "Industry": "Architecture and Planning",
+    "Employee Count": 62,
+    "Annual Revenue (GBP)": 66853000,
+    "Street Address": "143 Wharf Street",
+    "City": "Peterborough",
+    "Postcode": "PE7 3SF",
+    "Country": "UK",
+    "Net Zero Target": null,
+    "LinkedIn URL": "https://www.linkedin.com/company/uptondesignstudio",
+    "Enriched At": "2026-10-01T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 1961,
+      "description": "Upton Design Studio is an architecture and planning practice."
+    }
+  },
+  {
+    "Company Name": "Jarrow Design Studio",
+    "Domain": "jarrowdesign.co.uk",
+    "Industry": "Architecture and Planning",
+    "Employee Count": 966,
+    "Annual Revenue (GBP)": 134510000,
+    "Street Address": "56 Wharf Street",
+    "City": "Sheffield",
+    "Postcode": "S9 1DF",
+    "Country": "UK",
+    "Net Zero Target": "2040",
+    "LinkedIn URL": "https://www.linkedin.com/company/jarrowdesignstudio",
+    "Enriched At": "2026-11-13T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 1977,
+      "description": "Jarrow Design Studio is an architecture and planning practice."
+    }
+  },
+  {
+    "Company Name": "Jarrow Property",
+    "Domain": "https://www.jarrowproperty.co.uk/",
+    "Industry": "Real Estate",
+    "Employee Count": 2936,
+    "Annual Revenue (GBP)": null,
+    "Street Address": "148 Foundry Lane",
+    "City": "Exeter",
+    "Postcode": "EX28 2YU",
+    "Country": "UK",
+    "Net Zero Target": null,
+    "LinkedIn URL": "https://www.linkedin.com/company/jarrowproperty",
+    "Enriched At": "2026-09-11T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 2006,
+      "description": "Jarrow Property develops and manages commercial property."
+    }
+  },
+  {
+    "Company Name": "Penrose Civil Engineering",
+    "Domain": "penrosecivil.co.uk",
+    "Industry": "Civil Engineering",
+    "Employee Count": 44,
+    "Annual Revenue (GBP)": 5662000,
+    "Street Address": "12 Station Road",
+    "City": "Preston",
+    "Postcode": "PR1 2SR",
+    "Country": "UK",
+    "Net Zero Target": "2030",
+    "LinkedIn URL": "https://www.linkedin.com/company/penrosecivilengineering",
+    "Enriched At": "2026-10-04T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 2000,
+      "description": "Penrose Civil Engineering delivers civil engineering and infrastructure works."
+    }
+  },
+  {
+    "Company Name": "Birchwood Tool & Plant Hire",
+    "Domain": "birchwoodtool.co.uk",
+    "Industry": "Equipment Rental Services",
+    "Employee Count": 2152,
+    "Annual Revenue (GBP)": 48391000,
+    "Street Address": "Unit 5 Northfield Industrial Estate",
+    "City": "Leicester",
+    "Postcode": "LE22 4FU",
+    "Country": "UK",
+    "Net Zero Target": "2030",
+    "LinkedIn URL": "https://www.linkedin.com/company/birchwoodtoolplanthire",
+    "Enriched At": "2026-10-12T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 2001,
+      "description": "Birchwood Tool & Plant Hire hires out excavators, dumpers and other construction plant."
+    }
+  },
+  {
+    "Company Name": "Thornbury Contractors",
+    "Domain": "thornburycontractors.co.uk",
+    "Industry": "Construction",
+    "Employee Count": 283,
+    "Annual Revenue (GBP)": 5862000,
+    "Street Address": "Unit 6 Meadowbank Industrial Estate",
+    "City": "Preston",
+    "Postcode": "PR24 5LB",
+    "Country": "UK",
+    "Net Zero Target": null,
+    "LinkedIn URL": "https://www.linkedin.com/company/thornburycontractors",
+    "Enriched At": "2026-10-14T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 2017,
+      "description": "Thornbury Contractors is a building contractor for commercial and public sector projects."
+    }
+  },
+  {
+    "Company Name": "Denholm Property",
+    "Domain": "denholmproperty.co.uk",
+    "Industry": "Real Estate",
+    "Employee Count": 681,
+    "Annual Revenue (GBP)": 25664000,
+    "Street Address": "Unit 9 Riverside Industrial Estate",
+    "City": "Cardiff",
+    "Postcode": "CF24 7ZZ",
+    "Country": "UK",
+    "Net Zero Target": null,
+    "LinkedIn URL": "https://www.linkedin.com/company/denholmproperty",
+    "Enriched At": "2026-11-12T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 1970,
+      "description": "Denholm Property develops and manages commercial property."
+    }
+  },
+  {
+    "Company Name": "Thornbury Civils",
+    "Domain": "thornburycivils.co.uk",
+    "Industry": "Civil Engineering",
+    "Employee Count": 2280,
+    "Annual Revenue (GBP)": 70286000,
+    "Street Address": "199 Mill Lane",
+    "City": "Exeter",
+    "Postcode": "EX23 5GW",
+    "Country": "UK",
+    "Net Zero Target": null,
+    "LinkedIn URL": "https://www.linkedin.com/company/thornburycivils",
+    "Enriched At": "2026-10-15T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 2010,
+      "description": "Thornbury Civils delivers civil engineering and infrastructure works."
+    }
+  },
+  {
+    "Company Name": "Kirkby Contractors",
+    "Domain": "kirkbycontractors.co.uk",
+    "Industry": "Construction",
+    "Employee Count": 45,
+    "Annual Revenue (GBP)": 7388000,
+    "Street Address": "Unit 17 Northfield Industrial Estate",
+    "City": "Leeds",
+    "Postcode": "LS19 6AY",
+    "Country": "UK",
+    "Net Zero Target": "2030",
+    "LinkedIn URL": "https://www.linkedin.com/company/kirkbycontractors",
+    "Enriched At": "2026-11-10T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 1965,
+      "description": "Kirkby Contractors is a building contractor for commercial and public sector projects."
+    }
+  },
+  {
+    "Company Name": "Carrick Builders",
+    "Domain": "carrickbuilders.ie",
+    "Industry": "Construction",
+    "Employee Count": 309,
+    "Annual Revenue (GBP)": null,
+    "Street Address": "Unit 12 Northfield Business Park",
+    "City": "Waterford",
+    "Postcode": "X91 VT8R",
+    "Country": "Ireland",
+    "Net Zero Target": "2040",
+    "LinkedIn URL": "https://www.linkedin.com/company/carrickbuilders",
+    "Enriched At": "2026-10-06T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 1995,
+      "description": "Carrick Builders is a building contractor for commercial and public sector projects."
+    }
+  },
+  {
+    "Company Name": "Thames Quarries",
+    "Domain": "thamesquarries.co.uk",
+    "Industry": "Mining",
+    "Employee Count": 23,
+    "Annual Revenue (GBP)": 6404000,
+    "Street Address": "160 Quarry Road",
+    "City": "Cardiff",
+    "Postcode": "CF7 6QX",
+    "Country": "UK",
+    "Net Zero Target": "2035",
+    "LinkedIn URL": "https://www.linkedin.com/company/thamesquarries",
+    "Enriched At": "2026-09-05T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 1999,
+      "description": "Thames Quarries operates quarries and supplies aggregates."
+    }
+  },
+  {
+    "Company Name": "Farley Aggregates",
+    "Domain": "farleyaggregates.co.uk",
+    "Industry": "Mining",
+    "Employee Count": 258,
+    "Annual Revenue (GBP)": 1648000,
+    "Street Address": "Unit 29 Westgate Industrial Estate",
+    "City": "Peterborough",
+    "Postcode": "PE14 7LU",
+    "Country": "UK",
+    "Net Zero Target": "2040",
+    "LinkedIn URL": "https://www.linkedin.com/company/farleyaggregates",
+    "Enriched At": "2026-09-16T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 2005,
+      "description": "Farley Aggregates operates quarries and supplies aggregates."
+    }
+  },
+  {
+    "Company Name": "Ironbridge Plant",
+    "Domain": "ironbridgeplant.co.uk",
+    "Industry": "Equipment Rental Services",
+    "Employee Count": 1604,
+    "Annual Revenue (GBP)": 160333000,
+    "Street Address": "51 Foundry Lane",
+    "City": "Cardiff",
+    "Postcode": "CF14 4UB",
+    "Country": "UK",
+    "Net Zero Target": null,
+    "LinkedIn URL": "https://www.linkedin.com/company/ironbridgeplant",
+    "Enriched At": "2026-09-09T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 2013,
+      "description": "Ironbridge Plant hires out excavators, dumpers and other construction plant."
+    }
+  },
+  {
+    "Company Name": "Fenwick Quarries",
+    "Domain": "fenwickquarries.co.uk",
+    "Industry": "Mining",
+    "Employee Count": 156,
+    "Annual Revenue (GBP)": 5969000,
+    "Street Address": "Unit 18 Lakeside Industrial Estate",
+    "City": "Glasgow",
+    "Postcode": "G19 6AN",
+    "Country": "UK",
+    "Net Zero Target": "2030",
+    "LinkedIn URL": "https://www.linkedin.com/company/fenwickquarries",
+    "Enriched At": "2026-09-02T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 1969,
+      "description": "Fenwick Quarries operates quarries and supplies aggregates."
+    }
+  },
+  {
+    "Company Name": "Northgate Design Studio",
+    "Domain": "northgatedesign.co.uk",
+    "Industry": "Architecture and Planning",
+    "Employee Count": 736,
+    "Annual Revenue (GBP)": 101896000,
+    "Street Address": "177 Quarry Road",
+    "City": "Birmingham",
+    "Postcode": "B9 1RU",
+    "Country": "UK",
+    "Net Zero Target": null,
+    "LinkedIn URL": "https://www.linkedin.com/company/northgatedesignstudio",
+    "Enriched At": "2026-11-17T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 1959,
+      "description": "Northgate Design Studio is an architecture and planning practice."
+    }
+  },
+  {
+    "Company Name": "Garside Plant",
+    "Domain": "garsideplant.co.uk",
+    "Industry": "Equipment Rental Services",
+    "Employee Count": 659,
+    "Annual Revenue (GBP)": null,
+    "Street Address": "Unit 18 Northfield Industrial Estate",
+    "City": "York",
+    "Postcode": "YO21 2TB",
+    "Country": "UK",
+    "Net Zero Target": "2035",
+    "LinkedIn URL": "https://www.linkedin.com/company/garsideplant",
+    "Enriched At": "2026-09-18T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 1961,
+      "description": "Garside Plant hires out excavators, dumpers and other construction plant."
+    }
+  },
+  {
+    "Company Name": "Wardle Systems",
+    "Domain": "wardlesystems.co.uk",
+    "Industry": "Software Development",
+    "Employee Count": null,
+    "Annual Revenue (GBP)": 93616000,
+    "Street Address": "133 Wharf Street",
+    "City": "Leeds",
+    "Postcode": "LS15 1RA",
+    "Country": "UK",
+    "Net Zero Target": "2040",
+    "LinkedIn URL": "https://www.linkedin.com/company/wardlesystems",
+    "Enriched At": "2026-10-18T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 1990,
+      "description": "Wardle Systems builds software for the built environment."
+    }
+  },
+  {
+    "Company Name": "Trent Minerals",
+    "Domain": "trentminerals.co.uk",
+    "Industry": "Mining",
+    "Employee Count": 2152,
+    "Annual Revenue (GBP)": 83376000,
+    "Street Address": "239 Wharf Street",
+    "City": "Bristol",
+    "Postcode": "BS8 5YQ",
+    "Country": "UK",
+    "Net Zero Target": "2030",
+    "LinkedIn URL": "https://www.linkedin.com/company/trentminerals",
+    "Enriched At": "2026-09-09T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 1961,
+      "description": "Trent Minerals operates quarries and supplies aggregates."
+    }
+  },
+  {
+    "Company Name": "Lomax Quarries",
+    "Domain": "lomaxquarries.ie",
+    "Industry": "Mining",
+    "Employee Count": 1546,
+    "Annual Revenue (GBP)": 26876000,
+    "Street Address": "Unit 19 Riverside Business Park",
+    "City": "Galway",
+    "Postcode": "H91 K0XK",
+    "Country": "Ireland",
+    "Net Zero Target": "2030",
+    "LinkedIn URL": "https://www.linkedin.com/company/lomaxquarries",
+    "Enriched At": "2026-11-05T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 1972,
+      "description": "Lomax Quarries operates quarries and supplies aggregates."
+    }
+  },
+  {
+    "Company Name": "Wyvern Design Studio",
+    "Domain": "wyverndesign.ie",
+    "Industry": "Architecture and Planning",
+    "Employee Count": 1017,
+    "Annual Revenue (GBP)": 18714000,
+    "Street Address": "Unit 15 Riverside Business Park",
+    "City": "Limerick",
+    "Postcode": "V94 YR19",
+    "Country": "Ireland",
+    "Net Zero Target": "2035",
+    "LinkedIn URL": "https://www.linkedin.com/company/wyverndesignstudio",
+    "Enriched At": "2026-11-06T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 1974,
+      "description": "Wyvern Design Studio is an architecture and planning practice."
+    }
+  },
+  {
+    "Company Name": "Thames Groundworks",
+    "Domain": "thamesgroundworks.co.uk",
+    "Industry": "Civil Engineering",
+    "Employee Count": 115,
+    "Annual Revenue (GBP)": null,
+    "Street Address": "52 Foundry Lane",
+    "City": "Birmingham",
+    "Postcode": "B2 9TL",
+    "Country": "UK",
+    "Net Zero Target": "2035",
+    "LinkedIn URL": "https://www.linkedin.com/company/thamesgroundworks",
+    "Enriched At": "2026-09-06T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 1968,
+      "description": "Thames Groundworks delivers civil engineering and infrastructure works."
+    }
+  },
+  {
+    "Company Name": "Blackrock Infrastructure",
+    "Domain": "blackrockinfrastructure.fr",
+    "Industry": "Civil Engineering",
+    "Employee Count": 2456,
+    "Annual Revenue (GBP)": null,
+    "Street Address": "21 rue du Port",
+    "City": "Lille",
+    "Postcode": "59000",
+    "Country": "France",
+    "Net Zero Target": null,
+    "LinkedIn URL": "https://www.linkedin.com/company/blackrockinfrastructure",
+    "Enriched At": "2026-09-14T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 1979,
+      "description": "Blackrock Infrastructure delivers civil engineering and infrastructure works."
+    }
+  },
+  {
+    "Company Name": "DUNMORE CONTRACTORS",
+    "Domain": "www.dunmorecontractors.co.uk",
+    "Industry": "Construction",
+    "Employee Count": 469,
+    "Annual Revenue (GBP)": null,
+    "Street Address": "Unit 25 Brunswick Industrial Estate",
+    "City": "Preston",
+    "Postcode": "PR12 6QB",
+    "Country": "UK",
+    "Net Zero Target": "2030",
+    "LinkedIn URL": "https://www.linkedin.com/company/dunmorecontractors",
+    "Enriched At": "2026-09-10T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 1966,
+      "description": "Dunmore Contractors is a building contractor for commercial and public sector projects."
+    }
+  },
+  {
+    "Company Name": "Moorcroft Infrastructure",
+    "Domain": "moorcroftinfrastructure.co.uk",
+    "Industry": "Civil Engineering",
+    "Employee Count": 731,
+    "Annual Revenue (GBP)": null,
+    "Street Address": "116 Station Road",
+    "City": "Derby",
+    "Postcode": "DE2 5WY",
+    "Country": "UK",
+    "Net Zero Target": "2040",
+    "LinkedIn URL": "https://www.linkedin.com/company/moorcroftinfrastructure",
+    "Enriched At": "2026-10-11T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 1967,
+      "description": "Moorcroft Infrastructure delivers civil engineering and infrastructure works."
+    }
+  },
+  {
+    "Company Name": "Langley Minerals",
+    "Domain": "langleyminerals.ie",
+    "Industry": "Mining",
+    "Employee Count": 403,
+    "Annual Revenue (GBP)": 5556000,
+    "Street Address": "Unit 10 Brunswick Business Park",
+    "City": "Waterford",
+    "Postcode": "X91 N967",
+    "Country": "Ireland",
+    "Net Zero Target": "2030",
+    "LinkedIn URL": "https://www.linkedin.com/company/langleyminerals",
+    "Enriched At": "2026-11-18T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 1990,
+      "description": "Langley Minerals operates quarries and supplies aggregates."
+    }
+  },
+  {
+    "Company Name": "Farley Civils",
+    "Domain": "farleycivils.co.uk",
+    "Industry": "Civil Engineering",
+    "Employee Count": 34,
+    "Annual Revenue (GBP)": 3369000,
+    "Street Address": "130 Foundry Lane",
+    "City": "Nottingham",
+    "Postcode": "NG1 5GD",
+    "Country": "UK",
+    "Net Zero Target": null,
+    "LinkedIn URL": "https://www.linkedin.com/company/farleycivils",
+    "Enriched At": "2026-09-13T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 1968,
+      "description": "Farley Civils delivers civil engineering and infrastructure works."
+    }
+  },
+  {
+    "Company Name": "NETHERBY GROUNDWORKS",
+    "Domain": "https://www.netherbygroundworks.co.uk/",
+    "Industry": "Civil Engineering",
+    "Employee Count": 810,
+    "Annual Revenue (GBP)": 89667000,
+    "Street Address": "Unit 8 Riverside Industrial Estate",
+    "City": "Leicester",
+    "Postcode": "LE13 2BU",
+    "Country": "UK",
+    "Net Zero Target": null,
+    "LinkedIn URL": "https://www.linkedin.com/company/netherbygroundworks",
+    "Enriched At": "2026-10-13T09:00:00Z",
+    "Company Enrichment": {
+      "founded": 2011,
+      "description": "Netherby Groundworks delivers civil engineering and infrastructure works."
+    }
+  }
+]

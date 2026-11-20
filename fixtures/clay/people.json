@@ -1,0 +1,2897 @@
+[
+  {
+    "Full Name": "Mei Okafor",
+    "First Name": "Mei",
+    "Last Name": "Okafor",
+    "Job Title": "Managing Director",
+    "Work Email": "mei.okafor@jarrowdesign.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/mei-okafor-3e25",
+    "Company Name": "Jarrow Design Studio",
+    "Company Domain": "jarrowdesign.co.uk",
+    "Person Enrichment": {
+      "seniority": "Director",
+      "department": "Finance",
+      "location": "Sheffield, UK"
+    }
+  },
+  {
+    "Full Name": "Alex Campbell",
+    "First Name": "Alex",
+    "Last Name": "Campbell",
+    "Job Title": "Sustainability Manager",
+    "Work Email": "alex.campbell@penrosecivil.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/alex-campbell-cda2",
+    "Company Name": "Penrose Civil Engineering",
+    "Company Domain": "penrosecivil.co.uk",
+    "Person Enrichment": {
+      "seniority": "Manager",
+      "department": "Sustainability",
+      "location": "Preston, UK"
+    }
+  },
+  {
+    "Full Name": "Niamh Owusu",
+    "First Name": "Niamh",
+    "Last Name": "Owusu",
+    "Job Title": "ESG Manager",
+    "Work Email": "niamh.owusu@carrickplant.ie",
+    "LinkedIn Profile": "https://www.linkedin.com/in/niamh-owusu-fd51",
+    "Company Name": "Carrick Plant",
+    "Company Domain": "carrickplant.ie",
+    "Person Enrichment": {
+      "seniority": "Manager",
+      "department": "Sustainability",
+      "location": "Galway, Ireland"
+    }
+  },
+  {
+    "Full Name": "Rhys Ross",
+    "First Name": "Rhys",
+    "Last Name": "Ross",
+    "Job Title": "Sustainability Manager",
+    "Work Email": "rhys.ross@lomaxquarries.ie",
+    "LinkedIn Profile": "https://www.linkedin.com/in/rhys-ross-2c8d",
+    "Company Name": "Lomax Quarries",
+    "Company Domain": "lomaxquarries.ie",
+    "Person Enrichment": {
+      "seniority": "Manager",
+      "department": "Sustainability",
+      "location": "Galway, Ireland"
+    }
+  },
+  {
+    "Full Name": "Joseph Phillips",
+    "First Name": "Joseph",
+    "Last Name": "Phillips",
+    "Job Title": "Chief Operating Officer",
+    "Work Email": "joseph.phillips@thornburycivils.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/joseph-phillips-3180",
+    "Company Name": "Thornbury Civils",
+    "Company Domain": "thornburycivils.co.uk",
+    "Person Enrichment": {
+      "seniority": "C-Suite",
+      "department": "Operations",
+      "location": "Exeter, UK"
+    }
+  },
+  {
+    "Full Name": "Rhys Fraser",
+    "First Name": "Rhys",
+    "Last Name": "Fraser",
+    "Job Title": "Head of Procurement",
+    "Work Email": "rhys.fraser@thornburycivils.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/rhys-fraser-8a5d",
+    "Company Name": "Thornbury Civils",
+    "Company Domain": "thornburycivils.co.uk",
+    "Person Enrichment": {
+      "seniority": "Head",
+      "department": "Procurement",
+      "location": "Exeter, UK"
+    }
+  },
+  {
+    "Full Name": "Marcus Lewis",
+    "First Name": "Marcus",
+    "Last Name": "Lewis",
+    "Job Title": "Finance Director",
+    "Work Email": "marcus.lewis@aldertool.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/marcus-lewis-9b65",
+    "Company Name": "Alder Tool & Plant Hire",
+    "Company Domain": "aldertool.co.uk",
+    "Person Enrichment": {
+      "seniority": "Director",
+      "department": "Finance",
+      "location": "Sheffield, UK"
+    }
+  },
+  {
+    "Full Name": "Erin Begum",
+    "First Name": "Erin",
+    "Last Name": "Begum",
+    "Job Title": "Operations Manager",
+    "Work Email": "erin.begum@quarringtontool.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/erin-begum-020e",
+    "Company Name": "Quarrington Tool & Plant Hire",
+    "Company Domain": "quarringtontool.co.uk",
+    "Person Enrichment": {
+      "seniority": "Manager",
+      "department": "Operations",
+      "location": "Reading, UK"
+    }
+  },
+  {
+    "Full Name": "Rhys Khan",
+    "First Name": "Rhys",
+    "Last Name": "Khan",
+    "Job Title": "Head of Sustainability",
+    "Work Email": "rhys.khan@thornburycivils.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/rhys-khan-fb22",
+    "Company Name": "Thornbury Civils",
+    "Company Domain": "thornburycivils.co.uk",
+    "Person Enrichment": {
+      "seniority": "Head",
+      "department": "Sustainability",
+      "location": "Exeter, UK"
+    }
+  },
+  {
+    "Full Name": "Freya Malik",
+    "First Name": "Freya",
+    "Last Name": "Malik",
+    "Job Title": "Head of Fleet",
+    "Work Email": "freya.malik@dovecotecivil.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/freya-malik-84f1",
+    "Company Name": "Dovecote Civil Engineering",
+    "Company Domain": "dovecotecivil.co.uk",
+    "Person Enrichment": {
+      "seniority": "Head",
+      "department": "Engineering",
+      "location": "Newcastle upon Tyne, UK"
+    }
+  },
+  {
+    "Full Name": "Rohan Moore",
+    "First Name": "Rohan",
+    "Last Name": "Moore",
+    "Job Title": "HR Manager",
+    "Work Email": "rohan.moore@kirkbycontractors.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/rohan-moore-b332",
+    "Company Name": "Kirkby Contractors",
+    "Company Domain": "kirkbycontractors.co.uk",
+    "Person Enrichment": {
+      "seniority": "Manager",
+      "department": "Finance",
+      "location": "Leeds, UK"
+    }
+  },
+  {
+    "Full Name": "Ellie Cooper",
+    "First Name": "Ellie",
+    "Last Name": "Cooper",
+    "Job Title": "Plant Director",
+    "Work Email": "ellie.cooper@thornburycontractors.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/ellie-cooper-a895",
+    "Company Name": "Thornbury Contractors",
+    "Company Domain": "thornburycontractors.co.uk",
+    "Person Enrichment": {
+      "seniority": "Director",
+      "department": "Engineering",
+      "location": "Preston, UK"
+    }
+  },
+  {
+    "Full Name": "Megan Osei",
+    "First Name": "Megan",
+    "Last Name": "Osei",
+    "Job Title": "Head of HR",
+    "Work Email": "megan.osei@lomaxaggregates.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/megan-osei-0445",
+    "Company Name": "Lomax Aggregates",
+    "Company Domain": "lomaxaggregates.co.uk",
+    "Person Enrichment": {
+      "seniority": "Head",
+      "department": "Finance",
+      "location": "Peterborough, UK"
+    }
+  },
+  {
+    "Full Name": "Laura Jenkins",
+    "First Name": "Laura",
+    "Last Name": "Jenkins",
+    "Job Title": "Office Administrator",
+    "Work Email": "laura.jenkins@yardleygroundworks.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/laura-jenkins-1f1c",
+    "Company Name": "Yardley Groundworks",
+    "Company Domain": "yardleygroundworks.co.uk",
+    "Person Enrichment": {
+      "seniority": "Senior",
+      "department": "Finance",
+      "location": "Reading, UK"
+    }
+  },
+  {
+    "Full Name": "Grace Healy",
+    "First Name": "Grace",
+    "Last Name": "Healy",
+    "Job Title": "Chief Operating Officer",
+    "Work Email": "grace.healy@ironbridgeplant.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/grace-healy-bd18",
+    "Company Name": "Ironbridge Plant",
+    "Company Domain": "ironbridgeplant.co.uk",
+    "Person Enrichment": {
+      "seniority": "C-Suite",
+      "department": "Operations",
+      "location": "Cardiff, UK"
+    }
+  },
+  {
+    "Full Name": "Aisha Hill",
+    "First Name": "Aisha",
+    "Last Name": "Hill",
+    "Job Title": "Operations Manager",
+    "Work Email": "aisha.hill@netherbybuilding.ie",
+    "LinkedIn Profile": "https://www.linkedin.com/in/aisha-hill-794d",
+    "Company Name": "Netherby Building",
+    "Company Domain": "netherbybuilding.ie",
+    "Person Enrichment": {
+      "seniority": "Manager",
+      "department": "Operations",
+      "location": "Waterford, Ireland"
+    }
+  },
+  {
+    "Full Name": "Katie Sutherland",
+    "First Name": "Katie",
+    "Last Name": "Sutherland",
+    "Job Title": "Head of Finance",
+    "Work Email": "katie.sutherland@fenwickbuilders.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/katie-sutherland-dfd3",
+    "Company Name": "Fenwick Builders",
+    "Company Domain": "fenwickbuilders.co.uk",
+    "Person Enrichment": {
+      "seniority": "Head",
+      "department": "Finance",
+      "location": "Birmingham, UK"
+    }
+  },
+  {
+    "Full Name": "Emma Jenkins",
+    "First Name": "Emma",
+    "Last Name": "Jenkins",
+    "Job Title": "Chief Financial Officer",
+    "Work Email": "emma.jenkins@denholmproperty.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/emma-jenkins-7687",
+    "Company Name": "Denholm Property",
+    "Company Domain": "denholmproperty.co.uk",
+    "Person Enrichment": {
+      "seniority": "C-Suite",
+      "department": "Finance",
+      "location": "Cardiff, UK"
+    }
+  },
+  {
+    "Full Name": "Emma Evans",
+    "First Name": "Emma",
+    "Last Name": "Evans",
+    "Job Title": "Chief Financial Officer",
+    "Work Email": "emma.evans@alderaggregates.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/emma-evans-7b0b",
+    "Company Name": "Alder Aggregates",
+    "Company Domain": "alderaggregates.co.uk",
+    "Person Enrichment": {
+      "seniority": "C-Suite",
+      "department": "Finance",
+      "location": "Newcastle upon Tyne, UK"
+    }
+  },
+  {
+    "Full Name": "Jade Baker",
+    "First Name": "Jade",
+    "Last Name": "Baker",
+    "Job Title": "Fleet Manager",
+    "Work Email": "jade.baker@thamesgroundworks.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/jade-baker-afe2",
+    "Company Name": "Thames Groundworks",
+    "Company Domain": "thamesgroundworks.co.uk",
+    "Person Enrichment": {
+      "seniority": "Manager",
+      "department": "Engineering",
+      "location": "Birmingham, UK"
+    }
+  },
+  {
+    "Full Name": "Martha Rossi",
+    "First Name": "Martha",
+    "Last Name": "Rossi",
+    "Job Title": "Head of Fleet",
+    "Work Email": "martha.rossi@haldencontractors.fr",
+    "LinkedIn Profile": "https://www.linkedin.com/in/martha-rossi-e732",
+    "Company Name": "Halden Contractors",
+    "Company Domain": "haldencontractors.fr",
+    "Person Enrichment": {
+      "seniority": "Head",
+      "department": "Engineering",
+      "location": "Lyon, France"
+    }
+  },
+  {
+    "Full Name": "Noah Murphy",
+    "First Name": "Noah",
+    "Last Name": "Murphy",
+    "Job Title": "Chief Executive Officer",
+    "Work Email": "noah.murphy@fenwickbuilders.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/noah-murphy-9323",
+    "Company Name": "Fenwick Builders",
+    "Company Domain": "fenwickbuilders.co.uk",
+    "Person Enrichment": {
+      "seniority": "C-Suite",
+      "department": "Finance",
+      "location": "Birmingham, UK"
+    }
+  },
+  {
+    "Full Name": "Yusuf Turner",
+    "First Name": "Yusuf",
+    "Last Name": "Turner",
+    "Job Title": "Marketing Manager",
+    "Work Email": "yusuf.turner@birchwoodcivil.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/yusuf-turner-cd69",
+    "Company Name": "Birchwood Civil Engineering",
+    "Company Domain": "birchwoodcivil.co.uk",
+    "Person Enrichment": {
+      "seniority": "Manager",
+      "department": "Finance",
+      "location": "Newcastle upon Tyne, UK"
+    }
+  },
+  {
+    "Full Name": "Priya Edwards",
+    "First Name": "Priya",
+    "Last Name": "Edwards",
+    "Job Title": "Procurement Director",
+    "Work Email": "priya.edwards@birchwoodplant.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/priya-edwards-3c9c",
+    "Company Name": "Birchwood Plant Hire",
+    "Company Domain": "birchwoodplant.co.uk",
+    "Person Enrichment": {
+      "seniority": "Director",
+      "department": "Procurement",
+      "location": "Preston, UK"
+    }
+  },
+  {
+    "Full Name": "Ruth Scott",
+    "First Name": "Ruth",
+    "Last Name": "Scott",
+    "Job Title": "Head of Finance",
+    "Work Email": "ruth.scott@thornburycivils.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/ruth-scott-f989",
+    "Company Name": "Thornbury Civils",
+    "Company Domain": "thornburycivils.co.uk",
+    "Person Enrichment": {
+      "seniority": "Head",
+      "department": "Finance",
+      "location": "Exeter, UK"
+    }
+  },
+  {
+    "Full Name": "Harry Price",
+    "First Name": "Harry",
+    "Last Name": "Price",
+    "Job Title": "Operations Director",
+    "Work Email": "harry.price@saltashgroundworks.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/harry-price-cd54",
+    "Company Name": "Saltash Groundworks",
+    "Company Domain": "saltashgroundworks.co.uk",
+    "Person Enrichment": {
+      "seniority": "Director",
+      "department": "Operations",
+      "location": "Peterborough, UK"
+    }
+  },
+  {
+    "Full Name": "Fatima Rossi",
+    "First Name": "Fatima",
+    "Last Name": "Rossi",
+    "Job Title": "Head of Operations",
+    "Work Email": "fatima.rossi@alderhaulage.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/fatima-rossi-473c",
+    "Company Name": "Alder Haulage",
+    "Company Domain": "alderhaulage.co.uk",
+    "Person Enrichment": {
+      "seniority": "Head",
+      "department": "Operations",
+      "location": "Glasgow, UK"
+    }
+  },
+  {
+    "Full Name": "Imogen Shah",
+    "First Name": "Imogen",
+    "Last Name": "Shah",
+    "Job Title": "Procurement Director",
+    "Work Email": "imogen.shah@granitebuilding.de",
+    "LinkedIn Profile": "https://www.linkedin.com/in/imogen-shah-1a69",
+    "Company Name": "Granite Building",
+    "Company Domain": "granitebuilding.de",
+    "Person Enrichment": {
+      "seniority": "Director",
+      "department": "Procurement",
+      "location": "Hamburg, Germany"
+    }
+  },
+  {
+    "Full Name": "Callum Healy",
+    "First Name": "Callum",
+    "Last Name": "Healy",
+    "Job Title": "Plant Manager",
+    "Work Email": "callum.healy@oakridgeconstruction.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/callum-healy-592c",
+    "Company Name": "Oakridge Construction",
+    "Company Domain": "oakridgeconstruction.co.uk",
+    "Person Enrichment": {
+      "seniority": "Manager",
+      "department": "Engineering",
+      "location": "Manchester, UK"
+    }
+  },
+  {
+    "Full Name": "Patrick Edwards",
+    "First Name": "Patrick",
+    "Last Name": "Edwards",
+    "Job Title": "Chief Operating Officer",
+    "Work Email": "patrick.edwards@ironbridgecivil.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/patrick-edwards-7327",
+    "Company Name": "Ironbridge Civil Engineering",
+    "Company Domain": "ironbridgecivil.co.uk",
+    "Person Enrichment": {
+      "seniority": "C-Suite",
+      "department": "Operations",
+      "location": "Edinburgh, UK"
+    }
+  },
+  {
+    "Full Name": "Rohan Osei",
+    "First Name": "Rohan",
+    "Last Name": "Osei",
+    "Job Title": "Estimator",
+    "Work Email": "rohan.osei@garsideplant.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/rohan-osei-0b0c",
+    "Company Name": "Garside Plant",
+    "Company Domain": "garsideplant.co.uk",
+    "Person Enrichment": {
+      "seniority": "Senior",
+      "department": "Finance",
+      "location": "York, UK"
+    }
+  },
+  {
+    "Full Name": "Jack Patel",
+    "First Name": "Jack",
+    "Last Name": "Patel",
+    "Job Title": "Site Manager",
+    "Work Email": "jack.patel@kirkbycontractors.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/jack-patel-659e",
+    "Company Name": "Kirkby Contractors",
+    "Company Domain": "kirkbycontractors.co.uk",
+    "Person Enrichment": {
+      "seniority": "Manager",
+      "department": "Finance",
+      "location": "Leeds, UK"
+    }
+  },
+  {
+    "Full Name": "Arjun Healy",
+    "First Name": "Arjun",
+    "Last Name": "Healy",
+    "Job Title": "ESG Manager",
+    "Work Email": "arjun.healy@fenwickquarries.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/arjun-healy-7864",
+    "Company Name": "Fenwick Quarries",
+    "Company Domain": "fenwickquarries.co.uk",
+    "Person Enrichment": {
+      "seniority": "Manager",
+      "department": "Sustainability",
+      "location": "Glasgow, UK"
+    }
+  },
+  {
+    "Full Name": "Rohan Lewis",
+    "First Name": "Rohan",
+    "Last Name": "Lewis",
+    "Job Title": "Quantity Surveyor",
+    "Work Email": "rohan.lewis@jarrowcivil.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/rohan-lewis-8c19",
+    "Company Name": "Jarrow Civil Engineering",
+    "Company Domain": "jarrowcivil.co.uk",
+    "Person Enrichment": {
+      "seniority": "Senior",
+      "department": "Finance",
+      "location": "Bristol, UK"
+    }
+  },
+  {
+    "Full Name": "Sinead Wright",
+    "First Name": "Sinead",
+    "Last Name": "Wright",
+    "Job Title": "Purchasing Manager",
+    "Work Email": "sinead.wright@elmhurstcivil.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/sinead-wright-b27a",
+    "Company Name": "Elmhurst Civil Engineering",
+    "Company Domain": "elmhurstcivil.co.uk",
+    "Person Enrichment": {
+      "seniority": "Manager",
+      "department": "Procurement",
+      "location": "York, UK"
+    }
+  },
+  {
+    "Full Name": "Imogen Sutherland",
+    "First Name": "Imogen",
+    "Last Name": "Sutherland",
+    "Job Title": "Plant Director",
+    "Work Email": "imogen.sutherland@rowntreecontractors.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/imogen-sutherland-21d7",
+    "Company Name": "Rowntree Contractors",
+    "Company Domain": "rowntreecontractors.co.uk",
+    "Person Enrichment": {
+      "seniority": "Director",
+      "department": "Engineering",
+      "location": "Edinburgh, UK"
+    }
+  },
+  {
+    "Full Name": "Ben Nolan",
+    "First Name": "Ben",
+    "Last Name": "Nolan",
+    "Job Title": "Sustainability Director",
+    "Work Email": "ben.nolan@penninebuilding.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/ben-nolan-ebdb",
+    "Company Name": "Pennine Building",
+    "Company Domain": "penninebuilding.co.uk",
+    "Person Enrichment": {
+      "seniority": "Director",
+      "department": "Sustainability",
+      "location": "Birmingham, UK"
+    }
+  },
+  {
+    "Full Name": "Fatima Burke",
+    "First Name": "Fatima",
+    "Last Name": "Burke",
+    "Job Title": "Procurement Director",
+    "Work Email": "fatima.burke@ironbridgeplant.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/fatima-burke-5e80",
+    "Company Name": "Ironbridge Plant",
+    "Company Domain": "ironbridgeplant.co.uk",
+    "Person Enrichment": {
+      "seniority": "Director",
+      "department": "Procurement",
+      "location": "Cardiff, UK"
+    }
+  },
+  {
+    "Full Name": "Callum Novak",
+    "First Name": "Callum",
+    "Last Name": "Novak",
+    "Job Title": "Procurement Manager",
+    "Work Email": "callum.novak@rowntreeconstruction.ie",
+    "LinkedIn Profile": "https://www.linkedin.com/in/callum-novak-8713",
+    "Company Name": "Rowntree Construction",
+    "Company Domain": "rowntreeconstruction.ie",
+    "Person Enrichment": {
+      "seniority": "Manager",
+      "department": "Procurement",
+      "location": "Limerick, Ireland"
+    }
+  },
+  {
+    "Full Name": "Holly O'Brien",
+    "First Name": "Holly",
+    "Last Name": "O'Brien",
+    "Job Title": "HR Manager",
+    "Work Email": "holly.obrien@alderaggregates.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/holly-obrien-5d1e",
+    "Company Name": "Alder Aggregates",
+    "Company Domain": "alderaggregates.co.uk",
+    "Person Enrichment": {
+      "seniority": "Manager",
+      "department": "Finance",
+      "location": "Newcastle upon Tyne, UK"
+    }
+  },
+  {
+    "Full Name": "Lewis Novak",
+    "First Name": "Lewis",
+    "Last Name": "Novak",
+    "Job Title": "Procurement Director",
+    "Work Email": "lewis.novak@barlowaggregates.ie",
+    "LinkedIn Profile": "https://www.linkedin.com/in/lewis-novak-d143",
+    "Company Name": "Barlow Aggregates",
+    "Company Domain": "barlowaggregates.ie",
+    "Person Enrichment": {
+      "seniority": "Director",
+      "department": "Procurement",
+      "location": "Galway, Ireland"
+    }
+  },
+  {
+    "Full Name": "Jack Shah",
+    "First Name": "Jack",
+    "Last Name": "Shah",
+    "Job Title": "Head of Procurement",
+    "Work Email": "jack.shah@ingrambuilders.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/jack-shah-dae7",
+    "Company Name": "Ingram Builders",
+    "Company Domain": "ingrambuilders.co.uk",
+    "Person Enrichment": {
+      "seniority": "Head",
+      "department": "Procurement",
+      "location": "Birmingham, UK"
+    }
+  },
+  {
+    "Full Name": "Jade Novak",
+    "First Name": "Jade",
+    "Last Name": "Novak",
+    "Job Title": "Managing Director",
+    "Work Email": "jade.novak@quarringtontool.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/jade-novak-b1b2",
+    "Company Name": "Quarrington Tool & Plant Hire",
+    "Company Domain": "quarringtontool.co.uk",
+    "Person Enrichment": {
+      "seniority": "Director",
+      "department": "Finance",
+      "location": "Reading, UK"
+    }
+  },
+  {
+    "Full Name": "Aoife Grant",
+    "First Name": "Aoife",
+    "Last Name": "Grant",
+    "Job Title": "Head of Operations",
+    "Work Email": "aoife.grant@farleyaggregates.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/aoife-grant-77ec",
+    "Company Name": "Farley Aggregates",
+    "Company Domain": "farleyaggregates.co.uk",
+    "Person Enrichment": {
+      "seniority": "Head",
+      "department": "Operations",
+      "location": "Peterborough, UK"
+    }
+  },
+  {
+    "Full Name": "Laura Grant",
+    "First Name": "Laura",
+    "Last Name": "Grant",
+    "Job Title": "Purchasing Manager",
+    "Work Email": "laura.grant@quarringtonproperty.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/laura-grant-9f93",
+    "Company Name": "Quarrington Property",
+    "Company Domain": "quarringtonproperty.co.uk",
+    "Person Enrichment": {
+      "seniority": "Manager",
+      "department": "Procurement",
+      "location": "Exeter, UK"
+    }
+  },
+  {
+    "Full Name": "Bethan Campbell",
+    "First Name": "Bethan",
+    "Last Name": "Campbell",
+    "Job Title": "Head of Operations",
+    "Work Email": "bethan.campbell@carrickplant.ie",
+    "LinkedIn Profile": "https://www.linkedin.com/in/bethan-campbell-b0af",
+    "Company Name": "Carrick Plant",
+    "Company Domain": "carrickplant.ie",
+    "Person Enrichment": {
+      "seniority": "Head",
+      "department": "Operations",
+      "location": "Galway, Ireland"
+    }
+  },
+  {
+    "Full Name": "Rhys Daly",
+    "First Name": "Rhys",
+    "Last Name": "Daly",
+    "Job Title": "Head of Sustainability",
+    "Work Email": "rhys.daly@redmireaggregates.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/rhys-daly-d649",
+    "Company Name": "Redmire Aggregates",
+    "Company Domain": "redmireaggregates.co.uk",
+    "Person Enrichment": {
+      "seniority": "Head",
+      "department": "Sustainability",
+      "location": "Birmingham, UK"
+    }
+  },
+  {
+    "Full Name": "Femi Okafor",
+    "First Name": "Femi",
+    "Last Name": "Okafor",
+    "Job Title": "Managing Director",
+    "Work Email": "femi.okafor@penninebuilding.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/femi-okafor-9b9b",
+    "Company Name": "Pennine Building",
+    "Company Domain": "penninebuilding.co.uk",
+    "Person Enrichment": {
+      "seniority": "Director",
+      "department": "Finance",
+      "location": "Birmingham, UK"
+    }
+  },
+  {
+    "Full Name": "Declan Ali",
+    "First Name": "Declan",
+    "Last Name": "Ali",
+    "Job Title": "Head of HR",
+    "Work Email": "declan.ali@kirkbycontractors.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/declan-ali-8bd2",
+    "Company Name": "Kirkby Contractors",
+    "Company Domain": "kirkbycontractors.co.uk",
+    "Person Enrichment": {
+      "seniority": "Head",
+      "department": "Finance",
+      "location": "Leeds, UK"
+    }
+  },
+  {
+    "Full Name": "Imogen Iqbal",
+    "First Name": "Imogen",
+    "Last Name": "Iqbal",
+    "Job Title": "Procurement Director",
+    "Work Email": "imogen.iqbal@stantonminerals.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/imogen-iqbal-1d7c",
+    "Company Name": "Stanton Minerals",
+    "Company Domain": "stantonminerals.co.uk",
+    "Person Enrichment": {
+      "seniority": "Director",
+      "department": "Procurement",
+      "location": "Sheffield, UK"
+    }
+  },
+  {
+    "Full Name": "Callum Khan",
+    "First Name": "Callum",
+    "Last Name": "Khan",
+    "Job Title": "Head of Fleet",
+    "Work Email": "callum.khan@ingrambuilders.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/callum-khan-be61",
+    "Company Name": "Ingram Builders",
+    "Company Domain": "ingrambuilders.co.uk",
+    "Person Enrichment": {
+      "seniority": "Head",
+      "department": "Engineering",
+      "location": "Birmingham, UK"
+    }
+  },
+  {
+    "Full Name": "Aisha Price",
+    "First Name": "Aisha",
+    "Last Name": "Price",
+    "Job Title": "Chief Executive Officer",
+    "Work Email": "aisha.price@dovecotecivil.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/aisha-price-b290",
+    "Company Name": "Dovecote Civil Engineering",
+    "Company Domain": "dovecotecivil.co.uk",
+    "Person Enrichment": {
+      "seniority": "C-Suite",
+      "department": "Finance",
+      "location": "Newcastle upon Tyne, UK"
+    }
+  },
+  {
+    "Full Name": "Aisha Wright",
+    "First Name": "Aisha",
+    "Last Name": "Wright",
+    "Job Title": "Head of Finance",
+    "Work Email": "aisha.wright@alderaggregates.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/aisha-wright-e2a8",
+    "Company Name": "Alder Aggregates",
+    "Company Domain": "alderaggregates.co.uk",
+    "Person Enrichment": {
+      "seniority": "Head",
+      "department": "Finance",
+      "location": "Newcastle upon Tyne, UK"
+    }
+  },
+  {
+    "Full Name": "Ciaran Daly",
+    "First Name": "Ciaran",
+    "Last Name": "Daly",
+    "Job Title": "Quantity Surveyor",
+    "Work Email": "ciaran.daly@thornburycontractors.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/ciaran-daly-ef26",
+    "Company Name": "Thornbury Contractors",
+    "Company Domain": "thornburycontractors.co.uk",
+    "Person Enrichment": {
+      "seniority": "Senior",
+      "department": "Finance",
+      "location": "Preston, UK"
+    }
+  },
+  {
+    "Full Name": "Callum Watson",
+    "First Name": "Callum",
+    "Last Name": "Watson",
+    "Job Title": "Head of Fleet",
+    "Work Email": "callum.watson@penrosecivil.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/callum-watson-48c4",
+    "Company Name": "Penrose Civil Engineering",
+    "Company Domain": "penrosecivil.co.uk",
+    "Person Enrichment": {
+      "seniority": "Head",
+      "department": "Engineering",
+      "location": "Preston, UK"
+    }
+  },
+  {
+    "Full Name": "Imogen Lynch",
+    "First Name": "Imogen",
+    "Last Name": "Lynch",
+    "Job Title": "Commercial Director",
+    "Work Email": "imogen.lynch@lomaxquarries.ie",
+    "LinkedIn Profile": "https://www.linkedin.com/in/imogen-lynch-7883",
+    "Company Name": "Lomax Quarries",
+    "Company Domain": "lomaxquarries.ie",
+    "Person Enrichment": {
+      "seniority": "Director",
+      "department": "Finance",
+      "location": "Galway, Ireland"
+    }
+  },
+  {
+    "Full Name": "Samuel Hughes",
+    "First Name": "Samuel",
+    "Last Name": "Hughes",
+    "Job Title": "Site Manager",
+    "Work Email": "samuel.hughes@saltashgroundworks.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/samuel-hughes-6240",
+    "Company Name": "Saltash Groundworks",
+    "Company Domain": "saltashgroundworks.co.uk",
+    "Person Enrichment": {
+      "seniority": "Manager",
+      "department": "Finance",
+      "location": "Peterborough, UK"
+    }
+  },
+  {
+    "Full Name": "Mei Nowak",
+    "First Name": "Mei",
+    "Last Name": "Nowak",
+    "Job Title": "Head of Procurement",
+    "Work Email": "mei.nowak@wardleproperty.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/mei-nowak-5d5a",
+    "Company Name": "Wardle Property",
+    "Company Domain": "wardleproperty.co.uk",
+    "Person Enrichment": {
+      "seniority": "Head",
+      "department": "Procurement",
+      "location": "Manchester, UK"
+    }
+  },
+  {
+    "Full Name": "Aoife Kennedy",
+    "First Name": "Aoife",
+    "Last Name": "Kennedy",
+    "Job Title": "Plant Director",
+    "Work Email": "aoife.kennedy@netherbygroundworks.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/aoife-kennedy-8897",
+    "Company Name": "Netherby Groundworks",
+    "Company Domain": "netherbygroundworks.co.uk",
+    "Person Enrichment": {
+      "seniority": "Director",
+      "department": "Engineering",
+      "location": "Leicester, UK"
+    }
+  },
+  {
+    "Full Name": "Owen Singh",
+    "First Name": "Owen",
+    "Last Name": "Singh",
+    "Job Title": "Chief Executive Officer",
+    "Work Email": "owen.singh@trentminerals.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/owen-singh-5ac7",
+    "Company Name": "Trent Minerals",
+    "Company Domain": "trentminerals.co.uk",
+    "Person Enrichment": {
+      "seniority": "C-Suite",
+      "department": "Finance",
+      "location": "Bristol, UK"
+    }
+  },
+  {
+    "Full Name": "Jade Mensah",
+    "First Name": "Jade",
+    "Last Name": "Mensah",
+    "Job Title": "Quantity Surveyor",
+    "Work Email": "jade.mensah@liffeycivil.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/jade-mensah-2d0d",
+    "Company Name": "Liffey Civil Engineering",
+    "Company Domain": "liffeycivil.co.uk",
+    "Person Enrichment": {
+      "seniority": "Senior",
+      "department": "Finance",
+      "location": "Edinburgh, UK"
+    }
+  },
+  {
+    "Full Name": "Anya Quinn",
+    "First Name": "Anya",
+    "Last Name": "Quinn",
+    "Job Title": "Plant Director",
+    "Work Email": "anya.quinn@netherbybuilding.ie",
+    "LinkedIn Profile": "https://www.linkedin.com/in/anya-quinn-edaf",
+    "Company Name": "Netherby Building",
+    "Company Domain": "netherbybuilding.ie",
+    "Person Enrichment": {
+      "seniority": "Director",
+      "department": "Engineering",
+      "location": "Waterford, Ireland"
+    }
+  },
+  {
+    "Full Name": "Owen Green",
+    "First Name": "Owen",
+    "Last Name": "Green",
+    "Job Title": "Operations Manager",
+    "Work Email": "owen.green@moorcroftproperty.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/owen-green-69e5",
+    "Company Name": "Moorcroft Property",
+    "Company Domain": "moorcroftproperty.co.uk",
+    "Person Enrichment": {
+      "seniority": "Manager",
+      "department": "Operations",
+      "location": "Leeds, UK"
+    }
+  },
+  {
+    "Full Name": "Rhys Malik",
+    "First Name": "Rhys",
+    "Last Name": "Malik",
+    "Job Title": "Head of Plant",
+    "Work Email": "rhys.malik@birchwoodtool.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/rhys-malik-da76",
+    "Company Name": "Birchwood Tool & Plant Hire",
+    "Company Domain": "birchwoodtool.co.uk",
+    "Person Enrichment": {
+      "seniority": "Head",
+      "department": "Engineering",
+      "location": "Leicester, UK"
+    }
+  },
+  {
+    "Full Name": "Bethan Malik",
+    "First Name": "Bethan",
+    "Last Name": "Malik",
+    "Job Title": "Sustainability Director",
+    "Work Email": "bethan.malik@birchwoodtool.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/bethan-malik-3b1c",
+    "Company Name": "Birchwood Tool & Plant Hire",
+    "Company Domain": "birchwoodtool.co.uk",
+    "Person Enrichment": {
+      "seniority": "Director",
+      "department": "Sustainability",
+      "location": "Leicester, UK"
+    }
+  },
+  {
+    "Full Name": "Dev Burke",
+    "First Name": "Dev",
+    "Last Name": "Burke",
+    "Job Title": "Sales Director",
+    "Work Email": "dev.burke@aldertool.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/dev-burke-ab32",
+    "Company Name": "Alder Tool & Plant Hire",
+    "Company Domain": "aldertool.co.uk",
+    "Person Enrichment": {
+      "seniority": "Director",
+      "department": "Finance",
+      "location": "Sheffield, UK"
+    }
+  },
+  {
+    "Full Name": "Leah Mensah",
+    "First Name": "Leah",
+    "Last Name": "Mensah",
+    "Job Title": "Plant Director",
+    "Work Email": "leah.mensah@thamesestates.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/leah-mensah-a25e",
+    "Company Name": "Thames Estates",
+    "Company Domain": "thamesestates.co.uk",
+    "Person Enrichment": {
+      "seniority": "Director",
+      "department": "Engineering",
+      "location": "Newcastle upon Tyne, UK"
+    }
+  },
+  {
+    "Full Name": "Tariq McCarthy",
+    "First Name": "Tariq",
+    "Last Name": "McCarthy",
+    "Job Title": "Head of Sustainability",
+    "Work Email": "tariq.mccarthy@barlowaggregates.ie",
+    "LinkedIn Profile": "https://www.linkedin.com/in/tariq-mccarthy-e2b3",
+    "Company Name": "Barlow Aggregates",
+    "Company Domain": "barlowaggregates.ie",
+    "Person Enrichment": {
+      "seniority": "Head",
+      "department": "Sustainability",
+      "location": "Galway, Ireland"
+    }
+  },
+  {
+    "Full Name": "Kieran Patel",
+    "First Name": "Kieran",
+    "Last Name": "Patel",
+    "Job Title": "Head of Procurement",
+    "Work Email": "kieran.patel@birchwoodstone.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/kieran-patel-c4b8",
+    "Company Name": "Birchwood Stone",
+    "Company Domain": "birchwoodstone.co.uk",
+    "Person Enrichment": {
+      "seniority": "Head",
+      "department": "Procurement",
+      "location": "Leeds, UK"
+    }
+  },
+  {
+    "Full Name": "Owen O'Brien",
+    "First Name": "Owen",
+    "Last Name": "O'Brien",
+    "Job Title": "Purchasing Manager",
+    "Work Email": "owen.obrien@birchwoodcivil.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/owen-obrien-a059",
+    "Company Name": "Birchwood Civil Engineering",
+    "Company Domain": "birchwoodcivil.co.uk",
+    "Person Enrichment": {
+      "seniority": "Manager",
+      "department": "Procurement",
+      "location": "Newcastle upon Tyne, UK"
+    }
+  },
+  {
+    "Full Name": "Callum Taylor",
+    "First Name": "Callum",
+    "Last Name": "Taylor",
+    "Job Title": "Managing Director",
+    "Work Email": "callum.taylor@dunmorecontractors.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/callum-taylor-d254",
+    "Company Name": "Dunmore Contractors",
+    "Company Domain": "dunmorecontractors.co.uk",
+    "Person Enrichment": {
+      "seniority": "Director",
+      "department": "Finance",
+      "location": "Preston, UK"
+    }
+  },
+  {
+    "Full Name": "Olivia Bennett",
+    "First Name": "Olivia",
+    "Last Name": "Bennett",
+    "Job Title": "HR Manager",
+    "Work Email": "olivia.bennett@penrosebuilders.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/olivia-bennett-9fd8",
+    "Company Name": "Penrose Builders",
+    "Company Domain": "penrosebuilders.co.uk",
+    "Person Enrichment": {
+      "seniority": "Manager",
+      "department": "Finance",
+      "location": "Cardiff, UK"
+    }
+  },
+  {
+    "Full Name": "Nadia Hill",
+    "First Name": "Nadia",
+    "Last Name": "Hill",
+    "Job Title": "Sustainability Director",
+    "Work Email": "nadia.hill@langleysoftware.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/nadia-hill-a40d",
+    "Company Name": "Langley Software",
+    "Company Domain": "langleysoftware.co.uk",
+    "Person Enrichment": {
+      "seniority": "Director",
+      "department": "Sustainability",
+      "location": "Glasgow, UK"
+    }
+  },
+  {
+    "Full Name": "Erin Baker",
+    "First Name": "Erin",
+    "Last Name": "Baker",
+    "Job Title": "Operations Director",
+    "Work Email": "erin.baker@oakridgeconstruction.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/erin-baker-9ed5",
+    "Company Name": "Oakridge Construction",
+    "Company Domain": "oakridgeconstruction.co.uk",
+    "Person Enrichment": {
+      "seniority": "Director",
+      "department": "Operations",
+      "location": "Manchester, UK"
+    }
+  },
+  {
+    "Full Name": "Sinead Morgan",
+    "First Name": "Sinead",
+    "Last Name": "Morgan",
+    "Job Title": "Head of Plant",
+    "Work Email": "sinead.morgan@quarringtontool.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/sinead-morgan-2ef0",
+    "Company Name": "Quarrington Tool & Plant Hire",
+    "Company Domain": "quarringtontool.co.uk",
+    "Person Enrichment": {
+      "seniority": "Head",
+      "department": "Engineering",
+      "location": "Reading, UK"
+    }
+  },
+  {
+    "Full Name": "Tariq Taylor",
+    "First Name": "Tariq",
+    "Last Name": "Taylor",
+    "Job Title": "Managing Director",
+    "Work Email": "tariq.taylor@thamesquarries.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/tariq-taylor-e1d8",
+    "Company Name": "Thames Quarries",
+    "Company Domain": "thamesquarries.co.uk",
+    "Person Enrichment": {
+      "seniority": "Director",
+      "department": "Finance",
+      "location": "Cardiff, UK"
+    }
+  },
+  {
+    "Full Name": "Leah Malik",
+    "First Name": "Leah",
+    "Last Name": "Malik",
+    "Job Title": "Quantity Surveyor",
+    "Work Email": "leah.malik@thamesestates.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/leah-malik-e217",
+    "Company Name": "Thames Estates",
+    "Company Domain": "thamesestates.co.uk",
+    "Person Enrichment": {
+      "seniority": "Senior",
+      "department": "Finance",
+      "location": "Newcastle upon Tyne, UK"
+    }
+  },
+  {
+    "Full Name": "Mei Novak",
+    "First Name": "Mei",
+    "Last Name": "Novak",
+    "Job Title": "Procurement Manager",
+    "Work Email": "mei.novak@trentminerals.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/mei-novak-ce11",
+    "Company Name": "Trent Minerals",
+    "Company Domain": "trentminerals.co.uk",
+    "Person Enrichment": {
+      "seniority": "Manager",
+      "department": "Procurement",
+      "location": "Bristol, UK"
+    }
+  },
+  {
+    "Full Name": "Aoife Ward",
+    "First Name": "Aoife",
+    "Last Name": "Ward",
+    "Job Title": "Managing Director",
+    "Work Email": "aoife.ward@wyverndesign.ie",
+    "LinkedIn Profile": "https://www.linkedin.com/in/aoife-ward-1768",
+    "Company Name": "Wyvern Design Studio",
+    "Company Domain": "wyverndesign.ie",
+    "Person Enrichment": {
+      "seniority": "Director",
+      "department": "Finance",
+      "location": "Limerick, Ireland"
+    }
+  },
+  {
+    "Full Name": "Femi Lynch",
+    "First Name": "Femi",
+    "Last Name": "Lynch",
+    "Job Title": "Office Administrator",
+    "Work Email": "femi.lynch@otteryarchitects.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/femi-lynch-890f",
+    "Company Name": "Ottery Architects",
+    "Company Domain": "otteryarchitects.co.uk",
+    "Person Enrichment": {
+      "seniority": "Senior",
+      "department": "Finance",
+      "location": "Preston, UK"
+    }
+  },
+  {
+    "Full Name": "Isla Evans",
+    "First Name": "Isla",
+    "Last Name": "Evans",
+    "Job Title": "Chief Financial Officer",
+    "Work Email": "isla.evans@dunmorecontractors.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/isla-evans-8385",
+    "Company Name": "Dunmore Contractors",
+    "Company Domain": "dunmorecontractors.co.uk",
+    "Person Enrichment": {
+      "seniority": "C-Suite",
+      "department": "Finance",
+      "location": "Preston, UK"
+    }
+  },
+  {
+    "Full Name": "Holly Rahman",
+    "First Name": "Holly",
+    "Last Name": "Rahman",
+    "Job Title": "Plant Director",
+    "Work Email": "holly.rahman@lomaxaggregates.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/holly-rahman-f23a",
+    "Company Name": "Lomax Aggregates",
+    "Company Domain": "lomaxaggregates.co.uk",
+    "Person Enrichment": {
+      "seniority": "Director",
+      "department": "Engineering",
+      "location": "Peterborough, UK"
+    }
+  },
+  {
+    "Full Name": "Rohan Dunne",
+    "First Name": "Rohan",
+    "Last Name": "Dunne",
+    "Job Title": "Estimator",
+    "Work Email": "rohan.dunne@ormondtool.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/rohan-dunne-879e",
+    "Company Name": "Ormond Tool & Plant Hire",
+    "Company Domain": "ormondtool.co.uk",
+    "Person Enrichment": {
+      "seniority": "Senior",
+      "department": "Finance",
+      "location": "Nottingham, UK"
+    }
+  },
+  {
+    "Full Name": "James Byrne",
+    "First Name": "James",
+    "Last Name": "Byrne",
+    "Job Title": "Operations Director",
+    "Work Email": "james.byrne@moorcroftinfrastructure.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/james-byrne-00f6",
+    "Company Name": "Moorcroft Infrastructure",
+    "Company Domain": "moorcroftinfrastructure.co.uk",
+    "Person Enrichment": {
+      "seniority": "Director",
+      "department": "Operations",
+      "location": "Derby, UK"
+    }
+  },
+  {
+    "Full Name": "James Patel",
+    "First Name": "James",
+    "Last Name": "Patel",
+    "Job Title": "Operations Director",
+    "Work Email": "james.patel@kingsmeadcontractors.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/james-patel-1baf",
+    "Company Name": "Kingsmead Contractors",
+    "Company Domain": "kingsmeadcontractors.co.uk",
+    "Person Enrichment": {
+      "seniority": "Director",
+      "department": "Operations",
+      "location": "Leeds, UK"
+    }
+  },
+  {
+    "Full Name": "Ryan Duffy",
+    "First Name": "Ryan",
+    "Last Name": "Duffy",
+    "Job Title": "Head of Sustainability",
+    "Work Email": "ryan.duffy@fenwickbuilders.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/ryan-duffy-681b",
+    "Company Name": "Fenwick Builders",
+    "Company Domain": "fenwickbuilders.co.uk",
+    "Person Enrichment": {
+      "seniority": "Head",
+      "department": "Sustainability",
+      "location": "Birmingham, UK"
+    }
+  },
+  {
+    "Full Name": "Mohammed Evans",
+    "First Name": "Mohammed",
+    "Last Name": "Evans",
+    "Job Title": "Plant Manager",
+    "Work Email": "mohammed.evans@fenwickconstruction.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/mohammed-evans-572f",
+    "Company Name": "Fenwick Construction",
+    "Company Domain": "fenwickconstruction.co.uk",
+    "Person Enrichment": {
+      "seniority": "Manager",
+      "department": "Engineering",
+      "location": ", UK"
+    }
+  },
+  {
+    "Full Name": "Anya Kelly",
+    "First Name": "Anya",
+    "Last Name": "Kelly",
+    "Job Title": "Head of Plant",
+    "Work Email": "anya.kelly@oakridgeconstruction.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/anya-kelly-e93e",
+    "Company Name": "Oakridge Construction",
+    "Company Domain": "oakridgeconstruction.co.uk",
+    "Person Enrichment": {
+      "seniority": "Head",
+      "department": "Engineering",
+      "location": "Manchester, UK"
+    }
+  },
+  {
+    "Full Name": "Anya Turner",
+    "First Name": "Anya",
+    "Last Name": "Turner",
+    "Job Title": "Procurement Manager",
+    "Work Email": "anya.turner@ironbridgecivil.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/anya-turner-9472",
+    "Company Name": "Ironbridge Civil Engineering",
+    "Company Domain": "ironbridgecivil.co.uk",
+    "Person Enrichment": {
+      "seniority": "Manager",
+      "department": "Procurement",
+      "location": "Edinburgh, UK"
+    }
+  },
+  {
+    "Full Name": "Martha Osei",
+    "First Name": "Martha",
+    "Last Name": "Osei",
+    "Job Title": "Chief Operating Officer",
+    "Work Email": "martha.osei@jarrowminerals.ie",
+    "LinkedIn Profile": "https://www.linkedin.com/in/martha-osei-410c",
+    "Company Name": "Jarrow Minerals",
+    "Company Domain": "jarrowminerals.ie",
+    "Person Enrichment": {
+      "seniority": "C-Suite",
+      "department": "Operations",
+      "location": "Cork, Ireland"
+    }
+  },
+  {
+    "Full Name": "Nadia Nolan",
+    "First Name": "Nadia",
+    "Last Name": "Nolan",
+    "Job Title": "Chief Financial Officer",
+    "Work Email": "nadia.nolan@ormondtool.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/nadia-nolan-368f",
+    "Company Name": "Ormond Tool & Plant Hire",
+    "Company Domain": "ormondtool.co.uk",
+    "Person Enrichment": {
+      "seniority": "C-Suite",
+      "department": "Finance",
+      "location": "Nottingham, UK"
+    }
+  },
+  {
+    "Full Name": "Oliver Ali",
+    "First Name": "Oliver",
+    "Last Name": "Ali",
+    "Job Title": "Operations Manager",
+    "Work Email": "oliver.ali@birchwoodcivil.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/oliver-ali-b7be",
+    "Company Name": "Birchwood Civil Engineering",
+    "Company Domain": "birchwoodcivil.co.uk",
+    "Person Enrichment": {
+      "seniority": "Manager",
+      "department": "Operations",
+      "location": "Newcastle upon Tyne, UK"
+    }
+  },
+  {
+    "Full Name": "Katie Clarke",
+    "First Name": "Katie",
+    "Last Name": "Clarke",
+    "Job Title": "Procurement Director",
+    "Work Email": "katie.clarke@kingsmeadcontractors.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/katie-clarke-7bac",
+    "Company Name": "Kingsmead Contractors",
+    "Company Domain": "kingsmeadcontractors.co.uk",
+    "Person Enrichment": {
+      "seniority": "Director",
+      "department": "Procurement",
+      "location": "Leeds, UK"
+    }
+  },
+  {
+    "Full Name": "Oliver Fitzgerald",
+    "First Name": "Oliver",
+    "Last Name": "Fitzgerald",
+    "Job Title": "Operations Director",
+    "Work Email": "oliver.fitzgerald@netherbygroundworks.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/oliver-fitzgerald-522c",
+    "Company Name": "Netherby Groundworks",
+    "Company Domain": "netherbygroundworks.co.uk",
+    "Person Enrichment": {
+      "seniority": "Director",
+      "department": "Operations",
+      "location": "Leicester, UK"
+    }
+  },
+  {
+    "Full Name": "Yusuf Malik",
+    "First Name": "Yusuf",
+    "Last Name": "Malik",
+    "Job Title": "Operations Director",
+    "Work Email": "yusuf.malik@blackrockinfrastructure.fr",
+    "LinkedIn Profile": "https://www.linkedin.com/in/yusuf-malik-fbd5",
+    "Company Name": "Blackrock Infrastructure",
+    "Company Domain": "blackrockinfrastructure.fr",
+    "Person Enrichment": {
+      "seniority": "Director",
+      "department": "Operations",
+      "location": "Lille, France"
+    }
+  },
+  {
+    "Full Name": "Rhys Owusu",
+    "First Name": "Rhys",
+    "Last Name": "Owusu",
+    "Job Title": "Quantity Surveyor",
+    "Work Email": "rhys.owusu@ironbridgeplant.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/rhys-owusu-a156",
+    "Company Name": "Ironbridge Plant",
+    "Company Domain": "ironbridgeplant.co.uk",
+    "Person Enrichment": {
+      "seniority": "Senior",
+      "department": "Finance",
+      "location": "Cardiff, UK"
+    }
+  },
+  {
+    "Full Name": "Tom Hill",
+    "First Name": "Tom",
+    "Last Name": "Hill",
+    "Job Title": "Plant Director",
+    "Work Email": "tom.hill@ironbridgeplant.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/tom-hill-2b2c",
+    "Company Name": "Ironbridge Plant",
+    "Company Domain": "ironbridgeplant.co.uk",
+    "Person Enrichment": {
+      "seniority": "Director",
+      "department": "Engineering",
+      "location": "Cardiff, UK"
+    }
+  },
+  {
+    "Full Name": "Laura Edwards",
+    "First Name": "Laura",
+    "Last Name": "Edwards",
+    "Job Title": "Fleet Manager",
+    "Work Email": "laura.edwards@brennanstone.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/laura-edwards-1568",
+    "Company Name": "Brennan Stone",
+    "Company Domain": "brennanstone.co.uk",
+    "Person Enrichment": {
+      "seniority": "Manager",
+      "department": "Engineering",
+      "location": "Birmingham, UK"
+    }
+  },
+  {
+    "Full Name": "Patrick Stewart",
+    "First Name": "Patrick",
+    "Last Name": "Stewart",
+    "Job Title": "Office Administrator",
+    "Work Email": "patrick.stewart@mournestone.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/patrick-stewart-24c4",
+    "Company Name": "Mourne Stone",
+    "Company Domain": "mournestone.co.uk",
+    "Person Enrichment": {
+      "seniority": "Senior",
+      "department": "Finance",
+      "location": "Exeter, UK"
+    }
+  },
+  {
+    "Full Name": "Ciaran Novak",
+    "First Name": "Ciaran",
+    "Last Name": "Novak",
+    "Job Title": "Procurement Director",
+    "Work Email": "ciaran.novak@penninebuilding.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/ciaran-novak-c665",
+    "Company Name": "Pennine Building",
+    "Company Domain": "penninebuilding.co.uk",
+    "Person Enrichment": {
+      "seniority": "Director",
+      "department": "Procurement",
+      "location": "Birmingham, UK"
+    }
+  },
+  {
+    "Full Name": "Olivia Taylor",
+    "First Name": "Olivia",
+    "Last Name": "Taylor",
+    "Job Title": "Plant Director",
+    "Work Email": "olivia.taylor@birchwoodcivil.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/olivia-taylor-e74d",
+    "Company Name": "Birchwood Civil Engineering",
+    "Company Domain": "birchwoodcivil.co.uk",
+    "Person Enrichment": {
+      "seniority": "Director",
+      "department": "Engineering",
+      "location": "Newcastle upon Tyne, UK"
+    }
+  },
+  {
+    "Full Name": "Kwame Wood",
+    "First Name": "Kwame",
+    "Last Name": "Wood",
+    "Job Title": "Sustainability Director",
+    "Work Email": "kwame.wood@penrosesystems.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/kwame-wood-d981",
+    "Company Name": "Penrose Systems",
+    "Company Domain": "penrosesystems.co.uk",
+    "Person Enrichment": {
+      "seniority": "Director",
+      "department": "Sustainability",
+      "location": "Derby, UK"
+    }
+  },
+  {
+    "Full Name": "Kwame Stewart",
+    "First Name": "Kwame",
+    "Last Name": "Stewart",
+    "Job Title": "Sustainability Manager",
+    "Work Email": "kwame.stewart@norwoodproperty.ie",
+    "LinkedIn Profile": "https://www.linkedin.com/in/kwame-stewart-10fc",
+    "Company Name": "Norwood Property",
+    "Company Domain": "norwoodproperty.ie",
+    "Person Enrichment": {
+      "seniority": "Manager",
+      "department": "Sustainability",
+      "location": "Waterford, Ireland"
+    }
+  },
+  {
+    "Full Name": "Lucy Harris",
+    "First Name": "Lucy",
+    "Last Name": "Harris",
+    "Job Title": "ESG Manager",
+    "Work Email": "lucy.harris@yardleygroundworks.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/lucy-harris-2abb",
+    "Company Name": "Yardley Groundworks",
+    "Company Domain": "yardleygroundworks.co.uk",
+    "Person Enrichment": {
+      "seniority": "Manager",
+      "department": "Sustainability",
+      "location": "Reading, UK"
+    }
+  },
+  {
+    "Full Name": "Laura Murray",
+    "First Name": "Laura",
+    "Last Name": "Murray",
+    "Job Title": "Head of Sustainability",
+    "Work Email": "laura.murray@aldertool.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/laura-murray-a7f0",
+    "Company Name": "Alder Tool & Plant Hire",
+    "Company Domain": "aldertool.co.uk",
+    "Person Enrichment": {
+      "seniority": "Head",
+      "department": "Sustainability",
+      "location": "Sheffield, UK"
+    }
+  },
+  {
+    "Full Name": "Leah Davies",
+    "First Name": "Leah",
+    "Last Name": "Davies",
+    "Job Title": "Sustainability Director",
+    "Work Email": "leah.davies@thamesquarries.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/leah-davies-3e54",
+    "Company Name": "Thames Quarries",
+    "Company Domain": "thamesquarries.co.uk",
+    "Person Enrichment": {
+      "seniority": "Director",
+      "department": "Sustainability",
+      "location": "Cardiff, UK"
+    }
+  },
+  {
+    "Full Name": "Samuel Shah",
+    "First Name": "Samuel",
+    "Last Name": "Shah",
+    "Job Title": "Head of Sustainability",
+    "Work Email": "samuel.shah@denholmcivil.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/samuel-shah-1cc6",
+    "Company Name": "Denholm Civil Engineering",
+    "Company Domain": "denholmcivil.co.uk",
+    "Person Enrichment": {
+      "seniority": "Head",
+      "department": "Sustainability",
+      "location": "Peterborough, UK"
+    }
+  },
+  {
+    "Full Name": "Owen Dunne",
+    "First Name": "Owen",
+    "Last Name": "Dunne",
+    "Job Title": "Chief Operating Officer",
+    "Work Email": "owen.dunne@granitecontractors.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/owen-dunne-0f9c",
+    "Company Name": "Granite Contractors",
+    "Company Domain": "granitecontractors.co.uk",
+    "Person Enrichment": {
+      "seniority": "C-Suite",
+      "department": "Operations",
+      "location": "Glasgow, UK"
+    }
+  },
+  {
+    "Full Name": "Marcus Davies",
+    "First Name": "Marcus",
+    "Last Name": "Davies",
+    "Job Title": "Sales Director",
+    "Work Email": "marcus.davies@penrosesystems.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/marcus-davies-fd63",
+    "Company Name": "Penrose Systems",
+    "Company Domain": "penrosesystems.co.uk",
+    "Person Enrichment": {
+      "seniority": "Director",
+      "department": "Finance",
+      "location": "Derby, UK"
+    }
+  },
+  {
+    "Full Name": "Adam Murphy",
+    "First Name": "Adam",
+    "Last Name": "Murphy",
+    "Job Title": "Office Administrator",
+    "Work Email": "adam.murphy@birchwoodtool.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/adam-murphy-2da7",
+    "Company Name": "Birchwood Tool & Plant Hire",
+    "Company Domain": "birchwoodtool.co.uk",
+    "Person Enrichment": {
+      "seniority": "Senior",
+      "department": "Finance",
+      "location": "Leicester, UK"
+    }
+  },
+  {
+    "Full Name": "Erin Murphy",
+    "First Name": "Erin",
+    "Last Name": "Murphy",
+    "Job Title": "Plant Manager",
+    "Work Email": "erin.murphy@birchwoodplant.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/erin-murphy-d7fb",
+    "Company Name": "Birchwood Plant Hire",
+    "Company Domain": "birchwoodplant.co.uk",
+    "Person Enrichment": {
+      "seniority": "Manager",
+      "department": "Engineering",
+      "location": "Preston, UK"
+    }
+  },
+  {
+    "Full Name": "Mohammed Wood",
+    "First Name": "Mohammed",
+    "Last Name": "Wood",
+    "Job Title": "Site Manager",
+    "Work Email": "mohammed.wood@norwoodproperty.ie",
+    "LinkedIn Profile": "https://www.linkedin.com/in/mohammed-wood-9795",
+    "Company Name": "Norwood Property",
+    "Company Domain": "norwoodproperty.ie",
+    "Person Enrichment": {
+      "seniority": "Manager",
+      "department": "Finance",
+      "location": "Waterford, Ireland"
+    }
+  },
+  {
+    "Full Name": "Siobhan Iqbal",
+    "First Name": "Siobhan",
+    "Last Name": "Iqbal",
+    "Job Title": "Plant Director",
+    "Work Email": "siobhan.iqbal@glenmoreaggregates.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/siobhan-iqbal-3afe",
+    "Company Name": "Glenmore Aggregates",
+    "Company Domain": "glenmoreaggregates.co.uk",
+    "Person Enrichment": {
+      "seniority": "Director",
+      "department": "Engineering",
+      "location": "Leicester, UK"
+    }
+  },
+  {
+    "Full Name": "Samuel Chen",
+    "First Name": "Samuel",
+    "Last Name": "Chen",
+    "Job Title": "Finance Director",
+    "Work Email": "samuel.chen@langleyminerals.ie",
+    "LinkedIn Profile": "https://www.linkedin.com/in/samuel-chen-68a9",
+    "Company Name": "Langley Minerals",
+    "Company Domain": "langleyminerals.ie",
+    "Person Enrichment": {
+      "seniority": "Director",
+      "department": "Finance",
+      "location": "Waterford, Ireland"
+    }
+  },
+  {
+    "Full Name": "Joseph Kelly",
+    "First Name": "Joseph",
+    "Last Name": "Kelly",
+    "Job Title": "Head of Fleet",
+    "Work Email": "joseph.kelly@netherbycivil.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/joseph-kelly-981e",
+    "Company Name": "Netherby Civil Engineering",
+    "Company Domain": "netherbycivil.co.uk",
+    "Person Enrichment": {
+      "seniority": "Head",
+      "department": "Engineering",
+      "location": "Sheffield, UK"
+    }
+  },
+  {
+    "Full Name": "Sophie Wood",
+    "First Name": "Sophie",
+    "Last Name": "Wood",
+    "Job Title": "ESG Manager",
+    "Work Email": "sophie.wood@redmireaggregates.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/sophie-wood-36df",
+    "Company Name": "Redmire Aggregates",
+    "Company Domain": "redmireaggregates.co.uk",
+    "Person Enrichment": {
+      "seniority": "Manager",
+      "department": "Sustainability",
+      "location": "Birmingham, UK"
+    }
+  },
+  {
+    "Full Name": "Connor Bennett",
+    "First Name": "Connor",
+    "Last Name": "Bennett",
+    "Job Title": "Head of Sustainability",
+    "Work Email": "connor.bennett@langleyminerals.ie",
+    "LinkedIn Profile": "https://www.linkedin.com/in/connor-bennett-4bd5",
+    "Company Name": "Langley Minerals",
+    "Company Domain": "langleyminerals.ie",
+    "Person Enrichment": {
+      "seniority": "Head",
+      "department": "Sustainability",
+      "location": "Waterford, Ireland"
+    }
+  },
+  {
+    "Full Name": "Arjun Singh",
+    "First Name": "Arjun",
+    "Last Name": "Singh",
+    "Job Title": "Head of Procurement",
+    "Work Email": "arjun.singh@garsideplant.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/arjun-singh-c6fb",
+    "Company Name": "Garside Plant",
+    "Company Domain": "garsideplant.co.uk",
+    "Person Enrichment": {
+      "seniority": "Head",
+      "department": "Procurement",
+      "location": "York, UK"
+    }
+  },
+  {
+    "Full Name": "Ellie Asante",
+    "First Name": "Ellie",
+    "Last Name": "Asante",
+    "Job Title": "Purchasing Manager",
+    "Work Email": "ellie.asante@quarringtontool.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/ellie-asante-deb6",
+    "Company Name": "Quarrington Tool & Plant Hire",
+    "Company Domain": "quarringtontool.co.uk",
+    "Person Enrichment": {
+      "seniority": "Manager",
+      "department": "Procurement",
+      "location": "Reading, UK"
+    }
+  },
+  {
+    "Full Name": "Aoife Hall",
+    "First Name": "Aoife",
+    "Last Name": "Hall",
+    "Job Title": "Procurement Manager",
+    "Work Email": "aoife.hall@kingsmeadequipment.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/aoife-hall-b5d5",
+    "Company Name": "Kingsmead Equipment Hire",
+    "Company Domain": "kingsmeadequipment.co.uk",
+    "Person Enrichment": {
+      "seniority": "Manager",
+      "department": "Procurement",
+      "location": "Sheffield, UK"
+    }
+  },
+  {
+    "Full Name": "Ciaran Kaur",
+    "First Name": "Ciaran",
+    "Last Name": "Kaur",
+    "Job Title": "Operations Director",
+    "Work Email": "ciaran.kaur@mournestone.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/ciaran-kaur-3138",
+    "Company Name": "Mourne Stone",
+    "Company Domain": "mournestone.co.uk",
+    "Person Enrichment": {
+      "seniority": "Director",
+      "department": "Operations",
+      "location": "Exeter, UK"
+    }
+  },
+  {
+    "Full Name": "Gareth Chowdhury",
+    "First Name": "Gareth",
+    "Last Name": "Chowdhury",
+    "Job Title": "Procurement Director",
+    "Work Email": "gareth.chowdhury@netherbyinfrastructure.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/gareth-chowdhury-ead5",
+    "Company Name": "Netherby Infrastructure",
+    "Company Domain": "netherbyinfrastructure.co.uk",
+    "Person Enrichment": {
+      "seniority": "Director",
+      "department": "Procurement",
+      "location": "Derby, UK"
+    }
+  },
+  {
+    "Full Name": "Ellie Watson",
+    "First Name": "Ellie",
+    "Last Name": "Watson",
+    "Job Title": "Procurement Director",
+    "Work Email": "ellie.watson@redmireaggregates.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/ellie-watson-0f5d",
+    "Company Name": "Redmire Aggregates",
+    "Company Domain": "redmireaggregates.co.uk",
+    "Person Enrichment": {
+      "seniority": "Director",
+      "department": "Procurement",
+      "location": "Birmingham, UK"
+    }
+  },
+  {
+    "Full Name": "Tariq Campbell",
+    "First Name": "Tariq",
+    "Last Name": "Campbell",
+    "Job Title": "Sustainability Director",
+    "Work Email": "tariq.campbell@elmhurstcivil.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/tariq-campbell-0f01",
+    "Company Name": "Elmhurst Civil Engineering",
+    "Company Domain": "elmhurstcivil.co.uk",
+    "Person Enrichment": {
+      "seniority": "Director",
+      "department": "Sustainability",
+      "location": "York, UK"
+    }
+  },
+  {
+    "Full Name": "Leah Burke",
+    "First Name": "Leah",
+    "Last Name": "Burke",
+    "Job Title": "Purchasing Manager",
+    "Work Email": "leah.burke@birchwoodtool.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/leah-burke-4c4c",
+    "Company Name": "Birchwood Tool & Plant Hire",
+    "Company Domain": "birchwoodtool.co.uk",
+    "Person Enrichment": {
+      "seniority": "Manager",
+      "department": "Procurement",
+      "location": "Leicester, UK"
+    }
+  },
+  {
+    "Full Name": "Emma Watson",
+    "First Name": "Emma",
+    "Last Name": "Watson",
+    "Job Title": "Plant Manager",
+    "Work Email": "emma.watson@thornburycivils.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/emma-watson-5611",
+    "Company Name": "Thornbury Civils",
+    "Company Domain": "thornburycivils.co.uk",
+    "Person Enrichment": {
+      "seniority": "Manager",
+      "department": "Engineering",
+      "location": "Exeter, UK"
+    }
+  },
+  {
+    "Full Name": "Holly Sutherland",
+    "First Name": "Holly",
+    "Last Name": "Sutherland",
+    "Job Title": "Fleet Manager",
+    "Work Email": "holly.sutherland@denholmcivil.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/holly-sutherland-b0b5",
+    "Company Name": "Denholm Civil Engineering",
+    "Company Domain": "denholmcivil.co.uk",
+    "Person Enrichment": {
+      "seniority": "Manager",
+      "department": "Engineering",
+      "location": "Peterborough, UK"
+    }
+  },
+  {
+    "Full Name": "Adam Owusu",
+    "First Name": "Adam",
+    "Last Name": "Owusu",
+    "Job Title": "Head of Fleet",
+    "Work Email": "adam.owusu@hartleyquarries.de",
+    "LinkedIn Profile": "https://www.linkedin.com/in/adam-owusu-ee19",
+    "Company Name": "Hartley Quarries",
+    "Company Domain": "hartleyquarries.de",
+    "Person Enrichment": {
+      "seniority": "Head",
+      "department": "Engineering",
+      "location": "Stuttgart, Germany"
+    }
+  },
+  {
+    "Full Name": "Oliver Watson",
+    "First Name": "Oliver",
+    "Last Name": "Watson",
+    "Job Title": "HR Manager",
+    "Work Email": "oliver.watson@jarrowdesign.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/oliver-watson-8fdd",
+    "Company Name": "Jarrow Design Studio",
+    "Company Domain": "jarrowdesign.co.uk",
+    "Person Enrichment": {
+      "seniority": "Manager",
+      "department": "Finance",
+      "location": "Sheffield, UK"
+    }
+  },
+  {
+    "Full Name": "Amara Turner",
+    "First Name": "Amara",
+    "Last Name": "Turner",
+    "Job Title": "Procurement Director",
+    "Work Email": "amara.turner@ironbridgecivil.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/amara-turner-c924",
+    "Company Name": "Ironbridge Civil Engineering",
+    "Company Domain": "ironbridgecivil.co.uk",
+    "Person Enrichment": {
+      "seniority": "Director",
+      "department": "Procurement",
+      "location": "Edinburgh, UK"
+    }
+  },
+  {
+    "Full Name": "Olivia Sutherland",
+    "First Name": "Olivia",
+    "Last Name": "Sutherland",
+    "Job Title": "Head of Procurement",
+    "Work Email": "olivia.sutherland@langleyminerals.ie",
+    "LinkedIn Profile": "https://www.linkedin.com/in/olivia-sutherland-94ab",
+    "Company Name": "Langley Minerals",
+    "Company Domain": "langleyminerals.ie",
+    "Person Enrichment": {
+      "seniority": "Head",
+      "department": "Procurement",
+      "location": "Waterford, Ireland"
+    }
+  },
+  {
+    "Full Name": "Arjun Fitzgerald",
+    "First Name": "Arjun",
+    "Last Name": "Fitzgerald",
+    "Job Title": "Sustainability Manager",
+    "Work Email": "arjun.fitzgerald@kirkbycontractors.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/arjun-fitzgerald-2c6e",
+    "Company Name": "Kirkby Contractors",
+    "Company Domain": "kirkbycontractors.co.uk",
+    "Person Enrichment": {
+      "seniority": "Manager",
+      "department": "Sustainability",
+      "location": "Leeds, UK"
+    }
+  },
+  {
+    "Full Name": "Samuel Hussain",
+    "First Name": "Samuel",
+    "Last Name": "Hussain",
+    "Job Title": "Chief Operating Officer",
+    "Work Email": "samuel.hussain@liffeycivil.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/samuel-hussain-a0d5",
+    "Company Name": "Liffey Civil Engineering",
+    "Company Domain": "liffeycivil.co.uk",
+    "Person Enrichment": {
+      "seniority": "C-Suite",
+      "department": "Operations",
+      "location": "Edinburgh, UK"
+    }
+  },
+  {
+    "Full Name": "Chloe Lewis",
+    "First Name": "Chloe",
+    "Last Name": "Lewis",
+    "Job Title": "Procurement Director",
+    "Work Email": "chloe.lewis@fenwickconstruction.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/chloe-lewis-5552",
+    "Company Name": "Fenwick Construction",
+    "Company Domain": "fenwickconstruction.co.uk",
+    "Person Enrichment": {
+      "seniority": "Director",
+      "department": "Procurement",
+      "location": ", UK"
+    }
+  },
+  {
+    "Full Name": "Matthew Cooper",
+    "First Name": "Matthew",
+    "Last Name": "Cooper",
+    "Job Title": "Plant Director",
+    "Work Email": "matthew.cooper@netherbybuilding.ie",
+    "LinkedIn Profile": "https://www.linkedin.com/in/matthew-cooper-83c4",
+    "Company Name": "Netherby Building",
+    "Company Domain": "netherbybuilding.ie",
+    "Person Enrichment": {
+      "seniority": "Director",
+      "department": "Engineering",
+      "location": "Waterford, Ireland"
+    }
+  },
+  {
+    "Full Name": "Patrick Scott",
+    "First Name": "Patrick",
+    "Last Name": "Scott",
+    "Job Title": "Head of Procurement",
+    "Work Email": "patrick.scott@glenmoreaggregates.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/patrick-scott-9525",
+    "Company Name": "Glenmore Aggregates",
+    "Company Domain": "glenmoreaggregates.co.uk",
+    "Person Enrichment": {
+      "seniority": "Head",
+      "department": "Procurement",
+      "location": "Leicester, UK"
+    }
+  },
+  {
+    "Full Name": "Tom Patel",
+    "First Name": "Tom",
+    "Last Name": "Patel",
+    "Job Title": "Plant Director",
+    "Work Email": "tom.patel@aldertool.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/tom-patel-d8e8",
+    "Company Name": "Alder Tool & Plant Hire",
+    "Company Domain": "aldertool.co.uk",
+    "Person Enrichment": {
+      "seniority": "Director",
+      "department": "Engineering",
+      "location": "Sheffield, UK"
+    }
+  },
+  {
+    "Full Name": "Joseph Singh",
+    "First Name": "Joseph",
+    "Last Name": "Singh",
+    "Job Title": "Head of Sustainability",
+    "Work Email": "joseph.singh@jarrowcivil.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/joseph-singh-7152",
+    "Company Name": "Jarrow Civil Engineering",
+    "Company Domain": "jarrowcivil.co.uk",
+    "Person Enrichment": {
+      "seniority": "Head",
+      "department": "Sustainability",
+      "location": "Bristol, UK"
+    }
+  },
+  {
+    "Full Name": "Charlotte Thompson",
+    "First Name": "Charlotte",
+    "Last Name": "Thompson",
+    "Job Title": "Contracts Manager",
+    "Work Email": "charlotte.thompson@birchwoodplant.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/charlotte-thompson-e975",
+    "Company Name": "Birchwood Plant Hire",
+    "Company Domain": "birchwoodplant.co.uk",
+    "Person Enrichment": {
+      "seniority": "Manager",
+      "department": "Finance",
+      "location": "Preston, UK"
+    }
+  },
+  {
+    "Full Name": "Emma Thompson",
+    "First Name": "Emma",
+    "Last Name": "Thompson",
+    "Job Title": "Head of Operations",
+    "Work Email": "emma.thompson@hollowayestates.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/emma-thompson-697d",
+    "Company Name": "Holloway Estates",
+    "Company Domain": "hollowayestates.co.uk",
+    "Person Enrichment": {
+      "seniority": "Head",
+      "department": "Operations",
+      "location": "Leicester, UK"
+    }
+  },
+  {
+    "Full Name": "Chloe Green",
+    "First Name": "Chloe",
+    "Last Name": "Green",
+    "Job Title": "Office Administrator",
+    "Work Email": "chloe.green@lomaxaggregates.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/chloe-green-0cf3",
+    "Company Name": "Lomax Aggregates",
+    "Company Domain": "lomaxaggregates.co.uk",
+    "Person Enrichment": {
+      "seniority": "Senior",
+      "department": "Finance",
+      "location": "Peterborough, UK"
+    }
+  },
+  {
+    "Full Name": "Erin Chen",
+    "First Name": "Erin",
+    "Last Name": "Chen",
+    "Job Title": "Contracts Manager",
+    "Work Email": "erin.chen@denholmproperty.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/erin-chen-ae6f",
+    "Company Name": "Denholm Property",
+    "Company Domain": "denholmproperty.co.uk",
+    "Person Enrichment": {
+      "seniority": "Manager",
+      "department": "Finance",
+      "location": "Cardiff, UK"
+    }
+  },
+  {
+    "Full Name": "Leah Fitzgerald",
+    "First Name": "Leah",
+    "Last Name": "Fitzgerald",
+    "Job Title": "Office Administrator",
+    "Work Email": "leah.fitzgerald@saltashgroundworks.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/leah-fitzgerald-7ce0",
+    "Company Name": "Saltash Groundworks",
+    "Company Domain": "saltashgroundworks.co.uk",
+    "Person Enrichment": {
+      "seniority": "Senior",
+      "department": "Finance",
+      "location": "Peterborough, UK"
+    }
+  },
+  {
+    "Full Name": "Ciaran Scott",
+    "First Name": "Ciaran",
+    "Last Name": "Scott",
+    "Job Title": "Commercial Director",
+    "Work Email": "ciaran.scott@kingsmeadequipment.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/ciaran-scott-e5ef",
+    "Company Name": "Kingsmead Equipment Hire",
+    "Company Domain": "kingsmeadequipment.co.uk",
+    "Person Enrichment": {
+      "seniority": "Director",
+      "department": "Finance",
+      "location": "Sheffield, UK"
+    }
+  },
+  {
+    "Full Name": "Chloe Kennedy",
+    "First Name": "Chloe",
+    "Last Name": "Kennedy",
+    "Job Title": "Fleet Manager",
+    "Work Email": "chloe.kennedy@penninebuilding.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/chloe-kennedy-e41f",
+    "Company Name": "Pennine Building",
+    "Company Domain": "penninebuilding.co.uk",
+    "Person Enrichment": {
+      "seniority": "Manager",
+      "department": "Engineering",
+      "location": "Birmingham, UK"
+    }
+  },
+  {
+    "Full Name": "Tom Khan",
+    "First Name": "Tom",
+    "Last Name": "Khan",
+    "Job Title": "Office Administrator",
+    "Work Email": "tom.khan@fenwickconstruction.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/tom-khan-752c",
+    "Company Name": "Fenwick Construction",
+    "Company Domain": "fenwickconstruction.co.uk",
+    "Person Enrichment": {
+      "seniority": "Senior",
+      "department": "Finance",
+      "location": ", UK"
+    }
+  },
+  {
+    "Full Name": "Charlotte Doyle",
+    "First Name": "Charlotte",
+    "Last Name": "Doyle",
+    "Job Title": "Sustainability Director",
+    "Work Email": "charlotte.doyle@rowntreecontractors.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/charlotte-doyle-99f1",
+    "Company Name": "Rowntree Contractors",
+    "Company Domain": "rowntreecontractors.co.uk",
+    "Person Enrichment": {
+      "seniority": "Director",
+      "department": "Sustainability",
+      "location": "Edinburgh, UK"
+    }
+  },
+  {
+    "Full Name": "Alex Scott",
+    "First Name": "Alex",
+    "Last Name": "Scott",
+    "Job Title": "ESG Manager",
+    "Work Email": "alex.scott@wardlesystems.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/alex-scott-2ccd",
+    "Company Name": "Wardle Systems",
+    "Company Domain": "wardlesystems.co.uk",
+    "Person Enrichment": {
+      "seniority": "Manager",
+      "department": "Sustainability",
+      "location": "Leeds, UK"
+    }
+  },
+  {
+    "Full Name": "Lucy Campbell",
+    "First Name": "Lucy",
+    "Last Name": "Campbell",
+    "Job Title": "Fleet Manager",
+    "Work Email": "lucy.campbell@mournestone.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/lucy-campbell-bb59",
+    "Company Name": "Mourne Stone",
+    "Company Domain": "mournestone.co.uk",
+    "Person Enrichment": {
+      "seniority": "Manager",
+      "department": "Engineering",
+      "location": "Exeter, UK"
+    }
+  },
+  {
+    "Full Name": "Matthew Clarke",
+    "First Name": "Matthew",
+    "Last Name": "Clarke",
+    "Job Title": "Procurement Director",
+    "Work Email": "matthew.clarke@jarrowproperty.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/matthew-clarke-c966",
+    "Company Name": "Jarrow Property",
+    "Company Domain": "jarrowproperty.co.uk",
+    "Person Enrichment": {
+      "seniority": "Director",
+      "department": "Procurement",
+      "location": "Exeter, UK"
+    }
+  },
+  {
+    "Full Name": "Pat Example",
+    "First Name": "Pat",
+    "Last Name": "Example",
+    "Job Title": "Operations Manager",
+    "Work Email": "not found",
+    "LinkedIn Profile": null,
+    "Company Name": "Birchwood Plant Hire",
+    "Company Domain": "birchwoodplant.co.uk",
+    "Person Enrichment": {
+      "seniority": "Manager",
+      "department": "Operations",
+      "location": null
+    }
+  },
+  {
+    "Full Name": "Harry Kowalski",
+    "First Name": "Harry",
+    "Last Name": "Kowalski",
+    "Job Title": "Head of Fleet",
+    "Work Email": "harry.kowalski@mournestone.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/harry-kowalski-7103",
+    "Company Name": "Mourne Stone",
+    "Company Domain": "mournestone.co.uk",
+    "Person Enrichment": {
+      "seniority": "Head",
+      "department": "Engineering",
+      "location": "Exeter, UK"
+    }
+  },
+  {
+    "Full Name": "Declan Cooper",
+    "First Name": "Declan",
+    "Last Name": "Cooper",
+    "Job Title": "Head of Sustainability",
+    "Work Email": "declan.cooper@haldenquarries.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/declan-cooper-b8a5",
+    "Company Name": "Halden Quarries",
+    "Company Domain": "haldenquarries.co.uk",
+    "Person Enrichment": {
+      "seniority": "Head",
+      "department": "Sustainability",
+      "location": "Cardiff, UK"
+    }
+  },
+  {
+    "Full Name": "Grace Burke",
+    "First Name": "Grace",
+    "Last Name": "Burke",
+    "Job Title": "Operations Director",
+    "Work Email": "grace.burke@stantonproperty.ie",
+    "LinkedIn Profile": "https://www.linkedin.com/in/grace-burke-448d",
+    "Company Name": "Stanton Property",
+    "Company Domain": "stantonproperty.ie",
+    "Person Enrichment": {
+      "seniority": "Director",
+      "department": "Operations",
+      "location": "Galway, Ireland"
+    }
+  },
+  {
+    "Full Name": "Rhys Turner",
+    "First Name": "Rhys",
+    "Last Name": "Turner",
+    "Job Title": "Operations Director",
+    "Work Email": "rhys.turner@farleycivils.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/rhys-turner-ebcc",
+    "Company Name": "Farley Civils",
+    "Company Domain": "farleycivils.co.uk",
+    "Person Enrichment": {
+      "seniority": "Director",
+      "department": "Operations",
+      "location": "Nottingham, UK"
+    }
+  },
+  {
+    "Full Name": "Mohammed Bell",
+    "First Name": "Mohammed",
+    "Last Name": "Bell",
+    "Job Title": "Procurement Director",
+    "Work Email": "mohammed.bell@jarrowcivil.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/mohammed-bell-1285",
+    "Company Name": "Jarrow Civil Engineering",
+    "Company Domain": "jarrowcivil.co.uk",
+    "Person Enrichment": {
+      "seniority": "Director",
+      "department": "Procurement",
+      "location": "Bristol, UK"
+    }
+  },
+  {
+    "Full Name": "Marcus Kaur",
+    "First Name": "Marcus",
+    "Last Name": "Kaur",
+    "Job Title": "Head of Plant",
+    "Work Email": "marcus.kaur@kestrelquarries.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/marcus-kaur-4eef",
+    "Company Name": "Kestrel Quarries",
+    "Company Domain": "kestrelquarries.co.uk",
+    "Person Enrichment": {
+      "seniority": "Head",
+      "department": "Engineering",
+      "location": "Leicester, UK"
+    }
+  },
+  {
+    "Full Name": "Tariq Burke",
+    "First Name": "Tariq",
+    "Last Name": "Burke",
+    "Job Title": "Head of Operations",
+    "Work Email": "tariq.burke@rowntreecontractors.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/tariq-burke-f3cf",
+    "Company Name": "Rowntree Contractors",
+    "Company Domain": "rowntreecontractors.co.uk",
+    "Person Enrichment": {
+      "seniority": "Head",
+      "department": "Operations",
+      "location": "Edinburgh, UK"
+    }
+  },
+  {
+    "Full Name": "Noah Chowdhury",
+    "First Name": "Noah",
+    "Last Name": "Chowdhury",
+    "Job Title": "Plant Director",
+    "Work Email": "noah.chowdhury@ormondtool.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/noah-chowdhury-4977",
+    "Company Name": "Ormond Tool & Plant Hire",
+    "Company Domain": "ormondtool.co.uk",
+    "Person Enrichment": {
+      "seniority": "Director",
+      "department": "Engineering",
+      "location": "Nottingham, UK"
+    }
+  },
+  {
+    "Full Name": "Martha Edwards",
+    "First Name": "Martha",
+    "Last Name": "Edwards",
+    "Job Title": "Plant Director",
+    "Work Email": "martha.edwards@farleyconstruction.nl",
+    "LinkedIn Profile": "https://www.linkedin.com/in/martha-edwards-3d1e",
+    "Company Name": "Farley Construction",
+    "Company Domain": "farleyconstruction.nl",
+    "Person Enrichment": {
+      "seniority": "Director",
+      "department": "Engineering",
+      "location": "Rotterdam, Netherlands"
+    }
+  },
+  {
+    "Full Name": "Marcus Adeyemi",
+    "First Name": "Marcus",
+    "Last Name": "Adeyemi",
+    "Job Title": "Plant Director",
+    "Work Email": "marcus.adeyemi@liffeycivil.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/marcus-adeyemi-11dc",
+    "Company Name": "Liffey Civil Engineering",
+    "Company Domain": "liffeycivil.co.uk",
+    "Person Enrichment": {
+      "seniority": "Director",
+      "department": "Engineering",
+      "location": "Edinburgh, UK"
+    }
+  },
+  {
+    "Full Name": "Patrick Fraser",
+    "First Name": "Patrick",
+    "Last Name": "Fraser",
+    "Job Title": "ESG Manager",
+    "Work Email": "patrick.fraser@mournestone.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/patrick-fraser-e68f",
+    "Company Name": "Mourne Stone",
+    "Company Domain": "mournestone.co.uk",
+    "Person Enrichment": {
+      "seniority": "Manager",
+      "department": "Sustainability",
+      "location": "Exeter, UK"
+    }
+  },
+  {
+    "Full Name": "Erin Shah",
+    "First Name": "Erin",
+    "Last Name": "Shah",
+    "Job Title": "Head of Finance",
+    "Work Email": "erin.shah@thamesgroundworks.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/erin-shah-212f",
+    "Company Name": "Thames Groundworks",
+    "Company Domain": "thamesgroundworks.co.uk",
+    "Person Enrichment": {
+      "seniority": "Head",
+      "department": "Finance",
+      "location": "Birmingham, UK"
+    }
+  },
+  {
+    "Full Name": "Nadia Wood",
+    "First Name": "Nadia",
+    "Last Name": "Wood",
+    "Job Title": "Procurement Manager",
+    "Work Email": "nadia.wood@netherbygroundworks.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/nadia-wood-0e80",
+    "Company Name": "Netherby Groundworks",
+    "Company Domain": "netherbygroundworks.co.uk",
+    "Person Enrichment": {
+      "seniority": "Manager",
+      "department": "Procurement",
+      "location": "Leicester, UK"
+    }
+  },
+  {
+    "Full Name": "Niamh Fitzgerald",
+    "First Name": "Niamh",
+    "Last Name": "Fitzgerald",
+    "Job Title": "Contracts Manager",
+    "Work Email": "niamh.fitzgerald@quarringtontool.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/niamh-fitzgerald-0aee",
+    "Company Name": "Quarrington Tool & Plant Hire",
+    "Company Domain": "quarringtontool.co.uk",
+    "Person Enrichment": {
+      "seniority": "Manager",
+      "department": "Finance",
+      "location": "Reading, UK"
+    }
+  },
+  {
+    "Full Name": "Oliver Quinn",
+    "First Name": "Oliver",
+    "Last Name": "Quinn",
+    "Job Title": "Office Administrator",
+    "Work Email": "oliver.quinn@yardleygroundworks.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/oliver-quinn-d2c7",
+    "Company Name": "Yardley Groundworks",
+    "Company Domain": "yardleygroundworks.co.uk",
+    "Person Enrichment": {
+      "seniority": "Senior",
+      "department": "Finance",
+      "location": "Reading, UK"
+    }
+  },
+  {
+    "Full Name": "Zara Dunne",
+    "First Name": "Zara",
+    "Last Name": "Dunne",
+    "Job Title": "Sustainability Director",
+    "Work Email": "zara.dunne@carrickbuilders.ie",
+    "LinkedIn Profile": "https://www.linkedin.com/in/zara-dunne-653a",
+    "Company Name": "Carrick Builders",
+    "Company Domain": "carrickbuilders.ie",
+    "Person Enrichment": {
+      "seniority": "Director",
+      "department": "Sustainability",
+      "location": "Waterford, Ireland"
+    }
+  },
+  {
+    "Full Name": "Lewis Grant",
+    "First Name": "Lewis",
+    "Last Name": "Grant",
+    "Job Title": "Procurement Manager",
+    "Work Email": "lewis.grant@northgatedesign.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/lewis-grant-3b27",
+    "Company Name": "Northgate Design Studio",
+    "Company Domain": "northgatedesign.co.uk",
+    "Person Enrichment": {
+      "seniority": "Manager",
+      "department": "Procurement",
+      "location": "Birmingham, UK"
+    }
+  },
+  {
+    "Full Name": "Aisha Ali",
+    "First Name": "Aisha",
+    "Last Name": "Ali",
+    "Job Title": "Head of Sustainability",
+    "Work Email": "aisha.ali@moorcroftinfrastructure.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/aisha-ali-876b",
+    "Company Name": "Moorcroft Infrastructure",
+    "Company Domain": "moorcroftinfrastructure.co.uk",
+    "Person Enrichment": {
+      "seniority": "Head",
+      "department": "Sustainability",
+      "location": "Derby, UK"
+    }
+  },
+  {
+    "Full Name": "Niamh Osei",
+    "First Name": "Niamh",
+    "Last Name": "Osei",
+    "Job Title": "Marketing Manager",
+    "Work Email": "niamh.osei@hartleyquarries.de",
+    "LinkedIn Profile": "https://www.linkedin.com/in/niamh-osei-cce3",
+    "Company Name": "Hartley Quarries",
+    "Company Domain": "hartleyquarries.de",
+    "Person Enrichment": {
+      "seniority": "Manager",
+      "department": "Finance",
+      "location": "Stuttgart, Germany"
+    }
+  },
+  {
+    "Full Name": "Declan Clarke",
+    "First Name": "Declan",
+    "Last Name": "Clarke",
+    "Job Title": "Commercial Director",
+    "Work Email": "declan.clarke@ormondtool.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/declan-clarke-a7cc",
+    "Company Name": "Ormond Tool & Plant Hire",
+    "Company Domain": "ormondtool.co.uk",
+    "Person Enrichment": {
+      "seniority": "Director",
+      "department": "Finance",
+      "location": "Nottingham, UK"
+    }
+  },
+  {
+    "Full Name": "Aisha Cooper",
+    "First Name": "Aisha",
+    "Last Name": "Cooper",
+    "Job Title": "Head of Operations",
+    "Work Email": "aisha.cooper@denholminfrastructure.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/aisha-cooper-78be",
+    "Company Name": "Denholm Infrastructure",
+    "Company Domain": "denholminfrastructure.co.uk",
+    "Person Enrichment": {
+      "seniority": "Head",
+      "department": "Operations",
+      "location": "Newcastle upon Tyne, UK"
+    }
+  },
+  {
+    "Full Name": "Erin Patel",
+    "First Name": "Erin",
+    "Last Name": "Patel",
+    "Job Title": "Office Administrator",
+    "Work Email": "erin.patel@haldenquarries.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/erin-patel-a0b3",
+    "Company Name": "Halden Quarries",
+    "Company Domain": "haldenquarries.co.uk",
+    "Person Enrichment": {
+      "seniority": "Senior",
+      "department": "Finance",
+      "location": "Cardiff, UK"
+    }
+  },
+  {
+    "Full Name": "Lucy Khan",
+    "First Name": "Lucy",
+    "Last Name": "Khan",
+    "Job Title": "Quantity Surveyor",
+    "Work Email": "lucy.khan@thornburycivils.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/lucy-khan-fdc1",
+    "Company Name": "Thornbury Civils",
+    "Company Domain": "thornburycivils.co.uk",
+    "Person Enrichment": {
+      "seniority": "Senior",
+      "department": "Finance",
+      "location": "Exeter, UK"
+    }
+  },
+  {
+    "Full Name": "Marcus Fitzgerald",
+    "First Name": "Marcus",
+    "Last Name": "Fitzgerald",
+    "Job Title": "Managing Director",
+    "Work Email": "marcus.fitzgerald@uptondesign.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/marcus-fitzgerald-0d78",
+    "Company Name": "Upton Design Studio",
+    "Company Domain": "uptondesign.co.uk",
+    "Person Enrichment": {
+      "seniority": "Director",
+      "department": "Finance",
+      "location": "Peterborough, UK"
+    }
+  },
+  {
+    "Full Name": "Ryan Asante",
+    "First Name": "Ryan",
+    "Last Name": "Asante",
+    "Job Title": "Plant Director",
+    "Work Email": "ryan.asante@otteryplant.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/ryan-asante-5ed0",
+    "Company Name": "Ottery Plant",
+    "Company Domain": "otteryplant.co.uk",
+    "Person Enrichment": {
+      "seniority": "Director",
+      "department": "Engineering",
+      "location": "Peterborough, UK"
+    }
+  },
+  {
+    "Full Name": "Lewis Ali",
+    "First Name": "Lewis",
+    "Last Name": "Ali",
+    "Job Title": "Marketing Manager",
+    "Work Email": "lewis.ali@denholminfrastructure.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/lewis-ali-4343",
+    "Company Name": "Denholm Infrastructure",
+    "Company Domain": "denholminfrastructure.co.uk",
+    "Person Enrichment": {
+      "seniority": "Manager",
+      "department": "Finance",
+      "location": "Newcastle upon Tyne, UK"
+    }
+  },
+  {
+    "Full Name": "Hannah Osei",
+    "First Name": "Hannah",
+    "Last Name": "Osei",
+    "Job Title": "Head of HR",
+    "Work Email": "hannah.osei@jarrowcivil.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/hannah-osei-bf96",
+    "Company Name": "Jarrow Civil Engineering",
+    "Company Domain": "jarrowcivil.co.uk",
+    "Person Enrichment": {
+      "seniority": "Head",
+      "department": "Finance",
+      "location": "Bristol, UK"
+    }
+  },
+  {
+    "Full Name": "Euan O'Brien",
+    "First Name": "Euan",
+    "Last Name": "O'Brien",
+    "Job Title": "Head of Sustainability",
+    "Work Email": "euan.obrien@ironbridgeproperty.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/euan-obrien-2b41",
+    "Company Name": "Ironbridge Property",
+    "Company Domain": "ironbridgeproperty.co.uk",
+    "Person Enrichment": {
+      "seniority": "Head",
+      "department": "Sustainability",
+      "location": "Bristol, UK"
+    }
+  },
+  {
+    "Full Name": "Erin Singh",
+    "First Name": "Erin",
+    "Last Name": "Singh",
+    "Job Title": "Head of Sustainability",
+    "Work Email": "erin.singh@penrosestone.nl",
+    "LinkedIn Profile": "https://www.linkedin.com/in/erin-singh-f5af",
+    "Company Name": "Penrose Stone",
+    "Company Domain": "penrosestone.nl",
+    "Person Enrichment": {
+      "seniority": "Head",
+      "department": "Sustainability",
+      "location": "Rotterdam, Netherlands"
+    }
+  },
+  {
+    "Full Name": "Leah Wood",
+    "First Name": "Leah",
+    "Last Name": "Wood",
+    "Job Title": "Sustainability Manager",
+    "Work Email": "leah.wood@elmhurstcivil.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/leah-wood-59de",
+    "Company Name": "Elmhurst Civil Engineering",
+    "Company Domain": "elmhurstcivil.co.uk",
+    "Person Enrichment": {
+      "seniority": "Manager",
+      "department": "Sustainability",
+      "location": "York, UK"
+    }
+  },
+  {
+    "Full Name": "Nadia Novak",
+    "First Name": "Nadia",
+    "Last Name": "Novak",
+    "Job Title": "Sustainability Director",
+    "Work Email": "nadia.novak@thamesgroundworks.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/nadia-novak-e313",
+    "Company Name": "Thames Groundworks",
+    "Company Domain": "thamesgroundworks.co.uk",
+    "Person Enrichment": {
+      "seniority": "Director",
+      "department": "Sustainability",
+      "location": "Birmingham, UK"
+    }
+  },
+  {
+    "Full Name": "Jack Bennett",
+    "First Name": "Jack",
+    "Last Name": "Bennett",
+    "Job Title": "Chief Operating Officer",
+    "Work Email": "jack.bennett@alderaggregates.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/jack-bennett-f22e",
+    "Company Name": "Alder Aggregates",
+    "Company Domain": "alderaggregates.co.uk",
+    "Person Enrichment": {
+      "seniority": "C-Suite",
+      "department": "Operations",
+      "location": "Newcastle upon Tyne, UK"
+    }
+  },
+  {
+    "Full Name": "Marcus Stewart",
+    "First Name": "Marcus",
+    "Last Name": "Stewart",
+    "Job Title": "ESG Manager",
+    "Work Email": "marcus.stewart@liffeyfreight.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/marcus-stewart-4595",
+    "Company Name": "Liffey Freight",
+    "Company Domain": "liffeyfreight.co.uk",
+    "Person Enrichment": {
+      "seniority": "Manager",
+      "department": "Sustainability",
+      "location": "Manchester, UK"
+    }
+  },
+  {
+    "Full Name": "Tariq Novak",
+    "First Name": "Tariq",
+    "Last Name": "Novak",
+    "Job Title": "Site Manager",
+    "Work Email": "tariq.novak@fenwickquarries.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/tariq-novak-4aff",
+    "Company Name": "Fenwick Quarries",
+    "Company Domain": "fenwickquarries.co.uk",
+    "Person Enrichment": {
+      "seniority": "Manager",
+      "department": "Finance",
+      "location": "Glasgow, UK"
+    }
+  },
+  {
+    "Full Name": "Laura Burke",
+    "First Name": "Laura",
+    "Last Name": "Burke",
+    "Job Title": "Chief Operating Officer",
+    "Work Email": "laura.burke@ullswaterproperty.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/laura-burke-405d",
+    "Company Name": "Ullswater Property",
+    "Company Domain": "ullswaterproperty.co.uk",
+    "Person Enrichment": {
+      "seniority": "C-Suite",
+      "department": "Operations",
+      "location": "York, UK"
+    }
+  },
+  {
+    "Full Name": "Jade Davies",
+    "First Name": "Jade",
+    "Last Name": "Davies",
+    "Job Title": "Chief Financial Officer",
+    "Work Email": "jade.davies@northgatedesign.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/jade-davies-026a",
+    "Company Name": "Northgate Design Studio",
+    "Company Domain": "northgatedesign.co.uk",
+    "Person Enrichment": {
+      "seniority": "C-Suite",
+      "department": "Finance",
+      "location": "Birmingham, UK"
+    }
+  },
+  {
+    "Full Name": "Samuel McCarthy",
+    "First Name": "Samuel",
+    "Last Name": "McCarthy",
+    "Job Title": "Head of Plant",
+    "Work Email": "samuel.mccarthy@kingsmeadequipment.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/samuel-mccarthy-a949",
+    "Company Name": "Kingsmead Equipment Hire",
+    "Company Domain": "kingsmeadequipment.co.uk",
+    "Person Enrichment": {
+      "seniority": "Head",
+      "department": "Engineering",
+      "location": "Sheffield, UK"
+    }
+  },
+  {
+    "Full Name": "Charlotte McCarthy",
+    "First Name": "Charlotte",
+    "Last Name": "McCarthy",
+    "Job Title": "Head of Operations",
+    "Work Email": "charlotte.mccarthy@trentminerals.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/charlotte-mccarthy-652c",
+    "Company Name": "Trent Minerals",
+    "Company Domain": "trentminerals.co.uk",
+    "Person Enrichment": {
+      "seniority": "Head",
+      "department": "Operations",
+      "location": "Bristol, UK"
+    }
+  },
+  {
+    "Full Name": "Nadia Fitzgerald",
+    "First Name": "Nadia",
+    "Last Name": "Fitzgerald",
+    "Job Title": "Head of HR",
+    "Work Email": "nadia.fitzgerald@saltashgroundworks.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/nadia-fitzgerald-de8c",
+    "Company Name": "Saltash Groundworks",
+    "Company Domain": "saltashgroundworks.co.uk",
+    "Person Enrichment": {
+      "seniority": "Head",
+      "department": "Finance",
+      "location": "Peterborough, UK"
+    }
+  },
+  {
+    "Full Name": "Owen Walsh",
+    "First Name": "Owen",
+    "Last Name": "Walsh",
+    "Job Title": "Head of Procurement",
+    "Work Email": "owen.walsh@liffeycontractors.fr",
+    "LinkedIn Profile": "https://www.linkedin.com/in/owen-walsh-5bd9",
+    "Company Name": "Liffey Contractors",
+    "Company Domain": "liffeycontractors.fr",
+    "Person Enrichment": {
+      "seniority": "Head",
+      "department": "Procurement",
+      "location": "Lille, France"
+    }
+  },
+  {
+    "Full Name": "Lewis Begum",
+    "First Name": "Lewis",
+    "Last Name": "Begum",
+    "Job Title": "Sales Director",
+    "Work Email": "lewis.begum@jarrowdesign.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/lewis-begum-a2c1",
+    "Company Name": "Jarrow Design Studio",
+    "Company Domain": "jarrowdesign.co.uk",
+    "Person Enrichment": {
+      "seniority": "Director",
+      "department": "Finance",
+      "location": "Sheffield, UK"
+    }
+  },
+  {
+    "Full Name": "Olivia Scott",
+    "First Name": "Olivia",
+    "Last Name": "Scott",
+    "Job Title": "Sustainability Director",
+    "Work Email": "olivia.scott@penrosebuilders.co.uk",
+    "LinkedIn Profile": "https://www.linkedin.com/in/olivia-scott-776f",
+    "Company Name": "Penrose Builders",
+    "Company Domain": "penrosebuilders.co.uk",
+    "Person Enrichment": {
+      "seniority": "Director",
+      "department": "Sustainability",
+      "location": "Cardiff, UK"
+    }
+  }
+]

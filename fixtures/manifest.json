@@ -1,0 +1,1519 @@
+{
+  "version": 1,
+  "anchor": "2026-11-20",
+  "counts": {
+    "companyRecords": 300,
+    "contactRecords": 600,
+    "uniqueCompanies": 282,
+    "duplicateCompanies": 18,
+    "duplicateContacts": 6,
+    "headcountConflicts": 7,
+    "suppressed": 12,
+    "optOuts": 7,
+    "pilotMailed": 5,
+    "invalidAddresses": 5,
+    "byProvider": {
+      "apollo": {
+        "companies": 130,
+        "contacts": 301
+      },
+      "factset": {
+        "companies": 80,
+        "contacts": 107
+      },
+      "clay": {
+        "companies": 90,
+        "contacts": 192
+      }
+    }
+  },
+  "duplicates": [
+    {
+      "companyKey": "c001",
+      "name": "Ottery Infrastructure Limited",
+      "domain": "otteryinfrastructure.co.uk",
+      "records": [
+        {
+          "provider": "apollo",
+          "externalId": "401307b84728a1f7e5a9c5d0"
+        },
+        {
+          "provider": "factset",
+          "externalId": "W5Z69D-E"
+        }
+      ],
+      "tricks": [
+        "country written as United Kingdom vs GB",
+        "Limited vs Ltd",
+        "domain written as https://www.{d}/"
+      ]
+    },
+    {
+      "companyKey": "c002",
+      "name": "Wessex Minerals Ltd",
+      "domain": "wessexminerals.co.uk",
+      "records": [
+        {
+          "provider": "apollo",
+          "externalId": "0619ee04c1035dd40b4732e1"
+        },
+        {
+          "provider": "factset",
+          "externalId": "72B1GS-E"
+        }
+      ],
+      "tricks": [
+        "country written as United Kingdom vs GB",
+        "headcount conflict",
+        "Ltd vs Limited",
+        "domain written as www.{d}"
+      ]
+    },
+    {
+      "companyKey": "c003",
+      "name": "Ashdown Stone Ltd",
+      "domain": "ashdownstone.co.uk",
+      "records": [
+        {
+          "provider": "apollo",
+          "externalId": "5043b24daf459faaf1d82c81"
+        },
+        {
+          "provider": "factset",
+          "externalId": "38LX0S-E"
+        }
+      ],
+      "tricks": [
+        "country written as United Kingdom vs GB",
+        "headcount conflict",
+        "name in capitals",
+        "domain written as http://{d}/"
+      ]
+    },
+    {
+      "companyKey": "c004",
+      "name": "Stanton Tool & Plant Hire Limited",
+      "domain": "stantontool.co.uk",
+      "records": [
+        {
+          "provider": "apollo",
+          "externalId": "330ad85ff7099f16e8cb0718"
+        },
+        {
+          "provider": "factset",
+          "externalId": "W29QDJ-E"
+        }
+      ],
+      "tricks": [
+        "country written as United Kingdom vs GB",
+        "no domain at factset: matched on name + country",
+        "name in capitals"
+      ]
+    },
+    {
+      "companyKey": "c005",
+      "name": "Pemberton Quarries Ltd",
+      "domain": "pembertonquarries.co.uk",
+      "records": [
+        {
+          "provider": "apollo",
+          "externalId": "08243ad37025b9883fed55d6"
+        },
+        {
+          "provider": "factset",
+          "externalId": "N5FDN8-E"
+        }
+      ],
+      "tricks": [
+        "country written as United Kingdom vs GB",
+        "name in capitals",
+        "domain written as {D}"
+      ]
+    },
+    {
+      "companyKey": "c006",
+      "name": "Netherby Groundworks PLC",
+      "domain": "netherbygroundworks.co.uk",
+      "records": [
+        {
+          "provider": "apollo",
+          "externalId": "50b8337ef088128e130871bd"
+        },
+        {
+          "provider": "clay",
+          "externalId": "https://www.netherbygroundworks.co.uk/"
+        }
+      ],
+      "tricks": [
+        "country written as United Kingdom vs UK",
+        "domain written as https://www.{d}/"
+      ]
+    },
+    {
+      "companyKey": "c007",
+      "name": "Penrose Builders Limited",
+      "domain": "penrosebuilders.co.uk",
+      "records": [
+        {
+          "provider": "apollo",
+          "externalId": "82092bd59e4877f6a3ce0fcc"
+        },
+        {
+          "provider": "clay",
+          "externalId": "www.penrosebuilders.co.uk"
+        }
+      ],
+      "tricks": [
+        "country written as United Kingdom vs UK",
+        "headcount conflict",
+        "domain written as www.{d}"
+      ]
+    },
+    {
+      "companyKey": "c008",
+      "name": "Dovecote Civil Engineering PLC",
+      "domain": "dovecotecivil.co.uk",
+      "records": [
+        {
+          "provider": "apollo",
+          "externalId": "b6d55acdbbbcce88099b0b47"
+        },
+        {
+          "provider": "clay",
+          "externalId": "http://dovecotecivil.co.uk/"
+        }
+      ],
+      "tricks": [
+        "country written as United Kingdom vs UK",
+        "domain written as http://{d}/"
+      ]
+    },
+    {
+      "companyKey": "c009",
+      "name": "Lomax Quarries Ltd",
+      "domain": "lomaxquarries.ie",
+      "records": [
+        {
+          "provider": "clay",
+          "externalId": "lomaxquarries.ie"
+        },
+        {
+          "provider": "factset",
+          "externalId": "PQ2RWW-E"
+        }
+      ],
+      "tricks": [
+        "country written as Ireland vs IE",
+        "headcount conflict",
+        "name in capitals",
+        "domain written as {D}"
+      ]
+    },
+    {
+      "companyKey": "c010",
+      "name": "Ironbridge Civil Engineering Ltd",
+      "domain": "ironbridgecivil.co.uk",
+      "records": [
+        {
+          "provider": "clay",
+          "externalId": "ironbridgecivil.co.uk"
+        },
+        {
+          "provider": "factset",
+          "externalId": "0T963R-E"
+        }
+      ],
+      "tricks": [
+        "country written as UK vs GB",
+        "no domain at factset: matched on name + country",
+        "name in capitals"
+      ]
+    },
+    {
+      "companyKey": "c011",
+      "name": "Birchwood Builders Ltd",
+      "domain": "birchwoodbuilders.co.uk",
+      "records": [
+        {
+          "provider": "apollo",
+          "externalId": "204bd6b98880ff098ccafdad"
+        },
+        {
+          "provider": "factset",
+          "externalId": "G2B95R-E"
+        }
+      ],
+      "tricks": [
+        "country written as United Kingdom vs GB",
+        "headcount conflict",
+        "Ltd vs Limited",
+        "domain written as https://www.{d}/"
+      ]
+    },
+    {
+      "companyKey": "c012",
+      "name": "Holloway Plant Ltd",
+      "domain": "hollowayplant.co.uk",
+      "records": [
+        {
+          "provider": "apollo",
+          "externalId": "4b4d1552244624d35dce44c9"
+        },
+        {
+          "provider": "factset",
+          "externalId": "8JNNSX-E"
+        }
+      ],
+      "tricks": [
+        "country written as United Kingdom vs GB",
+        "no domain at factset: matched on name + country",
+        "name in capitals"
+      ]
+    },
+    {
+      "companyKey": "c013",
+      "name": "Dunmore Contractors PLC",
+      "domain": "dunmorecontractors.co.uk",
+      "records": [
+        {
+          "provider": "apollo",
+          "externalId": "e1a192f07e5c155ebc267d4e"
+        },
+        {
+          "provider": "clay",
+          "externalId": "www.dunmorecontractors.co.uk"
+        }
+      ],
+      "tricks": [
+        "country written as United Kingdom vs UK",
+        "domain written as www.{d}"
+      ]
+    },
+    {
+      "companyKey": "c014",
+      "name": "Jarrow Civil Engineering PLC",
+      "domain": "jarrowcivil.co.uk",
+      "records": [
+        {
+          "provider": "clay",
+          "externalId": "jarrowcivil.co.uk"
+        },
+        {
+          "provider": "factset",
+          "externalId": "SGWVW2-E"
+        }
+      ],
+      "tricks": [
+        "country written as UK vs GB",
+        "headcount conflict",
+        "name in capitals",
+        "domain written as http://{d}/"
+      ]
+    },
+    {
+      "companyKey": "c015",
+      "name": "Ironbridge Digital Ltd",
+      "domain": "ironbridgedigital.co.uk",
+      "records": [
+        {
+          "provider": "apollo",
+          "externalId": "95d6c9c424910bc334b3c45c"
+        },
+        {
+          "provider": "factset",
+          "externalId": "SZZJDH-E"
+        }
+      ],
+      "tricks": [
+        "country written as United Kingdom vs GB",
+        "headcount conflict",
+        "name in capitals",
+        "domain written as {D}"
+      ]
+    },
+    {
+      "companyKey": "c016",
+      "name": "Jarrow Property Ltd",
+      "domain": "jarrowproperty.co.uk",
+      "records": [
+        {
+          "provider": "apollo",
+          "externalId": "2cb270f5b322f70f15b77754"
+        },
+        {
+          "provider": "clay",
+          "externalId": "https://www.jarrowproperty.co.uk/"
+        }
+      ],
+      "tricks": [
+        "country written as United Kingdom vs UK",
+        "no domain at apollo: matched on name + country",
+        "domain written as https://www.{d}/"
+      ]
+    },
+    {
+      "companyKey": "c017",
+      "name": "Rowntree Minerals AG",
+      "domain": "rowntreeminerals.de",
+      "records": [
+        {
+          "provider": "apollo",
+          "externalId": "b38df472ebdc2e08a1888373"
+        },
+        {
+          "provider": "clay",
+          "externalId": "www.rowntreeminerals.de"
+        }
+      ],
+      "tricks": [
+        "country written as Germany vs Germany",
+        "domain written as www.{d}"
+      ]
+    },
+    {
+      "companyKey": "c018",
+      "name": "Halden Contractors SAS",
+      "domain": "haldencontractors.fr",
+      "records": [
+        {
+          "provider": "clay",
+          "externalId": "haldencontractors.fr"
+        },
+        {
+          "provider": "factset",
+          "externalId": "ZQQ9CF-E"
+        }
+      ],
+      "tricks": [
+        "country written as France vs FR",
+        "name in capitals",
+        "domain written as http://{d}/"
+      ]
+    }
+  ],
+  "nearDuplicates": [
+    {
+      "companies": [
+        {
+          "companyKey": "c048",
+          "name": "Langley Minerals Ltd",
+          "country": "GB",
+          "domain": "langleyminerals.co.uk",
+          "records": [
+            {
+              "provider": "apollo",
+              "externalId": "39634873036709cf1cf323d9"
+            }
+          ]
+        },
+        {
+          "companyKey": "c151",
+          "name": "Langley Minerals Limited",
+          "country": "IE",
+          "domain": "langleyminerals.ie",
+          "records": [
+            {
+              "provider": "clay",
+              "externalId": "langleyminerals.ie"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "companies": [
+        {
+          "companyKey": "c049",
+          "name": "Langley Civils Ltd",
+          "country": "GB",
+          "domain": "langleycivils.co.uk",
+          "records": [
+            {
+              "provider": "apollo",
+              "externalId": "b4bcb4e36d4a1654ae866661"
+            }
+          ]
+        },
+        {
+          "companyKey": "c121",
+          "name": "Langley Civils B.V.",
+          "country": "NL",
+          "domain": "langleycivils.nl",
+          "records": [
+            {
+              "provider": "apollo",
+              "externalId": "d0c01374aa0f512eacea737d"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "headcountConflicts": [
+    {
+      "companyKey": "c002",
+      "values": [
+        {
+          "provider": "apollo",
+          "headcount": 313
+        },
+        {
+          "provider": "factset",
+          "headcount": 216
+        }
+      ]
+    },
+    {
+      "companyKey": "c003",
+      "values": [
+        {
+          "provider": "apollo",
+          "headcount": 830
+        },
+        {
+          "provider": "factset",
+          "headcount": 1186
+        }
+      ]
+    },
+    {
+      "companyKey": "c007",
+      "values": [
+        {
+          "provider": "apollo",
+          "headcount": 2330
+        },
+        {
+          "provider": "clay",
+          "headcount": 1631
+        }
+      ]
+    },
+    {
+      "companyKey": "c009",
+      "values": [
+        {
+          "provider": "clay",
+          "headcount": 1546
+        },
+        {
+          "provider": "factset",
+          "headcount": 2208
+        }
+      ]
+    },
+    {
+      "companyKey": "c011",
+      "values": [
+        {
+          "provider": "apollo",
+          "headcount": 580
+        },
+        {
+          "provider": "factset",
+          "headcount": 400
+        }
+      ]
+    },
+    {
+      "companyKey": "c014",
+      "values": [
+        {
+          "provider": "clay",
+          "headcount": 20
+        },
+        {
+          "provider": "factset",
+          "headcount": 34
+        }
+      ]
+    },
+    {
+      "companyKey": "c015",
+      "values": [
+        {
+          "provider": "apollo",
+          "headcount": 624
+        },
+        {
+          "provider": "factset",
+          "headcount": 480
+        }
+      ]
+    }
+  ],
+  "suppressed": [
+    {
+      "personKey": "ben.khan@otteryinfrastructure.co.uk",
+      "reason": "opt_out",
+      "companyKey": "c001",
+      "inTop50": true,
+      "viaDuplicateContact": true
+    },
+    {
+      "personKey": "tom.gallagher@jarrowgroundworks.co.uk",
+      "reason": "opt_out",
+      "companyKey": "c022",
+      "inTop50": true,
+      "viaDuplicateContact": false
+    },
+    {
+      "personKey": "katie.fraser@wardlequarries.co.uk",
+      "reason": "opt_out",
+      "companyKey": "c023",
+      "inTop50": true,
+      "viaDuplicateContact": false
+    },
+    {
+      "personKey": "tom.patel@aldertool.co.uk",
+      "reason": "opt_out",
+      "companyKey": "c136",
+      "inTop50": true,
+      "viaDuplicateContact": false
+    },
+    {
+      "personKey": "laura.cooper@ashdownstone.co.uk",
+      "reason": "opt_out",
+      "companyKey": "c003",
+      "inTop50": true,
+      "viaDuplicateContact": false
+    },
+    {
+      "personKey": "lewis.healy@hartleygroundworks.co.uk",
+      "reason": "opt_out",
+      "companyKey": "c045",
+      "inTop50": false,
+      "viaDuplicateContact": false
+    },
+    {
+      "personKey": "owen.dunne@granitecontractors.co.uk",
+      "reason": "opt_out",
+      "companyKey": "c149",
+      "inTop50": false,
+      "viaDuplicateContact": false
+    },
+    {
+      "personKey": "owen.kaur@kestrelminerals.co.uk",
+      "reason": "mailed_90d",
+      "companyKey": "c024",
+      "inTop50": true,
+      "viaDuplicateContact": false
+    },
+    {
+      "personKey": "joseph.phillips@thornburycivils.co.uk",
+      "reason": "mailed_90d",
+      "companyKey": "c137",
+      "inTop50": true,
+      "viaDuplicateContact": false
+    },
+    {
+      "personKey": "patrick.edwards@ironbridgecivil.co.uk",
+      "reason": "mailed_90d",
+      "companyKey": "c010",
+      "inTop50": true,
+      "viaDuplicateContact": false
+    },
+    {
+      "personKey": "ryan.baker@shannoncivil.co.uk",
+      "reason": "mailed_90d",
+      "companyKey": "c046",
+      "inTop50": false,
+      "viaDuplicateContact": false
+    },
+    {
+      "personKey": "joseph.kelly@netherbycivil.co.uk",
+      "reason": "mailed_90d",
+      "companyKey": "c150",
+      "inTop50": false,
+      "viaDuplicateContact": false
+    }
+  ],
+  "invalidAddresses": [
+    {
+      "companyKey": "c019",
+      "reason": "missing_line1",
+      "inTop50": true,
+      "records": [
+        {
+          "provider": "apollo",
+          "externalId": "0b4a8aeeac4fd14a4cd498f6"
+        }
+      ]
+    },
+    {
+      "companyKey": "c020",
+      "reason": "invalid_postcode",
+      "inTop50": true,
+      "records": [
+        {
+          "provider": "apollo",
+          "externalId": "a3ecdaf88df2e3a0bf3f8c33"
+        }
+      ]
+    },
+    {
+      "companyKey": "c135",
+      "reason": "missing_city",
+      "inTop50": true,
+      "records": [
+        {
+          "provider": "clay",
+          "externalId": "fenwickconstruction.co.uk"
+        }
+      ]
+    },
+    {
+      "companyKey": "c047",
+      "reason": "missing_postcode",
+      "inTop50": false,
+      "records": [
+        {
+          "provider": "apollo",
+          "externalId": "e2870f57cc8336316e41b9b3"
+        }
+      ]
+    },
+    {
+      "companyKey": "c120",
+      "reason": "unsupported_country",
+      "inTop50": false,
+      "records": [
+        {
+          "provider": "apollo",
+          "externalId": "76bb339254c09b2b5e234ca6"
+        }
+      ]
+    }
+  ],
+  "top50": {
+    "expectedEligible": 39,
+    "nextBestScore": 80,
+    "companies": [
+      {
+        "companyKey": "c001",
+        "name": "Ottery Infrastructure Limited",
+        "domain": "otteryinfrastructure.co.uk",
+        "records": [
+          {
+            "provider": "apollo",
+            "externalId": "401307b84728a1f7e5a9c5d0"
+          },
+          {
+            "provider": "factset",
+            "externalId": "W5Z69D-E"
+          }
+        ],
+        "expectedScore": 90,
+        "recipient": "ben.khan@otteryinfrastructure.co.uk",
+        "expected": "suppressed:opt_out"
+      },
+      {
+        "companyKey": "c002",
+        "name": "Wessex Minerals Ltd",
+        "domain": "wessexminerals.co.uk",
+        "records": [
+          {
+            "provider": "apollo",
+            "externalId": "0619ee04c1035dd40b4732e1"
+          },
+          {
+            "provider": "factset",
+            "externalId": "72B1GS-E"
+          }
+        ],
+        "expectedScore": 100,
+        "recipient": "holly.taylor@wessexminerals.co.uk",
+        "expected": "eligible"
+      },
+      {
+        "companyKey": "c003",
+        "name": "Ashdown Stone Ltd",
+        "domain": "ashdownstone.co.uk",
+        "records": [
+          {
+            "provider": "apollo",
+            "externalId": "5043b24daf459faaf1d82c81"
+          },
+          {
+            "provider": "factset",
+            "externalId": "38LX0S-E"
+          }
+        ],
+        "expectedScore": 100,
+        "recipient": "laura.cooper@ashdownstone.co.uk",
+        "expected": "suppressed:opt_out"
+      },
+      {
+        "companyKey": "c004",
+        "name": "Stanton Tool & Plant Hire Limited",
+        "domain": "stantontool.co.uk",
+        "records": [
+          {
+            "provider": "apollo",
+            "externalId": "330ad85ff7099f16e8cb0718"
+          },
+          {
+            "provider": "factset",
+            "externalId": "W29QDJ-E"
+          }
+        ],
+        "expectedScore": 90,
+        "recipient": "daniel.ross@stantontool.co.uk",
+        "expected": "eligible"
+      },
+      {
+        "companyKey": "c005",
+        "name": "Pemberton Quarries Ltd",
+        "domain": "pembertonquarries.co.uk",
+        "records": [
+          {
+            "provider": "apollo",
+            "externalId": "08243ad37025b9883fed55d6"
+          },
+          {
+            "provider": "factset",
+            "externalId": "N5FDN8-E"
+          }
+        ],
+        "expectedScore": 90,
+        "recipient": "mohammed.ahmed@pembertonquarries.co.uk",
+        "expected": "eligible"
+      },
+      {
+        "companyKey": "c006",
+        "name": "Netherby Groundworks PLC",
+        "domain": "netherbygroundworks.co.uk",
+        "records": [
+          {
+            "provider": "apollo",
+            "externalId": "50b8337ef088128e130871bd"
+          },
+          {
+            "provider": "clay",
+            "externalId": "https://www.netherbygroundworks.co.uk/"
+          }
+        ],
+        "expectedScore": 90,
+        "recipient": "oliver.fitzgerald@netherbygroundworks.co.uk",
+        "expected": "eligible"
+      },
+      {
+        "companyKey": "c007",
+        "name": "Penrose Builders Limited",
+        "domain": "penrosebuilders.co.uk",
+        "records": [
+          {
+            "provider": "apollo",
+            "externalId": "82092bd59e4877f6a3ce0fcc"
+          },
+          {
+            "provider": "clay",
+            "externalId": "www.penrosebuilders.co.uk"
+          }
+        ],
+        "expectedScore": 100,
+        "recipient": "gareth.novak@penrosebuilders.co.uk",
+        "expected": "eligible"
+      },
+      {
+        "companyKey": "c008",
+        "name": "Dovecote Civil Engineering PLC",
+        "domain": "dovecotecivil.co.uk",
+        "records": [
+          {
+            "provider": "apollo",
+            "externalId": "b6d55acdbbbcce88099b0b47"
+          },
+          {
+            "provider": "clay",
+            "externalId": "http://dovecotecivil.co.uk/"
+          }
+        ],
+        "expectedScore": 100,
+        "recipient": "freya.malik@dovecotecivil.co.uk",
+        "expected": "eligible"
+      },
+      {
+        "companyKey": "c009",
+        "name": "Lomax Quarries Ltd",
+        "domain": "lomaxquarries.ie",
+        "records": [
+          {
+            "provider": "clay",
+            "externalId": "lomaxquarries.ie"
+          },
+          {
+            "provider": "factset",
+            "externalId": "PQ2RWW-E"
+          }
+        ],
+        "expectedScore": 100,
+        "recipient": "noah.moore@lomaxquarries.ie",
+        "expected": "eligible"
+      },
+      {
+        "companyKey": "c010",
+        "name": "Ironbridge Civil Engineering Ltd",
+        "domain": "ironbridgecivil.co.uk",
+        "records": [
+          {
+            "provider": "clay",
+            "externalId": "ironbridgecivil.co.uk"
+          },
+          {
+            "provider": "factset",
+            "externalId": "0T963R-E"
+          }
+        ],
+        "expectedScore": 90,
+        "recipient": "patrick.edwards@ironbridgecivil.co.uk",
+        "expected": "suppressed:mailed_90d"
+      },
+      {
+        "companyKey": "c019",
+        "name": "Hartley Civil Engineering Limited",
+        "domain": "hartleycivil.co.uk",
+        "records": [
+          {
+            "provider": "apollo",
+            "externalId": "0b4a8aeeac4fd14a4cd498f6"
+          }
+        ],
+        "expectedScore": 90,
+        "recipient": "bethan.ward@hartleycivil.co.uk",
+        "expected": "invalid_address:missing_line1"
+      },
+      {
+        "companyKey": "c020",
+        "name": "Alder Equipment Hire Limited",
+        "domain": "alderequipment.co.uk",
+        "records": [
+          {
+            "provider": "apollo",
+            "externalId": "a3ecdaf88df2e3a0bf3f8c33"
+          }
+        ],
+        "expectedScore": 90,
+        "recipient": "grace.gallagher@alderequipment.co.uk",
+        "expected": "invalid_address:invalid_postcode"
+      },
+      {
+        "companyKey": "c021",
+        "name": "Kingsmead Tool & Plant Hire Ltd",
+        "domain": "kingsmeadtool.co.uk",
+        "records": [
+          {
+            "provider": "apollo",
+            "externalId": "011829e3c0dd9e2e55de09e7"
+          }
+        ],
+        "expectedScore": 100,
+        "recipient": "erin.duffy@kingsmeadtool.co.uk",
+        "expected": "eligible"
+      },
+      {
+        "companyKey": "c022",
+        "name": "Jarrow Groundworks Limited",
+        "domain": "jarrowgroundworks.co.uk",
+        "records": [
+          {
+            "provider": "apollo",
+            "externalId": "28b42d8124f6436adcc16770"
+          }
+        ],
+        "expectedScore": 90,
+        "recipient": "tom.gallagher@jarrowgroundworks.co.uk",
+        "expected": "suppressed:opt_out"
+      },
+      {
+        "companyKey": "c023",
+        "name": "Wardle Quarries Ltd",
+        "domain": "wardlequarries.co.uk",
+        "records": [
+          {
+            "provider": "apollo",
+            "externalId": "509e47f1b34766b492f6e5ca"
+          }
+        ],
+        "expectedScore": 100,
+        "recipient": "katie.fraser@wardlequarries.co.uk",
+        "expected": "suppressed:opt_out"
+      },
+      {
+        "companyKey": "c024",
+        "name": "Kestrel Minerals PLC",
+        "domain": "kestrelminerals.co.uk",
+        "records": [
+          {
+            "provider": "apollo",
+            "externalId": "369c88db5340d10efcf1170e"
+          }
+        ],
+        "expectedScore": 100,
+        "recipient": "owen.kaur@kestrelminerals.co.uk",
+        "expected": "suppressed:mailed_90d"
+      },
+      {
+        "companyKey": "c025",
+        "name": "Wyvern Civils Ltd",
+        "domain": "wyverncivils.co.uk",
+        "records": [
+          {
+            "provider": "apollo",
+            "externalId": "6e706aa423949c9e1010d927"
+          }
+        ],
+        "expectedScore": 90,
+        "recipient": "james.okafor@wyverncivils.co.uk",
+        "expected": "eligible"
+      },
+      {
+        "companyKey": "c026",
+        "name": "Rowntree Groundworks Limited",
+        "domain": "rowntreegroundworks.co.uk",
+        "records": [
+          {
+            "provider": "apollo",
+            "externalId": "0a06c8220c815ffad400db87"
+          }
+        ],
+        "expectedScore": 90,
+        "recipient": "mei.harris@rowntreegroundworks.co.uk",
+        "expected": "eligible"
+      },
+      {
+        "companyKey": "c027",
+        "name": "Upton Aggregates Limited",
+        "domain": "uptonaggregates.co.uk",
+        "records": [
+          {
+            "provider": "apollo",
+            "externalId": "9ad31fe0b5e661178228f9e0"
+          }
+        ],
+        "expectedScore": 100,
+        "recipient": "marcus.morgan@uptonaggregates.co.uk",
+        "expected": "eligible"
+      },
+      {
+        "companyKey": "c028",
+        "name": "Halden Civils PLC",
+        "domain": "haldencivils.co.uk",
+        "records": [
+          {
+            "provider": "apollo",
+            "externalId": "cd03dc584122b7b02018ee54"
+          }
+        ],
+        "expectedScore": 100,
+        "recipient": "noah.kaur@haldencivils.co.uk",
+        "expected": "eligible"
+      },
+      {
+        "companyKey": "c029",
+        "name": "Kestrel Contractors Ltd",
+        "domain": "kestrelcontractors.ie",
+        "records": [
+          {
+            "provider": "apollo",
+            "externalId": "788c615d04fa092b6a891b9f"
+          }
+        ],
+        "expectedScore": 100,
+        "recipient": "fatima.lewis@kestrelcontractors.ie",
+        "expected": "eligible"
+      },
+      {
+        "companyKey": "c030",
+        "name": "Shannon Plant Hire Ltd",
+        "domain": "shannonplant.co.uk",
+        "records": [
+          {
+            "provider": "apollo",
+            "externalId": "d89b55f643579ab79c228ac6"
+          }
+        ],
+        "expectedScore": 100,
+        "recipient": "erin.nolan@shannonplant.co.uk",
+        "expected": "eligible"
+      },
+      {
+        "companyKey": "c031",
+        "name": "Kestrel Construction PLC",
+        "domain": "kestrelconstruction.co.uk",
+        "records": [
+          {
+            "provider": "apollo",
+            "externalId": "8754e7e5001f5bb98cd3b4d0"
+          }
+        ],
+        "expectedScore": 90,
+        "recipient": "sinead.baker@kestrelconstruction.co.uk",
+        "expected": "eligible"
+      },
+      {
+        "companyKey": "c032",
+        "name": "Ironbridge Contractors Limited",
+        "domain": "ironbridgecontractors.co.uk",
+        "records": [
+          {
+            "provider": "apollo",
+            "externalId": "577346e0fd8e3258e54dc4a6"
+          }
+        ],
+        "expectedScore": 100,
+        "recipient": "declan.duffy@ironbridgecontractors.co.uk",
+        "expected": "eligible"
+      },
+      {
+        "companyKey": "c033",
+        "name": "Thames Construction Ltd",
+        "domain": "thamesconstruction.co.uk",
+        "records": [
+          {
+            "provider": "apollo",
+            "externalId": "dfb31c1cf8542031ab989ab8"
+          }
+        ],
+        "expectedScore": 90,
+        "recipient": "grace.owusu@thamesconstruction.co.uk",
+        "expected": "eligible"
+      },
+      {
+        "companyKey": "c034",
+        "name": "Lytham Equipment Hire Limited",
+        "domain": "lythamequipment.co.uk",
+        "records": [
+          {
+            "provider": "apollo",
+            "externalId": "e7d402cb4f5d4320e11c0bfc"
+          }
+        ],
+        "expectedScore": 90,
+        "recipient": "holly.doyle@lythamequipment.co.uk",
+        "expected": "eligible"
+      },
+      {
+        "companyKey": "c035",
+        "name": "Ingram Aggregates DAC",
+        "domain": "ingramaggregates.ie",
+        "records": [
+          {
+            "provider": "apollo",
+            "externalId": "d15bd5d11168772dbadcd95a"
+          }
+        ],
+        "expectedScore": 90,
+        "recipient": "patrick.quinn@ingramaggregates.ie",
+        "expected": "eligible"
+      },
+      {
+        "companyKey": "c036",
+        "name": "Mercia Construction DAC",
+        "domain": "merciaconstruction.ie",
+        "records": [
+          {
+            "provider": "apollo",
+            "externalId": "585315a99e410da3d908d579"
+          }
+        ],
+        "expectedScore": 100,
+        "recipient": "joseph.healy@merciaconstruction.ie",
+        "expected": "eligible"
+      },
+      {
+        "companyKey": "c037",
+        "name": "Stanton Civil Engineering DAC",
+        "domain": "stantoncivil.ie",
+        "records": [
+          {
+            "provider": "apollo",
+            "externalId": "725a07566a6fcc4e08c3a3bc"
+          }
+        ],
+        "expectedScore": 90,
+        "recipient": "declan.campbell@stantoncivil.ie",
+        "expected": "eligible"
+      },
+      {
+        "companyKey": "c038",
+        "name": "Ironbridge Minerals Ltd",
+        "domain": "ironbridgeminerals.co.uk",
+        "records": [
+          {
+            "provider": "apollo",
+            "externalId": "ffe8097affb147b9fb2eea46"
+          }
+        ],
+        "expectedScore": 100,
+        "recipient": "rhys.davies@ironbridgeminerals.co.uk",
+        "expected": "eligible"
+      },
+      {
+        "companyKey": "c039",
+        "name": "Barlow Minerals Ltd",
+        "domain": "barlowminerals.co.uk",
+        "records": [
+          {
+            "provider": "apollo",
+            "externalId": "8db836f2e8cb78d978549360"
+          }
+        ],
+        "expectedScore": 90,
+        "recipient": "olivia.lewis@barlowminerals.co.uk",
+        "expected": "eligible"
+      },
+      {
+        "companyKey": "c040",
+        "name": "Wyvern Contractors Ltd",
+        "domain": "wyverncontractors.ie",
+        "records": [
+          {
+            "provider": "apollo",
+            "externalId": "94b192c299ba2604d77be642"
+          }
+        ],
+        "expectedScore": 90,
+        "recipient": "lucy.patel@wyverncontractors.ie",
+        "expected": "eligible"
+      },
+      {
+        "companyKey": "c041",
+        "name": "Birchwood Construction Ltd",
+        "domain": "birchwoodconstruction.co.uk",
+        "records": [
+          {
+            "provider": "apollo",
+            "externalId": "74ec58dfa852639d95f66436"
+          }
+        ],
+        "expectedScore": 90,
+        "recipient": "lewis.reid@birchwoodconstruction.co.uk",
+        "expected": "eligible"
+      },
+      {
+        "companyKey": "c042",
+        "name": "Liffey Minerals Ltd",
+        "domain": "liffeyminerals.co.uk",
+        "records": [
+          {
+            "provider": "apollo",
+            "externalId": "c94ca32a954a9cb701175f89"
+          }
+        ],
+        "expectedScore": 90,
+        "recipient": "yusuf.phillips@liffeyminerals.co.uk",
+        "expected": "eligible"
+      },
+      {
+        "companyKey": "c043",
+        "name": "Ullswater Tool & Plant Hire Ltd",
+        "domain": "ullswatertool.co.uk",
+        "records": [
+          {
+            "provider": "apollo",
+            "externalId": "c5c5f9106d4e909af004f0e5"
+          }
+        ],
+        "expectedScore": 90,
+        "recipient": "niamh.grant@ullswatertool.co.uk",
+        "expected": "eligible"
+      },
+      {
+        "companyKey": "c044",
+        "name": "Elmhurst Builders Limited",
+        "domain": "elmhurstbuilders.co.uk",
+        "records": [
+          {
+            "provider": "apollo",
+            "externalId": "0a205e4617d5dff74aae8c8b"
+          }
+        ],
+        "expectedScore": 90,
+        "recipient": "dev.dunne@elmhurstbuilders.co.uk",
+        "expected": "eligible"
+      },
+      {
+        "companyKey": "c135",
+        "name": "Fenwick Construction Limited",
+        "domain": "fenwickconstruction.co.uk",
+        "records": [
+          {
+            "provider": "clay",
+            "externalId": "fenwickconstruction.co.uk"
+          }
+        ],
+        "expectedScore": 100,
+        "recipient": "mohammed.evans@fenwickconstruction.co.uk",
+        "expected": "invalid_address:missing_city"
+      },
+      {
+        "companyKey": "c136",
+        "name": "Alder Tool & Plant Hire Ltd",
+        "domain": "aldertool.co.uk",
+        "records": [
+          {
+            "provider": "clay",
+            "externalId": "aldertool.co.uk"
+          }
+        ],
+        "expectedScore": 100,
+        "recipient": "tom.patel@aldertool.co.uk",
+        "expected": "suppressed:opt_out"
+      },
+      {
+        "companyKey": "c137",
+        "name": "Thornbury Civils Ltd",
+        "domain": "thornburycivils.co.uk",
+        "records": [
+          {
+            "provider": "clay",
+            "externalId": "thornburycivils.co.uk"
+          }
+        ],
+        "expectedScore": 90,
+        "recipient": "joseph.phillips@thornburycivils.co.uk",
+        "expected": "suppressed:mailed_90d"
+      },
+      {
+        "companyKey": "c138",
+        "name": "Trent Minerals Ltd",
+        "domain": "trentminerals.co.uk",
+        "records": [
+          {
+            "provider": "clay",
+            "externalId": "trentminerals.co.uk"
+          }
+        ],
+        "expectedScore": 100,
+        "recipient": "charlotte.mccarthy@trentminerals.co.uk",
+        "expected": "eligible"
+      },
+      {
+        "companyKey": "c139",
+        "name": "Ormond Tool & Plant Hire Ltd",
+        "domain": "ormondtool.co.uk",
+        "records": [
+          {
+            "provider": "clay",
+            "externalId": "ormondtool.co.uk"
+          }
+        ],
+        "expectedScore": 100,
+        "recipient": "noah.chowdhury@ormondtool.co.uk",
+        "expected": "eligible"
+      },
+      {
+        "companyKey": "c140",
+        "name": "Alder Aggregates Limited",
+        "domain": "alderaggregates.co.uk",
+        "records": [
+          {
+            "provider": "clay",
+            "externalId": "alderaggregates.co.uk"
+          }
+        ],
+        "expectedScore": 90,
+        "recipient": "jack.bennett@alderaggregates.co.uk",
+        "expected": "eligible"
+      },
+      {
+        "companyKey": "c141",
+        "name": "Lomax Aggregates Ltd",
+        "domain": "lomaxaggregates.co.uk",
+        "records": [
+          {
+            "provider": "clay",
+            "externalId": "lomaxaggregates.co.uk"
+          }
+        ],
+        "expectedScore": 90,
+        "recipient": "holly.rahman@lomaxaggregates.co.uk",
+        "expected": "eligible"
+      },
+      {
+        "companyKey": "c142",
+        "name": "Pennine Building Ltd",
+        "domain": "penninebuilding.co.uk",
+        "records": [
+          {
+            "provider": "clay",
+            "externalId": "penninebuilding.co.uk"
+          }
+        ],
+        "expectedScore": 90,
+        "recipient": "chloe.kennedy@penninebuilding.co.uk",
+        "expected": "eligible"
+      },
+      {
+        "companyKey": "c143",
+        "name": "Quarrington Tool & Plant Hire Ltd",
+        "domain": "quarringtontool.co.uk",
+        "records": [
+          {
+            "provider": "clay",
+            "externalId": "quarringtontool.co.uk"
+          }
+        ],
+        "expectedScore": 90,
+        "recipient": "erin.begum@quarringtontool.co.uk",
+        "expected": "eligible"
+      },
+      {
+        "companyKey": "c144",
+        "name": "Ironbridge Plant Limited",
+        "domain": "ironbridgeplant.co.uk",
+        "records": [
+          {
+            "provider": "clay",
+            "externalId": "ironbridgeplant.co.uk"
+          }
+        ],
+        "expectedScore": 90,
+        "recipient": "grace.healy@ironbridgeplant.co.uk",
+        "expected": "eligible"
+      },
+      {
+        "companyKey": "c145",
+        "name": "Birchwood Tool & Plant Hire Ltd",
+        "domain": "birchwoodtool.co.uk",
+        "records": [
+          {
+            "provider": "clay",
+            "externalId": "birchwoodtool.co.uk"
+          }
+        ],
+        "expectedScore": 100,
+        "recipient": "rhys.malik@birchwoodtool.co.uk",
+        "expected": "eligible"
+      },
+      {
+        "companyKey": "c146",
+        "name": "Saltash Groundworks PLC",
+        "domain": "saltashgroundworks.co.uk",
+        "records": [
+          {
+            "provider": "clay",
+            "externalId": "saltashgroundworks.co.uk"
+          }
+        ],
+        "expectedScore": 100,
+        "recipient": "harry.price@saltashgroundworks.co.uk",
+        "expected": "eligible"
+      },
+      {
+        "companyKey": "c147",
+        "name": "Birchwood Civil Engineering Limited",
+        "domain": "birchwoodcivil.co.uk",
+        "records": [
+          {
+            "provider": "clay",
+            "externalId": "birchwoodcivil.co.uk"
+          }
+        ],
+        "expectedScore": 100,
+        "recipient": "oliver.ali@birchwoodcivil.co.uk",
+        "expected": "eligible"
+      },
+      {
+        "companyKey": "c148",
+        "name": "Mourne Stone Limited",
+        "domain": "mournestone.co.uk",
+        "records": [
+          {
+            "provider": "clay",
+            "externalId": "mournestone.co.uk"
+          }
+        ],
+        "expectedScore": 90,
+        "recipient": "ciaran.kaur@mournestone.co.uk",
+        "expected": "eligible"
+      }
+    ]
+  },
+  "recipientTieBreaks": [
+    {
+      "companyKey": "c021",
+      "rule": "seniority",
+      "winner": "erin.duffy@kingsmeadtool.co.uk",
+      "loser": "connor.moore@kingsmeadtool.co.uk"
+    },
+    {
+      "companyKey": "c006",
+      "rule": "corroboration",
+      "winner": "oliver.fitzgerald@netherbygroundworks.co.uk",
+      "loser": "liam.daly@netherbygroundworks.co.uk"
+    }
+  ],
+  "staleFactset": [
+    {
+      "companyKey": "c005",
+      "fsymId": "N5FDN8-E",
+      "fiscalEndDate": "2024-03-31"
+    },
+    {
+      "companyKey": "c009",
+      "fsymId": "PQ2RWW-E",
+      "fiscalEndDate": "2024-03-31"
+    },
+    {
+      "companyKey": "c215",
+      "fsymId": "ZM8083-E",
+      "fiscalEndDate": "2024-03-31"
+    },
+    {
+      "companyKey": "c216",
+      "fsymId": "8ZJL64-E",
+      "fiscalEndDate": "2024-03-31"
+    },
+    {
+      "companyKey": "c217",
+      "fsymId": "W2CHXC-E",
+      "fiscalEndDate": "2024-03-31"
+    },
+    {
+      "companyKey": "c218",
+      "fsymId": "MQBTKG-E",
+      "fiscalEndDate": "2024-03-31"
+    }
+  ],
+  "malformed": [
+    {
+      "provider": "apollo",
+      "kind": "company",
+      "problem": "organization without a name or domain"
+    },
+    {
+      "provider": "clay",
+      "kind": "contact",
+      "problem": "person row whose Work Email is \"not found\""
+    },
+    {
+      "provider": "factset",
+      "kind": "fundamental",
+      "problem": "FF_EMP value \"N/A\" instead of a number"
+    }
+  ],
+  "historical": {
+    "cards": 40,
+    "byVariant": {
+      "A": {
+        "sent": 20,
+        "delivered": 19,
+        "returned": 1,
+        "replies": 2,
+        "visits": 8,
+        "meetings": 1
+      },
+      "B": {
+        "sent": 20,
+        "delivered": 19,
+        "returned": 1,
+        "replies": 3,
+        "visits": 10,
+        "meetings": 1
+      }
+    },
+    "outsideWindow": 3
+  }
+}

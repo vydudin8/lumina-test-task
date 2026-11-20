@@ -15,6 +15,20 @@
       "when": 1795199696981,
       "tag": "0001_audit_append_only",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1795201024028,
+      "tag": "0002_reference_data",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1795201024480,
+      "tag": "0003_icp_immutable",
+      "breakpoints": true
     }
   ]
 }

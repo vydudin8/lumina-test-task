@@ -1,0 +1,22 @@
+[
+  {
+    "currency": "GBP",
+    "rate": "1",
+    "as_of": "2026-10-30"
+  },
+  {
+    "currency": "USD",
+    "rate": "0.79",
+    "as_of": "2026-10-30"
+  },
+  {
+    "currency": "EUR",
+    "rate": "0.85",
+    "as_of": "2026-10-30"
+  },
+  {
+    "currency": "CHF",
+    "rate": "0.89",
+    "as_of": "2026-10-30"
+  }
+]

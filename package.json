@@ -29,7 +29,8 @@
 		"test": "pnpm lint && vitest run",
 		"test:unit": "vitest run",
 		"test:e2e": "playwright test",
-		"test:all": "pnpm test && pnpm test:e2e"
+		"test:all": "pnpm test && pnpm test:e2e",
+		"fixtures": "node scripts/generate-fixtures.ts"
 	},
 	"dependencies": {
 		"@hono/node-server": "^2.1.9",

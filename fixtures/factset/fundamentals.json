@@ -1,0 +1,1229 @@
+{
+  "_comment": "FF_SALES is in millions of the reporting currency (an assumption: the FactSet model docs do not state the scale). FF_EMP is a head count.",
+  "data": [
+    {
+      "fsym_id": "VWVDVF-E",
+      "metric": "FF_SALES",
+      "periodicity": "ANN",
+      "fiscal_year": 2026,
+      "fiscal_end_date": "2026-03-31",
+      "currency": "GBP",
+      "value": 43.737
+    },
+    {
+      "fsym_id": "TT4TQL-E",
+      "metric": "FF_SALES",
+      "periodicity": "ANN",
+      "fiscal_year": 2026,
+      "fiscal_end_date": "2026-06-30",
+      "currency": "GBP",
+      "value": 10.401
+    },
+    {
+      "fsym_id": "MQBTKG-E",
+      "metric": "FF_EMP",
+      "periodicity": "ANN",
+      "fiscal_year": 2024,
+      "fiscal_end_date": "2024-03-31",
+      "currency": null,
+      "value": 2410
+    },
+    {
+      "fsym_id": "2PBMMX-E",
+      "metric": "FF_EMP",
+      "periodicity": "ANN",
+      "fiscal_year": 2025,
+      "fiscal_end_date": "2025-12-31",
+      "currency": null,
+      "value": 618
+    },
+    {
+      "fsym_id": "F508WX-E",
+      "metric": "FF_SALES",
+      "periodicity": "ANN",
+      "fiscal_year": 2026,
+      "fiscal_end_date": "2026-06-30",
+      "currency": "EUR",
+      "value": 77.894
+    },
+    {
+      "fsym_id": "N5FDN8-E",
+      "metric": "FF_EMP",
+      "periodicity": "ANN",
+      "fiscal_year": 2024,
+      "fiscal_end_date": "2024-03-31",
+      "currency": null,
+      "value": 309
+    },
+    {
+      "fsym_id": "R29J9H-E",
+      "metric": "FF_EMP",
+      "periodicity": "ANN",
+      "fiscal_year": 2025,
+      "fiscal_end_date": "2025-12-31",
+      "currency": null,
+      "value": 2324
+    },
+    {
+      "fsym_id": "N5HKP6-E",
+      "metric": "FF_EMP",
+      "periodicity": "ANN",
+      "fiscal_year": 2026,
+      "fiscal_end_date": "2026-06-30",
+      "currency": null,
+      "value": 437
+    },
+    {
+      "fsym_id": "Z46P5G-E",
+      "metric": "FF_EMP",
+      "periodicity": "ANN",
+      "fiscal_year": 2026,
+      "fiscal_end_date": "2026-03-31",
+      "currency": null,
+      "value": 2545
+    },
+    {
+      "fsym_id": "38LX0S-E",
+      "metric": "FF_SALES",
+      "periodicity": "ANN",
+      "fiscal_year": 2026,
+      "fiscal_end_date": "2026-03-31",
+      "currency": "GBP",
+      "value": 44.945
+    },
+    {
+      "fsym_id": "8XP6DV-E",
+      "metric": "FF_EMP",
+      "periodicity": "ANN",
+      "fiscal_year": 2025,
+      "fiscal_end_date": "2025-12-31",
+      "currency": null,
+      "value": 2975
+    },
+    {
+      "fsym_id": "ZQQ9CF-E",
+      "metric": "FF_SALES",
+      "periodicity": "ANN",
+      "fiscal_year": 2026,
+      "fiscal_end_date": "2026-03-31",
+      "currency": "EUR",
+      "value": 156.032
+    },
+    {
+      "fsym_id": "4KFWBB-E",
+      "metric": "FF_EMP",
+      "periodicity": "ANN",
+      "fiscal_year": 2026,
+      "fiscal_end_date": "2026-03-31",
+      "currency": null,
+      "value": 2329
+    },
+    {
+      "fsym_id": "JDG0T5-E",
+      "metric": "FF_EMP",
+      "periodicity": "ANN",
+      "fiscal_year": 2026,
+      "fiscal_end_date": "2026-03-31",
+      "currency": null,
+      "value": 1048
+    },
+    {
+      "fsym_id": "QPV4MP-E",
+      "metric": "FF_SALES",
+      "periodicity": "ANN",
+      "fiscal_year": 2025,
+      "fiscal_end_date": "2025-12-31",
+      "currency": "GBP",
+      "value": 135.495
+    },
+    {
+      "fsym_id": "XG7RDB-E",
+      "metric": "FF_SALES",
+      "periodicity": "ANN",
+      "fiscal_year": 2026,
+      "fiscal_end_date": "2026-03-31",
+      "currency": "GBP",
+      "value": 100.968
+    },
+    {
+      "fsym_id": "M6PTGH-E",
+      "metric": "FF_SALES",
+      "periodicity": "ANN",
+      "fiscal_year": 2026,
+      "fiscal_end_date": "2026-03-31",
+      "currency": "GBP",
+      "value": 124.434
+    },
+    {
+      "fsym_id": "CGR0KG-E",
+      "metric": "FF_SALES",
+      "periodicity": "ANN",
+      "fiscal_year": 2026,
+      "fiscal_end_date": "2026-06-30",
+      "currency": "EUR",
+      "value": 125.375
+    },
+    {
+      "fsym_id": "W29QDJ-E",
+      "metric": "FF_SALES",
+      "periodicity": "ANN",
+      "fiscal_year": 2026,
+      "fiscal_end_date": "2026-06-30",
+      "currency": "GBP",
+      "value": 99.591
+    },
+    {
+      "fsym_id": "W5Z69D-E",
+      "metric": "FF_EMP",
+      "periodicity": "ANN",
+      "fiscal_year": 2025,
+      "fiscal_end_date": "2025-12-31",
+      "currency": null,
+      "value": 764
+    },
+    {
+      "fsym_id": "8LZDV9-E",
+      "metric": "FF_EMP",
+      "periodicity": "ANN",
+      "fiscal_year": 2025,
+      "fiscal_end_date": "2025-12-31",
+      "currency": null,
+      "value": 2848
+    },
+    {
+      "fsym_id": "2PBMMX-E",
+      "metric": "FF_SALES",
+      "periodicity": "ANN",
+      "fiscal_year": 2025,
+      "fiscal_end_date": "2025-12-31",
+      "currency": "EUR",
+      "value": 60.107
+    },
+    {
+      "fsym_id": "SL1HGT-E",
+      "metric": "FF_EMP",
+      "periodicity": "ANN",
+      "fiscal_year": 2026,
+      "fiscal_end_date": "2026-06-30",
+      "currency": null,
+      "value": 2063
+    },
+    {
+      "fsym_id": "G2B95R-E",
+      "metric": "FF_EMP",
+      "periodicity": "ANN",
+      "fiscal_year": 2025,
+      "fiscal_end_date": "2025-12-31",
+      "currency": null,
+      "value": 400
+    },
+    {
+      "fsym_id": "VWVDVF-E",
+      "metric": "FF_EMP",
+      "periodicity": "ANN",
+      "fiscal_year": 2026,
+      "fiscal_end_date": "2026-03-31",
+      "currency": null,
+      "value": 2379
+    },
+    {
+      "fsym_id": "3DPZZQ-E",
+      "metric": "FF_SALES",
+      "periodicity": "ANN",
+      "fiscal_year": 2025,
+      "fiscal_end_date": "2025-12-31",
+      "currency": "EUR",
+      "value": 100.742
+    },
+    {
+      "fsym_id": "7PL2J0-E",
+      "metric": "FF_SALES",
+      "periodicity": "ANN",
+      "fiscal_year": 2026,
+      "fiscal_end_date": "2026-03-31",
+      "currency": "GBP",
+      "value": 29.087
+    },
+    {
+      "fsym_id": "4NZC2R-E",
+      "metric": "FF_EMP",
+      "periodicity": "ANN",
+      "fiscal_year": 2026,
+      "fiscal_end_date": "2026-06-30",
+      "currency": null,
+      "value": 1851
+    },
+    {
+      "fsym_id": "F508WX-E",
+      "metric": "FF_EMP",
+      "periodicity": "ANN",
+      "fiscal_year": 2026,
+      "fiscal_end_date": "2026-06-30",
+      "currency": null,
+      "value": 131
+    },
+    {
+      "fsym_id": "72B1GS-E",
+      "metric": "FF_EMP",
+      "periodicity": "ANN",
+      "fiscal_year": 2025,
+      "fiscal_end_date": "2025-12-31",
+      "currency": null,
+      "value": 216
+    },
+    {
+      "fsym_id": "M6PTGH-E",
+      "metric": "FF_EMP",
+      "periodicity": "ANN",
+      "fiscal_year": 2026,
+      "fiscal_end_date": "2026-03-31",
+      "currency": null,
+      "value": 1551
+    },
+    {
+      "fsym_id": "MVTFSS-E",
+      "metric": "FF_SALES",
+      "periodicity": "ANN",
+      "fiscal_year": 2025,
+      "fiscal_end_date": "2025-12-31",
+      "currency": "EUR",
+      "value": 48.202
+    },
+    {
+      "fsym_id": "S9F07M-E",
+      "metric": "FF_SALES",
+      "periodicity": "ANN",
+      "fiscal_year": 2026,
+      "fiscal_end_date": "2026-06-30",
+      "currency": "GBP",
+      "value": 106.706
+    },
+    {
+      "fsym_id": "S9F07M-E",
+      "metric": "FF_EMP",
+      "periodicity": "ANN",
+      "fiscal_year": 2026,
+      "fiscal_end_date": "2026-06-30",
+      "currency": null,
+      "value": 2698
+    },
+    {
+      "fsym_id": "88P6QZ-E",
+      "metric": "FF_EMP",
+      "periodicity": "ANN",
+      "fiscal_year": 2026,
+      "fiscal_end_date": "2026-06-30",
+      "currency": null,
+      "value": 2947
+    },
+    {
+      "fsym_id": "ZGK2CK-E",
+      "metric": "FF_EMP",
+      "periodicity": "ANN",
+      "fiscal_year": 2026,
+      "fiscal_end_date": "2026-06-30",
+      "currency": null,
+      "value": 1286
+    },
+    {
+      "fsym_id": "W4M120-E",
+      "metric": "FF_SALES",
+      "periodicity": "ANN",
+      "fiscal_year": 2026,
+      "fiscal_end_date": "2026-06-30",
+      "currency": "GBP",
+      "value": 131.567
+    },
+    {
+      "fsym_id": "4PBWLK-E",
+      "metric": "FF_SALES",
+      "periodicity": "ANN",
+      "fiscal_year": 2026,
+      "fiscal_end_date": "2026-03-31",
+      "currency": "EUR",
+      "value": 37.519
+    },
+    {
+      "fsym_id": "M1L5S3-E",
+      "metric": "FF_SALES",
+      "periodicity": "ANN",
+      "fiscal_year": 2026,
+      "fiscal_end_date": "2026-06-30",
+      "currency": "GBP",
+      "value": 73.803
+    },
+    {
+      "fsym_id": "4PBWLK-E",
+      "metric": "FF_EMP",
+      "periodicity": "ANN",
+      "fiscal_year": 2026,
+      "fiscal_end_date": "2026-03-31",
+      "currency": null,
+      "value": 2287
+    },
+    {
+      "fsym_id": "N5FDN8-E",
+      "metric": "FF_SALES",
+      "periodicity": "ANN",
+      "fiscal_year": 2024,
+      "fiscal_end_date": "2024-03-31",
+      "currency": "GBP",
+      "value": 121.961
+    },
+    {
+      "fsym_id": "1NWSQ0-E",
+      "metric": "FF_EMP",
+      "periodicity": "ANN",
+      "fiscal_year": 2025,
+      "fiscal_end_date": "2025-12-31",
+      "currency": null,
+      "value": 432
+    },
+    {
+      "fsym_id": "2RZ1PM-E",
+      "metric": "FF_EMP",
+      "periodicity": "ANN",
+      "fiscal_year": 2026,
+      "fiscal_end_date": "2026-03-31",
+      "currency": null,
+      "value": 2634
+    },
+    {
+      "fsym_id": "XRC8CQ-E",
+      "metric": "FF_EMP",
+      "periodicity": "ANN",
+      "fiscal_year": 2026,
+      "fiscal_end_date": "2026-06-30",
+      "currency": null,
+      "value": 966
+    },
+    {
+      "fsym_id": "0T963R-E",
+      "metric": "FF_EMP",
+      "periodicity": "ANN",
+      "fiscal_year": 2025,
+      "fiscal_end_date": "2025-12-31",
+      "currency": null,
+      "value": 2276
+    },
+    {
+      "fsym_id": "TK1SDG-E",
+      "metric": "FF_SALES",
+      "periodicity": "ANN",
+      "fiscal_year": 2026,
+      "fiscal_end_date": "2026-03-31",
+      "currency": "GBP",
+      "value": 50.66
+    },
+    {
+      "fsym_id": "0XRRD3-E",
+      "metric": "FF_EMP",
+      "periodicity": "ANN",
+      "fiscal_year": 2026,
+      "fiscal_end_date": "2026-03-31",
+      "currency": null,
+      "value": 1629
+    },
+    {
+      "fsym_id": "XRC8CQ-E",
+      "metric": "FF_SALES",
+      "periodicity": "ANN",
+      "fiscal_year": 2026,
+      "fiscal_end_date": "2026-06-30",
+      "currency": "GBP",
+      "value": 36.439
+    },
+    {
+      "fsym_id": "W2CHXC-E",
+      "metric": "FF_EMP",
+      "periodicity": "ANN",
+      "fiscal_year": 2024,
+      "fiscal_end_date": "2024-03-31",
+      "currency": null,
+      "value": 1583
+    },
+    {
+      "fsym_id": "TT4TQL-E",
+      "metric": "FF_EMP",
+      "periodicity": "ANN",
+      "fiscal_year": 2026,
+      "fiscal_end_date": "2026-06-30",
+      "currency": null,
+      "value": 1180
+    },
+    {
+      "fsym_id": "V0NM7Z-E",
+      "metric": "FF_EMP",
+      "periodicity": "ANN",
+      "fiscal_year": 2026,
+      "fiscal_end_date": "2026-06-30",
+      "currency": null,
+      "value": 2628
+    },
+    {
+      "fsym_id": "CNNMMR-E",
+      "metric": "FF_SALES",
+      "periodicity": "ANN",
+      "fiscal_year": 2026,
+      "fiscal_end_date": "2026-03-31",
+      "currency": "GBP",
+      "value": 77.224
+    },
+    {
+      "fsym_id": "ZZJSBW-E",
+      "metric": "FF_SALES",
+      "periodicity": "ANN",
+      "fiscal_year": 2025,
+      "fiscal_end_date": "2025-12-31",
+      "currency": "GBP",
+      "value": 55.348
+    },
+    {
+      "fsym_id": "ZZJSBW-E",
+      "metric": "FF_EMP",
+      "periodicity": "ANN",
+      "fiscal_year": 2025,
+      "fiscal_end_date": "2025-12-31",
+      "currency": null,
+      "value": 1097
+    },
+    {
+      "fsym_id": "BW9N5Z-E",
+      "metric": "FF_SALES",
+      "periodicity": "ANN",
+      "fiscal_year": 2026,
+      "fiscal_end_date": "2026-06-30",
+      "currency": "GBP",
+      "value": 88.893
+    },
+    {
+      "fsym_id": "Z46P5G-E",
+      "metric": "FF_SALES",
+      "periodicity": "ANN",
+      "fiscal_year": 2026,
+      "fiscal_end_date": "2026-03-31",
+      "currency": "EUR",
+      "value": 12.533
+    },
+    {
+      "fsym_id": "ZM8083-E",
+      "metric": "FF_SALES",
+      "periodicity": "ANN",
+      "fiscal_year": 2024,
+      "fiscal_end_date": "2024-03-31",
+      "currency": "GBP",
+      "value": 1.439
+    },
+    {
+      "fsym_id": "B4L2ZZ-E",
+      "metric": "FF_SALES",
+      "periodicity": "ANN",
+      "fiscal_year": 2026,
+      "fiscal_end_date": "2026-06-30",
+      "currency": "GBP",
+      "value": 149.097
+    },
+    {
+      "fsym_id": "8JNNSX-E",
+      "metric": "FF_SALES",
+      "periodicity": "ANN",
+      "fiscal_year": 2026,
+      "fiscal_end_date": "2026-03-31",
+      "currency": "GBP",
+      "value": 2.181
+    },
+    {
+      "fsym_id": "W5Z69D-E",
+      "metric": "FF_SALES",
+      "periodicity": "ANN",
+      "fiscal_year": 2025,
+      "fiscal_end_date": "2025-12-31",
+      "currency": "GBP",
+      "value": 90.789
+    },
+    {
+      "fsym_id": "CGR0KG-E",
+      "metric": "FF_EMP",
+      "periodicity": "ANN",
+      "fiscal_year": 2026,
+      "fiscal_end_date": "2026-06-30",
+      "currency": null,
+      "value": 2812
+    },
+    {
+      "fsym_id": "6VF2BM-E",
+      "metric": "FF_SALES",
+      "periodicity": "ANN",
+      "fiscal_year": 2026,
+      "fiscal_end_date": "2026-03-31",
+      "currency": "GBP",
+      "value": 61.14
+    },
+    {
+      "fsym_id": "0Q4N1J-E",
+      "metric": "FF_SALES",
+      "periodicity": "ANN",
+      "fiscal_year": 2025,
+      "fiscal_end_date": "2025-12-31",
+      "currency": "EUR",
+      "value": 47.452
+    },
+    {
+      "fsym_id": "0MN58Z-E",
+      "metric": "FF_EMP",
+      "periodicity": "ANN",
+      "fiscal_year": 2025,
+      "fiscal_end_date": "2025-12-31",
+      "currency": null,
+      "value": 1269
+    },
+    {
+      "fsym_id": "M1L5S3-E",
+      "metric": "FF_EMP",
+      "periodicity": "ANN",
+      "fiscal_year": 2026,
+      "fiscal_end_date": "2026-06-30",
+      "currency": null,
+      "value": 1273
+    },
+    {
+      "fsym_id": "PQ2RWW-E",
+      "metric": "FF_SALES",
+      "periodicity": "ANN",
+      "fiscal_year": 2024,
+      "fiscal_end_date": "2024-03-31",
+      "currency": "EUR",
+      "value": 31.619
+    },
+    {
+      "fsym_id": "SPKP0Q-E",
+      "metric": "FF_SALES",
+      "periodicity": "ANN",
+      "fiscal_year": 2026,
+      "fiscal_end_date": "2026-03-31",
+      "currency": "GBP",
+      "value": 114.606
+    },
+    {
+      "fsym_id": "LLW2DP-E",
+      "metric": "FF_EMP",
+      "periodicity": "ANN",
+      "fiscal_year": 2026,
+      "fiscal_end_date": "2026-06-30",
+      "currency": null,
+      "value": 1431
+    },
+    {
+      "fsym_id": "ZGK2CK-E",
+      "metric": "FF_SALES",
+      "periodicity": "ANN",
+      "fiscal_year": 2026,
+      "fiscal_end_date": "2026-06-30",
+      "currency": "GBP",
+      "value": 104.365
+    },
+    {
+      "fsym_id": "3FM9NH-E",
+      "metric": "FF_SALES",
+      "periodicity": "ANN",
+      "fiscal_year": 2026,
+      "fiscal_end_date": "2026-06-30",
+      "currency": "EUR",
+      "value": 144.584
+    },
+    {
+      "fsym_id": "XWH8V0-E",
+      "metric": "FF_SALES",
+      "periodicity": "ANN",
+      "fiscal_year": 2025,
+      "fiscal_end_date": "2025-12-31",
+      "currency": "GBP",
+      "value": 20.912
+    },
+    {
+      "fsym_id": "ZCWH62-E",
+      "metric": "FF_EMP",
+      "periodicity": "ANN",
+      "fiscal_year": 2025,
+      "fiscal_end_date": "2025-12-31",
+      "currency": null,
+      "value": 1986
+    },
+    {
+      "fsym_id": "PQ2RWW-E",
+      "metric": "FF_EMP",
+      "periodicity": "ANN",
+      "fiscal_year": 2024,
+      "fiscal_end_date": "2024-03-31",
+      "currency": null,
+      "value": 2208
+    },
+    {
+      "fsym_id": "DZD936-E",
+      "metric": "FF_EMP",
+      "periodicity": "ANN",
+      "fiscal_year": 2025,
+      "fiscal_end_date": "2025-12-31",
+      "currency": null,
+      "value": 1994
+    },
+    {
+      "fsym_id": "1NWSQ0-E",
+      "metric": "FF_SALES",
+      "periodicity": "ANN",
+      "fiscal_year": 2025,
+      "fiscal_end_date": "2025-12-31",
+      "currency": "EUR",
+      "value": 28.584
+    },
+    {
+      "fsym_id": "P2F3DC-E",
+      "metric": "FF_EMP",
+      "periodicity": "ANN",
+      "fiscal_year": 2026,
+      "fiscal_end_date": "2026-06-30",
+      "currency": null,
+      "value": 2849
+    },
+    {
+      "fsym_id": "3FM9NH-E",
+      "metric": "FF_EMP",
+      "periodicity": "ANN",
+      "fiscal_year": 2026,
+      "fiscal_end_date": "2026-06-30",
+      "currency": null,
+      "value": 2662
+    },
+    {
+      "fsym_id": "8ZJL64-E",
+      "metric": "FF_EMP",
+      "periodicity": "ANN",
+      "fiscal_year": 2024,
+      "fiscal_end_date": "2024-03-31",
+      "currency": null,
+      "value": 950
+    },
+    {
+      "fsym_id": "7PL2J0-E",
+      "metric": "FF_EMP",
+      "periodicity": "ANN",
+      "fiscal_year": 2026,
+      "fiscal_end_date": "2026-03-31",
+      "currency": null,
+      "value": 2417
+    },
+    {
+      "fsym_id": "B4L2ZZ-E",
+      "metric": "FF_EMP",
+      "periodicity": "ANN",
+      "fiscal_year": 2026,
+      "fiscal_end_date": "2026-06-30",
+      "currency": null,
+      "value": 2835
+    },
+    {
+      "fsym_id": "0T963R-E",
+      "metric": "FF_SALES",
+      "periodicity": "ANN",
+      "fiscal_year": 2025,
+      "fiscal_end_date": "2025-12-31",
+      "currency": "GBP",
+      "value": 90.85
+    },
+    {
+      "fsym_id": "QPV4MP-E",
+      "metric": "FF_EMP",
+      "periodicity": "ANN",
+      "fiscal_year": 2025,
+      "fiscal_end_date": "2025-12-31",
+      "currency": null,
+      "value": 1137
+    },
+    {
+      "fsym_id": "L3F240-E",
+      "metric": "FF_EMP",
+      "periodicity": "ANN",
+      "fiscal_year": 2026,
+      "fiscal_end_date": "2026-03-31",
+      "currency": null,
+      "value": 1129
+    },
+    {
+      "fsym_id": "V0NM7Z-E",
+      "metric": "FF_SALES",
+      "periodicity": "ANN",
+      "fiscal_year": 2026,
+      "fiscal_end_date": "2026-06-30",
+      "currency": "GBP",
+      "value": 132.555
+    },
+    {
+      "fsym_id": "TK1SDG-E",
+      "metric": "FF_EMP",
+      "periodicity": "ANN",
+      "fiscal_year": 2026,
+      "fiscal_end_date": "2026-03-31",
+      "currency": null,
+      "value": 1148
+    },
+    {
+      "fsym_id": "LN37N3-E",
+      "metric": "FF_SALES",
+      "periodicity": "ANN",
+      "fiscal_year": 2026,
+      "fiscal_end_date": "2026-06-30",
+      "currency": "EUR",
+      "value": 69.541
+    },
+    {
+      "fsym_id": "L3F240-E",
+      "metric": "FF_SALES",
+      "periodicity": "ANN",
+      "fiscal_year": 2026,
+      "fiscal_end_date": "2026-03-31",
+      "currency": "GBP",
+      "value": 90.181
+    },
+    {
+      "fsym_id": "SGWVW2-E",
+      "metric": "FF_EMP",
+      "periodicity": "ANN",
+      "fiscal_year": 2026,
+      "fiscal_end_date": "2026-06-30",
+      "currency": null,
+      "value": 34
+    },
+    {
+      "fsym_id": "D4F14T-E",
+      "metric": "FF_SALES",
+      "periodicity": "ANN",
+      "fiscal_year": 2025,
+      "fiscal_end_date": "2025-12-31",
+      "currency": "GBP",
+      "value": 41.145
+    },
+    {
+      "fsym_id": "SGWVW2-E",
+      "metric": "FF_SALES",
+      "periodicity": "ANN",
+      "fiscal_year": 2026,
+      "fiscal_end_date": "2026-06-30",
+      "currency": "GBP",
+      "value": 5.552
+    },
+    {
+      "fsym_id": "GLTDGQ-E",
+      "metric": "FF_SALES",
+      "periodicity": "ANN",
+      "fiscal_year": 2025,
+      "fiscal_end_date": "2025-12-31",
+      "currency": "EUR",
+      "value": 137.933
+    },
+    {
+      "fsym_id": "LN37N3-E",
+      "metric": "FF_EMP",
+      "periodicity": "ANN",
+      "fiscal_year": 2026,
+      "fiscal_end_date": "2026-06-30",
+      "currency": null,
+      "value": 2971
+    },
+    {
+      "fsym_id": "SZZJDH-E",
+      "metric": "FF_EMP",
+      "periodicity": "ANN",
+      "fiscal_year": 2026,
+      "fiscal_end_date": "2026-06-30",
+      "currency": null,
+      "value": 480
+    },
+    {
+      "fsym_id": "72B1GS-E",
+      "metric": "FF_SALES",
+      "periodicity": "ANN",
+      "fiscal_year": 2025,
+      "fiscal_end_date": "2025-12-31",
+      "currency": "GBP",
+      "value": 19.398
+    },
+    {
+      "fsym_id": "38LX0S-E",
+      "metric": "FF_EMP",
+      "periodicity": "ANN",
+      "fiscal_year": 2026,
+      "fiscal_end_date": "2026-03-31",
+      "currency": null,
+      "value": 1186
+    },
+    {
+      "fsym_id": "VWVDVF-E",
+      "metric": "FF_EMP",
+      "periodicity": "ANN",
+      "fiscal_year": 2023,
+      "fiscal_end_date": "2023-03-31",
+      "currency": null,
+      "value": "N/A"
+    },
+    {
+      "fsym_id": "XWH8V0-E",
+      "metric": "FF_EMP",
+      "periodicity": "ANN",
+      "fiscal_year": 2025,
+      "fiscal_end_date": "2025-12-31",
+      "currency": null,
+      "value": 758
+    },
+    {
+      "fsym_id": "4V6C19-E",
+      "metric": "FF_EMP",
+      "periodicity": "ANN",
+      "fiscal_year": 2025,
+      "fiscal_end_date": "2025-12-31",
+      "currency": null,
+      "value": 971
+    },
+    {
+      "fsym_id": "W4M120-E",
+      "metric": "FF_EMP",
+      "periodicity": "ANN",
+      "fiscal_year": 2026,
+      "fiscal_end_date": "2026-06-30",
+      "currency": null,
+      "value": 1991
+    },
+    {
+      "fsym_id": "GBK8L1-E",
+      "metric": "FF_EMP",
+      "periodicity": "ANN",
+      "fiscal_year": 2025,
+      "fiscal_end_date": "2025-12-31",
+      "currency": null,
+      "value": 1946
+    },
+    {
+      "fsym_id": "0Q4N1J-E",
+      "metric": "FF_EMP",
+      "periodicity": "ANN",
+      "fiscal_year": 2025,
+      "fiscal_end_date": "2025-12-31",
+      "currency": null,
+      "value": 1626
+    },
+    {
+      "fsym_id": "GZW11D-E",
+      "metric": "FF_EMP",
+      "periodicity": "ANN",
+      "fiscal_year": 2026,
+      "fiscal_end_date": "2026-03-31",
+      "currency": null,
+      "value": 1905
+    },
+    {
+      "fsym_id": "QNXMVF-E",
+      "metric": "FF_SALES",
+      "periodicity": "ANN",
+      "fiscal_year": 2026,
+      "fiscal_end_date": "2026-03-31",
+      "currency": "GBP",
+      "value": 124.263
+    },
+    {
+      "fsym_id": "ZCWH62-E",
+      "metric": "FF_SALES",
+      "periodicity": "ANN",
+      "fiscal_year": 2025,
+      "fiscal_end_date": "2025-12-31",
+      "currency": "EUR",
+      "value": 3.844
+    },
+    {
+      "fsym_id": "QNXMVF-E",
+      "metric": "FF_EMP",
+      "periodicity": "ANN",
+      "fiscal_year": 2026,
+      "fiscal_end_date": "2026-03-31",
+      "currency": null,
+      "value": 1765
+    },
+    {
+      "fsym_id": "PDHM37-E",
+      "metric": "FF_SALES",
+      "periodicity": "ANN",
+      "fiscal_year": 2026,
+      "fiscal_end_date": "2026-06-30",
+      "currency": "EUR",
+      "value": 141.856
+    },
+    {
+      "fsym_id": "CNNMMR-E",
+      "metric": "FF_EMP",
+      "periodicity": "ANN",
+      "fiscal_year": 2026,
+      "fiscal_end_date": "2026-03-31",
+      "currency": null,
+      "value": 544
+    },
+    {
+      "fsym_id": "SPKP0Q-E",
+      "metric": "FF_EMP",
+      "periodicity": "ANN",
+      "fiscal_year": 2026,
+      "fiscal_end_date": "2026-03-31",
+      "currency": null,
+      "value": 2831
+    },
+    {
+      "fsym_id": "FP1X7P-E",
+      "metric": "FF_EMP",
+      "periodicity": "ANN",
+      "fiscal_year": 2026,
+      "fiscal_end_date": "2026-03-31",
+      "currency": null,
+      "value": 453
+    },
+    {
+      "fsym_id": "PDHM37-E",
+      "metric": "FF_EMP",
+      "periodicity": "ANN",
+      "fiscal_year": 2026,
+      "fiscal_end_date": "2026-06-30",
+      "currency": null,
+      "value": 2161
+    },
+    {
+      "fsym_id": "8LZDV9-E",
+      "metric": "FF_SALES",
+      "periodicity": "ANN",
+      "fiscal_year": 2025,
+      "fiscal_end_date": "2025-12-31",
+      "currency": "GBP",
+      "value": 143.547
+    },
+    {
+      "fsym_id": "GLTDGQ-E",
+      "metric": "FF_EMP",
+      "periodicity": "ANN",
+      "fiscal_year": 2025,
+      "fiscal_end_date": "2025-12-31",
+      "currency": null,
+      "value": 911
+    },
+    {
+      "fsym_id": "2RZ1PM-E",
+      "metric": "FF_SALES",
+      "periodicity": "ANN",
+      "fiscal_year": 2026,
+      "fiscal_end_date": "2026-03-31",
+      "currency": "GBP",
+      "value": 33.531
+    },
+    {
+      "fsym_id": "K04VGL-E",
+      "metric": "FF_EMP",
+      "periodicity": "ANN",
+      "fiscal_year": 2026,
+      "fiscal_end_date": "2026-06-30",
+      "currency": null,
+      "value": 601
+    },
+    {
+      "fsym_id": "9MNL9W-E",
+      "metric": "FF_EMP",
+      "periodicity": "ANN",
+      "fiscal_year": 2026,
+      "fiscal_end_date": "2026-03-31",
+      "currency": null,
+      "value": 1926
+    },
+    {
+      "fsym_id": "W29QDJ-E",
+      "metric": "FF_EMP",
+      "periodicity": "ANN",
+      "fiscal_year": 2026,
+      "fiscal_end_date": "2026-06-30",
+      "currency": null,
+      "value": 2107
+    },
+    {
+      "fsym_id": "GZW11D-E",
+      "metric": "FF_SALES",
+      "periodicity": "ANN",
+      "fiscal_year": 2026,
+      "fiscal_end_date": "2026-03-31",
+      "currency": "GBP",
+      "value": 14.471
+    },
+    {
+      "fsym_id": "FRRCDB-E",
+      "metric": "FF_EMP",
+      "periodicity": "ANN",
+      "fiscal_year": 2025,
+      "fiscal_end_date": "2025-12-31",
+      "currency": null,
+      "value": 357
+    },
+    {
+      "fsym_id": "9JQG2D-E",
+      "metric": "FF_SALES",
+      "periodicity": "ANN",
+      "fiscal_year": 2026,
+      "fiscal_end_date": "2026-06-30",
+      "currency": "GBP",
+      "value": 30.568
+    },
+    {
+      "fsym_id": "FRRCDB-E",
+      "metric": "FF_SALES",
+      "periodicity": "ANN",
+      "fiscal_year": 2025,
+      "fiscal_end_date": "2025-12-31",
+      "currency": "GBP",
+      "value": 68.033
+    },
+    {
+      "fsym_id": "FP1X7P-E",
+      "metric": "FF_SALES",
+      "periodicity": "ANN",
+      "fiscal_year": 2026,
+      "fiscal_end_date": "2026-03-31",
+      "currency": "GBP",
+      "value": 1.481
+    },
+    {
+      "fsym_id": "4NZC2R-E",
+      "metric": "FF_SALES",
+      "periodicity": "ANN",
+      "fiscal_year": 2026,
+      "fiscal_end_date": "2026-06-30",
+      "currency": "GBP",
+      "value": 13.971
+    },
+    {
+      "fsym_id": "K4CHMM-E",
+      "metric": "FF_EMP",
+      "periodicity": "ANN",
+      "fiscal_year": 2025,
+      "fiscal_end_date": "2025-12-31",
+      "currency": null,
+      "value": 929
+    },
+    {
+      "fsym_id": "ZQQ9CF-E",
+      "metric": "FF_EMP",
+      "periodicity": "ANN",
+      "fiscal_year": 2026,
+      "fiscal_end_date": "2026-03-31",
+      "currency": null,
+      "value": 2116
+    },
+    {
+      "fsym_id": "0XRRD3-E",
+      "metric": "FF_SALES",
+      "periodicity": "ANN",
+      "fiscal_year": 2026,
+      "fiscal_end_date": "2026-03-31",
+      "currency": "GBP",
+      "value": 51.097
+    },
+    {
+      "fsym_id": "8JNNSX-E",
+      "metric": "FF_EMP",
+      "periodicity": "ANN",
+      "fiscal_year": 2026,
+      "fiscal_end_date": "2026-03-31",
+      "currency": null,
+      "value": 10
+    },
+    {
+      "fsym_id": "DZD936-E",
+      "metric": "FF_SALES",
+      "periodicity": "ANN",
+      "fiscal_year": 2025,
+      "fiscal_end_date": "2025-12-31",
+      "currency": "GBP",
+      "value": 31.738
+    },
+    {
+      "fsym_id": "XG7RDB-E",
+      "metric": "FF_EMP",
+      "periodicity": "ANN",
+      "fiscal_year": 2026,
+      "fiscal_end_date": "2026-03-31",
+      "currency": null,
+      "value": 387
+    },
+    {
+      "fsym_id": "K4CHMM-E",
+      "metric": "FF_SALES",
+      "periodicity": "ANN",
+      "fiscal_year": 2025,
+      "fiscal_end_date": "2025-12-31",
+      "currency": "GBP",
+      "value": 83.972
+    },
+    {
+      "fsym_id": "MVTFSS-E",
+      "metric": "FF_EMP",
+      "periodicity": "ANN",
+      "fiscal_year": 2025,
+      "fiscal_end_date": "2025-12-31",
+      "currency": null,
+      "value": 580
+    },
+    {
+      "fsym_id": "F04KMM-E",
+      "metric": "FF_EMP",
+      "periodicity": "ANN",
+      "fiscal_year": 2026,
+      "fiscal_end_date": "2026-06-30",
+      "currency": null,
+      "value": 1932
+    },
+    {
+      "fsym_id": "8XP6DV-E",
+      "metric": "FF_SALES",
+      "periodicity": "ANN",
+      "fiscal_year": 2025,
+      "fiscal_end_date": "2025-12-31",
+      "currency": "EUR",
+      "value": 87.598
+    },
+    {
+      "fsym_id": "BW9N5Z-E",
+      "metric": "FF_EMP",
+      "periodicity": "ANN",
+      "fiscal_year": 2026,
+      "fiscal_end_date": "2026-06-30",
+      "currency": null,
+      "value": 1355
+    },
+    {
+      "fsym_id": "9MNL9W-E",
+      "metric": "FF_SALES",
+      "periodicity": "ANN",
+      "fiscal_year": 2026,
+      "fiscal_end_date": "2026-03-31",
+      "currency": "GBP",
+      "value": 33.446
+    },
+    {
+      "fsym_id": "F04KMM-E",
+      "metric": "FF_SALES",
+      "periodicity": "ANN",
+      "fiscal_year": 2026,
+      "fiscal_end_date": "2026-06-30",
+      "currency": "GBP",
+      "value": 102.246
+    },
+    {
+      "fsym_id": "D4F14T-E",
+      "metric": "FF_EMP",
+      "periodicity": "ANN",
+      "fiscal_year": 2025,
+      "fiscal_end_date": "2025-12-31",
+      "currency": null,
+      "value": 1738
+    }
+  ]
+}

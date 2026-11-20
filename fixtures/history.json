@@ -1,0 +1,531 @@
+{
+  "_comment": "Seed-owned data. daysAgo is relative to the moment the seed runs; dayOffset is relative to the card mailed_at.",
+  "optOuts": [
+    {
+      "email": "Ben.Khan@otteryinfrastructure.co.uk",
+      "daysAgo": 57,
+      "source": "unsubscribe link"
+    },
+    {
+      "email": "tom.gallagher@jarrowgroundworks.co.uk",
+      "daysAgo": 45,
+      "source": "unsubscribe link"
+    },
+    {
+      "email": "katie.fraser@wardlequarries.co.uk",
+      "daysAgo": 63,
+      "source": "phone call"
+    },
+    {
+      "email": "tom.patel@aldertool.co.uk",
+      "daysAgo": 37,
+      "source": "phone call"
+    },
+    {
+      "email": "laura.cooper@ashdownstone.co.uk",
+      "daysAgo": 37,
+      "source": "phone call"
+    },
+    {
+      "email": "lewis.healy@hartleygroundworks.co.uk",
+      "daysAgo": 26,
+      "source": "unsubscribe link"
+    },
+    {
+      "email": "owen.dunne@granitecontractors.co.uk",
+      "daysAgo": 59,
+      "source": "email reply"
+    }
+  ],
+  "pilotCampaign": {
+    "name": "Pilot: plant hire firms",
+    "daysAgo": 45,
+    "variant": "A",
+    "cards": [
+      {
+        "email": "owen.kaur@kestrelminerals.co.uk",
+        "companyDomain": "kestrelminerals.co.uk",
+        "status": "delivered"
+      },
+      {
+        "email": "joseph.phillips@thornburycivils.co.uk",
+        "companyDomain": "thornburycivils.co.uk",
+        "status": "delivered"
+      },
+      {
+        "email": "patrick.edwards@ironbridgecivil.co.uk",
+        "companyDomain": "ironbridgecivil.co.uk",
+        "status": "delivered"
+      },
+      {
+        "email": "ryan.baker@shannoncivil.co.uk",
+        "companyDomain": "shannoncivil.co.uk",
+        "status": "delivered"
+      },
+      {
+        "email": "joseph.kelly@netherbycivil.co.uk",
+        "companyDomain": "netherbycivil.co.uk",
+        "status": "delivered"
+      }
+    ]
+  },
+  "historicalCampaign": {
+    "name": "Spring contractors push",
+    "daysAgo": 120,
+    "cards": [
+      {
+        "email": "holly.taylor@wessexminerals.co.uk",
+        "companyDomain": "wessexminerals.co.uk",
+        "variant": "A",
+        "status": "delivered"
+      },
+      {
+        "email": "daniel.ross@stantontool.co.uk",
+        "companyDomain": "stantontool.co.uk",
+        "variant": "B",
+        "status": "delivered"
+      },
+      {
+        "email": "mohammed.ahmed@pembertonquarries.co.uk",
+        "companyDomain": "pembertonquarries.co.uk",
+        "variant": "A",
+        "status": "delivered"
+      },
+      {
+        "email": "oliver.fitzgerald@netherbygroundworks.co.uk",
+        "companyDomain": "netherbygroundworks.co.uk",
+        "variant": "B",
+        "status": "delivered"
+      },
+      {
+        "email": "gareth.novak@penrosebuilders.co.uk",
+        "companyDomain": "penrosebuilders.co.uk",
+        "variant": "A",
+        "status": "delivered"
+      },
+      {
+        "email": "freya.malik@dovecotecivil.co.uk",
+        "companyDomain": "dovecotecivil.co.uk",
+        "variant": "B",
+        "status": "delivered"
+      },
+      {
+        "email": "noah.moore@lomaxquarries.ie",
+        "companyDomain": "lomaxquarries.ie",
+        "variant": "A",
+        "status": "delivered"
+      },
+      {
+        "email": "erin.duffy@kingsmeadtool.co.uk",
+        "companyDomain": "kingsmeadtool.co.uk",
+        "variant": "B",
+        "status": "delivered"
+      },
+      {
+        "email": "tariq.green@birchwoodbuilders.co.uk",
+        "companyDomain": "birchwoodbuilders.co.uk",
+        "variant": "A",
+        "status": "delivered"
+      },
+      {
+        "email": "olivia.turner@hollowayplant.co.uk",
+        "companyDomain": "hollowayplant.co.uk",
+        "variant": "B",
+        "status": "delivered"
+      },
+      {
+        "email": "adam.doyle@dunmorecontractors.co.uk",
+        "companyDomain": "dunmorecontractors.co.uk",
+        "variant": "A",
+        "status": "delivered"
+      },
+      {
+        "email": "mohammed.bell@jarrowcivil.co.uk",
+        "companyDomain": "jarrowcivil.co.uk",
+        "variant": "B",
+        "status": "returned"
+      },
+      {
+        "email": "harry.grant@langleyminerals.co.uk",
+        "companyDomain": "langleyminerals.co.uk",
+        "variant": "A",
+        "status": "delivered"
+      },
+      {
+        "email": "bethan.watson@langleycivils.co.uk",
+        "companyDomain": "langleycivils.co.uk",
+        "variant": "B",
+        "status": "delivered"
+      },
+      {
+        "email": "sophie.daly@ormondinfrastructure.ie",
+        "companyDomain": "ormondinfrastructure.ie",
+        "variant": "A",
+        "status": "delivered"
+      },
+      {
+        "email": "nadia.rossi@shannonaggregates.co.uk",
+        "companyDomain": "shannonaggregates.co.uk",
+        "variant": "B",
+        "status": "delivered"
+      },
+      {
+        "email": "arjun.davies@severnbuilders.ie",
+        "companyDomain": "severnbuilders.ie",
+        "variant": "A",
+        "status": "delivered"
+      },
+      {
+        "email": "noah.jenkins@fenwickinfrastructure.co.uk",
+        "companyDomain": "fenwickinfrastructure.co.uk",
+        "variant": "B",
+        "status": "delivered"
+      },
+      {
+        "email": "chloe.hussain@glenmorecivil.co.uk",
+        "companyDomain": "glenmorecivil.co.uk",
+        "variant": "A",
+        "status": "delivered"
+      },
+      {
+        "email": "priya.kennedy@pembertongroundworks.co.uk",
+        "companyDomain": "pembertongroundworks.co.uk",
+        "variant": "B",
+        "status": "delivered"
+      },
+      {
+        "email": "patrick.nolan@garsideequipment.co.uk",
+        "companyDomain": "garsideequipment.co.uk",
+        "variant": "A",
+        "status": "delivered"
+      },
+      {
+        "email": "tom.chowdhury@penroseinfrastructure.co.uk",
+        "companyDomain": "penroseinfrastructure.co.uk",
+        "variant": "B",
+        "status": "delivered"
+      },
+      {
+        "email": "matthew.rahman@garsideinfrastructure.co.uk",
+        "companyDomain": "garsideinfrastructure.co.uk",
+        "variant": "A",
+        "status": "delivered"
+      },
+      {
+        "email": "ellie.mensah@wardlebuilders.co.uk",
+        "companyDomain": "wardlebuilders.co.uk",
+        "variant": "B",
+        "status": "delivered"
+      },
+      {
+        "email": "noah.hill@saltashbuilders.co.uk",
+        "companyDomain": "saltashbuilders.co.uk",
+        "variant": "A",
+        "status": "delivered"
+      },
+      {
+        "email": "tariq.wood@boyneplant.co.uk",
+        "companyDomain": "boyneplant.co.uk",
+        "variant": "B",
+        "status": "delivered"
+      },
+      {
+        "email": "gareth.murphy@stantonaggregates.co.uk",
+        "companyDomain": "stantonaggregates.co.uk",
+        "variant": "A",
+        "status": "delivered"
+      },
+      {
+        "email": "sophie.davies@quarringtonplant.co.uk",
+        "companyDomain": "quarringtonplant.co.uk",
+        "variant": "B",
+        "status": "delivered"
+      },
+      {
+        "email": "arjun.adeyemi@stantongroundworks.co.uk",
+        "companyDomain": "stantongroundworks.co.uk",
+        "variant": "A",
+        "status": "delivered"
+      },
+      {
+        "email": "megan.lewis@caldercontractors.co.uk",
+        "companyDomain": "caldercontractors.co.uk",
+        "variant": "B",
+        "status": "delivered"
+      },
+      {
+        "email": "alex.kennedy@kingsmeadstone.co.uk",
+        "companyDomain": "kingsmeadstone.co.uk",
+        "variant": "A",
+        "status": "returned"
+      },
+      {
+        "email": "nadia.ward@moorcroftequipment.co.uk",
+        "companyDomain": "moorcroftequipment.co.uk",
+        "variant": "B",
+        "status": "delivered"
+      },
+      {
+        "email": "tariq.stewart@merciastone.co.uk",
+        "companyDomain": "merciastone.co.uk",
+        "variant": "A",
+        "status": "delivered"
+      },
+      {
+        "email": "imogen.doyle@glenmorebuilding.ie",
+        "companyDomain": "glenmorebuilding.ie",
+        "variant": "B",
+        "status": "delivered"
+      },
+      {
+        "email": "sophie.chowdhury@coldstreamplant.co.uk",
+        "companyDomain": "coldstreamplant.co.uk",
+        "variant": "A",
+        "status": "delivered"
+      },
+      {
+        "email": "nadia.campbell@brennancivils.co.uk",
+        "companyDomain": "brennancivils.co.uk",
+        "variant": "B",
+        "status": "delivered"
+      },
+      {
+        "email": "kwame.burke@caldergroundworks.co.uk",
+        "companyDomain": "caldergroundworks.co.uk",
+        "variant": "A",
+        "status": "delivered"
+      },
+      {
+        "email": "isla.ali@northgateinfrastructure.co.uk",
+        "companyDomain": "northgateinfrastructure.co.uk",
+        "variant": "B",
+        "status": "delivered"
+      },
+      {
+        "email": "adam.lewis@hawkridgegroundworks.co.uk",
+        "companyDomain": "hawkridgegroundworks.co.uk",
+        "variant": "A",
+        "status": "delivered"
+      },
+      {
+        "email": "joseph.begum@severnstone.co.uk",
+        "companyDomain": "severnstone.co.uk",
+        "variant": "B",
+        "status": "delivered"
+      }
+    ]
+  },
+  "outcomes": [
+    {
+      "kind": "reply",
+      "card": "holly.taylor@wessexminerals.co.uk",
+      "domain": "wessexminerals.co.uk",
+      "personEmail": "holly.taylor@wessexminerals.co.uk",
+      "dayOffset": 11,
+      "source": "inbox"
+    },
+    {
+      "kind": "meeting",
+      "card": "holly.taylor@wessexminerals.co.uk",
+      "domain": "wessexminerals.co.uk",
+      "personEmail": "holly.taylor@wessexminerals.co.uk",
+      "dayOffset": 11,
+      "source": "calendar"
+    },
+    {
+      "kind": "visit",
+      "card": "daniel.ross@stantontool.co.uk",
+      "domain": "stantontool.co.uk",
+      "dayOffset": 4,
+      "source": "web analytics"
+    },
+    {
+      "kind": "reply",
+      "card": "mohammed.ahmed@pembertonquarries.co.uk",
+      "domain": "pembertonquarries.co.uk",
+      "personEmail": "mohammed.ahmed@pembertonquarries.co.uk",
+      "dayOffset": 11,
+      "source": "inbox"
+    },
+    {
+      "kind": "visit",
+      "card": "gareth.novak@penrosebuilders.co.uk",
+      "domain": "penrosebuilders.co.uk",
+      "dayOffset": 13,
+      "source": "web analytics"
+    },
+    {
+      "kind": "visit",
+      "card": "freya.malik@dovecotecivil.co.uk",
+      "domain": "dovecotecivil.co.uk",
+      "dayOffset": 14,
+      "source": "web analytics"
+    },
+    {
+      "kind": "reply",
+      "card": "freya.malik@dovecotecivil.co.uk",
+      "domain": "dovecotecivil.co.uk",
+      "personEmail": "freya.malik@dovecotecivil.co.uk",
+      "dayOffset": 15,
+      "source": "inbox"
+    },
+    {
+      "kind": "visit",
+      "card": "erin.duffy@kingsmeadtool.co.uk",
+      "domain": "kingsmeadtool.co.uk",
+      "dayOffset": 13,
+      "source": "web analytics"
+    },
+    {
+      "kind": "visit",
+      "card": "harry.grant@langleyminerals.co.uk",
+      "domain": "langleyminerals.co.uk",
+      "dayOffset": 20,
+      "source": "web analytics"
+    },
+    {
+      "kind": "visit",
+      "card": "arjun.davies@severnbuilders.ie",
+      "domain": "severnbuilders.ie",
+      "dayOffset": 24,
+      "source": "web analytics"
+    },
+    {
+      "kind": "visit",
+      "card": "noah.jenkins@fenwickinfrastructure.co.uk",
+      "domain": "fenwickinfrastructure.co.uk",
+      "dayOffset": 19,
+      "source": "web analytics"
+    },
+    {
+      "kind": "reply",
+      "card": "noah.jenkins@fenwickinfrastructure.co.uk",
+      "domain": "fenwickinfrastructure.co.uk",
+      "personEmail": "noah.jenkins@fenwickinfrastructure.co.uk",
+      "dayOffset": 6,
+      "source": "inbox"
+    },
+    {
+      "kind": "visit",
+      "card": "priya.kennedy@pembertongroundworks.co.uk",
+      "domain": "pembertongroundworks.co.uk",
+      "dayOffset": 23,
+      "source": "web analytics"
+    },
+    {
+      "kind": "visit",
+      "card": "patrick.nolan@garsideequipment.co.uk",
+      "domain": "garsideequipment.co.uk",
+      "dayOffset": 10,
+      "source": "web analytics"
+    },
+    {
+      "kind": "visit",
+      "card": "ellie.mensah@wardlebuilders.co.uk",
+      "domain": "wardlebuilders.co.uk",
+      "dayOffset": 18,
+      "source": "web analytics"
+    },
+    {
+      "kind": "meeting",
+      "card": "tariq.wood@boyneplant.co.uk",
+      "domain": "boyneplant.co.uk",
+      "personEmail": "tariq.wood@boyneplant.co.uk",
+      "dayOffset": 23,
+      "source": "calendar"
+    },
+    {
+      "kind": "visit",
+      "card": "gareth.murphy@stantonaggregates.co.uk",
+      "domain": "stantonaggregates.co.uk",
+      "dayOffset": 15,
+      "source": "web analytics"
+    },
+    {
+      "kind": "visit",
+      "card": "arjun.adeyemi@stantongroundworks.co.uk",
+      "domain": "stantongroundworks.co.uk",
+      "dayOffset": 9,
+      "source": "web analytics"
+    },
+    {
+      "kind": "visit",
+      "card": "megan.lewis@caldercontractors.co.uk",
+      "domain": "caldercontractors.co.uk",
+      "dayOffset": 6,
+      "source": "web analytics"
+    },
+    {
+      "kind": "visit",
+      "card": "imogen.doyle@glenmorebuilding.ie",
+      "domain": "glenmorebuilding.ie",
+      "dayOffset": 16,
+      "source": "web analytics"
+    },
+    {
+      "kind": "visit",
+      "card": "nadia.campbell@brennancivils.co.uk",
+      "domain": "brennancivils.co.uk",
+      "dayOffset": 25,
+      "source": "web analytics"
+    },
+    {
+      "kind": "visit",
+      "card": "kwame.burke@caldergroundworks.co.uk",
+      "domain": "caldergroundworks.co.uk",
+      "dayOffset": 22,
+      "source": "web analytics"
+    },
+    {
+      "kind": "visit",
+      "card": "isla.ali@northgateinfrastructure.co.uk",
+      "domain": "northgateinfrastructure.co.uk",
+      "dayOffset": 23,
+      "source": "web analytics"
+    },
+    {
+      "kind": "reply",
+      "card": "isla.ali@northgateinfrastructure.co.uk",
+      "domain": "northgateinfrastructure.co.uk",
+      "personEmail": "isla.ali@northgateinfrastructure.co.uk",
+      "dayOffset": 20,
+      "source": "inbox"
+    },
+    {
+      "kind": "visit",
+      "card": "adam.lewis@hawkridgegroundworks.co.uk",
+      "domain": "hawkridgegroundworks.co.uk",
+      "dayOffset": 18,
+      "source": "web analytics"
+    },
+    {
+      "kind": "visit",
+      "card": "daniel.ross@stantontool.co.uk",
+      "domain": "stantontool.co.uk",
+      "dayOffset": 35,
+      "source": "late"
+    },
+    {
+      "kind": "reply",
+      "card": "mohammed.ahmed@pembertonquarries.co.uk",
+      "domain": "pembertonquarries.co.uk",
+      "personEmail": "mohammed.ahmed@pembertonquarries.co.uk",
+      "dayOffset": 35,
+      "source": "late"
+    },
+    {
+      "kind": "meeting",
+      "card": "oliver.fitzgerald@netherbygroundworks.co.uk",
+      "domain": "netherbygroundworks.co.uk",
+      "personEmail": "oliver.fitzgerald@netherbygroundworks.co.uk",
+      "dayOffset": 35,
+      "source": "late"
+    },
+    {
+      "kind": "visit",
+      "domain": "ironbridgedigital.co.uk",
+      "daysAgo": 20,
+      "source": "web analytics"
+    }
+  ]
+}
