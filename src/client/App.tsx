@@ -9,6 +9,7 @@ import { HomePage } from './pages/HomePage.tsx'
 import { IcpPage } from './pages/IcpPage.tsx'
 import { ProvidersPage } from './pages/ProvidersPage.tsx'
 import { ScoresPage } from './pages/ScoresPage.tsx'
+import { SuppressionsPage } from './pages/SuppressionsPage.tsx'
 
 const queryClient = new QueryClient({ defaultOptions: { queries: { retry: 1, refetchOnWindowFocus: false } } })
 
@@ -35,6 +36,7 @@ const router = createBrowserRouter([
 			{ path: 'scores', element: <ScoresPage /> },
 			{ path: 'campaigns', element: <CampaignsPage /> },
 			{ path: 'campaigns/:id', element: <CampaignPage /> },
+			{ path: 'suppressions', element: <SuppressionsPage /> },
 		],
 	},
 ])

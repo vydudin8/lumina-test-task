@@ -2,7 +2,7 @@ import { and, asc, desc, eq, inArray, or } from 'drizzle-orm'
 import { Hono } from 'hono'
 import { z } from 'zod'
 import type { AppDeps } from '../app.ts'
-import { auditEvents, campaigns, cards, templates } from '../db/schema.ts'
+import { auditEvents, campaigns, cards, submissionAttempts, templates } from '../db/schema.ts'
 import {
 	approveCard,
 	approveEligible,
@@ -127,7 +127,25 @@ export function campaignRoutes(deps: AppDeps) {
 				)
 				.orderBy(desc(auditEvents.at), desc(auditEvents.id))
 				.limit(200)
-			return context.json({ campaign, cards: rows, templates: campaignTemplates, summary: summarise(rows), activity })
+			const attempts = rows.length
+				? await deps.db
+						.select()
+						.from(submissionAttempts)
+						.where(
+							inArray(
+								submissionAttempts.cardId,
+								rows.map((card) => card.id),
+							),
+						)
+						.orderBy(asc(submissionAttempts.n))
+				: []
+			return context.json({
+				campaign,
+				cards: rows.map((card) => ({ ...card, attempts: attempts.filter((attempt) => attempt.cardId === card.id) })),
+				templates: campaignTemplates,
+				summary: summarise(rows),
+				activity,
+			})
 		})
 		.post('/campaigns/:id/approve-eligible', requireRole('lead'), async (context) => {
 			const id = idParam.safeParse(context.req.param('id'))

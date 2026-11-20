@@ -8,6 +8,7 @@ const env = {
 	PORT: String(port),
 	LOG_LEVEL: 'warn',
 	FAKE_WORLD_URL: `http://localhost:${fakeWorldPort}`,
+	MAIL_WEBHOOK_SECRET: 'e2e-webhook-secret',
 }
 
 export default defineConfig({
@@ -23,7 +24,13 @@ export default defineConfig({
 		{
 			command: 'node src/fake-world/main.ts',
 			url: `http://localhost:${fakeWorldPort}/health`,
-			env: { FAKE_WORLD_PORT: String(fakeWorldPort), LOG_LEVEL: 'warn' },
+			env: {
+				FAKE_WORLD_PORT: String(fakeWorldPort),
+				LOG_LEVEL: 'warn',
+				APP_URL: `http://localhost:${port}`,
+				MAIL_WEBHOOK_SECRET: 'e2e-webhook-secret',
+				FAKE_WORLD_CONTROLS: '1',
+			},
 			reuseExistingServer: false,
 		},
 		{

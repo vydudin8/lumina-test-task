@@ -6,14 +6,18 @@ import { companyRoutes } from './http/companies.ts'
 import { providerRoutes } from './http/providers.ts'
 import { sameOriginOnly } from './http/same-origin.ts'
 import { scoreRoutes } from './http/scores.ts'
+import { sendRoutes, webhookRoutes } from './http/send.ts'
 import { loadUser, sessionRoutes, type AppEnv } from './http/session.ts'
 import { DomainError } from './lib/errors.ts'
 import type { Llm } from './llm/types.ts'
 import type { IngestDeps } from './pipeline/ingest/index.ts'
+import type { MailClient } from './pipeline/send/mail-client.ts'
 
 export interface AppDeps extends IngestDeps {
 	sessionSecret: string
 	llm: Llm
+	mail: MailClient
+	webhookSecret: string
 }
 
 export function createApp(deps: AppDeps) {
@@ -50,6 +54,8 @@ export function createApp(deps: AppDeps) {
 	app.route('/api', companyRoutes(deps))
 	app.route('/api', scoreRoutes(deps))
 	app.route('/api', campaignRoutes(deps))
+	app.route('/api', sendRoutes(deps))
+	app.route('/', webhookRoutes(deps))
 
 	return app
 }

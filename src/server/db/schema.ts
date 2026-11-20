@@ -2,6 +2,7 @@ import type { FieldName } from '#common/settings.ts'
 import { sql } from 'drizzle-orm'
 import {
 	bigint,
+	boolean,
 	check,
 	date,
 	foreignKey,
@@ -423,6 +424,7 @@ export const cards = pgTable(
 		// Generated at approval, before any send attempt, and sent as the mail API's Idempotency-Key.
 		idempotencyKey: text().unique(),
 		mailId: text().unique(),
+		sendError: text(),
 		submittedAt: timestamp({ withTimezone: true }),
 		mailedAt: timestamp({ withTimezone: true }),
 		statusChangedAt: timestamp({ withTimezone: true }).notNull(),
@@ -448,5 +450,45 @@ export const cards = pgTable(
 			columns: [t.approvedBy, t.approvedByRole],
 			foreignColumns: [users.id, users.role],
 		}),
+	],
+)
+
+export const submissionAttempts = pgTable(
+	'submission_attempts',
+	{
+		id: integer().primaryKey().generatedAlwaysAsIdentity(),
+		cardId: integer()
+			.notNull()
+			.references(() => cards.id),
+		n: integer().notNull(),
+		outcome: text().$type<'ok' | 'timeout' | 'error'>().notNull(),
+		httpStatus: integer(),
+		// How long the worker waited before the next attempt (full jitter); null when there was none.
+		delayMs: integer(),
+		error: text(),
+		at: timestamp({ withTimezone: true }).notNull(),
+	},
+	(t) => [
+		unique('submission_attempts_card_n').on(t.cardId, t.n),
+		check('submission_attempts_outcome', sql`${t.outcome} IN ('ok', 'timeout', 'error')`),
+	],
+)
+
+// Every webhook as received. A forged one is kept for the record without its event id, so it cannot block the real event.
+export const mailEvents = pgTable(
+	'mail_events',
+	{
+		id: integer().primaryKey().generatedAlwaysAsIdentity(),
+		providerEventId: text().unique(),
+		mailId: text(),
+		status: text(),
+		occurredAt: timestamp({ withTimezone: true }),
+		receivedAt: timestamp({ withTimezone: true }).notNull(),
+		payload: jsonb().notNull(),
+		signatureOk: boolean().notNull(),
+	},
+	(t) => [
+		index('mail_events_mail_id').on(t.mailId),
+		check('mail_events_verified_id', sql`${t.signatureOk} OR ${t.providerEventId} IS NULL`),
 	],
 )

@@ -1,23 +1,25 @@
-import { createFakeWorld } from '#fake-world/app.ts'
 import { createApp, type AppDeps } from '../app.ts'
 import type { Db } from '../db/client.ts'
 import { createStubLlm } from '../llm/stub.ts'
 import { createLogger } from '../log.ts'
+import { TEST_WEBHOOK_SECRET, testWorld } from './world.ts'
 
 export const TEST_SESSION_SECRET = 'test-secret-0123456789abcdef0123456789'
 
 // Providers are served in-process by fake-world; retries do not really sleep.
 export function testDeps(db: Db, overrides: Partial<AppDeps> = {}): AppDeps {
-	const world = createFakeWorld()
+	const world = testWorld()
 	return {
 		db,
 		log: createLogger({ level: process.env.TEST_LOG_LEVEL ?? 'silent' }),
 		sessionSecret: TEST_SESSION_SECRET,
 		clock: () => new Date(),
 		providerBaseUrl: 'http://fake-world',
-		fetch: (input, init) => Promise.resolve(world.fetch(new Request(input, init))),
+		fetch: world.fetch,
 		retry: { rng: () => 0.5, sleep: () => Promise.resolve() },
 		llm: createStubLlm({ hallucinateEvery: 0 }),
+		mail: { baseUrl: 'http://fake-world', fetch: world.fetch, timeoutMs: 50 },
+		webhookSecret: TEST_WEBHOOK_SECRET,
 		...overrides,
 	}
 }

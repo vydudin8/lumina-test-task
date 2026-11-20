@@ -54,8 +54,11 @@ export interface CampaignCard {
 	approvedBy: string | null
 	approvedAt: string | null
 	mailId: string | null
+	sendError: string | null
 	submittedAt: string | null
 	mailedAt: string | null
+	statusChangedAt: string
+	attempts: { n: number; outcome: 'ok' | 'timeout' | 'error'; httpStatus: number | null; delayMs: number | null }[]
 }
 
 export interface CampaignDetail {
@@ -87,6 +90,8 @@ const DECIDED_BY: Record<string, string> = {
 	'seeded history': 'from a past campaign',
 }
 
+const IN_FLIGHT = ['queued', 'submitted', 'printed', 'mailed']
+
 const FILTERS: [string, string, (card: CampaignCard) => boolean][] = [
 	['all', 'All', () => true],
 	['draft', 'Drafts', (card) => card.status === 'draft'],
@@ -99,7 +104,13 @@ const FILTERS: [string, string, (card: CampaignCard) => boolean][] = [
 
 export function CampaignPage() {
 	const id = Number(useParams().id)
-	const query = useQuery({ queryKey: ['campaign', id], queryFn: () => api<CampaignDetail>(`/api/campaigns/${id}`) })
+	const query = useQuery({
+		queryKey: ['campaign', id],
+		queryFn: () => api<CampaignDetail>(`/api/campaigns/${id}`),
+		// Poll every second while any card is on its way, so webhook updates show within a couple of seconds.
+		refetchInterval: (state) =>
+			state.state.data?.cards.some((card) => IN_FLIGHT.includes(card.status)) ? 1000 : false,
+	})
 	return <QueryState query={query}>{(detail) => <CampaignView detail={detail} />}</QueryState>
 }
 
@@ -113,6 +124,13 @@ function CampaignView({ detail }: { detail: CampaignDetail }) {
 	const isLead = user?.role === 'lead'
 	const refresh = () => queryClient.invalidateQueries({ queryKey: ['campaign', campaign.id] })
 
+	const [confirmingSend, setConfirmingSend] = useState(false)
+	const send = useMutation({
+		mutationFn: () => api<{ queued: number }>(`/api/campaigns/${campaign.id}/send`, { method: 'POST' }),
+		onSuccess: () => setConfirmingSend(false),
+		onSettled: refresh,
+	})
+	const approvedCount = detail.cards.filter((card) => card.status === 'approved').length
 	const approveAll = useMutation({
 		mutationFn: () => api<{ approved: number }>(`/api/campaigns/${campaign.id}/approve-eligible`, { method: 'POST' }),
 		onSettled: refresh,
@@ -172,15 +190,44 @@ function CampaignView({ detail }: { detail: CampaignDetail }) {
 				))}
 				<span className="flex-1" />
 				{isLead ? (
-					<Button disabled={drafts === 0 || approveAll.isPending} onClick={() => approveAll.mutate()}>
-						Approve all eligible drafts (
-						{detail.cards.filter((card) => card.status === 'draft' && card.eligibility === 'eligible').length})
-					</Button>
+					<>
+						<Button
+							variant="outline"
+							disabled={drafts === 0 || approveAll.isPending}
+							onClick={() => approveAll.mutate()}
+						>
+							Approve all eligible drafts (
+							{detail.cards.filter((card) => card.status === 'draft' && card.eligibility === 'eligible').length})
+						</Button>
+						<Button disabled={approvedCount === 0} onClick={() => setConfirmingSend(true)}>
+							Send {approvedCount} approved
+						</Button>
+					</>
 				) : (
 					<p className="text-sm text-muted-foreground">Only a sales lead can approve cards and send.</p>
 				)}
 			</div>
 			{approveAll.isError && <p className="text-sm text-destructive">{approveAll.error.message}</p>}
+			<Dialog open={confirmingSend} onOpenChange={setConfirmingSend}>
+				<DialogContent>
+					<DialogHeader>
+						<DialogTitle>Send {approvedCount} postcards?</DialogTitle>
+						<DialogDescription>
+							They go to the printer now. Each card is checked again for opt-outs and recent mailings just before it is
+							sent, and is blocked rather than sent if anything changed. This cannot be undone.
+						</DialogDescription>
+					</DialogHeader>
+					{send.isError && <p className="text-sm text-destructive">{send.error.message}</p>}
+					<DialogFooter>
+						<Button variant="outline" onClick={() => setConfirmingSend(false)}>
+							Cancel
+						</Button>
+						<Button disabled={send.isPending} onClick={() => send.mutate()}>
+							{send.isPending ? 'Queuing…' : `Send ${approvedCount}`}
+						</Button>
+					</DialogFooter>
+				</DialogContent>
+			</Dialog>
 
 			{visible.length === 0 ? (
 				<p className="text-sm text-muted-foreground">No cards here.</p>
@@ -315,6 +362,28 @@ function PostcardItem({
 					</p>
 				)}
 				{card.rejectReason && <p>Rejected: {card.rejectReason}</p>}
+				{card.mailId && (
+					<p>
+						Mail id <span className="font-mono">{card.mailId}</span>, submitted {formatDateTime(card.submittedAt)}
+						{card.mailedAt && `, mailed ${formatDateTime(card.mailedAt)}`}
+					</p>
+				)}
+				{card.attempts.length > 0 && (
+					<p className="text-muted-foreground">
+						{card.attempts.length === 1 ? '1 attempt' : `${card.attempts.length} attempts`}:{' '}
+						{card.attempts
+							.map(
+								(attempt) =>
+									`${attempt.outcome}${attempt.httpStatus ? ` (${attempt.httpStatus})` : ''}${attempt.delayMs !== null ? `, waited ${attempt.delayMs} ms` : ''}`,
+							)
+							.join(' → ')}
+					</p>
+				)}
+				{card.sendError && (
+					<p className="text-destructive">
+						Not sent: {card.sendError}. A person needs to decide what to do with this card.
+					</p>
+				)}
 				{card.approvedBy && card.approvedAt && (
 					<p className="text-muted-foreground">
 						Approved by {userName(card.approvedBy)} on {formatDateTime(card.approvedAt)}

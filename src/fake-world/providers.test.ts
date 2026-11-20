@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { createFakeWorld } from './app.ts'
 
-const world = () => createFakeWorld()
+const world = () => createFakeWorld().app
 
 async function post(app: ReturnType<typeof world>, path: string, body: unknown) {
 	return app.fetch(

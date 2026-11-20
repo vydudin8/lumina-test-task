@@ -18,7 +18,7 @@ describe('ingestion', () => {
 			log: createLogger({ level: 'silent' }),
 			clock: () => new Date('2026-11-20T12:00:00Z'),
 			providerBaseUrl: 'http://fake-world',
-			fetch: (input, init) => Promise.resolve(world.fetch(new Request(input, init))),
+			fetch: (input, init) => Promise.resolve(world.app.fetch(new Request(input, init))),
 			retry: {
 				rng: () => 0.5,
 				sleep: (ms) => {
@@ -113,7 +113,7 @@ describe('initial ingestion on an empty database', () => {
 				log: createLogger({ level: 'silent' }),
 				clock: () => new Date(),
 				providerBaseUrl: 'http://fake-world',
-				fetch: (input, init) => Promise.resolve(world.fetch(new Request(input, init))),
+				fetch: (input, init) => Promise.resolve(world.app.fetch(new Request(input, init))),
 				retry: { sleep: () => Promise.resolve() },
 			},
 			'system:seed',

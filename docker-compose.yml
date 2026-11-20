@@ -23,6 +23,9 @@ services:
     environment:
       FAKE_WORLD_PORT: 4000
       APP_URL: http://app:3000
+      MAIL_WEBHOOK_SECRET: compose-demo-webhook-secret
+      # Test and demo switches (timeouts, duplicate webhooks); see README.
+      FAKE_WORLD_CONTROLS: '1'
     ports:
       - '4000:4000'
     healthcheck:
@@ -43,6 +46,7 @@ services:
       # Demo-only secret: users are picked without passwords anyway (see README).
       SESSION_SECRET: compose-demo-secret-0123456789abcdef
       FAKE_WORLD_URL: http://fake-world:4000
+      MAIL_WEBHOOK_SECRET: compose-demo-webhook-secret
     ports:
       - '3000:3000'
     depends_on:
