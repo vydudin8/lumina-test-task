@@ -1,0 +1,72 @@
+x-healthcheck: &http-healthcheck
+  interval: 2s
+  timeout: 3s
+  retries: 60
+
+services:
+  db:
+    image: postgres:17
+    environment:
+      POSTGRES_USER: lumina
+      POSTGRES_PASSWORD: lumina
+      POSTGRES_DB: lumina
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    healthcheck:
+      <<: *http-healthcheck
+      test: ['CMD-SHELL', 'pg_isready -U lumina -d lumina']
+
+  fake-world:
+    build: { context: ., target: runtime }
+    command: ['node', 'src/fake-world/main.ts']
+    init: true
+    environment:
+      FAKE_WORLD_PORT: 4000
+      APP_URL: http://app:3000
+    ports:
+      - '4000:4000'
+    healthcheck:
+      <<: *http-healthcheck
+      test:
+        [
+          'CMD',
+          'node',
+          '-e',
+          "fetch('http://localhost:4000/health').then((r) => process.exit(r.ok ? 0 : 1), () => process.exit(1))",
+        ]
+
+  app:
+    build: { context: ., target: runtime }
+    init: true
+    environment:
+      DATABASE_URL: postgres://lumina:lumina@db:5432/lumina
+      # Demo-only secret: users are picked without passwords anyway (see README).
+      SESSION_SECRET: compose-demo-secret-0123456789abcdef
+      FAKE_WORLD_URL: http://fake-world:4000
+    ports:
+      - '3000:3000'
+    depends_on:
+      db: { condition: service_healthy }
+      fake-world: { condition: service_healthy }
+    healthcheck:
+      <<: *http-healthcheck
+      test:
+        [
+          'CMD',
+          'node',
+          '-e',
+          "fetch('http://localhost:3000/api/health').then((r) => process.exit(r.ok ? 0 : 1), () => process.exit(1))",
+        ]
+
+  test:
+    profiles: [test]
+    build: { context: ., target: test }
+    environment:
+      CI: '1'
+      TEST_DATABASE_URL: postgres://lumina:lumina@db:5432/lumina_test
+      E2E_DATABASE_URL: postgres://lumina:lumina@db:5432/lumina_e2e
+    depends_on:
+      db: { condition: service_healthy }
+
+volumes:
+  db-data:

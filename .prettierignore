@@ -1,0 +1,4 @@
+pnpm-lock.yaml
+src/server/db/migrations/meta/
+fixtures/
+dist/
