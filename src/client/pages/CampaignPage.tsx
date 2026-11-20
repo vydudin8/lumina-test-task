@@ -1,5 +1,6 @@
 import { api } from '#client/api.ts'
 import { ActivityTimeline, type AuditEvent } from '#client/components/ActivityTimeline.tsx'
+import { CampaignResults } from '#client/components/CampaignResults.tsx'
 import { QueryState } from '#client/components/QueryState.tsx'
 import { ReasonDialog } from '#client/components/ReasonDialog.tsx'
 import { Badge } from '#client/components/ui/badge.tsx'
@@ -34,6 +35,7 @@ interface Candidate {
 export interface CampaignCard {
 	id: number
 	companyId: number
+	companyName: string | null
 	rank: number
 	scoreDisplay: number
 	personKey: string
@@ -245,6 +247,13 @@ function CampaignView({ detail }: { detail: CampaignDetail }) {
 				</div>
 			)}
 
+			{detail.cards.some((card) => card.mailedAt) && (
+				<CampaignResults
+					campaignId={campaign.id}
+					companyOf={(cardId) => detail.cards.find((card) => card.id === cardId)?.companyName ?? `card #${cardId}`}
+				/>
+			)}
+
 			<section className="space-y-2">
 				<h2 className="text-lg font-semibold">Activity</h2>
 				<ActivityTimeline events={detail.activity} />
@@ -275,7 +284,10 @@ function PostcardItem({
 	const [rejecting, setRejecting] = useState(false)
 	const [editing, setEditing] = useState(false)
 	const [text, setText] = useState(card.personalLine)
-	const company = card.lineEvidence.find((item) => item.label === 'company')?.value ?? `Company #${card.companyId}`
+	const company =
+		card.companyName ??
+		card.lineEvidence.find((item) => item.label === 'company')?.value ??
+		`Company #${card.companyId}`
 	const approve = useMutation({
 		mutationFn: () => api(`/api/cards/${card.id}/approve`, { method: 'POST' }),
 		onSettled: onChange,
@@ -413,6 +425,8 @@ function PostcardItem({
 				{card.blockReason && <p className="mt-1">This card is blocked. We do not send it to someone else instead.</p>}
 			</details>
 
+			{card.mailedAt && <LogOutcome cardId={card.id} onLogged={onChange} />}
+
 			{editable && (
 				<div className="flex flex-wrap gap-2">
 					{isLead && card.status === 'draft' && card.eligibility === 'eligible' && (
@@ -469,5 +483,75 @@ function PostcardItem({
 				</DialogContent>
 			</Dialog>
 		</article>
+	)
+}
+
+function LogOutcome({ cardId, onLogged }: { cardId: number; onLogged: () => Promise<void> }) {
+	const queryClient = useQueryClient()
+	const [kind, setKind] = useState<'reply' | 'meeting' | null>(null)
+	const [date, setDate] = useState(() => new Date().toISOString().slice(0, 10))
+	const [note, setNote] = useState('')
+	// One key per dialog opening, so a double click logs one outcome.
+	const [key, setKey] = useState(() => crypto.randomUUID())
+	const log = useMutation({
+		mutationFn: () =>
+			api(`/api/cards/${cardId}/outcomes`, {
+				method: 'POST',
+				headers: { 'Idempotency-Key': key },
+				json: { kind, occurredAt: new Date(`${date}T12:00:00`).toISOString(), note },
+			}),
+		onSuccess: async () => {
+			setKind(null)
+			setKey(crypto.randomUUID())
+			setNote('')
+			await queryClient.invalidateQueries({ queryKey: ['results'] })
+			await onLogged()
+		},
+	})
+
+	return (
+		<>
+			<div className="flex gap-2">
+				<Button size="sm" variant="outline" onClick={() => setKind('reply')}>
+					Log reply
+				</Button>
+				<Button size="sm" variant="outline" onClick={() => setKind('meeting')}>
+					Log meeting
+				</Button>
+			</div>
+			<Dialog open={kind !== null} onOpenChange={(open) => !open && setKind(null)}>
+				<DialogContent>
+					<DialogHeader>
+						<DialogTitle>Log a {kind}</DialogTitle>
+						<DialogDescription>
+							It counts for this card only if it happened within 30 days after the card was mailed.
+						</DialogDescription>
+					</DialogHeader>
+					<div className="space-y-1">
+						<Label htmlFor={`outcome-date-${cardId}`}>Date</Label>
+						<input
+							id={`outcome-date-${cardId}`}
+							type="date"
+							className="block rounded-md border px-3 py-2 text-sm"
+							value={date}
+							onChange={(event) => setDate(event.target.value)}
+						/>
+					</div>
+					<div className="space-y-1">
+						<Label htmlFor={`outcome-note-${cardId}`}>Note</Label>
+						<Textarea id={`outcome-note-${cardId}`} value={note} onChange={(event) => setNote(event.target.value)} />
+					</div>
+					{log.isError && <p className="text-sm text-destructive">{log.error.message}</p>}
+					<DialogFooter>
+						<Button variant="outline" onClick={() => setKind(null)}>
+							Cancel
+						</Button>
+						<Button disabled={log.isPending} onClick={() => log.mutate()}>
+							Save
+						</Button>
+					</DialogFooter>
+				</DialogContent>
+			</Dialog>
+		</>
 	)
 }

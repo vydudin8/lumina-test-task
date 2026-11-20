@@ -64,6 +64,13 @@
       "when": 1795204004642,
       "tag": "0008_send",
       "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "7",
+      "when": 1795204432706,
+      "tag": "0009_outcomes",
+      "breakpoints": true
     }
   ]
 }

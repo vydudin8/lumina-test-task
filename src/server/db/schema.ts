@@ -492,3 +492,25 @@ export const mailEvents = pgTable(
 		check('mail_events_verified_id', sql`${t.signatureOk} OR ${t.providerEventId} IS NULL`),
 	],
 )
+
+// Replies, website visits and meetings. Attributed to cards at read time, so the 30-day rule is never baked in.
+export const outcomeEvents = pgTable(
+	'outcome_events',
+	{
+		id: integer().primaryKey().generatedAlwaysAsIdentity(),
+		kind: text().$type<'reply' | 'visit' | 'meeting'>().notNull(),
+		domain: text(),
+		personKey: text(),
+		occurredAt: timestamp({ withTimezone: true }).notNull(),
+		source: text().notNull(),
+		note: text(),
+		idempotencyKey: text().notNull().unique(),
+		createdBy: text().notNull(),
+		createdAt: timestamp({ withTimezone: true }).notNull(),
+	},
+	(t) => [
+		check('outcome_events_kind', sql`${t.kind} IN ('reply', 'visit', 'meeting')`),
+		check('outcome_events_target', sql`${t.domain} IS NOT NULL OR ${t.personKey} IS NOT NULL`),
+		index('outcome_events_occurred').on(t.occurredAt),
+	],
+)

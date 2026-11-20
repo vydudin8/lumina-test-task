@@ -1,6 +1,6 @@
 import { asc, eq, inArray, sql } from 'drizzle-orm'
 import type { Db } from '../db/client.ts'
-import { campaigns, cards, contacts, icpVersions, sourceCompanies, templates } from '../db/schema.ts'
+import { campaigns, cards, contacts, icpVersions, outcomeEvents, sourceCompanies, templates } from '../db/schema.ts'
 import { loadMaster } from '../pipeline/resolve/store.ts'
 import { icpVersion, scoreCompanies } from '../pipeline/score/store.ts'
 import { personKey } from '../policy/person-key.ts'
@@ -115,5 +115,34 @@ export async function seedHistory(db: Db, now: Date) {
 				)
 				.onConflictDoNothing()
 		}
+
+		// Outcomes are dated from their card's mailed_at; the fixture row index is their natural key.
+		const [historical] = await tx.select().from(campaigns).where(eq(campaigns.idempotencyKey, 'seed:historical'))
+		const historicalCards = await tx.select().from(cards).where(eq(cards.campaignId, historical!.id))
+		await tx
+			.insert(outcomeEvents)
+			.values(
+				history.outcomes.map((outcome, index) => {
+					const card = outcome.card
+						? historicalCards.find((row) => row.personKey === personKey(outcome.card!))
+						: undefined
+					if (outcome.card && !card?.mailedAt)
+						throw new Error(`history.json outcome ${index} points at an unknown card`)
+					const occurredAt = card
+						? new Date(card.mailedAt!.getTime() + outcome.dayOffset! * DAY_MS)
+						: new Date(now.getTime() - outcome.daysAgo! * DAY_MS)
+					return {
+						kind: outcome.kind,
+						domain: outcome.domain,
+						personKey: outcome.personEmail ? personKey(outcome.personEmail) : null,
+						occurredAt,
+						source: outcome.source,
+						idempotencyKey: `seed:outcome:${index}`,
+						createdBy: 'system:seed',
+						createdAt: now,
+					}
+				}),
+			)
+			.onConflictDoNothing()
 	})
 }

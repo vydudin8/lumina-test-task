@@ -11,6 +11,8 @@ import {
 	rejectCard,
 	type CampaignDeps,
 } from '../pipeline/campaign/store.ts'
+import { loadMaster } from '../pipeline/resolve/store.ts'
+import { campaignResults, logOutcome } from '../pipeline/results/store.ts'
 import { invalidRequest, readBody } from './read-body.ts'
 import { requireRole, requireUser, type AppEnv } from './session.ts'
 
@@ -24,6 +26,11 @@ const createBody = z.object({
 const idParam = z.coerce.number().int().positive()
 const reasonBody = z.object({ reason: z.string().max(500) })
 const lineBody = z.object({ text: z.string().max(1000) })
+const outcomeBody = z.object({
+	kind: z.enum(['reply', 'meeting']),
+	occurredAt: z.iso.datetime({ offset: true }).optional(),
+	note: z.string().max(500).optional(),
+})
 
 type Card = typeof cards.$inferSelect
 
@@ -127,6 +134,9 @@ export function campaignRoutes(deps: AppDeps) {
 				)
 				.orderBy(desc(auditEvents.at), desc(auditEvents.id))
 				.limit(200)
+			const names = new Map(
+				(await loadMaster(deps.db, deps.clock())).companies.map((company) => [company.id, company.fields.name.value]),
+			)
 			const attempts = rows.length
 				? await deps.db
 						.select()
@@ -141,7 +151,11 @@ export function campaignRoutes(deps: AppDeps) {
 				: []
 			return context.json({
 				campaign,
-				cards: rows.map((card) => ({ ...card, attempts: attempts.filter((attempt) => attempt.cardId === card.id) })),
+				cards: rows.map((card) => ({
+					...card,
+					companyName: names.get(card.companyId) ?? null,
+					attempts: attempts.filter((attempt) => attempt.cardId === card.id),
+				})),
 				templates: campaignTemplates,
 				summary: summarise(rows),
 				activity,
@@ -194,5 +208,28 @@ export function campaignRoutes(deps: AppDeps) {
 					requestId: context.var.requestId,
 				}),
 			)
+		})
+		.get('/campaigns/:id/results', requireUser, async (context) => {
+			const id = idParam.safeParse(context.req.param('id'))
+			if (!id.success) return invalidRequest(context)
+			return context.json(await campaignResults(deps.db, id.data, deps.clock()))
+		})
+		.post('/cards/:id/outcomes', requireUser, async (context) => {
+			const id = idParam.safeParse(context.req.param('id'))
+			const body = await readBody(context, outcomeBody)
+			const idempotencyKey = context.req.header('idempotency-key')?.trim()
+			if (!id.success || !body) return invalidRequest(context)
+			if (!idempotencyKey)
+				return context.json({ error: 'Send an Idempotency-Key header, so a retry cannot log the outcome twice.' }, 400)
+			const result = await logOutcome(deps, {
+				cardId: id.data,
+				kind: body.kind,
+				occurredAt: body.occurredAt ? new Date(body.occurredAt) : deps.clock(),
+				note: body.note,
+				idempotencyKey,
+				actor: actorOf(context.var.user),
+				requestId: context.var.requestId,
+			})
+			return context.json(result, result.created ? 201 : 200)
 		})
 }
