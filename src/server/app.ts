@@ -1,6 +1,7 @@
 import { Hono } from 'hono'
 import { HTTPException } from 'hono/http-exception'
 import { requestId } from 'hono/request-id'
+import { campaignRoutes } from './http/campaigns.ts'
 import { companyRoutes } from './http/companies.ts'
 import { providerRoutes } from './http/providers.ts'
 import { sameOriginOnly } from './http/same-origin.ts'
@@ -48,6 +49,7 @@ export function createApp(deps: AppDeps) {
 	app.route('/api', providerRoutes(deps))
 	app.route('/api', companyRoutes(deps))
 	app.route('/api', scoreRoutes(deps))
+	app.route('/api', campaignRoutes(deps))
 
 	return app
 }

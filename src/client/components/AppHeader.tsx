@@ -8,6 +8,7 @@ const links = [
 	['/companies', 'Companies'],
 	['/icp', 'ICP'],
 	['/scores', 'Scores'],
+	['/campaigns', 'Campaigns'],
 ] as const
 
 export function AppHeader() {

@@ -1,6 +1,8 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { createBrowserRouter, Outlet, RouterProvider } from 'react-router'
 import { AppHeader } from './components/AppHeader.tsx'
+import { CampaignPage } from './pages/CampaignPage.tsx'
+import { CampaignsPage } from './pages/CampaignsPage.tsx'
 import { CompaniesPage } from './pages/CompaniesPage.tsx'
 import { CompanyPage } from './pages/CompanyPage.tsx'
 import { HomePage } from './pages/HomePage.tsx'
@@ -31,6 +33,8 @@ const router = createBrowserRouter([
 			{ path: 'companies/:id', element: <CompanyPage /> },
 			{ path: 'icp', element: <IcpPage /> },
 			{ path: 'scores', element: <ScoresPage /> },
+			{ path: 'campaigns', element: <CampaignsPage /> },
+			{ path: 'campaigns/:id', element: <CampaignPage /> },
 		],
 	},
 ])

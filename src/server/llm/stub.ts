@@ -17,11 +17,10 @@ export function createStubLlm({ hallucinateEvery = 9 }: { hallucinateEvery?: num
 
 			let text: string
 			if (request.task === 'card_line') {
-				const name = take('first name') ?? 'there'
 				const company = take('company') ?? 'your team'
 				const title = take('title')
 				const industry = take('industry')
-				text = `${name}, ${title ? `as ${title} at ${company}` : `at ${company}`}, you could run ${industry ? `${industry.toLowerCase()} ` : ''}sites quieter and without diesel deliveries.`
+				text = `${title ? `As ${title} at ${company}` : `At ${company}`}, you could run ${industry ? `${industry.toLowerCase()} ` : ''}sites quieter and without diesel deliveries.`
 			} else {
 				const industry = take('industry')
 				const headcount = take('headcount')

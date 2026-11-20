@@ -3,6 +3,7 @@ import { databaseName, ensureDatabase, runMigrations, withAdminClient } from '..
 import { systemClock } from '../lib/clock.ts'
 import { createLogger } from '../log.ts'
 import { ingestMissingProviders } from '../pipeline/ingest/index.ts'
+import { seedHistory } from './history.ts'
 import { seed } from './seed.ts'
 
 const url = process.env.DATABASE_URL
@@ -28,5 +29,6 @@ await ingestMissingProviders(
 	},
 	'system:seed',
 )
+await seedHistory(db, new Date())
 await db.$client.end()
 console.log('seed complete')

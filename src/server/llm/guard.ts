@@ -7,6 +7,9 @@ const CONTACT_DATA: [RegExp, string][] = [
 	[/https?:\/\/|www\./i, 'a URL'],
 ]
 
+export const contactDataIn = (text: string) =>
+	CONTACT_DATA.filter(([pattern]) => pattern.test(text)).map(([, label]) => label)
+
 const numbersIn = (text: string) =>
 	(text.match(NUMBER) ?? []).map((number) => number.replace(/,/g, '').replace(/\.$/, ''))
 
@@ -48,7 +51,7 @@ export function guardOutput(raw: string, evidence: EvidenceItem[], { maxChars }:
 			detail: `numbers ${uncited.map((n) => `'${n}'`).join(', ')} are not in the evidence`,
 		})
 
-	const contact = CONTACT_DATA.filter(([pattern]) => pattern.test(trimmed)).map(([, label]) => label)
+	const contact = contactDataIn(trimmed)
 	if (contact.length)
 		rejections.push({ code: 'contains_contact_data', detail: `the text contains ${contact.join(' and ')}` })
 

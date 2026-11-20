@@ -4,6 +4,7 @@ import {
 	bigint,
 	check,
 	date,
+	foreignKey,
 	index,
 	integer,
 	jsonb,
@@ -15,6 +16,7 @@ import {
 	unique,
 } from 'drizzle-orm/pg-core'
 import type { EvidenceItem, Rejection } from '../llm/types.ts'
+import type { Candidate, DecidedBy } from '../policy/recipient.ts'
 
 export const userRole = pgEnum('user_role', ['rep', 'lead'])
 
@@ -307,5 +309,144 @@ export const scoreRationales = pgTable(
 	(t) => [
 		unique('score_rationales_key').on(t.companyId, t.icpVersionId, t.evidenceHash),
 		check('score_rationales_status', sql`${t.status} IN ('accepted', 'rejected')`),
+	],
+)
+
+export const campaigns = pgTable(
+	'campaigns',
+	{
+		id: integer().primaryKey().generatedAlwaysAsIdentity(),
+		// Client-supplied: a retried create returns the same campaign instead of a second one.
+		idempotencyKey: text().notNull().unique(),
+		requestHash: text().notNull(),
+		name: text().notNull(),
+		icpVersionId: integer()
+			.notNull()
+			.references(() => icpVersions.id),
+		topN: integer().notNull(),
+		templateAId: integer()
+			.notNull()
+			.references(() => templates.id),
+		templateBId: integer()
+			.notNull()
+			.references(() => templates.id),
+		status: text().$type<'draft' | 'sending' | 'sent'>().notNull().default('draft'),
+		createdBy: text()
+			.notNull()
+			.references(() => users.id),
+		createdAt: timestamp({ withTimezone: true }).notNull(),
+		launchedBy: text(),
+		launchedByRole: userRole(),
+		launchedAt: timestamp({ withTimezone: true }),
+	},
+	(t) => [
+		check('campaigns_status', sql`${t.status} IN ('draft', 'sending', 'sent')`),
+		// Only a lead launches a send, and the database checks it.
+		foreignKey({
+			name: 'campaigns_launched_by_user_role',
+			columns: [t.launchedBy, t.launchedByRole],
+			foreignColumns: [users.id, users.role],
+		}),
+		check('campaigns_launcher_is_lead', sql`${t.launchedByRole} IS NULL OR ${t.launchedByRole} = 'lead'`),
+		check(
+			'campaigns_launch_recorded',
+			sql`(${t.status} = 'draft') = (${t.launchedAt} IS NULL) AND (${t.launchedAt} IS NULL) = (${t.launchedBy} IS NULL)`,
+		),
+	],
+)
+
+export const CARD_STATUSES = [
+	'draft',
+	'approved',
+	'rejected',
+	'blocked',
+	'queued',
+	'submitted',
+	'printed',
+	'mailed',
+	'delivered',
+	'returned',
+	'blocked_at_send',
+	'failed',
+] as const
+export type CardStatus = (typeof CARD_STATUSES)[number]
+
+export interface CardRecipient {
+	fullName: string | null
+	firstName: string | null
+	title: string | null
+	function: string | null
+	seniority: string
+	providers: string[]
+	decidedBy: DecidedBy | 'seeded history'
+	candidates: Candidate[]
+}
+
+export const cards = pgTable(
+	'cards',
+	{
+		id: integer().primaryKey().generatedAlwaysAsIdentity(),
+		campaignId: integer()
+			.notNull()
+			.references(() => campaigns.id),
+		companyId: integer()
+			.notNull()
+			.references(() => companies.id),
+		contactId: integer()
+			.notNull()
+			.references(() => contacts.id),
+		// The person as of building the card: the 90-day rule and history match on it, whatever happens to the records.
+		personKey: text().notNull(),
+		rank: integer().notNull(),
+		score: numeric().notNull(),
+		scoreDisplay: integer().notNull(),
+		contributions: jsonb().$type<unknown[]>().notNull(),
+		recipient: jsonb().$type<CardRecipient>().notNull(),
+		address: jsonb().$type<Record<string, string | null> | null>(),
+		eligibility: text().$type<'eligible' | 'blocked'>().notNull(),
+		blockReason: text(),
+		variant: text().$type<'A' | 'B'>(),
+		personalLine: text().notNull(),
+		lineSource: text().$type<'llm' | 'template' | 'human'>().notNull(),
+		lineCites: jsonb().$type<string[]>().notNull(),
+		lineEvidence: jsonb().$type<EvidenceItem[]>().notNull(),
+		llmStatus: text().$type<'accepted' | 'rejected'>(),
+		llmRejections: jsonb().$type<Rejection[]>().notNull().default([]),
+		llmRaw: text(),
+		llmModel: text(),
+		promptVersion: text(),
+		status: text().$type<CardStatus>().notNull(),
+		rejectReason: text(),
+		approvedBy: text(),
+		approvedByRole: userRole(),
+		approvedAt: timestamp({ withTimezone: true }),
+		// Generated at approval, before any send attempt, and sent as the mail API's Idempotency-Key.
+		idempotencyKey: text().unique(),
+		mailId: text().unique(),
+		submittedAt: timestamp({ withTimezone: true }),
+		mailedAt: timestamp({ withTimezone: true }),
+		statusChangedAt: timestamp({ withTimezone: true }).notNull(),
+		createdAt: timestamp({ withTimezone: true }).notNull(),
+	},
+	(t) => [
+		unique('cards_campaign_company').on(t.campaignId, t.companyId),
+		index('cards_person_key').on(t.personKey, t.submittedAt),
+		check('cards_status', sql.raw(`status IN (${CARD_STATUSES.map((status) => `'${status}'`).join(', ')})`)),
+		check('cards_eligibility', sql`${t.eligibility} IN ('eligible', 'blocked')`),
+		check('cards_blocked_at_build', sql`(${t.eligibility} = 'blocked') = (${t.status} = 'blocked')`),
+		check('cards_block_reason', sql`(${t.status} IN ('blocked', 'blocked_at_send')) = (${t.blockReason} IS NOT NULL)`),
+		check('cards_reject_reason', sql`(${t.status} = 'rejected') = (btrim(coalesce(${t.rejectReason}, '')) <> '')`),
+		check('cards_variant', sql`(${t.eligibility} = 'eligible') = (${t.variant} IN ('A', 'B'))`),
+		// Approved or later needs a recorded approval by a lead; the FK below ties approver and role to a real user.
+		check(
+			'cards_approval_recorded',
+			sql`${t.status} IN ('draft', 'rejected', 'blocked') OR (${t.approvedBy} IS NOT NULL AND ${t.approvedAt} IS NOT NULL AND ${t.idempotencyKey} IS NOT NULL)`,
+		),
+		check('cards_approver_is_lead', sql`${t.approvedByRole} IS NULL OR ${t.approvedByRole} = 'lead'`),
+		foreignKey({
+			name: 'cards_approved_by_user_role',
+			columns: [t.approvedBy, t.approvedByRole],
+			foreignColumns: [users.id, users.role],
+		}),
 	],
 )

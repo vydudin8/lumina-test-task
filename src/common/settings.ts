@@ -63,3 +63,34 @@ export const SIGNAL_LABELS: Record<string, string> = {
 	funded: 'Has raised funding',
 	net_zero_target: 'Has a net-zero target',
 }
+
+// Countries our print partner delivers to, with the postcode format each one uses.
+export const MAILING_COUNTRIES = ['GB', 'IE', 'FR', 'DE', 'NL'] as const
+export const MAILED_WINDOW_DAYS = 90
+export const ATTRIBUTION_WINDOW_DAYS = 30
+
+export const BLOCK_REASON_LABELS: Record<string, string> = {
+	'suppressed:opt_out': 'Opted out',
+	'suppressed:mailed_90d': 'Mailed in the last 90 days',
+	'invalid_address:missing_address': 'No office address',
+	'invalid_address:missing_line1': 'Address has no street line',
+	'invalid_address:missing_city': 'Address has no town or city',
+	'invalid_address:missing_postcode': 'Address has no postcode',
+	'invalid_address:invalid_postcode': 'Postcode is not valid',
+	'invalid_address:unsupported_country': 'We cannot post to this country',
+}
+
+export const CARD_STATUS_LABELS: Record<string, string> = {
+	draft: 'Draft',
+	approved: 'Approved',
+	rejected: 'Rejected',
+	blocked: 'Blocked',
+	queued: 'Queued to send',
+	submitted: 'Submitted to printer',
+	printed: 'Printed',
+	mailed: 'Mailed',
+	delivered: 'Delivered',
+	returned: 'Returned',
+	blocked_at_send: 'Blocked at send',
+	failed: 'Failed to send',
+}

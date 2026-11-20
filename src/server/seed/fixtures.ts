@@ -15,6 +15,24 @@ export function fixturesChecksum() {
 	return hash.digest('hex')
 }
 
+export interface HistoryCard {
+	email: string
+	companyDomain: string
+	variant?: 'A' | 'B'
+	status: 'delivered' | 'returned'
+}
+
 export interface History {
 	optOuts: { email: string; daysAgo: number; source: string }[]
+	pilotCampaign: { name: string; daysAgo: number; variant: 'A'; cards: HistoryCard[] }
+	historicalCampaign: { name: string; daysAgo: number; cards: HistoryCard[] }
+	outcomes: {
+		kind: 'reply' | 'visit' | 'meeting'
+		card?: string
+		domain: string
+		personEmail?: string
+		dayOffset?: number
+		daysAgo?: number
+		source: string
+	}[]
 }

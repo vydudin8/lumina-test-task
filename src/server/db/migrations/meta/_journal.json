@@ -50,6 +50,13 @@
       "when": 1795202724104,
       "tag": "0006_score_rationales",
       "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "7",
+      "when": 1795203324219,
+      "tag": "0007_campaigns",
+      "breakpoints": true
     }
   ]
 }
