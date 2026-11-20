@@ -1,6 +1,8 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { createBrowserRouter, Outlet, RouterProvider } from 'react-router'
 import { AppHeader } from './components/AppHeader.tsx'
+import { CompaniesPage } from './pages/CompaniesPage.tsx'
+import { CompanyPage } from './pages/CompanyPage.tsx'
 import { HomePage } from './pages/HomePage.tsx'
 import { ProvidersPage } from './pages/ProvidersPage.tsx'
 
@@ -23,6 +25,8 @@ const router = createBrowserRouter([
 		children: [
 			{ index: true, element: <HomePage /> },
 			{ path: 'providers', element: <ProvidersPage /> },
+			{ path: 'companies', element: <CompaniesPage /> },
+			{ path: 'companies/:id', element: <CompanyPage /> },
 		],
 	},
 ])

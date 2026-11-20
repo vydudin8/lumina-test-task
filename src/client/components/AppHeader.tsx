@@ -3,7 +3,10 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '#
 import { roleLabels, usePickUser, useSession, useUsers } from '#client/session.ts'
 import { NavLink } from 'react-router'
 
-const links = [['/providers', 'Providers']] as const
+const links = [
+	['/providers', 'Providers'],
+	['/companies', 'Companies'],
+] as const
 
 export function AppHeader() {
 	const { data: user } = useSession()
@@ -32,7 +35,7 @@ export function AppHeader() {
 						Acting as
 					</span>
 					<Select value={user?.id ?? ''} onValueChange={(userId) => pickUser.mutate(userId)}>
-						<SelectTrigger aria-labelledby="acting-as" className="w-48">
+						<SelectTrigger aria-labelledby="acting-as" className="w-64">
 							<SelectValue placeholder="Choose a user" />
 						</SelectTrigger>
 						<SelectContent>

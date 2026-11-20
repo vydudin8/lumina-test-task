@@ -1,3 +1,4 @@
+import type { FieldName } from '#common/settings.ts'
 import { sql } from 'drizzle-orm'
 import {
 	bigint,
@@ -163,5 +164,119 @@ export const rawRecords = pgTable(
 		unique('raw_records_version').on(t.provider, t.kind, t.externalId, t.contentHash),
 		check('raw_records_kind', sql`${t.kind} IN ('company', 'contact')`),
 		index('raw_records_latest').on(t.provider, t.kind, t.externalId, t.fetchedAt),
+	],
+)
+
+export const companies = pgTable('companies', {
+	id: integer().primaryKey().generatedAlwaysAsIdentity(),
+	createdAt: timestamp({ withTimezone: true }).notNull().defaultNow(),
+})
+
+// One normalised row per provider company record. company_id is the merge link; merge and unmerge only move it.
+export const sourceCompanies = pgTable(
+	'source_companies',
+	{
+		id: integer().primaryKey().generatedAlwaysAsIdentity(),
+		provider: text().notNull(),
+		externalId: text().notNull(),
+		rawRecordId: integer()
+			.notNull()
+			.references(() => rawRecords.id),
+		// Null only inside the resolution transaction, before clustering assigns it.
+		companyId: integer().references(() => companies.id),
+		fetchedAt: timestamp({ withTimezone: true }).notNull(),
+		normalisedName: text(),
+		normalisedDomain: text(),
+		country: text(),
+		fields: jsonb().$type<Record<string, unknown>>().notNull(),
+		revenueAmount: numeric(),
+		revenueCurrency: text(),
+		revenueGbp: numeric(),
+		fxRateId: integer().references(() => fxRates.id),
+	},
+	(t) => [
+		unique('source_companies_record').on(t.provider, t.externalId),
+		index('source_companies_company').on(t.companyId),
+		check(
+			'source_companies_revenue',
+			sql`(${t.revenueAmount} IS NULL) = (${t.revenueGbp} IS NULL) AND (${t.revenueGbp} IS NULL) = (${t.fxRateId} IS NULL)`,
+		),
+	],
+)
+
+// One row per provider contact record. A contact has no address: cards go to the company office.
+export const contacts = pgTable(
+	'contacts',
+	{
+		id: integer().primaryKey().generatedAlwaysAsIdentity(),
+		provider: text().notNull(),
+		externalId: text().notNull(),
+		rawRecordId: integer()
+			.notNull()
+			.references(() => rawRecords.id),
+		sourceCompanyId: integer().references(() => sourceCompanies.id),
+		personKey: text().notNull(),
+		// sha256 of person_key, matched against suppressions.person_key_hash.
+		personKeyHash: text().notNull(),
+		firstName: text(),
+		lastName: text(),
+		fullName: text(),
+		title: text(),
+		seniority: text().notNull(),
+		functions: text().array().notNull(),
+		emailStatus: text(),
+		fetchedAt: timestamp({ withTimezone: true }).notNull(),
+	},
+	(t) => [
+		unique('contacts_record').on(t.provider, t.externalId),
+		index('contacts_person_key').on(t.personKey),
+		index('contacts_person_key_hash').on(t.personKeyHash),
+		index('contacts_source_company').on(t.sourceCompanyId),
+	],
+)
+
+// Keyed on the chosen source record, so the override survives re-pulls and follows the record through merges.
+export const fieldOverrides = pgTable(
+	'field_overrides',
+	{
+		id: integer().primaryKey().generatedAlwaysAsIdentity(),
+		companyId: integer()
+			.notNull()
+			.references(() => companies.id),
+		field: text().$type<FieldName>().notNull(),
+		chosenSourceId: integer()
+			.notNull()
+			.references(() => sourceCompanies.id),
+		createdBy: text()
+			.notNull()
+			.references(() => users.id),
+		reason: text().notNull(),
+		at: timestamp({ withTimezone: true }).notNull(),
+	},
+	(t) => [check('field_overrides_reason', sql`btrim(${t.reason}) <> ''`)],
+)
+
+// Human decisions about pairs of source records. The latest decision for a pair wins.
+export const matchDecisions = pgTable(
+	'match_decisions',
+	{
+		id: integer().primaryKey().generatedAlwaysAsIdentity(),
+		sourceA: integer()
+			.notNull()
+			.references(() => sourceCompanies.id),
+		sourceB: integer()
+			.notNull()
+			.references(() => sourceCompanies.id),
+		decision: text().notNull(),
+		reason: text().notNull(),
+		createdBy: text()
+			.notNull()
+			.references(() => users.id),
+		at: timestamp({ withTimezone: true }).notNull(),
+	},
+	(t) => [
+		check('match_decisions_order', sql`${t.sourceA} < ${t.sourceB}`),
+		check('match_decisions_decision', sql`${t.decision} IN ('merge', 'split')`),
+		check('match_decisions_reason', sql`btrim(${t.reason}) <> ''`),
 	],
 )

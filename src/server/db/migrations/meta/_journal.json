@@ -36,6 +36,13 @@
       "when": 1795201257372,
       "tag": "0004_ingestion",
       "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1795202037881,
+      "tag": "0005_company_master",
+      "breakpoints": true
     }
   ]
 }

@@ -5,6 +5,7 @@ import { ingestionRuns } from '../../db/schema.ts'
 import type { Clock } from '../../lib/clock.ts'
 import type { RetryOptions } from '../../lib/retry.ts'
 import type { Logger } from '../../log.ts'
+import { resolveAll } from '../resolve/store.ts'
 import { creditsFor, parseApollo, parseClay, parseFactset, type Parsed } from './core.ts'
 import { pullApollo, pullClay, pullFactset, type Fetch } from './fetch.ts'
 import { finishRun, saveRecords, startRun, type IngestionRun } from './store.ts'
@@ -77,6 +78,8 @@ export async function runIngestion(
 		)
 		for (const error of parsed.errors)
 			log.warn({ kind: error.kind, externalId: error.externalId, problem: error.problem }, 'record rejected')
+		const resolved = await deps.db.transaction((tx) => resolveAll(tx, deps.clock()))
+		log.info(resolved, 'company master resolved')
 		return finished
 	} catch (error) {
 		log.error({ cause: describe(error) }, 'ingestion failed')
