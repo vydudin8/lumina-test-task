@@ -93,4 +93,5 @@ export const CARD_STATUS_LABELS: Record<string, string> = {
 	returned: 'Returned',
 	blocked_at_send: 'Blocked at send',
 	failed: 'Failed to send',
+	unconfirmed: 'Sent? Not confirmed',
 }

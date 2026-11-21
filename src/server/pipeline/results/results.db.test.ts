@@ -68,7 +68,20 @@ describe('results', () => {
 	})
 
 	it('refuses a manual outcome in the future or for a card that was never mailed', async () => {
-		const [card] = await t.db.select().from(cards).where(eq(cards.campaignId, historicalId)).limit(1)
+		const [card, unmailed] = await t.db.select().from(cards).where(eq(cards.campaignId, historicalId)).limit(2)
+		await t.db.update(cards).set({ mailedAt: null }).where(eq(cards.id, unmailed!.id))
+		await expect(
+			logOutcome(
+				{ db: t.db, clock: () => now },
+				{
+					cardId: unmailed!.id,
+					kind: 'reply',
+					occurredAt: now,
+					idempotencyKey: 'unmailed',
+					actor: { id: 'usr_rep_tom', role: 'rep' },
+				},
+			),
+		).rejects.toMatchObject({ status: 409 })
 		await expect(
 			logOutcome(
 				{ db: t.db, clock: () => now },

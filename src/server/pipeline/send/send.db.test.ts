@@ -3,14 +3,15 @@ import { beforeAll, describe, expect, it } from 'vitest'
 import { auditEvents, campaigns, cards, submissionAttempts, templates } from '../../db/schema.ts'
 import { createStubLlm } from '../../llm/stub.ts'
 import { createLogger } from '../../log.ts'
+import { suppressionReason } from '../../policy/suppression.ts'
 import { seedHistory } from '../../seed/history.ts'
 import { seed } from '../../seed/seed.ts'
 import { createTestApp, testDeps } from '../../test/app.ts'
 import { useTestDb } from '../../test/db.ts'
 import { testWorld } from '../../test/world.ts'
-import { approveEligible, createCampaign } from '../campaign/store.ts'
+import { approveEligible, createCampaign, loadSuppressionState } from '../campaign/store.ts'
 import { runIngestion } from '../ingest/index.ts'
-import { addOptOut, launchSend, processQueue, type SendDeps } from './store.ts'
+import { addOptOut, launchSend, processQueue, retrySend, type SendDeps } from './store.ts'
 
 const now = new Date('2026-11-20T12:00:00Z')
 const maya = { id: 'usr_lead_maya', role: 'lead' } as const
@@ -69,6 +70,10 @@ describe('send pipeline', () => {
 			sql`UPDATE campaigns SET status = 'sending', launched_at = now(), launched_by = 'usr_rep_tom', launched_by_role = 'rep' WHERE id = ${campaignId}`,
 		)
 		await expect(forged).rejects.toMatchObject({ cause: { constraint: 'campaigns_launcher_is_lead' } })
+		const roleless = t.db.execute(
+			sql`UPDATE campaigns SET status = 'sending', launched_at = now(), launched_by = 'usr_rep_tom' WHERE id = ${campaignId}`,
+		)
+		await expect(roleless).rejects.toMatchObject({ cause: { constraint: 'campaigns_launcher_has_role' } })
 	})
 
 	it('queues the approved cards once; a second launch changes nothing and audits nothing', async () => {
@@ -166,6 +171,38 @@ describe('send pipeline', () => {
 			.where(and(eq(auditEvents.action, 'card.failed'), eq(auditEvents.entityId, String(broken!.id))))
 		expect(event).toMatchObject({ actorId: 'system:send-worker', result: { attempts: 2 } })
 		expect((await t.db.select().from(cards).where(eq(cards.id, fine!.id)))[0]?.mailId).toBeTruthy()
+	})
+
+	it('marks a card unconfirmed when every attempt timed out, holds the person back, and retries with the same key', async () => {
+		await processQueue(send)
+		const campaignId = await build('unconfirmed', 30)
+		await launchSend(send, { campaignId, actor: maya })
+		await world.control({ mode: 'timeout_always' })
+		await processQueue(send)
+		await world.control({ mode: 'normal' })
+
+		const [stuck] = (await cardsOf(campaignId)).filter((row) => row.status === 'unconfirmed')
+		expect(stuck).toMatchObject({ mailId: null, submittedAt: null })
+		const attempts = await t.db.select().from(submissionAttempts).where(eq(submissionAttempts.cardId, stuck!.id))
+		expect(attempts.map((attempt) => attempt.outcome)).toEqual(Array(6).fill('timeout'))
+		expect(suppressionReason(stuck!.personKey, await loadSuppressionState(t.db), now)).toBe('mailed_90d')
+
+		await expect(retrySend(send, { cardId: stuck!.id, actor: tom })).rejects.toMatchObject({ status: 403 })
+		expect(await retrySend(send, { cardId: stuck!.id, actor: maya })).toMatchObject({ changed: true })
+		expect(await retrySend(send, { cardId: stuck!.id, actor: maya })).toMatchObject({ changed: false })
+		await processQueue(send)
+
+		const [sent] = await t.db.select().from(cards).where(eq(cards.id, stuck!.id))
+		expect(sent?.mailId).toBeTruthy()
+		expect((await world.calls()).postcards.filter((postcard) => postcard.cardId === stuck!.id)).toEqual([
+			expect.objectContaining({ id: sent!.mailId }),
+		])
+		expect(
+			await t.db
+				.select({ n: count() })
+				.from(auditEvents)
+				.where(and(eq(auditEvents.action, 'card.send_retried'), eq(auditEvents.entityId, String(stuck!.id)))),
+		).toEqual([{ n: 1 }])
 	})
 
 	it('moves cards forward from the signed webhooks until they are delivered', async () => {

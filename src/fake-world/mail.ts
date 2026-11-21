@@ -115,6 +115,8 @@ export function mailRoutes(options: MailOptions) {
 					422,
 				)
 			}
+			// A provider that is always slow is slow for replays too.
+			if (control.mode === 'timeout_always') await options.stall(options.timeoutDelayMs)
 			return context.json(existing.response, 200)
 		}
 

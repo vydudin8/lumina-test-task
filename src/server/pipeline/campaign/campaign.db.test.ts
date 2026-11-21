@@ -4,6 +4,7 @@ import type { Manifest } from '../../../../scripts/generate-fixtures.ts'
 import { auditEvents, cards, contacts, sourceCompanies, templates } from '../../db/schema.ts'
 import { createStubLlm } from '../../llm/stub.ts'
 import { createLogger } from '../../log.ts'
+import { suppressionReason } from '../../policy/suppression.ts'
 import { readFixture } from '../../seed/fixtures.ts'
 import { seedHistory } from '../../seed/history.ts'
 import { seed } from '../../seed/seed.ts'
@@ -11,7 +12,15 @@ import { testDeps } from '../../test/app.ts'
 import { useTestDb } from '../../test/db.ts'
 import { runIngestion } from '../ingest/index.ts'
 import { unmergeSource } from '../resolve/store.ts'
-import { approveCard, approveEligible, createCampaign, editLine, outreachHistory, rejectCard } from './store.ts'
+import {
+	approveCard,
+	approveEligible,
+	createCampaign,
+	editLine,
+	loadSuppressionState,
+	outreachHistory,
+	rejectCard,
+} from './store.ts'
 
 const manifest = readFixture<Manifest>('manifest.json')
 const now = new Date(`${manifest.anchor}T12:00:00Z`)
@@ -131,6 +140,10 @@ describe('campaign builder', () => {
 			sql`UPDATE cards SET status = 'approved', approved_by = 'usr_rep_tom', approved_by_role = 'lead', approved_at = now(), idempotency_key = 'x' WHERE id = ${card!.id}`,
 		)
 		await expect(disguised).rejects.toMatchObject({ cause: { constraint: 'cards_approved_by_user_role' } })
+		const roleless = t.db.execute(
+			sql`UPDATE cards SET status = 'approved', approved_by = 'usr_rep_tom', approved_at = now(), idempotency_key = 'x' WHERE id = ${card!.id}`,
+		)
+		await expect(roleless).rejects.toMatchObject({ cause: { constraint: 'cards_approver_has_role' } })
 		const anonymous = t.db.execute(sql`UPDATE cards SET status = 'approved' WHERE id = ${card!.id}`)
 		await expect(anonymous).rejects.toMatchObject({ cause: { constraint: 'cards_approval_recorded' } })
 	})
@@ -232,13 +245,6 @@ describe('campaign builder', () => {
 
 		const history = await outreachHistory(t.db, pilot.personKey)
 		expect(history).toEqual([expect.objectContaining({ campaignName: 'Pilot: plant hire firms', status: 'delivered' })])
-		const rebuilt = await build('key-after-unmerge', 282)
-		const card = (
-			await t.db
-				.select()
-				.from(cards)
-				.where(and(eq(cards.campaignId, rebuilt.campaign.id), eq(cards.personKey, pilot.personKey)))
-		)[0]
-		if (card) expect(card.blockReason).toBe('suppressed:mailed_90d')
+		expect(suppressionReason(pilot.personKey, await loadSuppressionState(t.db), now)).toBe('mailed_90d')
 	})
 })

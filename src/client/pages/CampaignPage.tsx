@@ -173,7 +173,9 @@ function CampaignView({ detail }: { detail: CampaignDetail }) {
 				<button type="button" className="underline underline-offset-2" onClick={() => show('blocked')}>
 					{summary.total - summary.eligible} blocked
 				</button>{' '}
-				({suppressed} suppressed, {badAddress} bad address) · variant A {summary.variants.A}, B {summary.variants.B}
+				({suppressed} suppressed, {badAddress} bad address)
+				{summary.blockedAtSend > 0 && ` · ${summary.blockedAtSend} blocked at send`} · variant A {summary.variants.A}, B{' '}
+				{summary.variants.B}
 				{summary.llmRejected > 0 && (
 					<>
 						{' · '}
@@ -262,11 +264,14 @@ function CampaignView({ detail }: { detail: CampaignDetail }) {
 	)
 }
 
+// Same single-pass fill as the printed card (renderBack on the server).
 function render(body: string, card: CampaignCard, company: string) {
-	return body
-		.replace('{{first_name}}', card.recipient.firstName ?? 'there')
-		.replace('{{personal_line}}', card.personalLine)
-		.replace('{{company}}', company)
+	const values: Record<string, string> = {
+		first_name: card.recipient.firstName ?? 'there',
+		personal_line: card.personalLine,
+		company,
+	}
+	return body.replace(/\{\{(first_name|personal_line|company)\}\}/g, (_, key: string) => values[key]!)
 }
 
 function PostcardItem({
@@ -391,11 +396,12 @@ function PostcardItem({
 							.join(' → ')}
 					</p>
 				)}
-				{card.sendError && (
+				{card.status === 'failed' && card.sendError && (
 					<p className="text-destructive">
-						Not sent: {card.sendError}. A person needs to decide what to do with this card.
+						Not sent: the printer refused it ({card.sendError}). A person needs to decide what to do with this card.
 					</p>
 				)}
+				{card.status === 'unconfirmed' && <UnconfirmedNotice card={card} isLead={isLead} onChange={onChange} />}
 				{card.approvedBy && card.approvedAt && (
 					<p className="text-muted-foreground">
 						Approved by {userName(card.approvedBy)} on {formatDateTime(card.approvedAt)}
@@ -553,5 +559,34 @@ function LogOutcome({ cardId, onLogged }: { cardId: number; onLogged: () => Prom
 				</DialogContent>
 			</Dialog>
 		</>
+	)
+}
+
+function UnconfirmedNotice({
+	card,
+	isLead,
+	onChange,
+}: {
+	card: CampaignCard
+	isLead: boolean
+	onChange: () => Promise<void>
+}) {
+	const retry = useMutation({
+		mutationFn: () => api(`/api/cards/${card.id}/retry`, { method: 'POST' }),
+		onSettled: onChange,
+	})
+	return (
+		<div className="space-y-1">
+			<p className="text-destructive">
+				The printer did not answer after {card.attempts.length} attempts, so we do not know whether it received this
+				card. Until we know, this person is held back as if mailed.
+			</p>
+			{isLead && (
+				<Button size="sm" variant="outline" disabled={retry.isPending} onClick={() => retry.mutate()}>
+					Try again with the same request
+				</Button>
+			)}
+			{retry.isError && <p className="text-destructive">{retry.error.message}</p>}
+		</div>
 	)
 }

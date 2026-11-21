@@ -349,6 +349,8 @@ export const campaigns = pgTable(
 			foreignColumns: [users.id, users.role],
 		}),
 		check('campaigns_launcher_is_lead', sql`${t.launchedByRole} IS NULL OR ${t.launchedByRole} = 'lead'`),
+		// Without this, a NULL role would skip the FK (MATCH SIMPLE) and any id could launch.
+		check('campaigns_launcher_has_role', sql`(${t.launchedBy} IS NULL) = (${t.launchedByRole} IS NULL)`),
 		check(
 			'campaigns_launch_recorded',
 			sql`(${t.status} = 'draft') = (${t.launchedAt} IS NULL) AND (${t.launchedAt} IS NULL) = (${t.launchedBy} IS NULL)`,
@@ -369,6 +371,8 @@ export const CARD_STATUSES = [
 	'returned',
 	'blocked_at_send',
 	'failed',
+	// The mail API never answered: it may or may not have the postcard. Retried with the same key.
+	'unconfirmed',
 ] as const
 export type CardStatus = (typeof CARD_STATUSES)[number]
 
@@ -445,6 +449,8 @@ export const cards = pgTable(
 			sql`${t.status} IN ('draft', 'rejected', 'blocked') OR (${t.approvedBy} IS NOT NULL AND ${t.approvedAt} IS NOT NULL AND ${t.idempotencyKey} IS NOT NULL)`,
 		),
 		check('cards_approver_is_lead', sql`${t.approvedByRole} IS NULL OR ${t.approvedByRole} = 'lead'`),
+		// Without this, a NULL role would skip the FK (MATCH SIMPLE) and a rep, or any string, could approve.
+		check('cards_approver_has_role', sql`(${t.approvedBy} IS NULL) = (${t.approvedByRole} IS NULL)`),
 		foreignKey({
 			name: 'cards_approved_by_user_role',
 			columns: [t.approvedBy, t.approvedByRole],

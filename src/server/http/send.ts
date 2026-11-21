@@ -1,10 +1,11 @@
 import { MAILED_WINDOW_DAYS } from '#common/settings.ts'
 import { and, desc, eq, gte, inArray, isNotNull } from 'drizzle-orm'
 import { Hono } from 'hono'
+import { bodyLimit } from 'hono/body-limit'
 import { z } from 'zod'
 import type { AppDeps } from '../app.ts'
 import { campaigns, cards, contacts, suppressions } from '../db/schema.ts'
-import { addOptOut, launchSend, receiveMailWebhook } from '../pipeline/send/store.ts'
+import { addOptOut, launchSend, receiveMailWebhook, retrySend } from '../pipeline/send/store.ts'
 import { invalidRequest, readBody } from './read-body.ts'
 import { requireRole, requireUser, type AppEnv } from './session.ts'
 
@@ -24,6 +25,13 @@ export function sendRoutes(deps: AppDeps) {
 					actor: actorOf(context.var.user),
 					requestId: context.var.requestId,
 				}),
+			)
+		})
+		.post('/cards/:id/retry', requireRole('lead'), async (context) => {
+			const id = idParam.safeParse(context.req.param('id'))
+			if (!id.success) return invalidRequest(context)
+			return context.json(
+				await retrySend(deps, { cardId: id.data, actor: actorOf(context.var.user), requestId: context.var.requestId }),
 			)
 		})
 		.get('/suppressions', requireUser, async (context) => {
@@ -86,7 +94,12 @@ export function sendRoutes(deps: AppDeps) {
 
 // Not under /api: called by the print-and-mail provider, authenticated by its HMAC signature, not by a session.
 export function webhookRoutes(deps: AppDeps) {
-	return new Hono<AppEnv>().post('/webhooks/mail', async (context) => {
+	// A webhook is a few hundred bytes; refuse anything big before reading it, signed or not.
+	const limit = bodyLimit({
+		maxSize: 64 * 1024,
+		onError: (context) => context.json({ error: 'Payload too large' }, 413),
+	})
+	return new Hono<AppEnv>().post('/webhooks/mail', limit, async (context) => {
 		const result = await receiveMailWebhook(
 			{ db: deps.db, log: context.var.log, clock: deps.clock, webhookSecret: deps.webhookSecret },
 			{ rawBody: await context.req.text(), signature: context.req.header('x-signature') },

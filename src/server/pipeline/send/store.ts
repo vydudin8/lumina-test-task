@@ -1,4 +1,4 @@
-import { and, asc, eq, inArray, isNull } from 'drizzle-orm'
+import { and, asc, count, eq, inArray, isNull, sql } from 'drizzle-orm'
 import { createHmac, timingSafeEqual } from 'node:crypto'
 import { z } from 'zod'
 import { audit, systemActor } from '../../audit.ts'
@@ -87,7 +87,7 @@ function attemptRow(cardId: number, n: number, error: unknown, delayMs: number |
 // Takes one queued card under FOR UPDATE SKIP LOCKED, re-checks it, submits it and records the outcome, all in one
 // transaction. shortcut: the row stays locked during the HTTP call and its retries; fine for one worker at demo
 // volume, move to a claim column plus a lease before running several workers.
-export async function processOne(deps: SendDeps): Promise<'submitted' | 'blocked' | 'failed' | null> {
+export async function processOne(deps: SendDeps): Promise<'submitted' | 'blocked' | 'failed' | 'unconfirmed' | null> {
 	const now = deps.clock()
 	return deps.db.transaction(async (tx) => {
 		const [card] = await tx
@@ -128,6 +128,11 @@ export async function processOne(deps: SendDeps): Promise<'submitted' | 'blocked
 			.where(eq(templates.id, card.variant === 'B' ? campaign!.templateBId : campaign!.templateAId))
 		const body = postcardBody(card, template!.body)
 		const attempts: Attempt[] = []
+		// Attempts keep counting across retries of the same card (unique on card_id, n).
+		const [{ prior }] = (await tx
+			.select({ prior: count() })
+			.from(submissionAttempts)
+			.where(eq(submissionAttempts.cardId, card.id))) as [{ prior: number }]
 		let last = 0
 
 		try {
@@ -139,14 +144,14 @@ export async function processOne(deps: SendDeps): Promise<'submitted' | 'blocked
 				{
 					...deps.retry,
 					onRetry: ({ attempt, delayMs, error }) => {
-						attempts.push(attemptRow(card.id, attempt, error, delayMs, deps.clock()))
+						attempts.push(attemptRow(card.id, prior + attempt, error, delayMs, deps.clock()))
 						log.warn({ attempt, delayMs, cause: describe(error) }, 'mail submission failed, retrying')
 					},
 				},
 			)
 			attempts.push({
 				cardId: card.id,
-				n: last,
+				n: prior + last,
 				outcome: 'ok',
 				httpStatus: result.httpStatus,
 				delayMs: null,
@@ -154,6 +159,8 @@ export async function processOne(deps: SendDeps): Promise<'submitted' | 'blocked
 				at: deps.clock(),
 			})
 			await tx.insert(submissionAttempts).values(attempts)
+			// Serialises with the webhook handler for this mail id (see receiveMailWebhook).
+			await tx.execute(sql`SELECT pg_advisory_xact_lock(hashtext(${result.id}))`)
 			await tx
 				.update(cards)
 				.set({ status: 'submitted', mailId: result.id, submittedAt: now, statusChangedAt: now })
@@ -172,30 +179,37 @@ export async function processOne(deps: SendDeps): Promise<'submitted' | 'blocked
 			log.info({ mailId: result.id, attempts: last }, 'card submitted')
 			return 'submitted'
 		} catch (error) {
-			attempts.push(attemptRow(card.id, last, error, null, deps.clock()))
+			attempts.push(attemptRow(card.id, prior + last, error, null, deps.clock()))
 			await tx.insert(submissionAttempts).values(attempts)
+			// A 4xx is a definite "no". Anything else (timeouts, 5xx, network) leaves us not knowing whether the postcard
+			// exists, so the card is unconfirmed: held back like a sent card and retried with the same key, never re-keyed.
+			const definite = error instanceof HttpError && error.status >= 400 && error.status < 500 && error.status !== 429
+			const status = definite ? 'failed' : 'unconfirmed'
 			await tx
 				.update(cards)
-				.set({ status: 'failed', sendError: describe(error).slice(0, 500), statusChangedAt: now })
+				.set({ status, sendError: describe(error).slice(0, 500), statusChangedAt: now })
 				.where(eq(cards.id, card.id))
 			await audit(tx, {
 				actor: worker,
-				action: 'card.failed',
+				action: definite ? 'card.failed' : 'card.send_unconfirmed',
 				entityType: 'card',
 				entityId: card.id,
-				reason: error instanceof HttpError ? `http_${error.status}` : 'transport_error',
+				reason: error instanceof HttpError ? `http_${error.status}` : 'no_response',
 				before: { status: 'queued' },
-				after: { status: 'failed' },
+				after: { status },
 				result: { attempts: last, error: describe(error).slice(0, 200) },
 			})
-			log.error({ attempts: last, cause: describe(error) }, 'card failed to send')
-			return 'failed'
+			log.error(
+				{ attempts: last, cause: describe(error), status },
+				definite ? 'card failed to send' : 'card submission unconfirmed',
+			)
+			return definite ? 'failed' : 'unconfirmed'
 		}
 	})
 }
 
 export async function processQueue(deps: SendDeps) {
-	const summary = { submitted: 0, blocked: 0, failed: 0 }
+	const summary = { submitted: 0, blocked: 0, failed: 0, unconfirmed: 0 }
 	for (let outcome = await processOne(deps); outcome; outcome = await processOne(deps)) summary[outcome]++
 	return summary
 }
@@ -214,6 +228,39 @@ export function startSendWorker(deps: SendDeps, intervalMs = 500) {
 		}
 	})()
 	return { stop: () => (stopped = true) }
+}
+
+// Lead only. Puts an unconfirmed card back in the queue with its original Idempotency-Key, so the provider returns
+// the postcard it may already have instead of printing a second one.
+export async function retrySend(
+	deps: Pick<SendDeps, 'db' | 'clock'>,
+	input: { cardId: number; actor: UserActor; requestId?: string },
+) {
+	if (input.actor.role !== 'lead') throw new DomainError('Only a sales lead can retry a send.', 403)
+	const now = deps.clock()
+	return deps.db.transaction(async (tx) => {
+		const [card] = await tx
+			.update(cards)
+			.set({ status: 'queued', sendError: null, statusChangedAt: now })
+			.where(and(eq(cards.id, input.cardId), eq(cards.status, 'unconfirmed')))
+			.returning()
+		if (!card) {
+			const [current] = await tx.select().from(cards).where(eq(cards.id, input.cardId))
+			if (!current) throw new DomainError('Card not found.', 404)
+			return { changed: false, card: current }
+		}
+		await audit(tx, {
+			actor: input.actor,
+			action: 'card.send_retried',
+			entityType: 'card',
+			entityId: card.id,
+			before: { status: 'unconfirmed' },
+			after: { status: 'queued' },
+			result: { idempotencyKey: card.idempotencyKey },
+			requestId: input.requestId,
+		})
+		return { changed: true, card }
+	})
 }
 
 // --- Webhooks ------------------------------------------------------------------------------------------
@@ -302,6 +349,9 @@ export async function receiveMailWebhook(
 	const { event_id: eventId, mail_id: mailId, status } = event.data
 	const occurredAt = new Date(event.data.occurred_at)
 	return deps.db.transaction(async (tx) => {
+		// The worker holds this lock from receiving a mail id until it commits, so an event either finds the card or is
+		// stored before the worker replays stored events: it can never fall in between.
+		await tx.execute(sql`SELECT pg_advisory_xact_lock(hashtext(${mailId}))`)
 		const [stored] = await tx
 			.insert(mailEvents)
 			.values({

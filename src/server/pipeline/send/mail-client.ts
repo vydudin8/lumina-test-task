@@ -19,11 +19,11 @@ export const RETURN_ADDRESS = {
 const escapeHtml = (text: string) =>
 	text.replace(/[&<>"']/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[char]!)
 
-export const renderBack = (templateBody: string, firstName: string | null, line: string, company: string) =>
-	templateBody
-		.replace('{{first_name}}', firstName ?? 'there')
-		.replace('{{personal_line}}', line)
-		.replace('{{company}}', company)
+// One pass with a replacer function: "$&" in a line stays literal, and a placeholder inside a value is not expanded.
+export const renderBack = (templateBody: string, firstName: string | null, line: string, company: string) => {
+	const values: Record<string, string> = { first_name: firstName ?? 'there', personal_line: line, company }
+	return templateBody.replace(/\{\{(first_name|personal_line|company)\}\}/g, (_, key: string) => values[key]!)
+}
 
 interface CardForMail {
 	id: number

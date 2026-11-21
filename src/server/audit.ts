@@ -14,6 +14,8 @@ export type AuditAction =
 	| 'card.blocked_at_send'
 	| 'card.submitted'
 	| 'card.failed'
+	| 'card.send_unconfirmed'
+	| 'card.send_retried'
 	| 'campaign.created'
 	| 'campaign.send_launched'
 	| 'suppression.added'

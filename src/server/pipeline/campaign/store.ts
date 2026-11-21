@@ -25,16 +25,18 @@ export type Card = typeof cards.$inferSelect
 const LINE_MAX_CHARS = 200
 const LLM_CONCURRENCY = 5
 
+// A card whose submission could not be confirmed may have been printed, so it holds the person back like a sent one.
 export async function loadSuppressionState(executor: Executor): Promise<SuppressionState> {
 	const optOuts = await executor.select({ hash: suppressions.personKeyHash }).from(suppressions)
+	const sentAt = sql<Date>`coalesce(${cards.submittedAt}, CASE WHEN ${cards.status} = 'unconfirmed' THEN ${cards.statusChangedAt} END)`
 	const submitted = await executor
-		.select({ personKey: cards.personKey, last: max(cards.submittedAt) })
+		.select({ personKey: cards.personKey, last: max(sentAt) })
 		.from(cards)
-		.where(isNotNull(cards.submittedAt))
+		.where(sql`${sentAt} IS NOT NULL`)
 		.groupBy(cards.personKey)
 	return {
 		optOutHashes: new Set(optOuts.map((row) => row.hash)),
-		lastSubmitted: new Map(submitted.map((row) => [row.personKey, row.last!])),
+		lastSubmitted: new Map(submitted.map((row) => [row.personKey, new Date(row.last!)])),
 	}
 }
 

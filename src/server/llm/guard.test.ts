@@ -50,6 +50,29 @@ describe('guardOutput', () => {
 	})
 
 	it.each([
+		['twelve', 'Running twelve quarries across three counties.'],
+		['hundreds', 'Hundreds of machines and a dozen depots.'],
+		['120', 'Your １２０ sites.'],
+	])('rejects the number %s written in words or other digits', (number, text) => {
+		const result = guard(output(text, ['e1']))
+		expect(result).toMatchObject({
+			ok: false,
+			rejections: [{ code: 'uncited_number', detail: expect.stringContaining(`'${number}'`) as string }],
+		})
+	})
+
+	it('rejects a cited number with a different currency or unit sign', () => {
+		expect(guard(output('A fleet worth $44,945,000.', ['e3']))).toMatchObject({
+			ok: false,
+			rejections: [{ code: 'uncited_number', detail: "number '$44945000' is not in the evidence" }],
+		})
+		expect(codes(output('About 1,186% growth.', ['e2']))).toEqual(['uncited_number'])
+		expect(
+			codes(output('Sales of £44,945,000 and 1186 staff, one of the largest in quarrying.', ['e1', 'e2', 'e3'])),
+		).toEqual([])
+	})
+
+	it.each([
 		['an email address', 'Write to jo.bloggs@ashdown.co.uk today.'],
 		['a phone number', 'Call +44 113 496 0123 now.'],
 		['a URL', 'See www.ashdown.co.uk for more.'],

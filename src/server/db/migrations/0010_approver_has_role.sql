@@ -1,0 +1,2 @@
+ALTER TABLE "campaigns" ADD CONSTRAINT "campaigns_launcher_has_role" CHECK (("campaigns"."launched_by" IS NULL) = ("campaigns"."launched_by_role" IS NULL));--> statement-breakpoint
+ALTER TABLE "cards" ADD CONSTRAINT "cards_approver_has_role" CHECK (("cards"."approved_by" IS NULL) = ("cards"."approved_by_role" IS NULL));

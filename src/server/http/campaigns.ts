@@ -39,7 +39,9 @@ function summarise(rows: Card[]) {
 	const blocked: Record<string, number> = {}
 	for (const card of rows) {
 		byStatus[card.status] = (byStatus[card.status] ?? 0) + 1
-		if (card.blockReason) blocked[card.blockReason] = (blocked[card.blockReason] ?? 0) + 1
+		// Blocked when built; cards stopped by the re-check at send are counted on their own below.
+		if (card.blockReason && card.eligibility === 'blocked')
+			blocked[card.blockReason] = (blocked[card.blockReason] ?? 0) + 1
 	}
 	return {
 		total: rows.length,
@@ -47,6 +49,7 @@ function summarise(rows: Card[]) {
 		byStatus,
 		blocked,
 		llmRejected: rows.filter((card) => card.llmStatus === 'rejected').length,
+		blockedAtSend: rows.filter((card) => card.status === 'blocked_at_send').length,
 		variants: {
 			A: rows.filter((card) => card.variant === 'A').length,
 			B: rows.filter((card) => card.variant === 'B').length,

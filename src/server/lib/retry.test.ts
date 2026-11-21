@@ -81,6 +81,13 @@ describe('retry', () => {
 		expect(sleeps).toEqual([2000])
 	})
 
+	it('never waits longer than capMs, whatever Retry-After says', async () => {
+		const { sleeps, options } = recorder()
+		const { fn } = failTimes(1, () => new HttpError(429, 'slow down', 3_600_000), 'ok')
+		await retry(fn, options)
+		expect(sleeps).toEqual([30_000])
+	})
+
 	it('reports each retry with the failed attempt and the delay', async () => {
 		const { retries, options } = recorder()
 		const { fn } = failTimes(2, () => new HttpError(500, 'boom'), 'ok')

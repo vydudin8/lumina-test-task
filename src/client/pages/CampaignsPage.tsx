@@ -18,6 +18,7 @@ export interface CampaignSummary {
 	byStatus: Record<string, number>
 	blocked: Record<string, number>
 	llmRejected: number
+	blockedAtSend: number
 	variants: { A: number; B: number }
 }
 
@@ -95,7 +96,11 @@ export function CampaignsPage() {
 											{IN_FLIGHT.reduce((sum, status) => sum + (campaign.summary.byStatus[status] ?? 0), 0)}
 										</TableCell>
 										<TableCell>
-											{campaign.status === 'draft' ? 'Reviewing' : campaign.status === 'sending' ? 'Sending' : 'Sent'}
+											{campaign.status === 'draft'
+												? 'Reviewing'
+												: (campaign.summary.byStatus.queued ?? 0) > 0
+													? 'Sending'
+													: 'Sent'}
 										</TableCell>
 									</TableRow>
 								))}

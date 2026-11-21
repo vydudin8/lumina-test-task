@@ -41,7 +41,11 @@ export async function retry<T>(fn: (attempt: number) => Promise<T>, options: Ret
 			if (attempt >= maxAttempts || !isRetryable(error)) throw error
 
 			const retryAfterMs = error instanceof HttpError ? error.retryAfterMs : undefined
-			const delayMs = retryAfterMs ?? Math.floor(rng() * Math.min(capMs, baseMs * 2 ** (attempt - 1)))
+			// Retry-After is honoured but capped, so a provider cannot park us (and the locks we hold) for an hour.
+			const delayMs =
+				retryAfterMs !== undefined
+					? Math.min(retryAfterMs, capMs)
+					: Math.floor(rng() * Math.min(capMs, baseMs * 2 ** (attempt - 1)))
 			onRetry?.({ attempt, delayMs, error })
 			await sleep(delayMs)
 		}

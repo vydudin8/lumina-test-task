@@ -1,0 +1,2 @@
+ALTER TABLE "cards" DROP CONSTRAINT "cards_status";--> statement-breakpoint
+ALTER TABLE "cards" ADD CONSTRAINT "cards_status" CHECK (status IN ('draft', 'approved', 'rejected', 'blocked', 'queued', 'submitted', 'printed', 'mailed', 'delivered', 'returned', 'blocked_at_send', 'failed', 'unconfirmed'));

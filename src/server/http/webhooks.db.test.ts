@@ -102,6 +102,11 @@ describe('mail webhooks', () => {
 		expect(await card()).toMatchObject({ status: 'delivered', mailedAt: new Date('2026-11-21T09:00:00.000Z') })
 	})
 
+	it('refuses an oversized body before reading it', async () => {
+		const response = await send({ ...event('mailed', { event_id: 'evt_big' }), padding: 'x'.repeat(100_000) })
+		expect(response.status).toBe(413)
+	})
+
 	it('accepts and stores an event for an unknown mail id', async () => {
 		const response = await send(event('mailed', { event_id: 'evt_stranger', mail_id: 'psc_unknown' }))
 		expect(response.status).toBe(200)
