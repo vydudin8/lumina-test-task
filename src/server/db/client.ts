@@ -2,8 +2,12 @@ import { drizzle } from 'drizzle-orm/node-postgres'
 import pg from 'pg'
 import * as schema from './schema.ts'
 
-export function createDb(url: string) {
-	return drizzle({ client: new pg.Pool({ connectionString: url }), schema, casing: 'snake_case' })
+// An idle connection can die (Postgres restart, `seed:reset`). Without a listener pg's 'error' event ends the
+// process; with one, the pool opens a new connection on the next query.
+export function createDb(url: string, onIdleError: (error: Error) => void = (error) => console.error(error)) {
+	const pool = new pg.Pool({ connectionString: url })
+	pool.on('error', onIdleError)
+	return drizzle({ client: pool, schema, casing: 'snake_case' })
 }
 
 export type Db = ReturnType<typeof createDb>

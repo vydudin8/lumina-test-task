@@ -11,7 +11,9 @@ import { startSendWorker } from './pipeline/send/store.ts'
 
 const config = loadConfig()
 const log = createLogger({ level: config.LOG_LEVEL })
-const db = createDb(config.DATABASE_URL)
+const db = createDb(config.DATABASE_URL, (error) =>
+	log.warn({ cause: error.message }, 'database connection lost; reconnecting on the next query'),
+)
 const deps: AppDeps = {
 	db,
 	log,
