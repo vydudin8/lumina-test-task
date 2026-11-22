@@ -43,6 +43,7 @@ const FILTERS: [string, string][] = [
 	['all', 'All companies'],
 	['conflicts', 'Providers disagree'],
 	['conflict:headcount', 'Headcount conflicts'],
+	['conflict:address', 'Address conflicts'],
 	['stale', 'Stale values'],
 	['duplicates', 'Possible duplicates'],
 	['overridden', 'Changed by a person'],
@@ -87,6 +88,14 @@ export function CompaniesPage() {
 							onClick={() => setFilter('conflict:headcount')}
 						>
 							{summary.conflicts.headcount} headcount conflicts
+						</button>{' '}
+						·{' '}
+						<button
+							type="button"
+							className="underline underline-offset-2"
+							onClick={() => setFilter('conflict:address')}
+						>
+							{summary.conflicts.address ?? 0} address conflicts
 						</button>{' '}
 						·{' '}
 						<button type="button" className="underline underline-offset-2" onClick={() => setFilter('stale')}>

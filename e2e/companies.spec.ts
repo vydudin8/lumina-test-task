@@ -28,3 +28,15 @@ test('a headcount conflict traces to its sources and can be resolved by a person
 	await headcount.getByRole('link').first().click()
 	await expect(page.getByRole('dialog').getByText('Exactly what the provider sent.')).toBeVisible()
 })
+
+test('address conflicts have their own filter and show each provider’s street', async ({ page }) => {
+	await pickUser(page, 'usr_rep_tom')
+	await page.goto('/companies')
+	await page.getByRole('button', { name: '2 address conflicts' }).click()
+	await expect(page.getByRole('row')).toHaveCount(3)
+	await page.getByRole('row').nth(1).getByRole('link').click()
+
+	const address = page.locator('#field-address')
+	await expect(address.getByText('Conflict')).toBeVisible()
+	await expect(address.getByText(/2 Old Station Yard/)).toBeVisible()
+})
