@@ -5,7 +5,7 @@ Company data from Clay, Apollo and FactSet → one company master → ICP fit sc
 ## Commands
 
 - `pnpm dev` — app (3000), Vite (5173, proxies `/api`) and fake-world (4000). Needs Postgres and `.env` (copy `.env.example`).
-- `pnpm seed:reset` — drop, migrate and seed the dev database.
+- `pnpm seed:reset` — drop, migrate and seed the dev database. Pulls from fake-world, so run it while `pnpm dev` is up.
 - `pnpm test` — typecheck, ESLint, Prettier check, Vitest (unit + Postgres integration). `pnpm test:all` adds Playwright.
 - `pnpm fixtures` — regenerate `fixtures/` (deterministic; the tests compare the committed files byte for byte).
 - `pnpm db:generate` — Drizzle migration from `src/server/db/schema.ts`. Triggers and other hand-written SQL go in `drizzle-kit generate --custom` migrations.

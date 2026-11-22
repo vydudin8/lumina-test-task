@@ -11,7 +11,7 @@ docker compose --profile test run --rm test      # typecheck, lint, unit + Postg
 
 Pick a user in the header: **Maya Fernandes** is the sales lead (the only role that can approve and send); Tom Okafor and Ana Kowalski are reps. With `ANTHROPIC_API_KEY` set, Claude Haiku (`claude-haiku-5-5`) writes the AI lines; without it a deterministic stub does, and invents a number in about one line in nine so you can see the guard reject it. Fake-world switches (lost responses, 500s, duplicate or shuffled webhooks): `POST localhost:4000/__control`, e.g. `{"mode":"timeout_once"}`; `GET /__calls` lists what it received.
 
-Without Docker: Postgres 17, `cp .env.example .env`, `pnpm install`, `pnpm seed:reset`, `pnpm dev`; tests with `pnpm test` and `pnpm test:e2e`.
+Without Docker: Postgres 17, `cp .env.example .env`, `pnpm install`, `pnpm dev` (app, Vite on 5173 and fake-world), then in a second terminal `pnpm seed:reset`, which pulls from fake-world; tests with `pnpm test` and `pnpm test:e2e`.
 
 ## The example conditions, as tests
 
