@@ -2,6 +2,7 @@ import { defineConfig, devices } from '@playwright/test'
 
 const port = 3100
 const fakeWorldPort = 4100
+const vitePort = 5174
 const env = {
 	DATABASE_URL: process.env.E2E_DATABASE_URL ?? 'postgres://lumina:lumina@localhost:5432/lumina_e2e',
 	SESSION_SECRET: 'e2e-secret-0123456789abcdef0123456789',
@@ -18,7 +19,15 @@ export default defineConfig({
 	workers: 1,
 	reporter: process.env.CI ? 'list' : 'html',
 	use: { baseURL: `http://localhost:${port}`, trace: 'retain-on-failure' },
-	projects: [{ name: 'chromium', use: { ...devices['Desktop Chrome'] } }],
+	projects: [
+		{ name: 'chromium', use: { ...devices['Desktop Chrome'] } },
+		// `pnpm dev` serves the UI from Vite and proxies /api; every write goes through that proxy and the CSRF check.
+		{
+			name: 'dev-proxy',
+			testMatch: /session\.spec\.ts/,
+			use: { ...devices['Desktop Chrome'], baseURL: `http://localhost:${vitePort}` },
+		},
+	],
 	// Started in order: the app's seed pulls from fake-world on start-up.
 	webServer: [
 		{
@@ -40,6 +49,12 @@ export default defineConfig({
 			env,
 			reuseExistingServer: false,
 			timeout: 120_000,
+		},
+		{
+			command: `pnpm vite --port ${vitePort} --strictPort`,
+			url: `http://localhost:${vitePort}`,
+			env: { API_URL: `http://localhost:${port}` },
+			reuseExistingServer: false,
 		},
 	],
 })
