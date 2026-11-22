@@ -12,6 +12,12 @@ test('a top-50 campaign drafts 39 eligible cards; only a lead can approve them',
 	await expect(page.getByText('50 cards:')).toContainText('11 blocked (8 suppressed, 3 bad address)')
 	await expect(page.getByText('Only a sales lead can approve cards and send.')).toBeVisible()
 
+	// The seeded address conflict in the top 50 is flagged on its card and links to the sources.
+	const conflicted = page.getByRole('article').filter({ hasText: 'Providers disagree on this address' })
+	await expect(conflicted).toHaveCount(1)
+	await expect(conflicted.getByText(/Address from Apollo/)).toBeVisible()
+	await expect(conflicted.getByRole('link', { name: 'see sources' })).toHaveAttribute('href', /#field-address$/)
+
 	await page.getByRole('button', { name: /^Blocked \(/ }).click()
 	const blocked = page.getByRole('article').first()
 	await expect(

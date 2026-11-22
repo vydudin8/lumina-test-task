@@ -42,7 +42,7 @@ describe('companies API', () => {
 	it('lists 282 companies with a summary of conflicts, stale values and possible duplicates', async () => {
 		const { companies, summary } = await list()
 		expect(companies).toHaveLength(282)
-		expect(summary).toMatchObject({ companies: 282, sources: 300, conflicts: { headcount: 7 } })
+		expect(summary).toMatchObject({ companies: 282, sources: 300, conflicts: { headcount: 7, address: 2 } })
 		expect(summary.possibleDuplicates).toBeGreaterThanOrEqual(2)
 	})
 

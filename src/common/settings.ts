@@ -78,6 +78,7 @@ export const BLOCK_REASON_LABELS: Record<string, string> = {
 	'invalid_address:missing_postcode': 'Address has no postcode',
 	'invalid_address:invalid_postcode': 'Postcode is not valid',
 	'invalid_address:unsupported_country': 'We cannot post to this country',
+	no_contact: 'No contact on file',
 }
 
 export const CARD_STATUS_LABELS: Record<string, string> = {

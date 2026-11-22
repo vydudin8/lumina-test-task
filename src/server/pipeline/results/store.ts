@@ -20,7 +20,8 @@ export async function campaignResults(executor: Executor, campaignId: number, no
 		id: card.id,
 		variant: card.variant,
 		domain: domains.get(card.companyId) ?? null,
-		personKey: card.personKey,
+		// Mailed cards always have a recipient (cards_recipient_present).
+		personKey: card.personKey!,
 		status: card.status,
 		submittedAt: card.submittedAt,
 		mailedAt: card.mailedAt,

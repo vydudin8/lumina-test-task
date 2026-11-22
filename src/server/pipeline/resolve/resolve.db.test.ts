@@ -67,6 +67,21 @@ describe('company master', () => {
 		expect(conflicted.sort()).toEqual(expected.sort())
 	})
 
+	it('flags exactly the 2 seeded address conflicts and keeps the higher-precedence street', async () => {
+		const { companies } = await loadMaster(t.db, now)
+		const conflicted = companies.filter((company) => company.fields.address.conflict)
+		const expected = await Promise.all(
+			manifest.addressConflicts.map((conflict) =>
+				companyOf(manifest.duplicates.find((d) => d.companyKey === conflict.companyKey)!.records[0]!),
+			),
+		)
+		expect(conflicted.map((company) => company.id).sort()).toEqual(expected.sort())
+		for (const company of conflicted) {
+			expect(company.fields.address.candidates).toHaveLength(2)
+			expect(company.fields.address.value?.line1).not.toBe('2 Old Station Yard')
+		}
+	})
+
 	it('marks FactSet financials older than 18 months as stale', async () => {
 		const { companies } = await loadMaster(t.db, now)
 		const staleIds = companies

@@ -77,6 +77,16 @@ describe('manifest agrees with the provider files', () => {
 		}
 	})
 
+	it('lists 2 address conflicts, one in the top 50: a provider still has an old street for the office', () => {
+		const duplicateKeys = new Set(manifest.duplicates.map((duplicate) => duplicate.companyKey))
+		expect(manifest.counts.addressConflicts).toBe(2)
+		expect(manifest.addressConflicts.map((conflict) => conflict.inTop50)).toEqual([true, false])
+		for (const conflict of manifest.addressConflicts) {
+			expect(duplicateKeys.has(conflict.companyKey)).toBe(true)
+			expect(new Set(conflict.values.map((value) => value.line1)).size).toBe(2)
+		}
+	})
+
 	it('lists 2 near-duplicates that share a name but not a country or domain', () => {
 		expect(manifest.nearDuplicates).toHaveLength(2)
 		for (const [a, b] of manifest.nearDuplicates.map((pair) => pair.companies)) {

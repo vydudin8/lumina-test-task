@@ -108,12 +108,27 @@ describe('campaign builder', () => {
 		expect(blocked.every((card) => card.status === 'blocked' && card.variant === null)).toBe(true)
 	})
 
+	it('snapshots where each address came from and flags the one the providers disagree on', async () => {
+		const rows = await t.db.select().from(cards).where(eq(cards.campaignId, campaignId))
+		const conflict = manifest.addressConflicts.find((entry) => entry.inTop50)!
+		const duplicate = manifest.duplicates.find((d) => d.companyKey === conflict.companyKey)!
+		const conflictCompanyId = await companyOf(duplicate.records[0]!)
+
+		const flagged = rows.find((card) => card.companyId === conflictCompanyId)!
+		expect(flagged).toMatchObject({ eligibility: 'eligible', addressSource: { provider: 'apollo', conflict: true } })
+		expect(flagged.address?.line1).not.toBe('2 Old Station Yard')
+		expect(rows.filter((card) => card.addressSource?.conflict).map((card) => card.companyId)).toEqual([
+			conflictCompanyId,
+		])
+		expect(rows.every((card) => !card.address || card.addressSource?.rawRecordId)).toBe(true)
+	})
+
 	it('picks recipients by the fixed chain, including the seeded tie-breaks', async () => {
 		const rows = await t.db.select().from(cards).where(eq(cards.campaignId, campaignId))
 		for (const tie of manifest.recipientTieBreaks) {
 			const card = rows.find((row) => row.personKey === tie.winner)
 			expect(card?.recipient).toMatchObject({ decidedBy: tie.rule })
-			expect(card?.recipient.candidates.map((candidate) => candidate.personKey)).toContain(tie.loser)
+			expect(card?.recipient!.candidates.map((candidate) => candidate.personKey)).toContain(tie.loser)
 		}
 	})
 
@@ -246,5 +261,33 @@ describe('campaign builder', () => {
 		const history = await outreachHistory(t.db, pilot.personKey)
 		expect(history).toEqual([expect.objectContaining({ campaignName: 'Pilot: plant hire firms', status: 'delivered' })])
 		expect(suppressionReason(pilot.personKey, await loadSuppressionState(t.db), now)).toBe('mailed_90d')
+	})
+
+	it('keeps a top company with no contact on file as a blocked card instead of dropping it', async () => {
+		const expected = manifest.top50.companies.find((company) => company.expected === 'eligible')!
+		const companyId = await companyOf(expected.records[0]!)
+		await t.db.execute(
+			sql`UPDATE contacts SET source_company_id = NULL WHERE source_company_id IN (SELECT id FROM source_companies WHERE company_id = ${companyId})`,
+		)
+
+		const { campaign } = await build('key-no-contact')
+		const rows = await t.db.select().from(cards).where(eq(cards.campaignId, campaign.id))
+		expect(rows).toHaveLength(50)
+		expect(rows.find((card) => card.companyId === companyId)).toMatchObject({
+			eligibility: 'blocked',
+			status: 'blocked',
+			blockReason: 'no_contact',
+			contactId: null,
+			personKey: null,
+			recipient: null,
+		})
+
+		// Only a no-contact card may lack a recipient, even through direct SQL.
+		const eligible = rows.find((card) => card.eligibility === 'eligible')!
+		await expect(
+			t.db.execute(
+				sql`UPDATE cards SET contact_id = NULL, person_key = NULL, recipient = NULL WHERE id = ${eligible.id}`,
+			),
+		).rejects.toMatchObject({ cause: { constraint: 'cards_recipient_present' } })
 	})
 })

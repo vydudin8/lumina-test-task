@@ -85,6 +85,20 @@
       "when": 1795219910000,
       "tag": "0011_card_unconfirmed",
       "breakpoints": true
+    },
+    {
+      "idx": 12,
+      "version": "7",
+      "when": 1795365829803,
+      "tag": "0012_card_no_contact",
+      "breakpoints": true
+    },
+    {
+      "idx": 13,
+      "version": "7",
+      "when": 1795366058382,
+      "tag": "0013_card_address_source",
+      "breakpoints": true
     }
   ]
 }

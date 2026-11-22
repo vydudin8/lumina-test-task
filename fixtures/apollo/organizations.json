@@ -3177,12 +3177,12 @@
     "industries": [
       "construction"
     ],
-    "street_address": "Unit 7, Lakeside Industrial Estate",
+    "street_address": "2 Old Station Yard",
     "city": "Reading",
     "state": "Berkshire",
     "postal_code": "RG14 8JG",
     "country": "United Kingdom",
-    "raw_address": "Unit 7, Lakeside Industrial Estate, Reading, Berkshire, RG14 8JG, United Kingdom",
+    "raw_address": "2 Old Station Yard, Reading, Berkshire, RG14 8JG, United Kingdom",
     "technology_names": [
       "Microsoft Office 365",
       "Google Analytics"

@@ -8,6 +8,7 @@
     "duplicateCompanies": 18,
     "duplicateContacts": 6,
     "headcountConflicts": 7,
+    "addressConflicts": 2,
     "suppressed": 12,
     "optOuts": 7,
     "pilotMailed": 5,
@@ -146,6 +147,7 @@
       ],
       "tricks": [
         "country written as United Kingdom vs UK",
+        "old office address at clay",
         "domain written as https://www.{d}/"
       ]
     },
@@ -246,6 +248,7 @@
       "tricks": [
         "country written as United Kingdom vs GB",
         "headcount conflict",
+        "old office address at apollo",
         "Ltd vs Limited",
         "domain written as https://www.{d}/"
       ]
@@ -538,6 +541,36 @@
         {
           "provider": "factset",
           "headcount": 480
+        }
+      ]
+    }
+  ],
+  "addressConflicts": [
+    {
+      "companyKey": "c006",
+      "inTop50": true,
+      "values": [
+        {
+          "provider": "apollo",
+          "line1": "Unit 8, Riverside Industrial Estate"
+        },
+        {
+          "provider": "clay",
+          "line1": "2 Old Station Yard"
+        }
+      ]
+    },
+    {
+      "companyKey": "c011",
+      "inTop50": false,
+      "values": [
+        {
+          "provider": "apollo",
+          "line1": "2 Old Station Yard"
+        },
+        {
+          "provider": "factset",
+          "line1": "Unit 7, Lakeside Industrial Estate"
         }
       ]
     }

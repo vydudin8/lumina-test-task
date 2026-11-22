@@ -55,6 +55,8 @@ interface Company {
 	address: Address
 	invalid?: InvalidReason
 	headcountConflict?: { loserFactor: number }
+	// One provider still lists an old office: the street differs, so the address shows as a conflict.
+	addressConflict?: { provider: Provider; line1: string }
 	missingDomainOn?: Provider
 	staleFactset?: boolean
 	persons: Person[]
@@ -72,6 +74,7 @@ export interface Manifest {
 		duplicateCompanies: number
 		duplicateContacts: number
 		headcountConflicts: number
+		addressConflicts: number
 		suppressed: number
 		optOuts: number
 		pilotMailed: number
@@ -83,6 +86,7 @@ export interface Manifest {
 		companies: { companyKey: string; name: string; country: Country; domain: string; records: ProviderRecord[] }[]
 	}[]
 	headcountConflicts: { companyKey: string; values: { provider: Provider; headcount: number }[] }[]
+	addressConflicts: { companyKey: string; inTop50: boolean; values: { provider: Provider; line1: string | null }[] }[]
 	suppressed: {
 		personKey: string
 		reason: 'opt_out' | 'mailed_90d'
@@ -549,6 +553,14 @@ export function generateFixtures(): Record<string, unknown> {
 		company.tricks.push('headcount conflict')
 		if (company.headcount === null) company.headcount = int(60, 800)
 	}
+	// No random draws here, so every other fixture stays byte for byte the same.
+	for (const [company, provider] of [
+		[at(topAC, 0), 'clay'],
+		[at(restAF, 0), 'apollo'],
+	] as const) {
+		company.addressConflict = { provider, line1: '2 Old Station Yard' }
+		company.tricks.push(`old office address at ${provider}`)
+	}
 	for (const [company, provider] of [
 		[at(topAF, 3), 'factset'],
 		[at(restAF, 1), 'factset'],
@@ -704,17 +716,21 @@ export function generateFixtures(): Record<string, unknown> {
 		company.tricks.push(`domain written as ${form}`)
 		return form.replace('{d}', company.domain).replace('{D}', company.domain.toUpperCase())
 	}
+	const addressAt = (company: Company, provider: Provider): Address =>
+		company.addressConflict?.provider === provider
+			? { ...company.address, line1: company.addressConflict.line1 }
+			: company.address
 	const ukPhone = () => `+44 113 496 0${String(int(0, 999)).padStart(3, '0')}`
 
 	for (const company of companies) {
 		const name = `${company.base} ${company.legal}`
-		const { address } = company
 		const duplicate = isDuplicate(company)
 
 		if (company.providers.includes('apollo')) {
 			const id = hex(24)
 			company.ids.apollo = id
 			const noDomain = company.missingDomainOn === 'apollo'
+			const address = addressAt(company, 'apollo')
 			const usd = company.revenueGbp === null ? null : Math.round(company.revenueGbp / FX.USD!)
 			apolloOrgs.push({
 				id,
@@ -759,6 +775,7 @@ export function generateFixtures(): Record<string, unknown> {
 		if (company.providers.includes('factset')) {
 			const fsymId = `${alnum(6)}-E`
 			company.ids.factset = fsymId
+			const address = addressAt(company, 'factset')
 			const swapped = ({ Ltd: 'Limited', Limited: 'Ltd' } as Record<string, string>)[company.legal]
 			const nameForm = duplicate ? pick([swapped ? 'swap' : 'upper', 'upper']) : 'plain'
 			const proper =
@@ -803,6 +820,7 @@ export function generateFixtures(): Record<string, unknown> {
 		if (company.providers.includes('clay')) {
 			const domainCell = duplicate && company.providers.includes('apollo') ? trickyDomain(company) : company.domain
 			company.ids.clay = domainCell.trim().toLowerCase()
+			const address = addressAt(company, 'clay')
 			clayCompanies.push({
 				'Company Name': duplicate && chance(0.5) ? company.base.toUpperCase() : company.base,
 				Domain: domainCell,
@@ -1085,6 +1103,7 @@ export function generateFixtures(): Record<string, unknown> {
 			duplicateCompanies: companies.filter(isDuplicate).length,
 			duplicateContacts: duplicatePeople.length,
 			headcountConflicts: companies.filter((company) => company.headcountConflict).length,
+			addressConflicts: companies.filter((company) => company.addressConflict).length,
 			suppressed: optOuts.length + pilotCards.length,
 			optOuts: optOuts.length,
 			pilotMailed: pilotCards.length,
@@ -1119,6 +1138,13 @@ export function generateFixtures(): Record<string, unknown> {
 			.map((company) => ({
 				companyKey: company.key,
 				values: company.providers.map((provider) => ({ provider, headcount: headcountAt(company, provider)! })),
+			})),
+		addressConflicts: companies
+			.filter((company) => company.addressConflict)
+			.map((company) => ({
+				companyKey: company.key,
+				inTop50: isTop(company),
+				values: company.providers.map((provider) => ({ provider, line1: addressAt(company, provider).line1 })),
 			})),
 		suppressed: [
 			...optOutCompanies.map((company) => ({ company, reason: 'opt_out' as const })),

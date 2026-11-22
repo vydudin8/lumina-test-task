@@ -11,13 +11,13 @@ const label = (provider: string | null) =>
 	provider ? (PROVIDER_LABELS[provider as ProviderName] ?? provider) : 'no provider'
 
 // Only first name, title and company facts reach the model: no email, no address, no surname.
-export function cardLineEvidence(recipient: Candidate, company: MasterCompany): EvidenceItem[] {
+export function cardLineEvidence(recipient: Candidate | null, company: MasterCompany): EvidenceItem[] {
 	const { fields } = company
-	const recipientSource = recipient.providers.map(label).join(', ')
+	const recipientSource = recipient?.providers.map(label).join(', ') ?? ''
 	const items: Omit<EvidenceItem, 'id'>[] = []
-	if (recipient.firstName)
+	if (recipient?.firstName)
 		items.push({ label: 'first name', value: recipient.firstName, source: recipientSource, date: null })
-	if (recipient.title) items.push({ label: 'title', value: recipient.title, source: recipientSource, date: null })
+	if (recipient?.title) items.push({ label: 'title', value: recipient.title, source: recipientSource, date: null })
 	items.push({
 		label: 'company',
 		value: fields.name.value ?? 'your company',

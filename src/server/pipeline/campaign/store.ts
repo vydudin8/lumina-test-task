@@ -36,7 +36,8 @@ export async function loadSuppressionState(executor: Executor): Promise<Suppress
 		.groupBy(cards.personKey)
 	return {
 		optOutHashes: new Set(optOuts.map((row) => row.hash)),
-		lastSubmitted: new Map(submitted.map((row) => [row.personKey, new Date(row.last!)])),
+		// Only a no-contact card lacks a person, and it is never sent (cards_recipient_present).
+		lastSubmitted: new Map(submitted.map((row) => [row.personKey!, new Date(row.last!)])),
 	}
 }
 
@@ -101,27 +102,24 @@ export async function createCampaign(deps: CampaignDeps, input: CreateCampaignIn
 	const suppression = await loadSuppressionState(deps.db)
 
 	let variantIndex = 0
-	const drafts = top.flatMap((row) => {
+	const drafts = top.map((row) => {
 		const choice = chooseRecipient(
 			contactRows
 				.filter((contact) => row.company.contactIds.includes(contact.id))
 				.map((contact) => ({ ...contact, fetchedAt: contact.fetchedAt.toISOString() })),
 		)
-		// A company with no listed person cannot get a card at all.
-		if (!choice) return []
 		const address = row.company.fields.address.value
-		const blocked = blockReason(choice.chosen.personKey, address, suppression, now)
-		const evidence = cardLineEvidence(choice.chosen, row.company)
-		return [
-			{
-				row,
-				choice,
-				address,
-				blocked,
-				evidence,
-				variant: blocked ? null : variantIndex++ % 2 === 0 ? ('A' as const) : ('B' as const),
-			},
-		]
+		// A company with no listed person still gets a (blocked) card, so it shows as skipped rather than vanishing.
+		const blocked = choice ? blockReason(choice.chosen.personKey, address, suppression, now) : 'no_contact'
+		const evidence = cardLineEvidence(choice?.chosen ?? null, row.company)
+		return {
+			row,
+			choice,
+			address,
+			blocked,
+			evidence,
+			variant: blocked ? null : variantIndex++ % 2 === 0 ? ('A' as const) : ('B' as const),
+		}
 	})
 
 	const lines = await inBatches(drafts, LLM_CONCURRENCY, async (draft): Promise<GroundedLine | null> => {
@@ -130,7 +128,7 @@ export async function createCampaign(deps: CampaignDeps, input: CreateCampaignIn
 			deps,
 			{
 				task: 'card_line',
-				purpose: `Write the opening line of a postcard to ${draft.choice.chosen.firstName ?? 'the recipient'} at ${draft.row.company.fields.name.value ?? 'their company'}.`,
+				purpose: `Write the opening line of a postcard to ${draft.choice?.chosen.firstName ?? 'the recipient'} at ${draft.row.company.fields.name.value ?? 'their company'}.`,
 				evidence: draft.evidence,
 				maxChars: LINE_MAX_CHARS,
 			},
@@ -153,27 +151,35 @@ export async function createCampaign(deps: CampaignDeps, input: CreateCampaignIn
 				drafts.map((draft, index) => {
 					const line = lines[index]
 					const fallback = fallbackLine(draft.evidence)
-					const { chosen, candidates, decidedBy } = draft.choice
+					const chosen = draft.choice?.chosen
 					return {
 						campaignId: campaign.id,
 						companyId: draft.row.company.id,
-						contactId: chosen.contactId,
-						personKey: chosen.personKey,
+						contactId: chosen?.contactId ?? null,
+						personKey: chosen?.personKey ?? null,
 						rank: draft.row.rank,
 						score: draft.row.score.score,
 						scoreDisplay: draft.row.score.display,
 						contributions: draft.row.score.contributions,
-						recipient: {
-							fullName: chosen.fullName,
-							firstName: chosen.firstName,
-							title: chosen.title,
-							function: chosen.function,
-							seniority: chosen.seniority,
-							providers: chosen.providers,
-							decidedBy,
-							candidates,
-						},
+						recipient: chosen
+							? {
+									fullName: chosen.fullName,
+									firstName: chosen.firstName,
+									title: chosen.title,
+									function: chosen.function,
+									seniority: chosen.seniority,
+									providers: chosen.providers,
+									decidedBy: draft.choice!.decidedBy,
+									candidates: draft.choice!.candidates,
+								}
+							: null,
 						address: draft.address as Record<string, string | null> | null,
+						addressSource: {
+							provider: draft.row.company.fields.address.provider,
+							rawRecordId: draft.row.company.fields.address.rawRecordId,
+							conflict: draft.row.company.fields.address.conflict,
+							chosenBy: draft.row.company.fields.address.override?.createdBy ?? null,
+						},
 						eligibility: draft.blocked ? ('blocked' as const) : ('eligible' as const),
 						blockReason: draft.blocked,
 						variant: draft.variant,

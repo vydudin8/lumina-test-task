@@ -94,7 +94,7 @@ describe('send pipeline', () => {
 		await processQueue(send)
 		const campaignId = await build('opt-out-late', 10)
 		const [target] = (await cardsOf(campaignId)).filter((card) => card.status === 'approved')
-		await addOptOut(send, { email: target!.personKey.toUpperCase(), source: 'phone call', actor: tom })
+		await addOptOut(send, { email: target!.personKey!.toUpperCase(), source: 'phone call', actor: tom })
 		await launchSend(send, { campaignId, actor: maya })
 		await processQueue(send)
 		const [card] = await t.db.select().from(cards).where(eq(cards.id, target!.id))
@@ -185,7 +185,7 @@ describe('send pipeline', () => {
 		expect(stuck).toMatchObject({ mailId: null, submittedAt: null })
 		const attempts = await t.db.select().from(submissionAttempts).where(eq(submissionAttempts.cardId, stuck!.id))
 		expect(attempts.map((attempt) => attempt.outcome)).toEqual(Array(6).fill('timeout'))
-		expect(suppressionReason(stuck!.personKey, await loadSuppressionState(t.db), now)).toBe('mailed_90d')
+		expect(suppressionReason(stuck!.personKey!, await loadSuppressionState(t.db), now)).toBe('mailed_90d')
 
 		await expect(retrySend(send, { cardId: stuck!.id, actor: tom })).rejects.toMatchObject({ status: 403 })
 		expect(await retrySend(send, { cardId: stuck!.id, actor: maya })).toMatchObject({ changed: true })

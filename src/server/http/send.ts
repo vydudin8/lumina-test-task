@@ -71,7 +71,8 @@ export function sendRoutes(deps: AppDeps) {
 				}),
 				recentlyMailed: recent.map((row) => ({
 					...row,
-					fullName: row.recipient.fullName,
+					// Mailed cards always have a recipient (cards_recipient_present).
+					fullName: row.recipient!.fullName,
 					recipient: undefined,
 					until: new Date(row.submittedAt!.getTime() + MAILED_WINDOW_DAYS * 86_400_000).toISOString(),
 				})),

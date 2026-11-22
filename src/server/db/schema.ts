@@ -387,6 +387,14 @@ export interface CardRecipient {
 	candidates: Candidate[]
 }
 
+export interface CardAddressSource {
+	provider: string | null
+	rawRecordId: number | null
+	// Providers disagreed on the address when the card was built; chosenBy is set if a person picked the value.
+	conflict: boolean
+	chosenBy: string | null
+}
+
 export const cards = pgTable(
 	'cards',
 	{
@@ -397,17 +405,17 @@ export const cards = pgTable(
 		companyId: integer()
 			.notNull()
 			.references(() => companies.id),
-		contactId: integer()
-			.notNull()
-			.references(() => contacts.id),
+		// Null only on a card blocked for 'no_contact': the company is shown as skipped, never silently dropped.
+		contactId: integer().references(() => contacts.id),
 		// The person as of building the card: the 90-day rule and history match on it, whatever happens to the records.
-		personKey: text().notNull(),
+		personKey: text(),
 		rank: integer().notNull(),
 		score: numeric().notNull(),
 		scoreDisplay: integer().notNull(),
 		contributions: jsonb().$type<unknown[]>().notNull(),
-		recipient: jsonb().$type<CardRecipient>().notNull(),
+		recipient: jsonb().$type<CardRecipient>(),
 		address: jsonb().$type<Record<string, string | null> | null>(),
+		addressSource: jsonb().$type<CardAddressSource>(),
 		eligibility: text().$type<'eligible' | 'blocked'>().notNull(),
 		blockReason: text(),
 		variant: text().$type<'A' | 'B'>(),
@@ -441,6 +449,10 @@ export const cards = pgTable(
 		check('cards_eligibility', sql`${t.eligibility} IN ('eligible', 'blocked')`),
 		check('cards_blocked_at_build', sql`(${t.eligibility} = 'blocked') = (${t.status} = 'blocked')`),
 		check('cards_block_reason', sql`(${t.status} IN ('blocked', 'blocked_at_send')) = (${t.blockReason} IS NOT NULL)`),
+		check(
+			'cards_recipient_present',
+			sql`(${t.contactId} IS NULL) = (${t.blockReason} IS NOT DISTINCT FROM 'no_contact') AND (${t.personKey} IS NULL) = (${t.contactId} IS NULL) AND (${t.recipient} IS NULL) = (${t.contactId} IS NULL)`,
+		),
 		check('cards_reject_reason', sql`(${t.status} = 'rejected') = (btrim(coalesce(${t.rejectReason}, '')) <> '')`),
 		check('cards_variant', sql`(${t.eligibility} = 'eligible') = (${t.variant} IN ('A', 'B'))`),
 		// Approved or later needs a recorded approval by a lead; the FK below ties approver and role to a real user.

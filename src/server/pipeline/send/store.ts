@@ -100,8 +100,11 @@ export async function processOne(deps: SendDeps): Promise<'submitted' | 'blocked
 		if (!card) return null
 		const log = deps.log.child({ cardId: card.id, campaignId: card.campaignId })
 
+		// A queued card was approved, so it has a recipient (cards_recipient_present: only no-contact cards lack one).
+		const personKey = card.personKey!
+		const recipient = card.recipient!
 		// The person may have opted out, or been mailed elsewhere, since the card was approved.
-		const reason = blockReason(card.personKey, card.address as Address | null, await loadSuppressionState(tx), now)
+		const reason = blockReason(personKey, card.address as Address | null, await loadSuppressionState(tx), now)
 		if (reason) {
 			await tx
 				.update(cards)
@@ -126,7 +129,7 @@ export async function processOne(deps: SendDeps): Promise<'submitted' | 'blocked
 			.select()
 			.from(templates)
 			.where(eq(templates.id, card.variant === 'B' ? campaign!.templateBId : campaign!.templateAId))
-		const body = postcardBody(card, template!.body)
+		const body = postcardBody({ ...card, recipient }, template!.body)
 		const attempts: Attempt[] = []
 		// Attempts keep counting across retries of the same card (unique on card_id, n).
 		const [{ prior }] = (await tx

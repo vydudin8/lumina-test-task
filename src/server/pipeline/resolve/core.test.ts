@@ -239,6 +239,24 @@ describe('resolveFields', () => {
 		expect(resolved.country.conflict).toBe(true)
 	})
 
+	it('flags an address only when the street, town, postcode or country really differ', () => {
+		const office = { line1: 'Unit 4, Mill Lane', city: 'Leeds', region: null, postcode: 'LS12 6AB', country: 'GB' }
+		const sameOffice = { ...office, line1: 'UNIT 4 MILL LANE', postcode: 'ls126ab' }
+		const oldOffice = { ...office, line1: '12 Station Road' }
+		const withAddress = (id: number, provider: 'apollo' | 'factset' | 'clay', address: typeof office) =>
+			source(id, { provider, address })
+
+		const same = resolveFields([withAddress(1, 'apollo', office), withAddress(3, 'clay', sameOffice)], [], now)
+		expect(same.address.conflict).toBe(false)
+
+		const moved = resolveFields([withAddress(1, 'apollo', office), withAddress(3, 'clay', oldOffice)], [], now)
+		expect(moved.address).toMatchObject({ value: office, provider: 'apollo', conflict: true })
+		expect(moved.address.candidates.map((candidate) => candidate.value.line1)).toEqual([
+			'Unit 4, Mill Lane',
+			'12 Station Road',
+		])
+	})
+
 	it('unions signals and remembers which provider reported each', () => {
 		const resolved = resolveFields(
 			[source(1, { signals: ['funded'] }), source(2, { provider: 'clay', signals: ['net_zero_target'] })],

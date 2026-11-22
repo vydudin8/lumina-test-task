@@ -38,9 +38,12 @@ export interface CampaignCard {
 	companyName: string | null
 	rank: number
 	scoreDisplay: number
-	personKey: string
-	recipient: Candidate & { firstName: string | null; decidedBy: string; candidates: Candidate[] }
+	personKey: string | null
+	// Null when no provider lists anyone at the company: the card is blocked as 'no_contact'.
+	recipient: (Candidate & { firstName: string | null; decidedBy: string; candidates: Candidate[] }) | null
 	address: AddressValue | null
+	// Null on cards seeded from past campaigns.
+	addressSource: { provider: string | null; conflict: boolean; chosenBy: string | null } | null
 	eligibility: 'eligible' | 'blocked'
 	blockReason: string | null
 	variant: 'A' | 'B' | null
@@ -144,6 +147,7 @@ function CampaignView({ detail }: { detail: CampaignDetail }) {
 	const badAddress = Object.entries(summary.blocked)
 		.filter(([reason]) => reason.startsWith('invalid_address:'))
 		.reduce((sum, [, n]) => sum + n, 0)
+	const noContact = summary.blocked['no_contact'] ?? 0
 	const show = (value: string) => setParams({ show: value })
 	const visible = detail.cards.filter(FILTERS.find(([value]) => value === filter)?.[2] ?? (() => true))
 
@@ -173,7 +177,7 @@ function CampaignView({ detail }: { detail: CampaignDetail }) {
 				<button type="button" className="underline underline-offset-2" onClick={() => show('blocked')}>
 					{summary.total - summary.eligible} blocked
 				</button>{' '}
-				({suppressed} suppressed, {badAddress} bad address)
+				({suppressed} suppressed, {badAddress} bad address{noContact > 0 && `, ${noContact} no contact`})
 				{summary.blockedAtSend > 0 && ` · ${summary.blockedAtSend} blocked at send`} · variant A {summary.variants.A}, B{' '}
 				{summary.variants.B}
 				{summary.llmRejected > 0 && (
@@ -267,7 +271,7 @@ function CampaignView({ detail }: { detail: CampaignDetail }) {
 // Same single-pass fill as the printed card (renderBack on the server).
 function render(body: string, card: CampaignCard, company: string) {
 	const values: Record<string, string> = {
-		first_name: card.recipient.firstName ?? 'there',
+		first_name: card.recipient?.firstName ?? 'there',
 		personal_line: card.personalLine,
 		company,
 	}
@@ -348,10 +352,30 @@ function PostcardItem({
 					)}
 				</div>
 				<div className="border-l pl-3">
-					<p className="font-medium">{card.recipient.fullName}</p>
-					<p>{card.recipient.title}</p>
+					{card.recipient ? (
+						<>
+							<p className="font-medium">{card.recipient.fullName}</p>
+							<p>{card.recipient.title}</p>
+						</>
+					) : (
+						<p className="text-muted-foreground">No contact on file</p>
+					)}
 					<p>{company}</p>
 					<p className="text-muted-foreground">{formatAddress(card.address)}</p>
+					{card.address && card.addressSource && (
+						<p className="mt-1 text-xs text-muted-foreground">
+							Address from {PROVIDER_LABELS[card.addressSource.provider as ProviderName] ?? card.addressSource.provider}
+							{card.addressSource.chosenBy && `, chosen by ${userName(card.addressSource.chosenBy)}`} ·{' '}
+							<Link to={`/companies/${card.companyId}#field-address`} className="underline underline-offset-2">
+								see sources
+							</Link>
+						</p>
+					)}
+					{card.addressSource?.conflict && !card.addressSource.chosenBy && (
+						<p className="mt-1 text-xs font-medium text-destructive">
+							Providers disagree on this address: check it before approving.
+						</p>
+					)}
 				</div>
 			</div>
 
@@ -409,27 +433,34 @@ function PostcardItem({
 				)}
 			</div>
 
-			<details className="text-xs">
-				<summary className="cursor-pointer">Why this person</summary>
-				<p className="mt-1">
-					{card.recipient.fullName}: {DECIDED_BY[card.recipient.decidedBy] ?? card.recipient.decidedBy}. Known to{' '}
-					{card.recipient.providers
-						.map((provider) => PROVIDER_LABELS[provider as ProviderName] ?? provider)
-						.join(' and ')}
-					.
+			{card.recipient ? (
+				<details className="text-xs">
+					<summary className="cursor-pointer">Why this person</summary>
+					<p className="mt-1">
+						{card.recipient.fullName}: {DECIDED_BY[card.recipient.decidedBy] ?? card.recipient.decidedBy}. Known to{' '}
+						{card.recipient.providers
+							.map((provider) => PROVIDER_LABELS[provider as ProviderName] ?? provider)
+							.join(' and ')}
+						.
+					</p>
+					{card.recipient.candidates.length > 1 && (
+						<ul className="mt-1 space-y-0.5 text-muted-foreground">
+							{card.recipient.candidates.slice(1).map((candidate) => (
+								<li key={candidate.personKey}>
+									Not chosen: {candidate.fullName}, {candidate.title} ({candidate.function ?? 'other function'},{' '}
+									{candidate.seniority.replace('_', ' ')})
+								</li>
+							))}
+						</ul>
+					)}
+					{card.blockReason && <p className="mt-1">This card is blocked. We do not send it to someone else instead.</p>}
+				</details>
+			) : (
+				<p className="text-xs text-muted-foreground">
+					No provider lists a person at this company, so there is nobody to address a card to. The company stays in the
+					list so you can see it was skipped.
 				</p>
-				{card.recipient.candidates.length > 1 && (
-					<ul className="mt-1 space-y-0.5 text-muted-foreground">
-						{card.recipient.candidates.slice(1).map((candidate) => (
-							<li key={candidate.personKey}>
-								Not chosen: {candidate.fullName}, {candidate.title} ({candidate.function ?? 'other function'},{' '}
-								{candidate.seniority.replace('_', ' ')})
-							</li>
-						))}
-					</ul>
-				)}
-				{card.blockReason && <p className="mt-1">This card is blocked. We do not send it to someone else instead.</p>}
-			</details>
+			)}
 
 			{card.mailedAt && <LogOutcome cardId={card.id} onLogged={onChange} />}
 
@@ -456,7 +487,7 @@ function PostcardItem({
 				open={rejecting}
 				onOpenChange={setRejecting}
 				title="Reject this card"
-				description={`${card.recipient.fullName} at ${company} will not get a postcard from this campaign.`}
+				description={`${card.recipient?.fullName ?? 'Nobody'} at ${company} will not get a postcard from this campaign.`}
 				confirmLabel="Reject"
 				onConfirm={async (reason) => {
 					await api(`/api/cards/${card.id}/reject`, { method: 'POST', json: { reason } })
