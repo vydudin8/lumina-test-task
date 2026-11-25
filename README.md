@@ -15,7 +15,7 @@ Tests: `pnpm test:all` runs all of them. `pnpm test` is typecheck, lint, unit an
 
 Which test covers each condition of the brief, how each step works, the hard-coded rules and a map of the code are in [DETAILS.md](DETAILS.md).
 
-- **Users:** pick one in the header, no passwords. Maya Fernandes is the sales lead, the only role that can approve and send; Tom Okafor and Ana Kowalski are reps.
+- **Users:** no passwords. A first visit signs in as Maya Fernandes, the sales lead and the only role that can approve and send; switch to Tom Okafor or Ana Kowalski (reps) in the header.
 - **LLM:** a deterministic stub, by design. The app, the guard and every test were built against it. It writes each line from the evidence it gets and invents a number about once in nine, so the guard has something to reject. A real model is optional: with `ANTHROPIC_API_KEY` in `.env` (read by `pnpm dev` and `docker compose`), the same interface calls Claude Haiku (`claude-haiku-5-5`). We did not develop or tune the app against a real key. Prompts, model choice, cost and latency all have a lot of room for improvement, and that work was out of scope.
 - **Fake world:** `POST localhost:4000/__control` with `{"mode":"timeout_once"}`, `timeout_always`, `error_500_once`, `{"duplicate_rate":0.5}` or `{"shuffle":true}`; `GET /__calls` lists what it received. A postcard moves one status every 5 s; 1 in 5 ends `returned`.
 

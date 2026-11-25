@@ -1,12 +1,12 @@
-import { roleLabels, usePickUser, useSession, useUsers } from '#client/domain/session.ts'
+import { usePickUser, useSession } from '#client/domain/session.ts'
 import { useLiveUpdates } from '#client/lib/live.ts'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { useEffect } from 'react'
 import { createBrowserRouter, Outlet, RouterProvider } from 'react-router'
 import { AppHeader } from './components/AppHeader.tsx'
 import { BackLink } from './components/BackLink.tsx'
-import { ErrorNotice, Loading, NotFound, QueryState, RouteError } from './components/QueryState.tsx'
+import { ErrorNotice, Loading, NotFound, RouteError } from './components/QueryState.tsx'
 import { RawRecordSheet } from './components/RawRecords.tsx'
-import { Button } from './components/ui/button.tsx'
 import { Toaster } from './components/ui/toast.tsx'
 import { AuditPage } from './pages/AuditPage.tsx'
 import { CampaignPage } from './pages/CampaignPage.tsx'
@@ -44,7 +44,7 @@ function Layout() {
 						<Outlet />
 					</>
 				) : (
-					<ChooseUser />
+					<SignInAsLead />
 				)}
 			</main>
 			{user && <RawRecordSheet />}
@@ -53,28 +53,16 @@ function Layout() {
 	)
 }
 
-// No passwords in this demo: everything starts with saying who you are, which decides what you may do.
-function ChooseUser() {
-	const users = useUsers()
-	const pickUser = usePickUser()
-	return (
-		<div className="max-w-xl space-y-3">
-			<h1 className="text-2xl font-semibold tracking-tight">Who are you?</h1>
-			<p className="text-muted-foreground">
-				Choose who you are in the header. Only a sales lead can approve cards and launch a send.
-			</p>
-			<QueryState query={users}>
-				{(list) => (
-					<div className="flex flex-wrap gap-2">
-						{list.map((option) => (
-							<Button key={option.id} variant="outline" onClick={() => pickUser.mutate(option.id)}>
-								{option.name} ({roleLabels[option.role]})
-							</Button>
-						))}
-					</div>
-				)}
-			</QueryState>
-		</div>
+// No passwords in this demo: a first visit signs in as the sales lead, who may do everything; the header switches user.
+const FIRST_USER = 'usr_lead_maya'
+
+function SignInAsLead() {
+	const { mutate, isError, error } = usePickUser()
+	useEffect(() => mutate(FIRST_USER), [mutate])
+	return isError ? (
+		<ErrorNotice title="Could not sign in" detail={error.message} onRetry={() => mutate(FIRST_USER)} />
+	) : (
+		<Loading />
 	)
 }
 
