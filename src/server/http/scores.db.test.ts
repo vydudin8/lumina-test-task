@@ -62,27 +62,87 @@ describe('ICP and scores API', () => {
 		expect(versions).toHaveLength(2)
 	})
 
-	it('ranks companies for a chosen ICP version and explains one with a cited rationale', async () => {
-		const { ranked, outOfProfile } = await json<{
-			ranked: { rank: number; companyId: number; display: number }[]
-			outOfProfile: unknown[]
-		}>('/api/scores?version=1')
-		expect(ranked.slice(0, 50).every((row) => row.display >= 90)).toBe(true)
-		expect(ranked.length + outOfProfile.length).toBe(282)
+	it('returns an older version for the editor and 404 for one that does not exist', async () => {
+		const { versions } = await json<{ versions: { id: number }[] }>('/api/icp')
+		const oldest = versions.at(-1)!.id
+		const { current } = await json<{ current: { id: number; rules: unknown[] } }>(`/api/icp?version=${oldest}`)
+		expect(current.id).toBe(oldest)
+		expect(current.rules).toEqual(DEFAULT_ICP_RULES)
+		expect((await call(app, '/api/icp?version=999', { cookie })).status).toBe(404)
+	})
 
-		const detail = await json<{ score: { contributions: unknown[] }; evidence: unknown[]; rationale: unknown }>(
-			`/api/scores/${ranked[0]!.companyId}?version=1`,
-		)
+	interface ScoresPage {
+		counts: { inProfile: number; outOfProfile: number }
+		total: number
+		nextCursor: string | null
+		ranked: { rank: number; companyId: number; name: string | null; score: string; display: number }[]
+		outOfProfile: { companyId: number; name: string | null; reasons: string[] }[]
+	}
+	const allPages = async (query: string) => {
+		const pages: ScoresPage[] = []
+		let cursor: string | null = null
+		do {
+			const page: ScoresPage = await json<ScoresPage>(`/api/scores?${query}${cursor ? `&cursor=${cursor}` : ''}`)
+			pages.push(page)
+			cursor = page.nextCursor
+		} while (cursor)
+		return pages
+	}
+
+	it('pages both tabs on the server, ranked by exact score then company id, with counts for both', async () => {
+		const inPages = await allPages('version=1')
+		const ranked = inPages.flatMap((page) => page.ranked)
+		const { counts } = inPages[0]!
+		expect(counts.inProfile + counts.outOfProfile).toBe(282)
+		expect(ranked).toHaveLength(counts.inProfile)
+		expect(inPages.length).toBe(Math.ceil(counts.inProfile / 20))
+		expect(ranked.map((row) => row.rank)).toEqual(ranked.map((_, index) => index + 1))
+		for (const [index, row] of ranked.slice(1).entries()) {
+			const previous = ranked[index]!
+			const order = Number(previous.score) - Number(row.score) || row.companyId - previous.companyId
+			expect(order).toBeGreaterThan(0)
+		}
+
+		const out = (await allPages('version=1&tab=out')).flatMap((page) => page.outOfProfile)
+		expect(out).toHaveLength(counts.outOfProfile)
+		expect(out.map((row) => row.companyId)).toEqual(out.map((row) => row.companyId).sort((a, b) => a - b))
+		expect(out.every((row) => row.reasons.length > 0)).toBe(true)
+	})
+
+	it('searches company names on the server, keeping each match at its real rank', async () => {
+		const [first] = await allPages('version=1')
+		const target = first!.ranked[7]!
+		const needle = target.name!.slice(1, 7).toUpperCase()
+		const found = await json<ScoresPage>(`/api/scores?version=1&q=${encodeURIComponent(needle)}`)
+		expect(found.ranked).toContainEqual(target)
+		expect(found.counts.inProfile).toBe(found.total)
+		expect(found.ranked.every((row) => row.name!.toLowerCase().includes(needle.toLowerCase()))).toBe(true)
+		const none = await json<ScoresPage>('/api/scores?version=1&q=zzzzqqq')
+		expect(none.counts).toEqual({ inProfile: 0, outOfProfile: 0 })
+		expect((await call(app, '/api/scores?cursor=garbage', { cookie })).status).toBe(400)
+	})
+
+	it('ranks companies for a chosen ICP version and explains one with a cited rationale', async () => {
+		const { ranked } = await json<ScoresPage>('/api/scores?version=1')
+		expect(ranked.every((row) => row.display >= 90)).toBe(true)
+
+		const detail = await json<{
+			rank: number
+			score: { contributions: unknown[] }
+			evidence: unknown[]
+			rationale: unknown
+		}>(`/api/scores/${ranked[3]!.companyId}?version=1`)
+		expect(detail.rank).toBe(4)
 		expect(detail.score.contributions).toHaveLength(5)
 		expect(detail.rationale).toBeNull()
 
 		const { rationale } = await json<{ rationale: { status: string; cites: string[] } }>(
-			`/api/scores/${ranked[0]!.companyId}/rationale?version=1`,
+			`/api/scores/${ranked[3]!.companyId}/rationale?version=1`,
 			{ method: 'POST' },
 		)
 		expect(rationale.status).toBe('accepted')
 		expect(
-			(await json<{ rationale: unknown }>(`/api/scores/${ranked[0]!.companyId}?version=1`)).rationale,
+			(await json<{ rationale: unknown }>(`/api/scores/${ranked[3]!.companyId}?version=1`)).rationale,
 		).toMatchObject({ status: 'accepted' })
 	})
 })

@@ -1,32 +1,31 @@
-import { api } from '#client/api.ts'
-import { ActivityTimeline, type AuditEvent } from '#client/components/ActivityTimeline.tsx'
+import { ActivityTimeline } from '#client/components/ActivityTimeline.tsx'
+import { DomainLink } from '#client/components/DomainLink.tsx'
 import { QueryState } from '#client/components/QueryState.tsx'
 import { ReasonDialog } from '#client/components/ReasonDialog.tsx'
 import { Badge } from '#client/components/ui/badge.tsx'
 import { Button } from '#client/components/ui/button.tsx'
+import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from '#client/components/ui/sheet.tsx'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '#client/components/ui/table.tsx'
-import {
-	formatAddress,
-	formatDate,
-	formatDateTime,
-	formatGbp,
-	formatInteger,
-	formatMoney,
-	type AddressValue,
-} from '#client/format.ts'
-import { useUserName } from '#client/session.ts'
+import { toast } from '#client/components/ui/toast.tsx'
+import { Tooltip, TooltipContent, TooltipTrigger } from '#client/components/ui/tooltip.tsx'
+import type { AuditEvent } from '#client/domain/audit.ts'
+import { useUserName } from '#client/domain/session.ts'
+import { api } from '#client/lib/api.ts'
+import { formatDate, formatDateTime, formatFieldValue, formatGbp, formatMoney } from '#client/lib/format.ts'
+import { useFilterParams } from '#client/lib/lists.ts'
+import { cn } from '#client/lib/utils.ts'
 import {
 	CONFLICT_RELATIVE_DIFFERENCE,
 	FIELD_LABELS,
 	FIELD_PRECEDENCE,
 	FIELDS,
 	PROVIDER_LABELS,
-	SIGNAL_LABELS,
 	STALE_AFTER_MONTHS,
 	type FieldName,
 	type ProviderName,
 } from '#common/settings.ts'
 import { useQuery, useQueryClient } from '@tanstack/react-query'
+import { History } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { Link, useLocation, useNavigate, useParams } from 'react-router'
 
@@ -87,13 +86,13 @@ interface Detail {
 	contacts: Contact[]
 	possibleDuplicates: { companyId: number; name: string | null; reason: string }[]
 	activity: AuditEvent[]
+	// Merges in the activity whose two sides are both still here.
+	undoableMerges: number[]
 }
 
 function renderValue(field: FieldName, value: unknown) {
 	if (value === null || value === undefined) return <span className="text-muted-foreground">unknown</span>
-	if (field === 'headcount') return formatInteger(value as number)
-	if (field === 'address') return formatAddress(value as AddressValue)
-	if (field === 'signals') return (value as string[]).map((signal) => SIGNAL_LABELS[signal] ?? signal).join(', ')
+	if (field === 'domain' && typeof value === 'string') return <DomainLink domain={value} />
 	if (field === 'revenue') {
 		const revenue = value as Revenue
 		return (
@@ -108,7 +107,7 @@ function renderValue(field: FieldName, value: unknown) {
 			</>
 		)
 	}
-	return typeof value === 'string' ? value : JSON.stringify(value)
+	return formatFieldValue(field, value)
 }
 
 function whyThisValue(field: FieldName, value: Field, userName: (id: string) => string) {
@@ -122,19 +121,23 @@ function whyThisValue(field: FieldName, value: Field, userName: (id: string) => 
 	return `${PROVIDER_LABELS[value.provider]} wins: for ${FIELD_LABELS[field].toLowerCase()} we trust ${order.join(', then ')}.`
 }
 
-const rawLink = (rawRecordId: number) => `/providers?record=${rawRecordId}`
+// Opens the raw record in the side sheet over this page (see RawRecordSheet), not on Providers.
+const rawLink = (rawRecordId: number) => `?record=${rawRecordId}`
+const distinct = (values: (string | null)[]) => [...new Set(values.filter(Boolean))].join(' / ') || '—'
 
 export function CompanyPage() {
 	const id = Number(useParams().id)
 	const query = useQuery({ queryKey: ['company', id], queryFn: () => api<Detail>(`/api/companies/${id}`) })
 
-	return <QueryState query={query}>{(detail) => <CompanyDetail detail={detail} />}</QueryState>
+	return <QueryState query={query}>{(detail) => <CompanyDetail detail={detail} requestedId={id} />}</QueryState>
 }
 
-function CompanyDetail({ detail }: { detail: Detail }) {
+function CompanyDetail({ detail, requestedId }: { detail: Detail; requestedId: number }) {
 	const userName = useUserName()
-	const { hash } = useLocation()
-	// Arriving from a score: bring the field that decided the rule into view.
+	const location = useLocation()
+	const { hash } = location
+	const mergedFrom = (location.state as { mergedFrom?: number } | null)?.mergedFrom
+	// Arriving from a score or a list flag: bring the field into view; its row flashes once (row-flash in styles.css).
 	useEffect(() => {
 		if (hash) document.getElementById(hash.slice(1))?.scrollIntoView({ block: 'center' })
 	}, [hash])
@@ -145,34 +148,40 @@ function CompanyDetail({ detail }: { detail: Detail }) {
 	const [choice, setChoice] = useState<number | null>(null)
 	const [splitting, setSplitting] = useState<Source | null>(null)
 	const [merging, setMerging] = useState<{ companyId: number; name: string | null } | null>(null)
-	const [notice, setNotice] = useState<{ text: string; companyId?: number } | null>(null)
+	const [undoing, setUndoing] = useState<AuditEvent | null>(null)
+	// The server answers a number merged away with the company it went into: put that company's own number in the URL.
+	useEffect(() => {
+		if (requestedId !== company.id)
+			void navigate(`/companies/${company.id}${hash}`, { replace: true, state: { mergedFrom: requestedId } })
+	}, [requestedId, company.id, hash, navigate])
 
 	const refresh = () => queryClient.invalidateQueries()
+	// Providers that list the same email are one person, as in recipient choice and suppression.
+	const people = Object.values(Object.groupBy(detail.contacts, (contact) => contact.personKey)).filter(
+		(records) => records !== undefined,
+	)
 	const name = (company.fields.name.value as string | null) ?? 'Unnamed company'
+	const domain = company.fields.domain.value as string | null
 
 	return (
 		<div className="space-y-8">
-			<div className="space-y-1">
-				<p className="text-sm">
-					<Link to="/companies" className="text-muted-foreground underline-offset-2 hover:underline">
-						Companies
-					</Link>
-				</p>
-				<h1 className="text-2xl font-semibold">{name}</h1>
-				<p className="text-muted-foreground">
-					{(company.fields.domain.value as string | null) ?? 'no domain'} · company #{company.id} ·{' '}
-					{company.sources.length} {company.sources.length === 1 ? 'source record' : 'source records'}
-				</p>
-				{notice && (
-					<p className="text-sm">
-						{notice.text}{' '}
-						{notice.companyId && (
-							<Link to={`/companies/${notice.companyId}`} className="underline underline-offset-2">
-								Open company #{notice.companyId}
-							</Link>
-						)}
+			<div className="flex items-start justify-between gap-4">
+				<div className="space-y-1">
+					<h1 className="text-2xl font-semibold tracking-tight">{name}</h1>
+					<p className="text-muted-foreground">
+						{domain ? <DomainLink domain={domain} /> : 'no domain'} · company #{company.id} · {company.sources.length}{' '}
+						{company.sources.length === 1 ? 'source record' : 'source records'}
 					</p>
-				)}
+					{mergedFrom && (
+						<p className="text-sm text-muted-foreground">Company #{mergedFrom} was merged into this one.</p>
+					)}
+				</div>
+				<CompanyHistory
+					events={detail.activity}
+					self={`company:${company.id}`}
+					undoable={detail.undoableMerges}
+					onUndo={setUndoing}
+				/>
 			</div>
 
 			<section className="space-y-2">
@@ -196,13 +205,23 @@ function CompanyDetail({ detail }: { detail: Detail }) {
 						{FIELDS.map((field) => {
 							const value = company.fields[field]
 							return (
-								<TableRow key={field} id={`field-${field}`} className="align-top target:bg-accent">
+								<TableRow
+									key={field}
+									id={`field-${field}`}
+									className={cn('align-top', hash === `#field-${field}` && 'animate-[row-flash_1.4s_ease-out]')}
+								>
 									<TableCell className="font-medium">
 										{FIELD_LABELS[field]}
 										<div className="mt-1 space-x-1">
-											{value.conflict && <Badge variant="destructive">Conflict</Badge>}
+											{value.conflict && value.override ? (
+												<Badge variant="outline">
+													<s className="text-muted-foreground">Conflict</s> overridden
+												</Badge>
+											) : (
+												value.conflict && <Badge variant="destructive">Conflict</Badge>
+											)}
 											{value.stale && <Badge variant="secondary">Stale</Badge>}
-											{value.override && <Badge variant="outline">Set by a person</Badge>}
+											{value.override && !value.conflict && <Badge variant="outline">Set by a person</Badge>}
 										</div>
 									</TableCell>
 									<TableCell className="max-w-72 whitespace-normal">
@@ -220,17 +239,13 @@ function CompanyDetail({ detail }: { detail: Detail }) {
 									<TableCell>
 										{field === 'signals' ? (
 											value.candidates.map((candidate) => (
-												<Link
-													key={candidate.sourceId}
-													to={rawLink(candidate.rawRecordId)}
-													className="mr-2 underline underline-offset-2"
-												>
+												<Link key={candidate.sourceId} to={rawLink(candidate.rawRecordId)} className="link mr-2">
 													{PROVIDER_LABELS[candidate.provider]}
 												</Link>
 											))
 										) : value.provider && value.rawRecordId ? (
-											<Link to={rawLink(value.rawRecordId)} className="underline underline-offset-2">
-												{PROVIDER_LABELS[value.provider]} record
+											<Link to={rawLink(value.rawRecordId)} className="link">
+												{PROVIDER_LABELS[value.provider]}
 											</Link>
 										) : (
 											'—'
@@ -269,6 +284,13 @@ function CompanyDetail({ detail }: { detail: Detail }) {
 
 			<section className="space-y-2">
 				<h2 className="text-lg font-semibold">Source records</h2>
+				{company.sources.length > 1 && (
+					<p className="max-w-3xl text-sm text-muted-foreground">
+						These provider records were matched as one company. If one of them is a different company, split it off: it
+						becomes a company of its own with its contacts, the reason goes to the audit log, and later pulls do not
+						merge it back.
+					</p>
+				)}
 				<Table>
 					<TableHeader>
 						<TableRow>
@@ -286,10 +308,10 @@ function CompanyDetail({ detail }: { detail: Detail }) {
 								<TableCell>{PROVIDER_LABELS[source.provider]}</TableCell>
 								<TableCell className="font-mono text-xs">{source.externalId}</TableCell>
 								<TableCell>{source.name}</TableCell>
-								<TableCell>{source.domain ?? '—'}</TableCell>
+								<TableCell>{source.domain ? <DomainLink domain={source.domain} /> : '—'}</TableCell>
 								<TableCell>{formatDateTime(source.fetchedAt)}</TableCell>
 								<TableCell className="space-x-2 text-right">
-									<Link to={rawLink(source.rawRecordId)} className="text-sm underline underline-offset-2">
+									<Link to={rawLink(source.rawRecordId)} className="link text-sm">
 										Raw JSON
 									</Link>
 									{company.sources.length > 1 && (
@@ -311,7 +333,7 @@ function CompanyDetail({ detail }: { detail: Detail }) {
 					<ul className="space-y-2">
 						{detail.possibleDuplicates.map((duplicate) => (
 							<li key={duplicate.companyId} className="flex items-center gap-3 text-sm">
-								<Link to={`/companies/${duplicate.companyId}`} className="underline underline-offset-2">
+								<Link to={`/companies/${duplicate.companyId}`} className="link">
 									{duplicate.name ?? `Company #${duplicate.companyId}`}
 								</Link>
 								<span className="text-muted-foreground">{duplicate.reason}</span>
@@ -325,8 +347,14 @@ function CompanyDetail({ detail }: { detail: Detail }) {
 			)}
 
 			<section className="space-y-2">
-				<h2 className="text-lg font-semibold">Contacts ({detail.contacts.length})</h2>
-				{detail.contacts.length === 0 ? (
+				<h2 className="text-lg font-semibold">Contacts ({people.length})</h2>
+				{people.length < detail.contacts.length && (
+					<p className="text-sm text-muted-foreground">
+						{detail.contacts.length} provider records for {people.length} {people.length === 1 ? 'person' : 'people'}:
+						records with the same email are one person.
+					</p>
+				)}
+				{people.length === 0 ? (
 					<p className="text-sm text-muted-foreground">No provider lists anyone at this company.</p>
 				) : (
 					<Table>
@@ -337,32 +365,31 @@ function CompanyDetail({ detail }: { detail: Detail }) {
 								<TableHead>Seniority</TableHead>
 								<TableHead>Functions</TableHead>
 								<TableHead>Email</TableHead>
-								<TableHead>Source</TableHead>
+								<TableHead>Sources</TableHead>
 							</TableRow>
 						</TableHeader>
 						<TableBody>
-							{detail.contacts.map((contact) => (
-								<TableRow key={contact.id}>
-									<TableCell>{contact.fullName}</TableCell>
-									<TableCell>{contact.title}</TableCell>
-									<TableCell>{contact.seniority.replace('_', ' ')}</TableCell>
-									<TableCell className="text-xs">{contact.functions.join(', ') || '—'}</TableCell>
-									<TableCell className="text-xs">{contact.personKey}</TableCell>
-									<TableCell>
-										<Link to={rawLink(contact.rawRecordId)} className="underline underline-offset-2">
-											{PROVIDER_LABELS[contact.provider]}
-										</Link>
+							{people.map((records) => (
+								<TableRow key={records[0]!.personKey}>
+									<TableCell>{distinct(records.map((record) => record.fullName))}</TableCell>
+									<TableCell>{distinct(records.map((record) => record.title))}</TableCell>
+									<TableCell>{distinct(records.map((record) => record.seniority.replace('_', ' ')))}</TableCell>
+									<TableCell className="text-xs">
+										{[...new Set(records.flatMap((record) => record.functions))].join(', ') || '—'}
+									</TableCell>
+									<TableCell className="text-xs">{records[0]!.personKey}</TableCell>
+									<TableCell className="space-x-2">
+										{records.map((record) => (
+											<Link key={record.id} to={rawLink(record.rawRecordId)} className="link">
+												{PROVIDER_LABELS[record.provider]}
+											</Link>
+										))}
 									</TableCell>
 								</TableRow>
 							))}
 						</TableBody>
 					</Table>
 				)}
-			</section>
-
-			<section className="space-y-2">
-				<h2 className="text-lg font-semibold">Activity</h2>
-				<ActivityTimeline events={detail.activity} />
 			</section>
 
 			<ReasonDialog
@@ -377,6 +404,7 @@ function CompanyDetail({ detail }: { detail: Detail }) {
 						method: 'POST',
 						json: { field: overriding, sourceId: choice, reason },
 					})
+					toast({ title: `${FIELD_LABELS[overriding!]} chosen`, description: name })
 					await refresh()
 				}}
 			>
@@ -411,9 +439,13 @@ function CompanyDetail({ detail }: { detail: Detail }) {
 						method: 'POST',
 						json: { sourceId: splitting!.id, reason },
 					})
-					setNotice({
-						text: 'Record split off.',
-						companyId: result.companyId === company.id ? undefined : result.companyId,
+					toast({
+						title: 'Record split off',
+						description: `The ${PROVIDER_LABELS[splitting!.provider]} record is now its own company.`,
+						action:
+							result.companyId === company.id
+								? undefined
+								: { label: `Open company #${result.companyId}`, to: `/companies/${result.companyId}` },
 					})
 					await refresh()
 				}}
@@ -430,10 +462,81 @@ function CompanyDetail({ detail }: { detail: Detail }) {
 						method: 'POST',
 						json: { otherCompanyId: merging!.companyId, reason },
 					})
+					toast({ title: 'Companies merged', description: `${merging!.name} and ${name} are now one company.` })
 					await refresh()
 					if (result.companyId !== company.id) await navigate(`/companies/${result.companyId}`)
 				}}
 			/>
+
+			<ReasonDialog
+				open={undoing !== null}
+				onOpenChange={(open) => !open && setUndoing(null)}
+				title="Undo this merge"
+				description="The provider records that came from each company go back to it, under its old number, with their contacts and chosen values. They will not be merged back automatically."
+				confirmLabel="Undo merge"
+				onConfirm={async (reason) => {
+					const result = await api<{ companyIds: number[] }>(`/api/companies/${company.id}/undo-merge`, {
+						method: 'POST',
+						json: { mergeEventId: undoing!.id, reason },
+					})
+					const other = result.companyIds.find((id) => id !== company.id)
+					toast({
+						title: 'Merge undone',
+						description: `The records are back in companies ${result.companyIds.map((id) => `#${id}`).join(' and ')}.`,
+						action: other ? { label: `Open company #${other}`, to: `/companies/${other}` } : undefined,
+					})
+					await refresh()
+					if (!result.companyIds.includes(company.id)) await navigate(`/companies/${result.companyIds[0]}`)
+				}}
+			/>
 		</div>
+	)
+}
+
+// In the URL (`history`), like the campaign history: Back closes it and a reload keeps it open.
+function CompanyHistory({
+	events,
+	self,
+	undoable,
+	onUndo,
+}: {
+	events: AuditEvent[]
+	self: string
+	undoable: number[]
+	onUndo: (event: AuditEvent) => void
+}) {
+	const [params, update] = useFilterParams()
+	return (
+		<>
+			<Tooltip>
+				<TooltipTrigger asChild>
+					<Button variant="outline" size="icon" aria-label="History" onClick={() => update({ history: '1' })}>
+						<History />
+					</Button>
+				</TooltipTrigger>
+				<TooltipContent>History</TooltipContent>
+			</Tooltip>
+			<Sheet open={params.get('history') === '1'} onOpenChange={(open) => !open && update({ history: '', event: '' })}>
+				<SheetContent className="w-full overflow-y-auto sm:max-w-xl">
+					<SheetHeader>
+						<SheetTitle>History</SheetTitle>
+						<SheetDescription>What happened to this company, newest first.</SheetDescription>
+					</SheetHeader>
+					<div className="px-4 pb-4">
+						<ActivityTimeline
+							events={events}
+							self={self}
+							action={(event) =>
+								undoable.includes(event.id) && (
+									<Button variant="outline" size="sm" onClick={() => onUndo(event)}>
+										Undo merge
+									</Button>
+								)
+							}
+						/>
+					</div>
+				</SheetContent>
+			</Sheet>
+		</>
 	)
 }

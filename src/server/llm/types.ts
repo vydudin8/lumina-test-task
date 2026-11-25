@@ -24,6 +24,8 @@ export type RejectionCode =
 export interface Rejection {
 	code: RejectionCode
 	detail: string
+	// uncited_number only: the made-up numbers as the guard compared them, e.g. "120", "£44945000", "hundreds".
+	values?: string[]
 }
 
 export type LlmTask = 'score_rationale' | 'card_line'

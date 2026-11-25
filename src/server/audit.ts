@@ -7,8 +7,10 @@ export type AuditAction =
 	| 'icp.saved'
 	| 'company.merged'
 	| 'company.unmerged'
+	| 'company.merge_undone'
 	| 'field.overridden'
 	| 'card.line_edited'
+	| 'card.line_written'
 	| 'card.approved'
 	| 'card.rejected'
 	| 'card.blocked_at_send'
@@ -16,10 +18,12 @@ export type AuditAction =
 	| 'card.failed'
 	| 'card.send_unconfirmed'
 	| 'card.send_retried'
+	| 'card.status_reconciled'
 	| 'campaign.created'
 	| 'campaign.send_launched'
 	| 'suppression.added'
 	| 'outcome.logged'
+	| 'campaign.lines_written'
 	| 'llm.output_rejected'
 
 export interface AuditEvent {

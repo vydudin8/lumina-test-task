@@ -1,10 +1,6 @@
+import { NUMBER, NUMBER_WORDS, numberKey } from '#common/numeric-claims.ts'
 import type { EvidenceItem, Rejection } from './types.ts'
 
-// A number with its currency or percent sign: "$44,945,000" must not pass for "£44,945,000".
-const NUMBER = /[£$€]?\d[\d,]*(?:\.\d+)?%?/g
-// Numbers in words are claims too. "one" is left out: it is mostly not a quantity ("one of the largest").
-const NUMBER_WORDS =
-	/\b(two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty|thirty|forty|fifty|sixty|seventy|eighty|ninety|hundreds?|thousands?|millions?|billions?|dozens?)\b/gi
 const CONTACT_DATA: [RegExp, string][] = [
 	[/[^\s@]+@[^\s@]+\.[a-z]{2,}/i, 'an email address'],
 	[/(?:\+\d{1,3}[\s-]?)?(?:\(?\d{2,5}\)?[\s-]){2,}\d{3,}/, 'a phone number'],
@@ -14,10 +10,9 @@ const CONTACT_DATA: [RegExp, string][] = [
 export const contactDataIn = (text: string) =>
 	CONTACT_DATA.filter(([pattern]) => pattern.test(text)).map(([, label]) => label)
 
-const numbersIn = (text: string) =>
-	(text.match(NUMBER) ?? []).map((number) => number.replace(/,/g, '').replace(/\.$/, ''))
+const numbersIn = (text: string) => (text.match(NUMBER) ?? []).map(numberKey)
 const bare = (token: string) => token.replace(/[£$€%]/g, '')
-const wordsIn = (text: string) => (text.match(NUMBER_WORDS) ?? []).map((word) => word.toLowerCase())
+const wordsIn = (text: string) => (text.match(NUMBER_WORDS) ?? []).map(numberKey)
 
 export type GuardResult = { ok: true; text: string; cites: string[] } | { ok: false; rejections: Rejection[] }
 
@@ -60,11 +55,16 @@ export function guardOutput(raw: string, evidence: EvidenceItem[], { maxChars }:
 		]),
 	]
 	if (uncited.length === 1)
-		rejections.push({ code: 'uncited_number', detail: `number '${uncited[0]}' is not in the evidence` })
+		rejections.push({
+			code: 'uncited_number',
+			detail: `number '${uncited[0]}' is not in the evidence`,
+			values: uncited,
+		})
 	if (uncited.length > 1)
 		rejections.push({
 			code: 'uncited_number',
 			detail: `numbers ${uncited.map((n) => `'${n}'`).join(', ')} are not in the evidence`,
+			values: uncited,
 		})
 
 	const contact = contactDataIn(trimmed)

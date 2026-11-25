@@ -3,17 +3,21 @@ import { serveStatic } from '@hono/node-server/serve-static'
 import { createApp, type AppDeps } from './app.ts'
 import { loadConfig } from './config.ts'
 import { createDb } from './db/client.ts'
+import { jobRunnerDeps } from './job-handlers.ts'
+import { startJobRunner } from './jobs.ts'
 import { systemClock } from './lib/clock.ts'
 import { createClaudeLlm } from './llm/claude.ts'
 import { createStubLlm } from './llm/stub.ts'
 import { createLogger } from './log.ts'
-import { startSendWorker } from './pipeline/send/store.ts'
+import { startMailReconciler, startSendWorker } from './pipeline/send/store.ts'
+import { createHub } from './realtime.ts'
 
 const config = loadConfig()
 const log = createLogger({ level: config.LOG_LEVEL })
 const db = createDb(config.DATABASE_URL, (error) =>
 	log.warn({ cause: error.message }, 'database connection lost; reconnecting on the next query'),
 )
+const hub = createHub({ url: config.DATABASE_URL, log: log.child({ job: 'hub' }) })
 const deps: AppDeps = {
 	db,
 	log,
@@ -28,6 +32,7 @@ const deps: AppDeps = {
 		timeoutMs: config.MAIL_TIMEOUT_MS,
 	},
 	webhookSecret: config.MAIL_WEBHOOK_SECRET,
+	hub,
 	llm: config.ANTHROPIC_API_KEY
 		? createClaudeLlm({ apiKey: config.ANTHROPIC_API_KEY, model: config.LLM_MODEL })
 		: createStubLlm(),
@@ -48,8 +53,29 @@ const sendWorker = startSendWorker({
 	mail: deps.mail,
 	retry: {},
 })
+const jobRunner = startJobRunner(jobRunnerDeps(deps))
+const mailReconciler = startMailReconciler(
+	{ db, log: log.child({ job: 'mail-reconciler' }), clock: systemClock, mail: deps.mail, retry: {} },
+	{
+		intervalMs: config.MAIL_RECONCILE_INTERVAL_MS,
+		batch: config.MAIL_RECONCILE_BATCH,
+		staleAfterMs: config.MAIL_RECONCILE_STALE_MS,
+	},
+)
 
+// The database closes last: the card being sent commits, a lines job stops after its batch and is queued again, and
+// a request in progress gets its answer. Keep the platform's stop timeout above that (45 s in docker-compose.yml);
+// a card still waiting on mail retries past it is rolled back by the kill and sent again with the same key.
 process.once('SIGTERM', () => {
+	log.info('shutting down')
 	sendWorker.stop()
-	server.close(() => void db.$client.end())
+	mailReconciler.stop()
+	jobRunner.stop()
+	void hub.close()
+	const closed = new Promise((resolve) => server.close(resolve))
+	// Event streams never finish by themselves: give plain requests a moment, then drop the rest. Browsers reconnect.
+	setTimeout(() => 'closeAllConnections' in server && server.closeAllConnections(), 5000).unref()
+	void Promise.all([closed, sendWorker.done, mailReconciler.done, jobRunner.done])
+		.then(() => db.$client.end())
+		.then(() => log.info('shut down'))
 })

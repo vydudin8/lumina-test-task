@@ -49,6 +49,13 @@ describe('guardOutput', () => {
 		expect(codes(output('About 1,186 staff.', ['e1']))).toEqual(['uncited_number'])
 	})
 
+	it('lists the made-up numbers, so the screen can mark them in the draft', () => {
+		expect(guard(output('Runs 120 sites, hundreds of machines and $44,945,000 of kit.', ['e3']))).toMatchObject({
+			ok: false,
+			rejections: [{ code: 'uncited_number', values: ['120', '$44945000', 'hundreds'] }],
+		})
+	})
+
 	it.each([
 		['twelve', 'Running twelve quarries across three counties.'],
 		['hundreds', 'Hundreds of machines and a dozen depots.'],

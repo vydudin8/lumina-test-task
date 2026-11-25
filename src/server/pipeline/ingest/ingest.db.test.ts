@@ -1,10 +1,12 @@
 import { createFakeWorld } from '#fake-world/app.ts'
-import { and, count, eq } from 'drizzle-orm'
+import { and, count, eq, sql } from 'drizzle-orm'
 import { beforeAll, describe, expect, it } from 'vitest'
-import { ingestionRuns, rawRecords } from '../../db/schema.ts'
+import { ingestionRuns, jobs, rawRecords } from '../../db/schema.ts'
+import { requeueOrphans, runPendingJobs } from '../../jobs.ts'
 import { createLogger } from '../../log.ts'
 import { useTestDb } from '../../test/db.ts'
-import { ingestMissingProviders, runIngestion, type IngestDeps } from './index.ts'
+import { enqueuePull, executeRun, ingestMissingProviders, runIngestion, type IngestDeps } from './index.ts'
+import { findRun, startRun } from './store.ts'
 
 describe('ingestion', () => {
 	const t = useTestDb()
@@ -93,6 +95,53 @@ describe('ingestion', () => {
 		const run = await runIngestion(failing, 'apollo', 'system:test')
 		expect(run.status).toBe('failed')
 		expect(run.errors).toEqual([expect.objectContaining({ problem: expect.stringContaining('503') as string })])
+	})
+
+	it('stores a database failure as its kind, never the query and the values it carried', async () => {
+		// A database behind the code (a migration not applied yet) fails the pull the way it did in the dev env.
+		await t.db.execute(sql`ALTER TABLE companies RENAME COLUMN merged_into TO merged_into_away`)
+		try {
+			const run = await runIngestion(deps, 'apollo', 'system:test')
+			expect(run.status).toBe('failed')
+			expect(run.errors).toEqual([expect.objectContaining({ problem: expect.stringMatching(/^\w+ 42703$/) as string })])
+		} finally {
+			await t.db.execute(sql`ALTER TABLE companies RENAME COLUMN merged_into_away TO merged_into`)
+		}
+	})
+
+	it('keeps the run running, not failed, while the job runner will try a transient failure again', async () => {
+		const failing: IngestDeps = {
+			...deps,
+			fetch: () => Promise.resolve(new Response('down', { status: 503 })),
+			retry: { ...deps.retry, maxAttempts: 1 },
+		}
+		const run = await startRun(t.db, 'apollo', 'system:test', deps.clock(), 'queued')
+		await expect(executeRun(failing, run.id, false)).rejects.toThrow('503')
+		expect(await findRun(t.db, run.id)).toMatchObject({ status: 'running' })
+		await expect(executeRun(failing, run.id, true)).rejects.toThrow('503')
+		expect(await findRun(t.db, run.id)).toMatchObject({ status: 'failed' })
+	})
+
+	it('fails the run with its job, so a pull that dies outside the handler does not keep "Pull now" disabled', async () => {
+		const now = deps.clock()
+		// Interrupted by restarts too many times: the handler never runs again.
+		const crashed = await enqueuePull(t.db, deps.clock, 'apollo', 'usr_rep_tom')
+		await t.db.update(jobs).set({ status: 'running', attempts: 3, startedAt: now }).where(eq(jobs.id, crashed.job.id))
+		await t.db.update(ingestionRuns).set({ status: 'running' }).where(eq(ingestionRuns.id, crashed.run.id))
+		await requeueOrphans(t.db, now)
+		expect(await findRun(t.db, crashed.run.id)).toMatchObject({
+			status: 'failed',
+			finishedAt: now,
+			errors: [{ kind: 'request', externalId: null, problem: 'Interrupted by a restart too many times' }],
+		})
+
+		// A handler that fails before the run's own catch (here: no handler at all) leaves it queued.
+		const orphan = await enqueuePull(t.db, deps.clock, 'clay', 'usr_rep_tom')
+		await runPendingJobs({ db: t.db, log: deps.log, clock: deps.clock, retry: deps.retry, handlers: {} })
+		expect(await findRun(t.db, orphan.run.id)).toMatchObject({ status: 'failed', finishedAt: now })
+
+		// Nothing is active any more, so the next click starts a new pull.
+		expect((await enqueuePull(t.db, deps.clock, 'apollo', 'usr_rep_tom')).created).toBe(true)
 	})
 
 	it('initial ingestion only pulls providers that never had a successful run', async () => {

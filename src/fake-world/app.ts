@@ -16,7 +16,8 @@ export function createFakeWorld(options: FakeWorldOptions = {}) {
 		rng: Math.random,
 		now: () => new Date(),
 		timeoutDelayMs: 5000,
-		returnedRate: 0.1,
+		webhookDelayMs: 0,
+		returnedRate: 0.2,
 		controls: false,
 		...options,
 	})

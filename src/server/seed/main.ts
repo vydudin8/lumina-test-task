@@ -3,6 +3,7 @@ import { databaseName, ensureDatabase, runMigrations, withAdminClient } from '..
 import { systemClock } from '../lib/clock.ts'
 import { createLogger } from '../log.ts'
 import { ingestMissingProviders } from '../pipeline/ingest/index.ts'
+import { ensureProfiles } from '../pipeline/resolve/store.ts'
 import { seedHistory } from './history.ts'
 import { seed } from './seed.ts'
 
@@ -29,6 +30,8 @@ await ingestMissingProviders(
 	},
 	'system:seed',
 )
+// A database from before stored profiles has its records already pulled, so build the profiles from them once.
+await ensureProfiles(db, new Date())
 await seedHistory(db, new Date())
 await db.$client.end()
 console.log('seed complete')

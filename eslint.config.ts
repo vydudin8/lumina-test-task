@@ -18,6 +18,8 @@ export default tseslint.config(
 		rules: {
 			'@typescript-eslint/no-floating-promises': 'error',
 			'@typescript-eslint/require-await': 'error',
+			// `const { secret, ...rest } = row` is how a field is dropped from a response.
+			'@typescript-eslint/no-unused-vars': ['error', { ignoreRestSiblings: true }],
 		},
 	},
 	{

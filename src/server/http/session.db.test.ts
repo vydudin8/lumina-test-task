@@ -33,6 +33,8 @@ describe('users and session', () => {
 		const setCookie = response.headers.get('set-cookie') ?? ''
 		expect(setCookie).toMatch(/HttpOnly/)
 		expect(setCookie).toMatch(/SameSite=Lax/)
+		// Plain http (local dev, docker compose): a Secure cookie would never be sent back.
+		expect(setCookie).not.toMatch(/Secure/)
 
 		const session = await call(app, '/api/session', { cookie: cookieFrom(response) })
 		await expect(session.json()).resolves.toMatchObject({ user: { id: 'usr_lead_maya', role: 'lead' } })
@@ -62,6 +64,62 @@ describe('users and session', () => {
 			body: { userId: 'usr_lead_maya' },
 			headers: { Origin: 'https://evil.example' },
 		})
+		expect(response.status).toBe(403)
+	})
+
+	// Behind a TLS-terminating proxy (Railway, Render) the app sees http:// while the browser sends an https Origin.
+	it('accepts a write from its own host behind an HTTPS proxy', async () => {
+		const response = await call(app, '/api/session', {
+			method: 'PUT',
+			body: { userId: 'usr_lead_maya' },
+			headers: { Origin: 'https://localhost' },
+		})
+		expect(response.status).toBe(200)
+	})
+
+	it('marks the cookie Secure when the proxy says the browser came over HTTPS', async () => {
+		const response = await call(app, '/api/session', {
+			method: 'PUT',
+			body: { userId: 'usr_lead_maya' },
+			headers: { Origin: 'https://localhost', 'X-Forwarded-Proto': 'https' },
+		})
+		expect(response.headers.get('set-cookie')).toMatch(/; Secure/)
+	})
+
+	it.each([
+		['a sibling subdomain', 'https://evil.localhost'],
+		['another port on the same host', 'http://localhost:4000'],
+		['a host that only starts like ours', 'https://localhost.evil.example'],
+		['an opaque origin', 'null'],
+		['a non-http scheme', 'file://localhost'],
+	])('blocks a write from %s', async (_, origin) => {
+		const response = await call(app, '/api/session', {
+			method: 'PUT',
+			body: { userId: 'usr_lead_maya' },
+			headers: { Origin: origin },
+		})
+		expect(response.status).toBe(403)
+	})
+
+	it('blocks a cross-site text/plain form post, which needs no preflight', async () => {
+		const response = await app.fetch(
+			new Request('http://localhost/api/session', {
+				method: 'PUT',
+				headers: { Origin: 'https://evil.example', 'Content-Type': 'text/plain' },
+				body: JSON.stringify({ userId: 'usr_lead_maya' }),
+			}),
+		)
+		expect(response.status).toBe(403)
+	})
+
+	it('blocks a write without an Origin header', async () => {
+		const response = await app.fetch(
+			new Request('http://localhost/api/session', {
+				method: 'PUT',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({ userId: 'usr_lead_maya' }),
+			}),
+		)
 		expect(response.status).toBe(403)
 	})
 

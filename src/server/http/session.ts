@@ -62,7 +62,11 @@ export function sessionRoutes(secret: string) {
 				httpOnly: true,
 				sameSite: 'Lax',
 				path: '/',
-				secure: new URL(context.req.url).protocol === 'https:',
+				// Behind a TLS-terminating proxy (Railway, Render) the app sees http:// and the proxy names the browser's
+				// scheme. A client forging the header only makes its own cookie stricter.
+				secure:
+					new URL(context.req.url).protocol === 'https:' ||
+					context.req.header('x-forwarded-proto')?.split(',')[0]?.trim() === 'https',
 				maxAge: 60 * 60 * 24 * 7,
 			})
 			return context.json({ user })

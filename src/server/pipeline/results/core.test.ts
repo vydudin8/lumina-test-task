@@ -5,7 +5,7 @@ const day = (n: number) => new Date(Date.UTC(2026, 6, 1 + n, 12))
 const card = (overrides: Partial<AttributionCard>): AttributionCard => ({
 	id: 1,
 	variant: 'A',
-	domain: 'ashdown.co.uk',
+	domains: ['ashdown.co.uk'],
 	personKey: 'laura@ashdown.co.uk',
 	status: 'delivered',
 	submittedAt: day(-2),
@@ -31,6 +31,11 @@ describe('attribute', () => {
 		).toMatchObject({ cardId: 1 })
 	})
 
+	it('credits a visit from any domain of the company, as after merging two offices', () => {
+		const cards = [card({ domains: ['ashdown.co.uk', 'ashdown.ie'] })]
+		expect(attribute(cards, [event({ domain: 'ashdown.ie' })])[0]).toMatchObject({ cardId: 1 })
+	})
+
 	it('does not credit an event on day 35, before the card was mailed, or for another company', () => {
 		const cards = [card({})]
 		expect(attribute(cards, [event({ occurredAt: day(35) })])[0]).toMatchObject({ cardId: null, nearMiss: 1 })
@@ -52,8 +57,8 @@ describe('summarise', () => {
 	it('counts per variant with decimal rates per card sent', () => {
 		const cards = [
 			card({ id: 1 }),
-			card({ id: 2, variant: 'B', domain: 'b.co.uk', personKey: 'b@b.co.uk', status: 'returned' }),
-			card({ id: 3, variant: 'A', domain: 'c.co.uk', personKey: 'c@c.co.uk' }),
+			card({ id: 2, variant: 'B', domains: ['b.co.uk'], personKey: 'b@b.co.uk', status: 'returned' }),
+			card({ id: 3, variant: 'A', domains: ['c.co.uk'], personKey: 'c@c.co.uk' }),
 		]
 		const events = [
 			event({ id: 1 }),
@@ -73,5 +78,22 @@ describe('summarise', () => {
 		})
 		expect(summary.byVariant.B).toMatchObject({ sent: 1, delivered: 0, returned: 1, replies: 0, replyRate: '0' })
 		expect(summary.tooSmallToConclude).toBe(true)
+	})
+
+	it('counts a card once per kind however many events it has, so a rate never passes 100%', () => {
+		const cards = [card({ id: 1 }), card({ id: 2, domains: ['b.co.uk'], personKey: 'b@b.co.uk' })]
+		const events = [
+			event({ id: 1, kind: 'reply', personKey: 'laura@ashdown.co.uk' }),
+			event({ id: 2, kind: 'reply', personKey: 'laura@ashdown.co.uk', occurredAt: day(6) }),
+			event({ id: 3 }),
+			event({ id: 4, occurredAt: day(7) }),
+			event({ id: 5, occurredAt: day(8) }),
+		]
+		expect(summarise(cards, attribute(cards, events), events).byVariant.A).toMatchObject({
+			replies: 1,
+			visits: 1,
+			replyRate: '50',
+			visitRate: '50',
+		})
 	})
 })

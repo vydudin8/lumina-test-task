@@ -9,6 +9,8 @@ const world = createFakeWorld({
 	appUrl: process.env.APP_URL ?? 'http://localhost:3000',
 	webhookSecret: process.env.MAIL_WEBHOOK_SECRET ?? 'dev-webhook-secret',
 	controls: process.env.FAKE_WORLD_CONTROLS === '1',
+	// A status every 5 s by default, so a demo can watch a card move; e2e sets 0.
+	webhookDelayMs: Number(process.env.MAIL_WEBHOOK_DELAY_MS ?? 5000),
 })
 
 serve({ fetch: world.app.fetch, port }, () =>

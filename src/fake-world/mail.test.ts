@@ -106,6 +106,49 @@ describe('fake print-and-mail API', () => {
 		}
 	})
 
+	it('shows the events it has issued at GET /v1/postcards/:id, even when no webhook got through', async () => {
+		const { submit, world, failNextDeliveries } = setup({ returnedRate: 0 })
+		failNextDeliveries(1000)
+		const { id } = (await (await submit('k1', postcard(1))).json()) as { id: string }
+		await world.idle()
+
+		const found = await world.app.fetch(new Request(`http://fake/v1/postcards/${id}`))
+		expect(found.status).toBe(200)
+		const body = (await found.json()) as { id: string; status: string; events: { event_id: string; status: string }[] }
+		expect(body).toMatchObject({ id, status: 'delivered' })
+		expect(body.events.map((event) => [event.event_id, event.status])).toEqual(
+			['submitted', 'printed', 'mailed', 'delivered'].map((status) => [`evt_${id}_${status}`, status]),
+		)
+		expect((await world.app.fetch(new Request('http://fake/v1/postcards/psc_nope'))).status).toBe(404)
+	})
+
+	it('reports only the events reached so far while webhooks are paced', async () => {
+		const { submit, world } = setup({ webhookDelayMs: 5000, sleep: () => new Promise(() => undefined) })
+		const { id } = (await (await submit('k1', postcard(1))).json()) as { id: string }
+		const body = (await (await world.app.fetch(new Request(`http://fake/v1/postcards/${id}`))).json()) as {
+			status: string
+			events: unknown[]
+		}
+		expect(body).toMatchObject({ status: 'submitted', events: [expect.objectContaining({ status: 'submitted' })] })
+	})
+
+	it('paces status webhooks: the first goes out at once, then one per delay', async () => {
+		const pauses: string[] = []
+		const { submit, world, delivered } = setup({
+			returnedRate: 0,
+			webhookDelayMs: 5000,
+			sleep: (ms) => {
+				pauses.push(`${ms} ms after ${delivered.length} sent`)
+				return Promise.resolve()
+			},
+		})
+		await submit('k1', postcard(1))
+		await world.idle()
+
+		expect(delivered.map((event) => event.body.status)).toEqual(['submitted', 'printed', 'mailed', 'delivered'])
+		expect(pauses).toEqual(['5000 ms after 1 sent', '5000 ms after 2 sent', '5000 ms after 3 sent'])
+	})
+
 	it('can shuffle and duplicate events, like real providers', async () => {
 		const { submit, world, delivered } = setup({ rng: () => 0.01 })
 		await world.app.fetch(

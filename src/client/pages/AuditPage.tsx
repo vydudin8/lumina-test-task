@@ -1,45 +1,53 @@
-import { api } from '#client/api.ts'
+import { EventSheet, EventSummary } from '#client/components/ActivityTimeline.tsx'
+import { FilterBar, FilterDateRange, FilterSelect } from '#client/components/Filters.tsx'
+import { Pager } from '#client/components/Pager.tsx'
 import { QueryState } from '#client/components/QueryState.tsx'
 import { Button } from '#client/components/ui/button.tsx'
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '#client/components/ui/select.tsx'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '#client/components/ui/table.tsx'
-import { formatDateTime } from '#client/format.ts'
-import { useUserName } from '#client/session.ts'
-import { useQuery } from '@tanstack/react-query'
-import { Link, useSearchParams } from 'react-router'
-import type { AuditEvent } from '../components/ActivityTimeline.tsx'
+import { actionLabel, entityLabel, type AuditEvent } from '#client/domain/audit.ts'
+import { roleLabel, useUserName } from '#client/domain/session.ts'
+import { api } from '#client/lib/api.ts'
+import { formatDateTime, formatInteger } from '#client/lib/format.ts'
+import { dayStart, useCursorPages, useFilterParams } from '#client/lib/lists.ts'
+import { keepPreviousData, useQuery } from '@tanstack/react-query'
+import { X } from 'lucide-react'
+import { Link } from 'react-router'
 
 interface AuditResponse {
 	total: number
-	offset: number
 	pageSize: number
+	nextCursor: string | null
 	events: (AuditEvent & { link: string | null })[]
 	filters: { actors: string[]; actions: string[]; entityTypes: string[] }
 }
 
-const compact = (value: unknown) => (value === null || value === undefined ? null : JSON.stringify(value))
+const FILTERS = ['actor', 'action', 'entityType', 'entityId'] as const
 
 export function AuditPage() {
-	const [params, setParams] = useSearchParams()
+	const [params, update] = useFilterParams()
 	const userName = useUserName()
+	// Only the filters go to the API and decide the page; `event` is the side sheet.
+	const filters = new URLSearchParams()
+	for (const key of FILTERS) if (params.get(key)) filters.set(key, params.get(key)!)
+	// The URL keeps the picked days; the API gets this browser's midnights, the day after `to` as the exclusive end.
+	const range = { from: params.get('from') ?? '', to: params.get('to') ?? '' }
+	const from = dayStart(range.from)
+	const to = dayStart(range.to, 1)
+	if (from) filters.set('from', from)
+	if (to) filters.set('to', to)
+	const pages = useCursorPages('audit', filters.toString())
+	const search = new URLSearchParams(filters)
+	if (pages.cursor) search.set('cursor', pages.cursor)
 	const query = useQuery({
-		queryKey: ['audit', params.toString()],
-		queryFn: () => api<AuditResponse>(`/api/audit?${params.toString()}`),
+		queryKey: ['audit', search.toString()],
+		queryFn: () => api<AuditResponse>(`/api/audit?${search.toString()}`),
+		placeholderData: keepPreviousData,
 	})
-	const set = (key: string, value: string) =>
-		setParams((current) => {
-			const next = new URLSearchParams(current)
-			if (value === 'all') next.delete(key)
-			else next.set(key, value)
-			next.delete('offset')
-			return next
-		})
-	const offset = Number(params.get('offset') ?? 0)
 
 	return (
 		<div className="space-y-6">
 			<div className="space-y-1">
-				<h1 className="text-2xl font-semibold">Audit log</h1>
+				<h1 className="text-2xl font-semibold tracking-tight">Audit log</h1>
 				<p className="max-w-3xl text-muted-foreground">
 					Every decision and every automatic action, with who made it, why, and what happened. Entries are written in
 					the same database transaction as the change itself and can never be edited or deleted.
@@ -48,36 +56,42 @@ export function AuditPage() {
 			<QueryState query={query}>
 				{(data) => (
 					<div className="space-y-4">
-						<div className="flex flex-wrap items-center gap-2">
-							{(
-								[
-									['actor', 'Who', data.filters.actors.map((actor) => [actor, userName(actor)] as const)],
-									['action', 'Action', data.filters.actions.map((action) => [action, action] as const)],
-									['entityType', 'About', data.filters.entityTypes.map((type) => [type, type] as const)],
-								] as const
-							).map(([key, label, options]) => (
-								<Select key={key} value={params.get(key) ?? 'all'} onValueChange={(value) => set(key, value)}>
-									<SelectTrigger aria-label={label} className="w-56">
-										<SelectValue />
-									</SelectTrigger>
-									<SelectContent>
-										<SelectItem value="all">{label}: all</SelectItem>
-										{options.map(([value, text]) => (
-											<SelectItem key={value} value={value}>
-												{text}
-											</SelectItem>
-										))}
-									</SelectContent>
-								</Select>
-							))}
+						<FilterBar
+							active={[...FILTERS, 'from', 'to'].some((key) => params.has(key))}
+							onClear={() => update({ actor: '', action: '', entityType: '', entityId: '', from: '', to: '' })}
+							count={`${formatInteger(data.total)} ${data.total === 1 ? 'entry' : 'entries'}`}
+						>
+							<FilterSelect
+								label="Who"
+								all="Anyone"
+								value={params.get('actor') ?? ''}
+								onChange={(value) => update({ actor: value })}
+								options={data.filters.actors.map((actor) => [actor, userName(actor)])}
+							/>
+							<FilterSelect
+								label="Action"
+								all="All actions"
+								value={params.get('action') ?? ''}
+								onChange={(value) => update({ action: value })}
+								options={data.filters.actions.map((action) => [action, actionLabel(action)])}
+							/>
+							<FilterSelect
+								label="About"
+								all="About anything"
+								value={params.get('entityType') ?? ''}
+								onChange={(value) => update({ entityType: value, entityId: '' })}
+								options={data.filters.entityTypes.map((type) => [type, entityLabel(type)])}
+							/>
+							<FilterDateRange label="When" value={range} onChange={(next) => update({ ...next })} />
 							{params.get('entityId') && (
-								<Button size="sm" variant="outline" onClick={() => set('entityId', 'all')}>
-									Only {params.get('entityType')} #{params.get('entityId')} ×
+								<Button size="sm" variant="outline" onClick={() => update({ entityId: '' })}>
+									Only {entityLabel(params.get('entityType') ?? '')} #{params.get('entityId')}
+									<X />
 								</Button>
 							)}
-							<span className="text-sm text-muted-foreground">{data.total} entries</span>
-						</div>
-						<Table>
+						</FilterBar>
+						{/* Every column but the date is centred, so short values do not huddle at the left of wide columns. */}
+						<Table className="[&_td:not(:first-child)]:text-center [&_th:not(:first-child)]:text-center">
 							<TableHeader>
 								<TableRow>
 									<TableHead>When</TableHead>
@@ -90,20 +104,22 @@ export function AuditPage() {
 							</TableHeader>
 							<TableBody>
 								{data.events.map((event) => (
-									<TableRow key={event.id} className="align-top">
+									<TableRow key={event.id}>
 										<TableCell className="whitespace-nowrap">{formatDateTime(event.at)}</TableCell>
 										<TableCell>
 											{userName(event.actorId)}
-											<div className="text-xs text-muted-foreground">{event.actorRole}</div>
+											<div className="text-xs text-muted-foreground">{roleLabel(event.actorRole)}</div>
 										</TableCell>
-										<TableCell className="font-mono text-xs">{event.action}</TableCell>
+										<TableCell title={event.action} className="font-medium">
+											{actionLabel(event.action)}
+										</TableCell>
 										<TableCell>
 											{event.link ? (
-												<Link to={event.link} className="underline underline-offset-2">
-													{event.entityType} #{event.entityId}
+												<Link to={event.link} className="link">
+													{entityLabel(event.entityType)} #{event.entityId}
 												</Link>
 											) : (
-												`${event.entityType} #${event.entityId}`
+												`${entityLabel(event.entityType)} #${event.entityId}`
 											)}
 										</TableCell>
 										<TableCell className="max-w-56 text-sm whitespace-normal">
@@ -111,47 +127,23 @@ export function AuditPage() {
 											{event.decision && event.reason && ': '}
 											{event.reason}
 										</TableCell>
-										<TableCell className="max-w-96 font-mono text-xs break-all whitespace-normal text-muted-foreground">
-											{[
-												['before', event.before],
-												['after', event.after],
-												['result', event.result],
-											]
-												.filter(([, value]) => compact(value))
-												.map(([label, value]) => (
-													<div key={label as string}>
-														{label as string}: {compact(value)}
-													</div>
-												))}
-											{event.requestId && <div>request {event.requestId}</div>}
+										<TableCell className="max-w-96 text-sm whitespace-normal">
+											<EventSummary event={event} />
 										</TableCell>
 									</TableRow>
 								))}
 							</TableBody>
 						</Table>
-						<div className="flex items-center gap-2 text-sm">
-							<Button
-								size="sm"
-								variant="outline"
-								disabled={offset === 0}
-								onClick={() => set('offset', String(Math.max(0, offset - data.pageSize)) || 'all')}
-							>
-								Newer
-							</Button>
-							<Button
-								size="sm"
-								variant="outline"
-								disabled={offset + data.pageSize >= data.total}
-								onClick={() =>
-									setParams(
-										(current) =>
-											new URLSearchParams({ ...Object.fromEntries(current), offset: String(offset + data.pageSize) }),
-									)
-								}
-							>
-								Older
-							</Button>
-						</div>
+						<Pager
+							page={pages.page}
+							pageSize={data.pageSize}
+							shown={data.events.length}
+							total={data.total}
+							onFirst={pages.page > 0 ? pages.first : null}
+							onPrevious={pages.page > 0 ? pages.previous : null}
+							onNext={data.nextCursor ? () => pages.next(data.nextCursor!) : null}
+						/>
+						<EventSheet events={data.events} />
 					</div>
 				)}
 			</QueryState>

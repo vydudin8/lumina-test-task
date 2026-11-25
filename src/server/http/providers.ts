@@ -1,22 +1,49 @@
 import { PROVIDERS } from '#common/settings.ts'
-import { and, count, countDistinct, desc, eq, ilike, or, sql, type SQL } from 'drizzle-orm'
+import {
+	and,
+	count,
+	countDistinct,
+	desc,
+	eq,
+	getTableColumns,
+	ilike,
+	inArray,
+	ne,
+	notInArray,
+	or,
+	sql,
+	type SQL,
+} from 'drizzle-orm'
 import { Hono } from 'hono'
 import { z } from 'zod'
 import type { AppDeps } from '../app.ts'
-import { ingestionRuns, rawRecords } from '../db/schema.ts'
-import { runIngestion } from '../pipeline/ingest/index.ts'
+import { ingestionRunRecords, ingestionRuns, rawRecords } from '../db/schema.ts'
+import { enqueuePull } from '../pipeline/ingest/index.ts'
+import { afterKey, cursorParam, decodeCursor, timestampKey, toPage } from './keyset.ts'
 import { invalidRequest, readQuery } from './read-body.ts'
 import { requireUser, type AppEnv } from './session.ts'
 
 const providerSchema = z.enum(PROVIDERS)
-const rawRecordsQuery = z.object({
-	provider: providerSchema.optional(),
-	kind: z.enum(['company', 'contact']).optional(),
-	runId: z.coerce.number().int().positive().optional(),
-	q: z.string().trim().max(100).optional(),
-	offset: z.coerce.number().int().min(0).default(0),
-})
-const PAGE_SIZE = 50
+const ACTIVE = ['queued', 'running']
+const rawRecordsQuery = z
+	.object({
+		provider: providerSchema.optional(),
+		kind: z.enum(['company', 'contact']).optional(),
+		// Records the run received; `outcome` narrows them to the ones it added or the ones it saw again unchanged.
+		runId: z.coerce.number().int().positive().optional(),
+		outcome: z.enum(['new', 'unchanged']).optional(),
+		q: z.string().trim().max(100).optional(),
+		cursor: cursorParam,
+	})
+	.refine((query) => !query.outcome || query.runId)
+const recordsKey = z.tuple([z.string(), z.string(), z.string(), z.number().int()])
+const PAGE_SIZE = 20
+
+const runsQuery = z.object({ provider: providerSchema.optional(), cursor: cursorParam })
+const runsKey = z.tuple([timestampKey, z.number().int()])
+const RUNS_PAGE_SIZE = 15
+// Lists leave out the rejected payloads; one run's page loads them.
+const { errors, ...runListColumns } = getTableColumns(ingestionRuns)
 
 const recordLabel = sql<string>`coalesce(
 	${rawRecords.payload}->>'name',
@@ -30,10 +57,14 @@ export function providerRoutes(deps: AppDeps) {
 	return new Hono<AppEnv>()
 		.get('/providers', requireUser, async (context) => {
 			const { db } = deps
-			const lastRuns = await db
-				.selectDistinctOn([ingestionRuns.provider])
-				.from(ingestionRuns)
-				.orderBy(ingestionRuns.provider, desc(ingestionRuns.startedAt), desc(ingestionRuns.id))
+			// The panel's numbers are the last pull that ended; one still waiting or running is reported next to it.
+			const latest = (active: boolean) =>
+				db
+					.selectDistinctOn([ingestionRuns.provider])
+					.from(ingestionRuns)
+					.where(active ? inArray(ingestionRuns.status, ACTIVE) : notInArray(ingestionRuns.status, ACTIVE))
+					.orderBy(ingestionRuns.provider, desc(ingestionRuns.startedAt), desc(ingestionRuns.id))
+			const [lastRuns, activeRuns] = await Promise.all([latest(false), latest(true)])
 			const records = await db
 				.select({ provider: rawRecords.provider, kind: rawRecords.kind, n: countDistinct(rawRecords.externalId) })
 				.from(rawRecords)
@@ -54,6 +85,7 @@ export function providerRoutes(deps: AppDeps) {
 				return {
 					provider,
 					lastRun: lastRuns.find((run) => run.provider === provider) ?? null,
+					activeRun: activeRuns.find((run) => run.provider === provider) ?? null,
 					records: { company: recordCount('company'), contact: recordCount('contact') },
 					runs: total?.runs ?? 0,
 					creditsTotal: total?.credits ?? '0',
@@ -64,39 +96,77 @@ export function providerRoutes(deps: AppDeps) {
 		.post('/providers/:provider/pull', requireUser, async (context) => {
 			const provider = providerSchema.safeParse(context.req.param('provider'))
 			if (!provider.success) return context.json({ error: 'Unknown provider' }, 404)
-			const run = await runIngestion({ ...deps, log: context.var.log }, provider.data, context.var.user!.id)
-			return context.json({ run })
+			// The job runner does the pull; the Providers page follows the run row, which says queued, then running.
+			const { job, run, created } = await enqueuePull(deps.db, deps.clock, provider.data, context.var.user!.id)
+			return context.json({ run, jobId: job.id, created }, 202)
 		})
 		.get('/ingestion-runs', requireUser, async (context) => {
-			const provider = providerSchema.optional().safeParse(context.req.query('provider'))
-			if (!provider.success) return invalidRequest(context)
-			const runs = await deps.db
-				.select()
+			const query = readQuery(context, runsQuery)
+			if (!query) return invalidRequest(context)
+			const filter = query.provider ? eq(ingestionRuns.provider, query.provider) : undefined
+			const key = query.cursor ? decodeCursor(runsKey, query.cursor) : null
+			if (query.cursor && !key) return invalidRequest(context)
+
+			const [{ total }] = (await deps.db.select({ total: count() }).from(ingestionRuns).where(filter)) as [
+				{ total: number },
+			]
+			const rows = await deps.db
+				.select({
+					...runListColumns,
+					errorCount: sql<number>`jsonb_array_length(${errors})`,
+					sortKey: sql<string>`${ingestionRuns.startedAt}::text`,
+				})
 				.from(ingestionRuns)
-				.where(provider.data ? eq(ingestionRuns.provider, provider.data) : undefined)
+				.where(and(filter, key ? afterKey([ingestionRuns.startedAt, ingestionRuns.id], key, 'desc') : undefined))
 				.orderBy(desc(ingestionRuns.startedAt), desc(ingestionRuns.id))
-				.limit(50)
-			return context.json({ runs })
+				.limit(RUNS_PAGE_SIZE + 1)
+			const page = toPage(rows, RUNS_PAGE_SIZE, (run) => [run.sortKey, run.id])
+			return context.json({
+				total,
+				pageSize: RUNS_PAGE_SIZE,
+				nextCursor: page.nextCursor,
+				runs: page.items.map(({ sortKey, ...run }) => run),
+			})
+		})
+		.get('/ingestion-runs/:id', requireUser, async (context) => {
+			const id = z.coerce.number().int().positive().safeParse(context.req.param('id'))
+			if (!id.success) return invalidRequest(context)
+			const [run] = await deps.db.select().from(ingestionRuns).where(eq(ingestionRuns.id, id.data))
+			if (!run) return context.json({ error: 'Run not found' }, 404)
+			return context.json({ run })
 		})
 		.get('/raw-records', requireUser, async (context) => {
 			const query = readQuery(context, rawRecordsQuery)
 			if (!query) return invalidRequest(context)
+			const key = query.cursor ? decodeCursor(recordsKey, query.cursor) : null
+			if (query.cursor && !key) return invalidRequest(context)
 
 			const filters: (SQL | undefined)[] = [
 				query.provider ? eq(rawRecords.provider, query.provider) : undefined,
 				query.kind ? eq(rawRecords.kind, query.kind) : undefined,
-				query.runId ? eq(rawRecords.runId, query.runId) : undefined,
+				query.runId
+					? inArray(
+							rawRecords.id,
+							deps.db
+								.select({ id: ingestionRunRecords.rawRecordId })
+								.from(ingestionRunRecords)
+								.where(eq(ingestionRunRecords.runId, query.runId)),
+						)
+					: undefined,
+				query.runId && query.outcome === 'new' ? eq(rawRecords.runId, query.runId) : undefined,
+				query.runId && query.outcome === 'unchanged' ? ne(rawRecords.runId, query.runId) : undefined,
 			]
 			if (query.q) {
 				const pattern = `%${query.q.replace(/[\\%_]/g, (char) => `\\${char}`)}%`
 				filters.push(or(ilike(rawRecords.externalId, pattern), ilike(sql`${rawRecords.payload}::text`, pattern)))
 			}
 			const where = and(...filters)
+			const sortKey = [rawRecords.provider, rawRecords.kind, recordLabel, rawRecords.id]
 
 			const [{ total }] = (await deps.db.select({ total: count() }).from(rawRecords).where(where)) as [
 				{ total: number },
 			]
-			const records = await deps.db
+			const rows = await deps.db
 				.select({
 					id: rawRecords.id,
 					provider: rawRecords.provider,
@@ -108,11 +178,11 @@ export function providerRoutes(deps: AppDeps) {
 					lastSeenAt: rawRecords.lastSeenAt,
 				})
 				.from(rawRecords)
-				.where(where)
-				.orderBy(rawRecords.provider, rawRecords.kind, recordLabel)
-				.limit(PAGE_SIZE)
-				.offset(query.offset)
-			return context.json({ total, offset: query.offset, pageSize: PAGE_SIZE, records })
+				.where(and(where, key ? afterKey(sortKey, key, 'asc') : undefined))
+				.orderBy(...sortKey)
+				.limit(PAGE_SIZE + 1)
+			const page = toPage(rows, PAGE_SIZE, (row) => [row.provider, row.kind, row.label, row.id])
+			return context.json({ total, pageSize: PAGE_SIZE, nextCursor: page.nextCursor, records: page.items })
 		})
 		.get('/raw-records/:id', requireUser, async (context) => {
 			const id = z.coerce.number().int().positive().safeParse(context.req.param('id'))

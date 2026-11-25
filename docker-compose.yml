@@ -41,12 +41,16 @@ services:
   app:
     build: { context: ., target: runtime }
     init: true
+    # Room for a shutdown to finish the card being sent and the current batch of lines (see src/server/main.ts).
+    stop_grace_period: 45s
     environment:
       DATABASE_URL: postgres://lumina:lumina@db:5432/lumina
       # Demo-only secret: users are picked without passwords anyway (see README).
       SESSION_SECRET: compose-demo-secret-0123456789abcdef
       FAKE_WORLD_URL: http://fake-world:4000
       MAIL_WEBHOOK_SECRET: compose-demo-webhook-secret
+      # Taken from the shell or .env when set, left unset otherwise (then the stub writes the lines).
+      ANTHROPIC_API_KEY:
     ports:
       - '3000:3000'
     depends_on:

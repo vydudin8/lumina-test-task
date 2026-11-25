@@ -1,8 +1,9 @@
 import { asc, eq, inArray, sql } from 'drizzle-orm'
 import type { Db } from '../db/client.ts'
 import { campaigns, cards, contacts, icpVersions, outcomeEvents, sourceCompanies, templates } from '../db/schema.ts'
-import { loadMaster } from '../pipeline/resolve/store.ts'
-import { icpVersion, scoreCompanies } from '../pipeline/score/store.ts'
+import { profileFields } from '../pipeline/resolve/store.ts'
+import { scoreCompany } from '../pipeline/score/core.ts'
+import { factsOf, icpVersion } from '../pipeline/score/store.ts'
 import { personKey } from '../policy/person-key.ts'
 import { readFixture, type History, type HistoryCard } from './fixtures.ts'
 import { SEED_USERS } from './users.ts'
@@ -19,17 +20,7 @@ export async function seedHistory(db: Db, now: Date) {
 		await tx.execute(sql`SELECT pg_advisory_xact_lock(hashtext('seed-history'))`)
 		const [firstIcp] = await tx.select().from(icpVersions).orderBy(asc(icpVersions.id)).limit(1)
 		const icp = await icpVersion(tx, firstIcp!.id)
-		const [templateA, templateB] = await tx.select().from(templates).orderBy(asc(templates.variant))
-		const master = (await loadMaster(tx, now)).companies
-		const scored = scoreCompanies(master, icp)
-		const addressOf = (companyId: number) =>
-			(master.find((company) => company.id === companyId)?.fields.address.value ?? null) as Record<
-				string,
-				string | null
-			> | null
-		const scoreOf = (companyId: number) =>
-			scored.ranked.find((row) => row.company.id === companyId)?.score ??
-			scored.outOfProfile.find((row) => row.company.id === companyId)?.score
+		const [templateA, templateB] = await tx.select().from(templates).orderBy(asc(templates.id)).limit(2)
 
 		const definitions: { key: string; name: string; daysAgo: number; cards: HistoryCard[] }[] = [
 			{ key: 'seed:historical', ...history.historicalCampaign },
@@ -52,7 +43,6 @@ export async function seedHistory(db: Db, now: Date) {
 					topN: definition.cards.length,
 					templateAId: templateA!.id,
 					templateBId: templateB!.id,
-					status: 'sent',
 					createdBy: lead.id,
 					createdAt: new Date(submittedAt.getTime() - 2 * DAY_MS),
 					launchedBy: lead.id,
@@ -70,6 +60,17 @@ export async function seedHistory(db: Db, now: Date) {
 				.innerJoin(sourceCompanies, eq(contacts.sourceCompanyId, sourceCompanies.id))
 				.where(inArray(contacts.personKey, keys))
 				.orderBy(asc(contacts.id))
+			const fields = await profileFields(
+				tx,
+				people.map((row) => row.companyId!),
+				now,
+			)
+			const addressOf = (companyId: number) =>
+				(fields.get(companyId)?.address.value ?? null) as Record<string, string | null> | null
+			const scoreOf = (companyId: number) => {
+				const company = fields.get(companyId)
+				return company && scoreCompany(icp.rules, factsOf({ fields: company }))
+			}
 
 			await tx
 				.insert(cards)
@@ -82,6 +83,7 @@ export async function seedHistory(db: Db, now: Date) {
 						return {
 							campaignId: campaign.id,
 							companyId: person.companyId!,
+							sourceCompanyId: person.contact.sourceCompanyId,
 							contactId: person.contact.id,
 							personKey: person.contact.personKey,
 							rank: index + 1,

@@ -1,8 +1,9 @@
 import { icpRulesSchema } from '#common/icp.ts'
-import { and, eq } from 'drizzle-orm'
+import { and, eq, sql } from 'drizzle-orm'
 import { beforeAll, describe, expect, it } from 'vitest'
 import type { Manifest } from '../../../../scripts/generate-fixtures.ts'
-import { auditEvents, scoreRationales, sourceCompanies } from '../../db/schema.ts'
+import { auditEvents, companyScores, scoreRationales, scoredIcpVersions, sourceCompanies } from '../../db/schema.ts'
+import { guardOutput } from '../../llm/guard.ts'
 import { createStubLlm } from '../../llm/stub.ts'
 import type { Llm } from '../../llm/types.ts'
 import { createLogger } from '../../log.ts'
@@ -11,7 +12,9 @@ import { seed } from '../../seed/seed.ts'
 import { testDeps } from '../../test/app.ts'
 import { useTestDb } from '../../test/db.ts'
 import { runIngestion } from '../ingest/index.ts'
-import { currentIcp, getRationale, saveIcp, scoreMaster } from './store.ts'
+import { profileFields } from '../resolve/store.ts'
+import type { IcpVersion } from './store.ts'
+import { currentIcp, getRationale, icpVersion, rationaleEvidence, saveIcp, storedScore, topRanked } from './store.ts'
 
 const manifest = readFixture<Manifest>('manifest.json')
 const now = new Date(`${manifest.anchor}T12:00:00Z`)
@@ -35,6 +38,11 @@ describe('scoring', () => {
 		for (const provider of ['apollo', 'factset', 'clay'] as const) await runIngestion(deps, provider, 'system:test')
 	})
 
+	// Every company in the profile, in rank order, from the stored scores.
+	const scoreMaster = async (icp: IcpVersion) => ({
+		ranked: (await topRanked(t.db, icp.id, 10_000)).map((row) => ({ ...row, company: { id: row.companyId } })),
+	})
+
 	const companyOf = async (record: { provider: string; externalId: string }) => {
 		const [row] = await t.db
 			.select({ companyId: sourceCompanies.companyId })
@@ -44,7 +52,7 @@ describe('scoring', () => {
 	}
 
 	it('puts exactly the 50 seeded companies at 90 or more under the default ICP, with the expected scores', async () => {
-		const { ranked } = await scoreMaster(t.db, await currentIcp(t.db), now)
+		const { ranked } = await scoreMaster(await currentIcp(t.db))
 		const top = ranked.slice(0, 50)
 		const expected = new Map(
 			await Promise.all(
@@ -61,7 +69,7 @@ describe('scoring', () => {
 	})
 
 	it('breaks ties by company id', async () => {
-		const { ranked } = await scoreMaster(t.db, await currentIcp(t.db), now)
+		const { ranked } = await scoreMaster(await currentIcp(t.db))
 		const nineties = ranked.filter((row) => row.score.display === 90).map((row) => row.company.id)
 		expect(nineties).toEqual([...nineties].sort((a, b) => a - b))
 		expect(ranked.map((row) => row.rank)).toEqual(ranked.map((_, index) => index + 1))
@@ -86,7 +94,7 @@ describe('scoring', () => {
 
 	it('generates a cited rationale once per company, ICP version and evidence', async () => {
 		const icp = await currentIcp(t.db)
-		const { ranked } = await scoreMaster(t.db, icp, now)
+		const { ranked } = await scoreMaster(icp)
 		const llm = countingLlm(createStubLlm({ hallucinateEvery: 0 }))
 		const deps = { db: t.db, llm, log: createLogger({ level: 'silent' }), retry: {}, clock: () => now }
 
@@ -101,7 +109,7 @@ describe('scoring', () => {
 
 	it('uses the template and audits the rejection when the model invents a number', async () => {
 		const icp = await currentIcp(t.db)
-		const { ranked } = await scoreMaster(t.db, icp, now)
+		const { ranked } = await scoreMaster(icp)
 		const deps = {
 			db: t.db,
 			llm: createStubLlm({ hallucinateEvery: 1 }),
@@ -122,5 +130,41 @@ describe('scoring', () => {
 			}),
 		])
 		expect(await t.db.select().from(scoreRationales)).toHaveLength(2)
+	})
+
+	it('gives the model each rule with its threshold and points, so explaining them passes the guard', async () => {
+		const icp = await currentIcp(t.db)
+		const { ranked } = await scoreMaster(icp)
+		const fields = (await profileFields(t.db, [ranked[0]!.companyId], now)).get(ranked[0]!.companyId)!
+		const evidence = rationaleEvidence({ fields }, ranked[0]!.score, icp)
+		const headcount = evidence.find((item) => item.label === 'headcount rule')!
+		const revenue = evidence.find((item) => item.label === 'revenue rule')!
+		expect(headcount.value).toBe('needs between 50 and 5,000; pass, 20 of 20 points')
+		expect(revenue.value).toBe('needs at least £10,000,000; pass, 20 of 20 points')
+		expect(evidence.filter((item) => item.label.endsWith(' rule'))).toHaveLength(icp.rules.length)
+
+		const text =
+			'Its headcount is between 50 and 5,000 and revenue clears £10,000,000, so it earns 20 of 20 points for each.'
+		const answer = JSON.stringify({ text, cites: [headcount.id, revenue.id] })
+		expect(guardOutput(answer, evidence, { maxChars: 320 })).toMatchObject({ ok: true })
+	})
+	it('stores the scores of a version when it is saved, and of an older one on its first read', async () => {
+		const icp = await currentIcp(t.db)
+		const scored = await t.db.select().from(scoredIcpVersions).where(eq(scoredIcpVersions.icpVersionId, icp.id))
+		expect(scored).toHaveLength(1)
+		const { ranked } = await scoreMaster(icp)
+		expect(await storedScore(t.db, icp.id, ranked[1]!.companyId)).toEqual({ score: ranked[1]!.score, rank: 2 })
+
+		// As if the first version predated stored scores.
+		const first = await icpVersion(t.db, icp.id - 1)
+		await t.db.delete(companyScores).where(eq(companyScores.icpVersionId, first.id))
+		await t.db.delete(scoredIcpVersions).where(eq(scoredIcpVersions.icpVersionId, first.id))
+		const again = await scoreMaster(first)
+		expect(again.ranked.slice(0, 50).every((row) => row.score.display >= 90)).toBe(true)
+		const [{ n }] = (await t.db
+			.select({ n: sql<number>`count(*)::int` })
+			.from(companyScores)
+			.where(and(eq(companyScores.icpVersionId, first.id)))) as [{ n: number }]
+		expect(n).toBe(282)
 	})
 })

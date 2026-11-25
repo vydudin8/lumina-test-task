@@ -4,11 +4,12 @@ import { beforeAll, describe, expect, it } from 'vitest'
 import { cards, mailEvents, templates } from '../db/schema.ts'
 import { createStubLlm } from '../llm/stub.ts'
 import { createLogger } from '../log.ts'
-import { approveEligible, createCampaign } from '../pipeline/campaign/store.ts'
+import { approveEligible } from '../pipeline/campaign/store.ts'
 import { runIngestion } from '../pipeline/ingest/index.ts'
 import { launchSend, processQueue } from '../pipeline/send/store.ts'
 import { seed } from '../seed/seed.ts'
 import { createTestApp, testDeps, type FetchApp } from '../test/app.ts'
+import { createCampaignWithLines } from '../test/campaign.ts'
 import { useTestDb } from '../test/db.ts'
 import { TEST_WEBHOOK_SECRET, testWorld } from '../test/world.ts'
 
@@ -25,9 +26,9 @@ describe('mail webhooks', () => {
 		for (const provider of ['apollo', 'factset', 'clay'] as const)
 			await runIngestion(testDeps(t.db, { clock: () => now }), provider, 'system:test')
 		app = createTestApp(t.db, { clock: () => now })
-		const [a, b] = await t.db.select().from(templates).orderBy(templates.variant)
+		const [a, b] = await t.db.select().from(templates).orderBy(templates.id)
 		const deps = { db: t.db, llm: createStubLlm(), log: createLogger({ level: 'silent' }), retry: {}, clock: () => now }
-		const { campaign } = await createCampaign(deps, {
+		const { campaign } = await createCampaignWithLines(deps, {
 			idempotencyKey: 'webhooks',
 			name: 'Webhooks',
 			topN: 1,
@@ -112,5 +113,16 @@ describe('mail webhooks', () => {
 		expect(response.status).toBe(200)
 		await expect(response.json()).resolves.toEqual({ unknownMailId: true })
 		expect(await t.db.select().from(mailEvents).where(eq(mailEvents.mailId, 'psc_unknown'))).toHaveLength(1)
+	})
+
+	it('stores a duplicate event once when both copies arrive at the same moment', async () => {
+		const copy = event('returned', { event_id: 'evt_returned_race' })
+		const responses = await Promise.all([send(copy), send(copy)])
+		const answers = await Promise.all(responses.map((response) => response.json() as Promise<object>))
+		expect(answers).toEqual(expect.arrayContaining([{ applied: true }, { duplicate: true }]))
+		expect(answers).toHaveLength(2)
+		expect(
+			await t.db.select().from(mailEvents).where(eq(mailEvents.providerEventId, 'evt_returned_race')),
+		).toHaveLength(1)
 	})
 })

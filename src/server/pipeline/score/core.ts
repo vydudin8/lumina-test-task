@@ -1,4 +1,4 @@
-import { ICP_FIELD_LABELS, type IcpRule } from '#common/icp.ts'
+import { describeRange, ICP_FIELD_LABELS, type IcpRule } from '#common/icp.ts'
 import Decimal from 'decimal.js'
 
 export interface CompanyFacts {
@@ -37,15 +37,13 @@ function evaluate(rule: IcpRule, facts: CompanyFacts): Pick<Contribution, 'outco
 			const actual = facts[rule.field]
 			return { actual, outcome: actual === null ? 'unknown' : rule.value.includes(actual) ? 'pass' : 'fail' }
 		}
-		case 'headcount': {
-			const actual = facts.headcount
-			const [min, max] = rule.value
-			return { actual, outcome: actual === null ? 'unknown' : actual >= min && actual <= max ? 'pass' : 'fail' }
-		}
+		case 'headcount':
 		case 'revenueGbp': {
-			const actual = facts.revenueGbp
+			const actual = facts[rule.field]
 			if (actual === null) return { actual, outcome: 'unknown' }
-			const passes = rule.op === 'gte' ? new Decimal(actual).gte(rule.value) : new Decimal(actual).lte(rule.value)
+			const [min, max] = rule.value
+			const value = new Decimal(actual)
+			const passes = (min === null || value.gte(min)) && (max === null || value.lte(max))
 			return { actual, outcome: passes ? 'pass' : 'fail' }
 		}
 		case 'signals':
@@ -61,11 +59,7 @@ function outReason(rule: IcpRule, contribution: Contribution) {
 	const label = ICP_FIELD_LABELS[rule.field]
 	if (contribution.outcome === 'unknown') return `${label} is unknown`
 	const expected =
-		rule.op === 'in' || rule.op === 'any'
-			? `one of ${rule.value.join(', ')}`
-			: rule.op === 'between'
-				? `between ${rule.value[0]} and ${rule.value[1]}`
-				: `${rule.op === 'gte' ? 'at least' : 'at most'} ${rule.value}`
+		rule.op === 'between' ? describeRange<string | number>(rule.value, String) : `one of ${rule.value.join(', ')}`
 	return `${label} is ${Array.isArray(contribution.actual) ? contribution.actual.join(', ') || 'none' : String(contribution.actual)}, not ${expected}`
 }
 

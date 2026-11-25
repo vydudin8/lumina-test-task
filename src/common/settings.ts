@@ -68,6 +68,8 @@ export const SIGNAL_LABELS: Record<string, string> = {
 export const MAILING_COUNTRIES = ['GB', 'IE', 'FR', 'DE', 'NL'] as const
 export const MAILED_WINDOW_DAYS = 90
 export const ATTRIBUTION_WINDOW_DAYS = 30
+// Sent cards each template needs before an A/B comparison says anything.
+export const MIN_SAMPLE_PER_VARIANT = 100
 
 export const BLOCK_REASON_LABELS: Record<string, string> = {
 	'suppressed:opt_out': 'Opted out',

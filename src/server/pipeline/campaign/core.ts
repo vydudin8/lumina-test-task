@@ -3,15 +3,14 @@ import type { EvidenceItem } from '../../llm/types.ts'
 import { validateAddress } from '../../policy/address.ts'
 import type { Candidate } from '../../policy/recipient.ts'
 import { suppressionReason, type SuppressionState } from '../../policy/suppression.ts'
-import type { Address } from '../resolve/core.ts'
-import type { MasterCompany } from '../resolve/store.ts'
+import type { Address, ResolvedFields } from '../resolve/core.ts'
 
 const integer = new Intl.NumberFormat('en-GB')
 const label = (provider: string | null) =>
 	provider ? (PROVIDER_LABELS[provider as ProviderName] ?? provider) : 'no provider'
 
 // Only first name, title and company facts reach the model: no email, no address, no surname.
-export function cardLineEvidence(recipient: Candidate | null, company: MasterCompany): EvidenceItem[] {
+export function cardLineEvidence(recipient: Candidate | null, company: { fields: ResolvedFields }): EvidenceItem[] {
 	const { fields } = company
 	const recipientSource = recipient?.providers.map(label).join(', ') ?? ''
 	const items: Omit<EvidenceItem, 'id'>[] = []

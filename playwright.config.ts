@@ -39,6 +39,7 @@ export default defineConfig({
 				APP_URL: `http://localhost:${port}`,
 				MAIL_WEBHOOK_SECRET: 'e2e-webhook-secret',
 				FAKE_WORLD_CONTROLS: '1',
+				MAIL_WEBHOOK_DELAY_MS: '0',
 			},
 			reuseExistingServer: false,
 		},

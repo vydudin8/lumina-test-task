@@ -1,6 +1,6 @@
-import { api } from '#client/api.ts'
-import { formatDateTime } from '#client/format.ts'
-import { useSession } from '#client/session.ts'
+import { useSession } from '#client/domain/session.ts'
+import { api } from '#client/lib/api.ts'
+import { formatDateTime } from '#client/lib/format.ts'
 import { useQuery } from '@tanstack/react-query'
 import type { ReactNode } from 'react'
 import { Link } from 'react-router'
@@ -13,7 +13,7 @@ function Step({ number, title, to, children }: { number: number; title: string; 
 	return (
 		<li className="rounded-lg border p-4">
 			<p className="text-sm text-muted-foreground">Step {number}</p>
-			<Link to={to} className="text-lg font-medium underline-offset-2 hover:underline">
+			<Link to={to} className="link text-lg font-medium">
 				{title}
 			</Link>
 			<div className="mt-1 text-sm">{children}</div>
@@ -39,11 +39,11 @@ export function HomePage() {
 	})
 	const scores = useQuery({
 		queryKey: ['scores', null],
-		queryFn: () => api<{ icp: { id: number }; ranked: unknown[] }>('/api/scores'),
+		queryFn: () => api<{ icp: { id: number }; counts: { inProfile: number } }>('/api/scores'),
 	})
 	const campaigns = useQuery({
 		queryKey: ['campaigns'],
-		queryFn: () => api<{ campaigns: { id: number; name: string; status: string }[] }>('/api/campaigns'),
+		queryFn: () => api<{ total: number }>('/api/campaigns'),
 	})
 
 	const records = providers.data?.providers.reduce((sum, panel) => sum + panel.records.company, 0)
@@ -58,7 +58,7 @@ export function HomePage() {
 	return (
 		<div className="space-y-6">
 			<div className="space-y-1">
-				<h1 className="text-2xl font-semibold">Outbound targeting and postcards</h1>
+				<h1 className="text-2xl font-semibold tracking-tight">Outbound targeting and postcards</h1>
 				<p className="text-muted-foreground">
 					Signed in as {user?.name}. Work through the steps in order; each page explains what it shows.
 				</p>
@@ -76,12 +76,12 @@ export function HomePage() {
 				</Step>
 				<Step number={3} title="Ideal customer profile and scores" to="/scores">
 					{scores.data
-						? `ICP version ${scores.data.icp.id}: ${scores.data.ranked.length} companies in the profile, best fit first.`
+						? `ICP version ${scores.data.icp.id}: ${scores.data.counts.inProfile} companies in the profile, best fit first.`
 						: loading}
 				</Step>
 				<Step number={4} title="Campaigns" to="/campaigns">
 					{campaigns.data
-						? `${campaigns.data.campaigns.length} campaigns. Build one from the top companies, review the cards, then a sales lead approves and sends.`
+						? `${campaigns.data.total} campaigns. Build one from the top companies, review the cards, then a sales lead approves and sends.`
 						: loading}
 				</Step>
 				<Step number={5} title="Suppression list" to="/suppressions">

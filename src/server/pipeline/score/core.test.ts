@@ -26,6 +26,26 @@ describe('icpRulesSchema', () => {
 			]).success,
 		).toBe(false)
 	})
+
+	it('an empty ICP gets one plain message, not the points rule on top', () => {
+		const result = icpRulesSchema.safeParse([])
+		expect(result.error?.issues.map((issue) => issue.message)).toEqual(['You need to have at least 1 rule'])
+	})
+
+	it('takes a range with one open end but not with both', () => {
+		const headcount = (value: unknown) =>
+			icpRulesSchema.safeParse([{ id: 'h', field: 'headcount', op: 'between', value, points: 10, required: false }])
+		expect(headcount([50, null]).success).toBe(true)
+		expect(headcount([null, 5000]).success).toBe(true)
+		expect(headcount([null, null]).success).toBe(false)
+	})
+
+	it('reads revenue rules saved as at least / at most as a range with one open end', () => {
+		const legacy = (op: string) =>
+			icpRulesSchema.parse([{ id: 'r', field: 'revenueGbp', op, value: '10000000', points: 1, required: false }])[0]
+		expect(legacy('gte')).toMatchObject({ op: 'between', value: ['10000000', null] })
+		expect(legacy('lte')).toMatchObject({ op: 'between', value: [null, '10000000'] })
+	})
 })
 
 describe('scoreCompany', () => {
@@ -80,9 +100,19 @@ describe('scoreCompany', () => {
 	})
 
 	it('compares revenue in exact decimals', () => {
-		const edge: IcpRule[] = [{ id: 'r', field: 'revenueGbp', op: 'gte', value: '10000000', points: 1, required: false }]
+		const edge: IcpRule[] = [
+			{ id: 'r', field: 'revenueGbp', op: 'between', value: ['10000000', null], points: 1, required: false },
+		]
 		expect(scoreCompany(edge, { ...fits, revenueGbp: '9999999.99' }).contributions[0]?.outcome).toBe('fail')
 		expect(scoreCompany(edge, { ...fits, revenueGbp: '10000000.00' }).contributions[0]?.outcome).toBe('pass')
+	})
+
+	it('treats an open end as no limit and names the bound that failed', () => {
+		const atMost: IcpRule[] = [
+			{ id: 'h', field: 'headcount', op: 'between', value: [null, 200], points: 1, required: true },
+		]
+		expect(scoreCompany(atMost, { ...fits, headcount: 0 }).inProfile).toBe(true)
+		expect(scoreCompany(atMost, { ...fits, headcount: 240 }).outReasons).toEqual(['Headcount is 240, not at most 200'])
 	})
 })
 

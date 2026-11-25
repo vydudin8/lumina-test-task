@@ -6,8 +6,11 @@ import {
 	normaliseDomain,
 	normaliseName,
 	normaliseSource,
+	profileOf,
 	resolveFields,
 	seniorityFromTitle,
+	staleBefore,
+	withStale,
 	type FxRate,
 	type SourceCompany,
 } from './core.ts'
@@ -188,6 +191,17 @@ describe('cluster', () => {
 		expect(split.groups).toEqual([[1], [2]])
 		expect(split.possibleDuplicates).toEqual([expect.objectContaining({ a: 1, b: 2, reason: 'split by a person' })])
 	})
+
+	it('keeps a merged company with two domains whole, and lets a later record with one of them join it', () => {
+		const gb = (id: number) => source(id, {})
+		const ie = (id: number) => source(id, { country: 'IE', domain: 'hartley.ie' })
+		const merge = [{ a: 1, b: 3, decision: 'merge' as const }]
+		expect(cluster([gb(1), gb(2), ie(3), ie(4)], merge).groups).toEqual([[1, 2, 3, 4]])
+		expect(cluster([gb(1), gb(2), ie(3), ie(4), gb(5)], merge).groups).toEqual([[1, 2, 3, 4, 5]])
+		// A third domain is still a person's call, even through a record without a domain.
+		const third = source(6, { domain: 'hartley-group.com' })
+		expect(cluster([gb(1), ie(3), third, source(7, { domain: null })], merge).groups).toEqual([[1, 3, 7], [6]])
+	})
 })
 
 describe('resolveFields', () => {
@@ -271,6 +285,58 @@ describe('resolveFields', () => {
 			value: null,
 			provider: null,
 		})
+	})
+})
+
+describe('stored profiles', () => {
+	const factset = source(2, {
+		provider: 'factset',
+		name: 'HARTLEY PLANT HIRE LIMITED',
+		industry: null,
+		industryLabel: null,
+		headcount: 250,
+		asOf: { headcount: '2024-03-31' },
+	})
+	const clay = source(3, { provider: 'clay', name: 'Hartley Plant', headcount: 400, signals: ['net_zero_target'] })
+
+	it('stores fields without a stale flag and puts back exactly what resolveFields gives for any day', () => {
+		const stored = withStale(resolveFields([factset, clay], [], now), null)
+		expect(stored.headcount.stale).toBe(false)
+		for (const day of [now, new Date('2025-06-01T00:00:00Z'), new Date('2030-01-01T00:00:00Z')])
+			expect(withStale(stored, staleBefore(day))).toEqual(resolveFields([factset, clay], [], day))
+	})
+
+	it('derives the columns the lists filter and sort on', () => {
+		const override = {
+			field: 'name' as const,
+			chosenSourceId: 3,
+			createdBy: 'usr_rep_tom',
+			reason: 'Trading name',
+			at: '2026-11-19T10:00:00.000Z',
+		}
+		const sources = [factset, clay, source(4, { provider: 'clay', name: null, domain: null })]
+		const profile = profileOf(sources, resolveFields(sources, [override], now))
+		expect(profile).toEqual({
+			name: 'Hartley Plant',
+			domain: 'hartley.co.uk',
+			country: 'GB',
+			industry: 'Plant hire',
+			industryLabel: null,
+			headcount: 250,
+			revenueGbp: null,
+			signals: ['net_zero_target'],
+			providers: ['factset', 'clay'],
+			sourceCount: 3,
+			conflicts: ['headcount'],
+			overridden: ['name'],
+			fieldAsOf: [null, null, null, null, '2024-03-31', null, null, null],
+			search: 'hartley plant\nhartley.co.uk\nhartley plant hire limited\nhartley plant',
+		})
+	})
+
+	it('keeps the provider label of an industry nobody could map', () => {
+		const unmapped = source(1, { industry: null, industryLabel: 'Widgets' })
+		expect(profileOf([unmapped], resolveFields([unmapped], [], now)).industryLabel).toBe('Widgets')
 	})
 })
 

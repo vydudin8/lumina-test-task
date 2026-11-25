@@ -9,16 +9,19 @@ import { sameOriginOnly } from './http/same-origin.ts'
 import { scoreRoutes } from './http/scores.ts'
 import { sendRoutes, webhookRoutes } from './http/send.ts'
 import { loadUser, sessionRoutes, type AppEnv } from './http/session.ts'
+import { streamRoutes } from './http/stream.ts'
 import { DomainError } from './lib/errors.ts'
 import type { Llm } from './llm/types.ts'
 import type { IngestDeps } from './pipeline/ingest/index.ts'
 import type { MailClient } from './pipeline/send/mail-client.ts'
+import type { Hub } from './realtime.ts'
 
 export interface AppDeps extends IngestDeps {
 	sessionSecret: string
 	llm: Llm
 	mail: MailClient
 	webhookSecret: string
+	hub: Hub
 }
 
 export function createApp(deps: AppDeps) {
@@ -57,6 +60,7 @@ export function createApp(deps: AppDeps) {
 	app.route('/api', campaignRoutes(deps))
 	app.route('/api', sendRoutes(deps))
 	app.route('/api', auditRoutes(deps))
+	app.route('/api', streamRoutes(deps))
 	app.route('/', webhookRoutes(deps))
 
 	return app

@@ -1,623 +1,264 @@
-import { api } from '#client/api.ts'
-import { ActivityTimeline, type AuditEvent } from '#client/components/ActivityTimeline.tsx'
-import { CampaignResults } from '#client/components/CampaignResults.tsx'
+import { CampaignHeader } from '#client/components/campaign/CampaignHeader.tsx'
+import { CampaignResults } from '#client/components/campaign/CampaignResults.tsx'
+import { CardItem } from '#client/components/campaign/CardItem.tsx'
+import { CardScoreSheet } from '#client/components/campaign/CardScoreSheet.tsx'
+import { CardsSummary } from '#client/components/campaign/CardsSummary.tsx'
+import { CardsToolbar } from '#client/components/campaign/CardsToolbar.tsx'
+import { SendControls } from '#client/components/campaign/SendControls.tsx'
+import { FilterBar, FilterSelect } from '#client/components/Filters.tsx'
+import { Pager } from '#client/components/Pager.tsx'
 import { QueryState } from '#client/components/QueryState.tsx'
-import { ReasonDialog } from '#client/components/ReasonDialog.tsx'
-import { Badge } from '#client/components/ui/badge.tsx'
-import { Button } from '#client/components/ui/button.tsx'
+import { SearchInput } from '#client/components/SearchInput.tsx'
 import {
-	Dialog,
-	DialogContent,
-	DialogDescription,
-	DialogFooter,
-	DialogHeader,
-	DialogTitle,
-} from '#client/components/ui/dialog.tsx'
-import { Label } from '#client/components/ui/label.tsx'
-import { Textarea } from '#client/components/ui/textarea.tsx'
-import { formatAddress, formatDateTime, type AddressValue } from '#client/format.ts'
-import { useSession, useUserName } from '#client/session.ts'
-import { BLOCK_REASON_LABELS, CARD_STATUS_LABELS, PROVIDER_LABELS, type ProviderName } from '#common/settings.ts'
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
-import { useState } from 'react'
-import { Link, useParams, useSearchParams } from 'react-router'
-import type { CampaignSummary } from './CampaignsPage.tsx'
+	CARD_VIEWS,
+	cardHistoryParams,
+	defaultExpanded,
+	useResultsShown,
+	type CampaignCard,
+	type CampaignDetail,
+} from '#client/domain/campaigns.ts'
+import { useSession } from '#client/domain/session.ts'
+import { api } from '#client/lib/api.ts'
+import { useCursorPages, useEntryState, useFilterParams } from '#client/lib/lists.ts'
+import { keepPreviousData, useQuery, useQueryClient } from '@tanstack/react-query'
+import { useEffect, useRef, useState } from 'react'
+import { useLocation, useParams } from 'react-router'
 
-interface Candidate {
-	personKey: string
-	fullName: string | null
-	title: string | null
-	function: string | null
-	seniority: string
-	providers: string[]
-}
-
-export interface CampaignCard {
-	id: number
-	companyId: number
-	companyName: string | null
-	rank: number
-	scoreDisplay: number
-	personKey: string | null
-	// Null when no provider lists anyone at the company: the card is blocked as 'no_contact'.
-	recipient: (Candidate & { firstName: string | null; decidedBy: string; candidates: Candidate[] }) | null
-	address: AddressValue | null
-	// Null on cards seeded from past campaigns.
-	addressSource: { provider: string | null; conflict: boolean; chosenBy: string | null } | null
-	eligibility: 'eligible' | 'blocked'
-	blockReason: string | null
-	variant: 'A' | 'B' | null
-	personalLine: string
-	lineSource: 'llm' | 'template' | 'human'
-	lineCites: string[]
-	lineEvidence: { id: string; label: string; value: string; source: string }[]
-	llmStatus: 'accepted' | 'rejected' | null
-	llmRejections: { code: string; detail: string }[]
-	llmModel: string | null
-	status: string
-	rejectReason: string | null
-	approvedBy: string | null
-	approvedAt: string | null
-	mailId: string | null
-	sendError: string | null
-	submittedAt: string | null
-	mailedAt: string | null
-	statusChangedAt: string
-	attempts: { n: number; outcome: 'ok' | 'timeout' | 'error'; httpStatus: number | null; delayMs: number | null }[]
-}
-
-export interface CampaignDetail {
-	campaign: {
-		id: number
-		name: string
-		status: string
-		topN: number
-		icpVersionId: number
-		createdBy: string
-		createdAt: string
-		launchedAt: string | null
-		launchedBy: string | null
-	}
+// One page of a campaign's cards, with what each filter choice would show.
+interface CardsResponse {
+	total: number
+	pageSize: number
+	nextCursor: string | null
+	counts: { views: Record<string, number>; variants: { A: number; B: number } }
 	cards: CampaignCard[]
-	templates: { id: number; name: string; variant: 'A' | 'B'; body: string }[]
-	summary: CampaignSummary
-	activity: AuditEvent[]
 }
 
-const DECIDED_BY: Record<string, string> = {
-	'only candidate': 'the only person listed at this company',
-	function:
-		'works in the most relevant function (operations, then fleet and plant, then procurement, then sustainability)',
-	seniority: 'most senior in that function',
-	corroboration: 'confirmed by more providers than the others',
-	freshness: 'has the most recent record',
-	'contact id': 'the earliest record (all else was equal)',
-	'seeded history': 'from a past campaign',
-}
-
-const IN_FLIGHT = ['queued', 'submitted', 'printed', 'mailed']
-
-const FILTERS: [string, string, (card: CampaignCard) => boolean][] = [
-	['all', 'All', () => true],
-	['draft', 'Drafts', (card) => card.status === 'draft'],
-	['approved', 'Approved', (card) => card.status === 'approved'],
-	['blocked', 'Blocked', (card) => card.eligibility === 'blocked' || card.status === 'blocked_at_send'],
-	['rejected', 'Rejected', (card) => card.status === 'rejected'],
-	['ai-rejected', 'AI line rejected', (card) => card.llmStatus === 'rejected'],
-	['sent', 'Sent', (card) => card.submittedAt !== null],
-]
+const isOverrides = (value: unknown): value is Record<string, boolean> =>
+	typeof value === 'object' &&
+	value !== null &&
+	!Array.isArray(value) &&
+	Object.values(value).every((open) => typeof open === 'boolean')
 
 export function CampaignPage() {
 	const id = Number(useParams().id)
 	const query = useQuery({
 		queryKey: ['campaign', id],
 		queryFn: () => api<CampaignDetail>(`/api/campaigns/${id}`),
-		// Poll every second while any card is on its way, so webhook updates show within a couple of seconds.
-		refetchInterval: (state) =>
-			state.state.data?.cards.some((card) => IN_FLIGHT.includes(card.status)) ? 1000 : false,
 	})
 	return <QueryState query={query}>{(detail) => <CampaignView detail={detail} />}</QueryState>
 }
 
 function CampaignView({ detail }: { detail: CampaignDetail }) {
-	const { campaign, summary } = detail
+	const { campaign, summary, linesJob } = detail
 	const { data: user } = useSession()
-	const userName = useUserName()
 	const queryClient = useQueryClient()
-	const [params, setParams] = useSearchParams()
-	const filter = params.get('show') ?? 'all'
+	const [params, update] = useFilterParams()
+	const [viewName] = CARD_VIEWS.find(([value]) => value === params.get('show')) ?? CARD_VIEWS[0]!
 	const isLead = user?.role === 'lead'
 	const refresh = () => queryClient.invalidateQueries({ queryKey: ['campaign', campaign.id] })
+	const templateOf = (card: CampaignCard) =>
+		detail.templates.find(
+			(template) => template.id === (card.variant === 'B' ? campaign.templateBId : campaign.templateAId),
+		)
+	const nameOf = (templateId: number | null) => detail.templates.find((template) => template.id === templateId)?.name
 
-	const [confirmingSend, setConfirmingSend] = useState(false)
-	const send = useMutation({
-		mutationFn: () => api<{ queued: number }>(`/api/campaigns/${campaign.id}/send`, { method: 'POST' }),
-		onSuccess: () => setConfirmingSend(false),
-		onSettled: refresh,
+	// Open or closed per card, kept per history entry: defaults until someone toggles a card.
+	const [overrides, setOverrides] = useEntryState(`campaign-cards:${campaign.id}`, {}, isOverrides)
+	const isOpen = (card: CampaignCard) => overrides[card.id] ?? defaultExpanded(card)
+	const setOpen = (ids: number[], open: boolean) =>
+		setOverrides({ ...overrides, ...Object.fromEntries(ids.map((id) => [id, open])) })
+
+	const search = params.get('q') ?? ''
+	const abTest = campaign.templateBId !== null
+	const variant = abTest ? (['A', 'B'].find((value) => value === params.get('template')) ?? '') : ''
+	// The server filters and pages; a change of filter starts again from the first page.
+	const listKey = [viewName, search.trim(), variant].join('|')
+	const pages = useCursorPages(`campaign-cards-${campaign.id}`, listKey)
+	const filters = new URLSearchParams()
+	if (search.trim()) filters.set('q', search.trim())
+	if (viewName !== 'all') filters.set('show', viewName)
+	if (variant) filters.set('template', variant)
+	if (pages.cursor) filters.set('cursor', pages.cursor)
+	// Under the campaign's key, so every notice about the campaign refreshes its cards too.
+	const cardsQuery = useQuery({
+		queryKey: ['campaign', campaign.id, 'cards', filters.toString()],
+		queryFn: () => api<CardsResponse>(`/api/campaigns/${campaign.id}/cards?${filters.toString()}`),
+		placeholderData: keepPreviousData,
 	})
-	const approvedCount = detail.cards.filter((card) => card.status === 'approved').length
-	const approveAll = useMutation({
-		mutationFn: () => api<{ approved: number }>(`/api/campaigns/${campaign.id}/approve-eligible`, { method: 'POST' }),
-		onSettled: refresh,
+	const list = cardsQuery.data
+	const visible = list?.cards ?? []
+	const count = (value: number | undefined) => value ?? '…'
+
+	// A selection belongs to the list it was made in, so changing a filter never acts on hidden cards.
+	const [selection, setSelection] = useState<{ list: string; ids: number[] }>({ list: listKey, ids: [] })
+	const selected = new Set(selection.list === listKey ? selection.ids : [])
+	const select = (ids: number[]) => setSelection({ list: listKey, ids })
+
+	const [resultsShown, toggleResults] = useResultsShown(user?.id ?? '', campaign.id, summary.sent > 0)
+
+	// Arriving from a results link (#card-12): open the page that holds the card, then bring it into view; it flashes
+	// once (row-flash in styles.css).
+	const location = useLocation()
+	const target = /^#card-(\d+)$/.exec(location.hash)?.[1]
+	// Not under the campaign's key: where a card sits in the ranking never changes, so a notice need not ask again.
+	const placement = useQuery({
+		queryKey: ['card-page', campaign.id, target],
+		queryFn: () => api<{ cursors: string[] }>(`/api/campaigns/${campaign.id}/cards/${target}/cursors`),
+		enabled: target !== undefined,
 	})
-	const drafts = detail.cards.filter((card) => card.status === 'draft').length
-	const suppressed = Object.entries(summary.blocked)
-		.filter(([reason]) => reason.startsWith('suppressed:'))
-		.reduce((sum, [, n]) => sum + n, 0)
-	const badAddress = Object.entries(summary.blocked)
-		.filter(([reason]) => reason.startsWith('invalid_address:'))
-		.reduce((sum, [, n]) => sum + n, 0)
-	const noContact = summary.blocked['no_contact'] ?? 0
-	const show = (value: string) => setParams({ show: value })
-	const visible = detail.cards.filter(FILTERS.find(([value]) => value === filter)?.[2] ?? (() => true))
+	useEffect(() => {
+		if (placement.data) pages.to(placement.data.cursors)
+		// Once per arrival: paging away afterwards must not snap back to the card.
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [location.key, placement.data])
+	const scrolled = useRef('')
+	useEffect(() => {
+		const card = target ? document.getElementById(`card-${target}`) : null
+		if (!card || scrolled.current === `${location.key}${target}`) return
+		scrolled.current = `${location.key}${target}`
+		card.scrollIntoView({ block: 'center' })
+	}, [location.key, target, list])
+	const explaining = visible.find((card) => String(card.id) === params.get('card'))
+
+	const show = (value: string) => update({ show: value === 'all' ? '' : value })
+	// Only the template filter, so the list shows exactly the count the link names.
+	const showTemplate = (value: 'A' | 'B') => update({ template: value, show: '', q: '' })
 
 	return (
 		<div className="space-y-6">
-			<div className="space-y-1">
-				<p className="text-sm">
-					<Link to="/campaigns" className="text-muted-foreground underline-offset-2 hover:underline">
-						Campaigns
-					</Link>
+			<CampaignHeader detail={detail} resultsShown={resultsShown} onToggleResults={toggleResults} />
+
+			{summary.linesPending > 0 && (
+				<p role="status" className="rounded-lg border bg-muted/50 p-3 text-sm">
+					{linesJob?.status === 'failed' ? (
+						<span className="text-destructive">
+							Writing the personal lines stopped: {linesJob.error ?? 'no reason recorded'}. {summary.linesPending} cards
+							have no line yet; write one by hand to approve them.
+						</span>
+					) : (
+						<>
+							Writing personal lines: {summary.eligible - summary.linesPending} of {summary.eligible}. Cards can be
+							approved as their lines appear.
+						</>
+					)}
 				</p>
-				<h1 className="text-2xl font-semibold">{campaign.name}</h1>
-				<p className="text-sm text-muted-foreground">
-					Top {campaign.topN} by score with ICP version {campaign.icpVersionId} · built by{' '}
-					{userName(campaign.createdBy)} on {formatDateTime(campaign.createdAt)}
-					{campaign.launchedAt &&
-						` · send launched by ${userName(campaign.launchedBy ?? '')} on ${formatDateTime(campaign.launchedAt)}`}
-				</p>
-			</div>
-
-			<p className="text-sm">
-				{summary.total} cards:{' '}
-				<button type="button" className="underline underline-offset-2" onClick={() => show('all')}>
-					{summary.eligible} eligible
-				</button>
-				,{' '}
-				<button type="button" className="underline underline-offset-2" onClick={() => show('blocked')}>
-					{summary.total - summary.eligible} blocked
-				</button>{' '}
-				({suppressed} suppressed, {badAddress} bad address{noContact > 0 && `, ${noContact} no contact`})
-				{summary.blockedAtSend > 0 && ` · ${summary.blockedAtSend} blocked at send`} · variant A {summary.variants.A}, B{' '}
-				{summary.variants.B}
-				{summary.llmRejected > 0 && (
-					<>
-						{' · '}
-						<button type="button" className="underline underline-offset-2" onClick={() => show('ai-rejected')}>
-							{summary.llmRejected} AI lines rejected (template used)
-						</button>
-					</>
-				)}
-			</p>
-
-			<div className="flex flex-wrap items-center gap-2">
-				{FILTERS.map(([value, label, predicate]) => (
-					<Button key={value} size="sm" variant={filter === value ? 'default' : 'outline'} onClick={() => show(value)}>
-						{label} ({detail.cards.filter(predicate).length})
-					</Button>
-				))}
-				<span className="flex-1" />
-				{isLead ? (
-					<>
-						<Button
-							variant="outline"
-							disabled={drafts === 0 || approveAll.isPending}
-							onClick={() => approveAll.mutate()}
-						>
-							Approve all eligible drafts (
-							{detail.cards.filter((card) => card.status === 'draft' && card.eligibility === 'eligible').length})
-						</Button>
-						<Button disabled={approvedCount === 0} onClick={() => setConfirmingSend(true)}>
-							Send {approvedCount} approved
-						</Button>
-					</>
-				) : (
-					<p className="text-sm text-muted-foreground">Only a sales lead can approve cards and send.</p>
-				)}
-			</div>
-			{approveAll.isError && <p className="text-sm text-destructive">{approveAll.error.message}</p>}
-			<Dialog open={confirmingSend} onOpenChange={setConfirmingSend}>
-				<DialogContent>
-					<DialogHeader>
-						<DialogTitle>Send {approvedCount} postcards?</DialogTitle>
-						<DialogDescription>
-							They go to the printer now. Each card is checked again for opt-outs and recent mailings just before it is
-							sent, and is blocked rather than sent if anything changed. This cannot be undone.
-						</DialogDescription>
-					</DialogHeader>
-					{send.isError && <p className="text-sm text-destructive">{send.error.message}</p>}
-					<DialogFooter>
-						<Button variant="outline" onClick={() => setConfirmingSend(false)}>
-							Cancel
-						</Button>
-						<Button disabled={send.isPending} onClick={() => send.mutate()}>
-							{send.isPending ? 'Queuing…' : `Send ${approvedCount}`}
-						</Button>
-					</DialogFooter>
-				</DialogContent>
-			</Dialog>
-
-			{visible.length === 0 ? (
-				<p className="text-sm text-muted-foreground">No cards here.</p>
-			) : (
-				<div className="grid gap-4 lg:grid-cols-2">
-					{visible.map((card) => (
-						<PostcardItem
-							key={card.id}
-							card={card}
-							template={detail.templates.find((template) => template.variant === card.variant)}
-							isLead={isLead}
-							onChange={refresh}
-						/>
-					))}
-				</div>
 			)}
 
-			{detail.cards.some((card) => card.mailedAt) && (
+			{resultsShown && (
 				<CampaignResults
 					campaignId={campaign.id}
-					companyOf={(cardId) => detail.cards.find((card) => card.id === cardId)?.companyName ?? `card #${cardId}`}
+					templateNames={{
+						A: nameOf(campaign.templateAId) ?? 'Template A',
+						B: campaign.templateBId === null ? undefined : (nameOf(campaign.templateBId) ?? 'Template B'),
+					}}
+					// No filters, so the card is in the list; the hash brings it into view and makes it flash.
+					cardLink={(cardId) => ({ search: '', hash: `card-${cardId}` })}
+					// Only these filters, so the list shows exactly the count that was clicked.
+					onShowCards={(view, cardVariant) => update({ show: view, template: abTest ? cardVariant : '', q: '' })}
 				/>
 			)}
 
-			<section className="space-y-2">
-				<h2 className="text-lg font-semibold">Activity</h2>
-				<ActivityTimeline events={detail.activity} />
-			</section>
-		</div>
-	)
-}
+			<div>
+				<CardsSummary detail={detail} nameOf={nameOf} onShow={show} onShowTemplate={showTemplate} />
 
-// Same single-pass fill as the printed card (renderBack on the server).
-function render(body: string, card: CampaignCard, company: string) {
-	const values: Record<string, string> = {
-		first_name: card.recipient?.firstName ?? 'there',
-		personal_line: card.personalLine,
-		company,
-	}
-	return body.replace(/\{\{(first_name|personal_line|company)\}\}/g, (_, key: string) => values[key]!)
-}
-
-function PostcardItem({
-	card,
-	template,
-	isLead,
-	onChange,
-}: {
-	card: CampaignCard
-	template?: { body: string }
-	isLead: boolean
-	onChange: () => Promise<void>
-}) {
-	const userName = useUserName()
-	const [rejecting, setRejecting] = useState(false)
-	const [editing, setEditing] = useState(false)
-	const [text, setText] = useState(card.personalLine)
-	const company =
-		card.companyName ??
-		card.lineEvidence.find((item) => item.label === 'company')?.value ??
-		`Company #${card.companyId}`
-	const approve = useMutation({
-		mutationFn: () => api(`/api/cards/${card.id}/approve`, { method: 'POST' }),
-		onSettled: onChange,
-	})
-	const saveLine = useMutation({
-		mutationFn: () => api(`/api/cards/${card.id}/line`, { method: 'POST', json: { text } }),
-		onSuccess: async () => {
-			setEditing(false)
-			await onChange()
-		},
-	})
-	const editable = card.status === 'draft' || card.status === 'approved'
-
-	return (
-		<article aria-label={`Card for ${company}`} className="space-y-3 rounded-lg border p-4">
-			<header className="flex flex-wrap items-start justify-between gap-2">
-				<div>
-					<p className="font-medium">
-						#{card.rank}{' '}
-						<Link to={`/companies/${card.companyId}`} className="underline-offset-2 hover:underline">
-							{company}
-						</Link>
-					</p>
-					<p className="text-xs text-muted-foreground">
-						Score {card.scoreDisplay}
-						{card.variant && ` · template ${card.variant}`}
-					</p>
+				<div className="mt-4 mb-3 flex flex-wrap items-center gap-2">
+					<div className="min-w-0 flex-1">
+						<FilterBar
+							active={search !== '' || variant !== '' || viewName !== 'all'}
+							onClear={() => update({ q: '', template: '', show: '' })}
+						>
+							<SearchInput
+								aria-label="Search cards"
+								placeholder="Search company name"
+								className="w-full sm:w-72"
+								value={search}
+								onChange={(value) => update({ q: value }, { replace: true })}
+							/>
+							<FilterSelect
+								label="Status"
+								all={`All cards (${count(list?.counts.views.all)})`}
+								value={viewName === 'all' ? '' : viewName}
+								onChange={show}
+								options={CARD_VIEWS.slice(1).map(
+									([value, label]) => [value, `${label} (${count(list?.counts.views[value])})`] as const,
+								)}
+							/>
+							{abTest && (
+								<FilterSelect
+									label="Template"
+									all="All templates"
+									value={variant}
+									onChange={(value) => update({ template: value })}
+									options={[
+										['A', `${nameOf(campaign.templateAId) ?? 'Template A'} (${count(list?.counts.variants.A)})`],
+										['B', `${nameOf(campaign.templateBId) ?? 'Template B'} (${count(list?.counts.variants.B)})`],
+									]}
+								/>
+							)}
+						</FilterBar>
+					</div>
+					<SendControls campaignId={campaign.id} summary={summary} isLead={isLead} onChange={refresh} />
 				</div>
-				<div className="flex flex-wrap gap-1">
-					<Badge
-						variant={
-							card.status === 'approved' || card.submittedAt
-								? 'default'
-								: card.status === 'draft'
-									? 'outline'
-									: 'secondary'
-						}
-					>
-						{CARD_STATUS_LABELS[card.status] ?? card.status}
-					</Badge>
-					{card.blockReason && (
-						<Badge variant="destructive">{BLOCK_REASON_LABELS[card.blockReason] ?? card.blockReason}</Badge>
-					)}
-				</div>
-			</header>
 
-			<div className="grid gap-3 rounded-md bg-muted/50 p-3 text-sm sm:grid-cols-2">
-				<div className="whitespace-pre-line">
-					{template ? (
-						render(template.body, card, company)
-					) : (
-						<span className="text-muted-foreground">Not printed.</span>
-					)}
-				</div>
-				<div className="border-l pl-3">
-					{card.recipient ? (
-						<>
-							<p className="font-medium">{card.recipient.fullName}</p>
-							<p>{card.recipient.title}</p>
-						</>
-					) : (
-						<p className="text-muted-foreground">No contact on file</p>
-					)}
-					<p>{company}</p>
-					<p className="text-muted-foreground">{formatAddress(card.address)}</p>
-					{card.address && card.addressSource && (
-						<p className="mt-1 text-xs text-muted-foreground">
-							Address from {PROVIDER_LABELS[card.addressSource.provider as ProviderName] ?? card.addressSource.provider}
-							{card.addressSource.chosenBy && `, chosen by ${userName(card.addressSource.chosenBy)}`} ·{' '}
-							<Link to={`/companies/${card.companyId}#field-address`} className="underline underline-offset-2">
-								see sources
-							</Link>
+				<section aria-label="Cards" className="space-y-2">
+					<CardsToolbar
+						campaignId={campaign.id}
+						visible={visible}
+						total={list?.total}
+						viewName={viewName}
+						selected={selected}
+						onSelect={select}
+						isOpen={isOpen}
+						onSetOpen={setOpen}
+						isLead={isLead}
+						onChange={refresh}
+					/>
+
+					{visible.length === 0 ? (
+						<p className="py-6 text-center text-sm text-muted-foreground">
+							{cardsQuery.isError
+								? `Could not load the cards: ${cardsQuery.error.message}`
+								: !list
+									? 'Loading…'
+									: search
+										? `No card matches “${search}”.`
+										: 'No cards here.'}
 						</p>
-					)}
-					{card.addressSource?.conflict && !card.addressSource.chosenBy && (
-						<p className="mt-1 text-xs font-medium text-destructive">
-							Providers disagree on this address: check it before approving.
-						</p>
-					)}
-				</div>
-			</div>
-
-			<div className="space-y-1 text-xs">
-				{card.lineSource === 'human' ? (
-					<Badge variant="outline">Line written by a person</Badge>
-				) : card.llmStatus === 'accepted' ? (
-					<Badge variant="secondary">AI line, checked against the evidence</Badge>
-				) : card.llmStatus === 'rejected' ? (
-					<Badge variant="destructive">
-						AI line rejected: {card.llmRejections.map((rejection) => rejection.detail).join('; ')}. Template used.
-					</Badge>
-				) : null}
-				{card.eligibility === 'blocked' && (
-					<p className="text-muted-foreground">No line was written: this card is blocked.</p>
-				)}
-				{card.eligibility === 'eligible' && card.lineCites.length > 0 && (
-					<p className="text-muted-foreground">
-						Line uses:{' '}
-						{card.lineCites
-							.map((cite) => card.lineEvidence.find((item) => item.id === cite))
-							.filter(Boolean)
-							.map((item) => `${item!.label} (${item!.source})`)
-							.join(', ')}
-					</p>
-				)}
-				{card.rejectReason && <p>Rejected: {card.rejectReason}</p>}
-				{card.mailId && (
-					<p>
-						Mail id <span className="font-mono">{card.mailId}</span>, submitted {formatDateTime(card.submittedAt)}
-						{card.mailedAt && `, mailed ${formatDateTime(card.mailedAt)}`}
-					</p>
-				)}
-				{card.attempts.length > 0 && (
-					<p className="text-muted-foreground">
-						{card.attempts.length === 1 ? '1 attempt' : `${card.attempts.length} attempts`}:{' '}
-						{card.attempts
-							.map(
-								(attempt) =>
-									`${attempt.outcome}${attempt.httpStatus ? ` (${attempt.httpStatus})` : ''}${attempt.delayMs !== null ? `, waited ${attempt.delayMs} ms` : ''}`,
-							)
-							.join(' → ')}
-					</p>
-				)}
-				{card.status === 'failed' && card.sendError && (
-					<p className="text-destructive">
-						Not sent: the printer refused it ({card.sendError}). A person needs to decide what to do with this card.
-					</p>
-				)}
-				{card.status === 'unconfirmed' && <UnconfirmedNotice card={card} isLead={isLead} onChange={onChange} />}
-				{card.approvedBy && card.approvedAt && (
-					<p className="text-muted-foreground">
-						Approved by {userName(card.approvedBy)} on {formatDateTime(card.approvedAt)}
-					</p>
-				)}
-			</div>
-
-			{card.recipient ? (
-				<details className="text-xs">
-					<summary className="cursor-pointer">Why this person</summary>
-					<p className="mt-1">
-						{card.recipient.fullName}: {DECIDED_BY[card.recipient.decidedBy] ?? card.recipient.decidedBy}. Known to{' '}
-						{card.recipient.providers
-							.map((provider) => PROVIDER_LABELS[provider as ProviderName] ?? provider)
-							.join(' and ')}
-						.
-					</p>
-					{card.recipient.candidates.length > 1 && (
-						<ul className="mt-1 space-y-0.5 text-muted-foreground">
-							{card.recipient.candidates.slice(1).map((candidate) => (
-								<li key={candidate.personKey}>
-									Not chosen: {candidate.fullName}, {candidate.title} ({candidate.function ?? 'other function'},{' '}
-									{candidate.seniority.replace('_', ' ')})
-								</li>
+					) : (
+						<div className="divide-y rounded-lg border bg-card">
+							{visible.map((card) => (
+								<CardItem
+									key={card.id}
+									card={card}
+									template={templateOf(card)}
+									isLead={isLead}
+									open={isOpen(card)}
+									onToggle={() => setOpen([card.id], !isOpen(card))}
+									selected={selected.has(card.id)}
+									onSelect={(on) => select(on ? [...selected, card.id] : [...selected].filter((id) => id !== card.id))}
+									onExplainScore={() => update({ card: String(card.id) })}
+									onShowHistory={() => update(cardHistoryParams(card.id))}
+									onChange={refresh}
+									flash={String(card.id) === target}
+								/>
 							))}
-						</ul>
+						</div>
 					)}
-					{card.blockReason && <p className="mt-1">This card is blocked. We do not send it to someone else instead.</p>}
-				</details>
-			) : (
-				<p className="text-xs text-muted-foreground">
-					No provider lists a person at this company, so there is nobody to address a card to. The company stays in the
-					list so you can see it was skipped.
-				</p>
-			)}
-
-			{card.mailedAt && <LogOutcome cardId={card.id} onLogged={onChange} />}
-
-			{editable && (
-				<div className="flex flex-wrap gap-2">
-					{isLead && card.status === 'draft' && card.eligibility === 'eligible' && (
-						<Button size="sm" disabled={approve.isPending} onClick={() => approve.mutate()}>
-							Approve
-						</Button>
-					)}
-					<Button size="sm" variant="outline" onClick={() => setEditing(true)}>
-						Edit line
-					</Button>
-					{card.status === 'draft' && (
-						<Button size="sm" variant="outline" onClick={() => setRejecting(true)}>
-							Reject
-						</Button>
-					)}
-				</div>
-			)}
-			{approve.isError && <p className="text-sm text-destructive">{approve.error.message}</p>}
-
-			<ReasonDialog
-				open={rejecting}
-				onOpenChange={setRejecting}
-				title="Reject this card"
-				description={`${card.recipient?.fullName ?? 'Nobody'} at ${company} will not get a postcard from this campaign.`}
-				confirmLabel="Reject"
-				onConfirm={async (reason) => {
-					await api(`/api/cards/${card.id}/reject`, { method: 'POST', json: { reason } })
-					await onChange()
-				}}
-			/>
-			<Dialog open={editing} onOpenChange={setEditing}>
-				<DialogContent>
-					<DialogHeader>
-						<DialogTitle>Edit the personal line</DialogTitle>
-						<DialogDescription>
-							{card.status === 'approved'
-								? 'This card is approved. Saving a new line sends it back to draft for approval.'
-								: 'Up to 200 characters, no contact details.'}
-						</DialogDescription>
-					</DialogHeader>
-					<div className="space-y-1">
-						<Label htmlFor={`line-${card.id}`}>Line ({text.trim().length}/200)</Label>
-						<Textarea id={`line-${card.id}`} value={text} onChange={(event) => setText(event.target.value)} />
-					</div>
-					{saveLine.isError && <p className="text-sm text-destructive">{saveLine.error.message}</p>}
-					<DialogFooter>
-						<Button variant="outline" onClick={() => setEditing(false)}>
-							Cancel
-						</Button>
-						<Button disabled={saveLine.isPending || text.trim() === ''} onClick={() => saveLine.mutate()}>
-							Save line
-						</Button>
-					</DialogFooter>
-				</DialogContent>
-			</Dialog>
-		</article>
-	)
-}
-
-function LogOutcome({ cardId, onLogged }: { cardId: number; onLogged: () => Promise<void> }) {
-	const queryClient = useQueryClient()
-	const [kind, setKind] = useState<'reply' | 'meeting' | null>(null)
-	const [date, setDate] = useState(() => new Date().toISOString().slice(0, 10))
-	const [note, setNote] = useState('')
-	// One key per dialog opening, so a double click logs one outcome.
-	const [key, setKey] = useState(() => crypto.randomUUID())
-	const log = useMutation({
-		mutationFn: () =>
-			api(`/api/cards/${cardId}/outcomes`, {
-				method: 'POST',
-				headers: { 'Idempotency-Key': key },
-				json: { kind, occurredAt: new Date(`${date}T12:00:00`).toISOString(), note },
-			}),
-		onSuccess: async () => {
-			setKind(null)
-			setKey(crypto.randomUUID())
-			setNote('')
-			await queryClient.invalidateQueries({ queryKey: ['results'] })
-			await onLogged()
-		},
-	})
-
-	return (
-		<>
-			<div className="flex gap-2">
-				<Button size="sm" variant="outline" onClick={() => setKind('reply')}>
-					Log reply
-				</Button>
-				<Button size="sm" variant="outline" onClick={() => setKind('meeting')}>
-					Log meeting
-				</Button>
-			</div>
-			<Dialog open={kind !== null} onOpenChange={(open) => !open && setKind(null)}>
-				<DialogContent>
-					<DialogHeader>
-						<DialogTitle>Log a {kind}</DialogTitle>
-						<DialogDescription>
-							It counts for this card only if it happened within 30 days after the card was mailed.
-						</DialogDescription>
-					</DialogHeader>
-					<div className="space-y-1">
-						<Label htmlFor={`outcome-date-${cardId}`}>Date</Label>
-						<input
-							id={`outcome-date-${cardId}`}
-							type="date"
-							className="block rounded-md border px-3 py-2 text-sm"
-							value={date}
-							onChange={(event) => setDate(event.target.value)}
+					{list && (
+						<Pager
+							page={pages.page}
+							pageSize={list.pageSize}
+							shown={visible.length}
+							total={list.total}
+							onFirst={pages.page > 0 ? pages.first : null}
+							onPrevious={pages.page > 0 ? pages.previous : null}
+							onNext={list.nextCursor ? () => pages.next(list.nextCursor!) : null}
 						/>
-					</div>
-					<div className="space-y-1">
-						<Label htmlFor={`outcome-note-${cardId}`}>Note</Label>
-						<Textarea id={`outcome-note-${cardId}`} value={note} onChange={(event) => setNote(event.target.value)} />
-					</div>
-					{log.isError && <p className="text-sm text-destructive">{log.error.message}</p>}
-					<DialogFooter>
-						<Button variant="outline" onClick={() => setKind(null)}>
-							Cancel
-						</Button>
-						<Button disabled={log.isPending} onClick={() => log.mutate()}>
-							Save
-						</Button>
-					</DialogFooter>
-				</DialogContent>
-			</Dialog>
-		</>
-	)
-}
+					)}
+				</section>
+			</div>
 
-function UnconfirmedNotice({
-	card,
-	isLead,
-	onChange,
-}: {
-	card: CampaignCard
-	isLead: boolean
-	onChange: () => Promise<void>
-}) {
-	const retry = useMutation({
-		mutationFn: () => api(`/api/cards/${card.id}/retry`, { method: 'POST' }),
-		onSettled: onChange,
-	})
-	return (
-		<div className="space-y-1">
-			<p className="text-destructive">
-				The printer did not answer after {card.attempts.length} attempts, so we do not know whether it received this
-				card. Until we know, this person is held back as if mailed.
-			</p>
-			{isLead && (
-				<Button size="sm" variant="outline" disabled={retry.isPending} onClick={() => retry.mutate()}>
-					Try again with the same request
-				</Button>
-			)}
-			{retry.isError && <p className="text-destructive">{retry.error.message}</p>}
+			<CardScoreSheet card={explaining} campaign={campaign} onClose={() => update({ card: '' })} />
 		</div>
 	)
 }

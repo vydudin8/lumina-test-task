@@ -1,17 +1,40 @@
 import type { ProviderName } from '#common/settings.ts'
-import { eq, sql } from 'drizzle-orm'
+import { and, eq, inArray, sql } from 'drizzle-orm'
 import type { Executor } from '../../db/client.ts'
-import { ingestionRuns, rawRecords } from '../../db/schema.ts'
+import { ingestionRunRecords, ingestionRuns, rawRecords } from '../../db/schema.ts'
 import { contentHash, type ParsedRecord } from './core.ts'
 
 export type IngestionRun = typeof ingestionRuns.$inferSelect
 
-export async function startRun(db: Executor, provider: ProviderName, triggeredBy: string, now: Date) {
-	const [run] = await db.insert(ingestionRuns).values({ provider, triggeredBy, startedAt: now }).returning()
+export async function startRun(
+	db: Executor,
+	provider: ProviderName,
+	triggeredBy: string,
+	now: Date,
+	status: 'queued' | 'running' = 'running',
+) {
+	const [run] = await db.insert(ingestionRuns).values({ provider, triggeredBy, startedAt: now, status }).returning()
+	return run!
+}
+
+// A queued run, or one the job runner starts again after a failure or a restart, begins from a clean slate. A run that
+// already succeeded is left alone, so a job requeued after a crash that came too late does not pull twice.
+export async function beginRun(db: Executor, runId: number, now: Date) {
+	const [run] = await db
+		.update(ingestionRuns)
+		.set({ status: 'running', startedAt: now, finishedAt: null, errors: [] })
+		.where(and(eq(ingestionRuns.id, runId), inArray(ingestionRuns.status, ['queued', 'running', 'failed'])))
+		.returning()
+	return run
+}
+
+export async function findRun(db: Executor, runId: number) {
+	const [run] = await db.select().from(ingestionRuns).where(eq(ingestionRuns.id, runId))
 	return run!
 }
 
 // Upsert on (provider, kind, external_id, content_hash): new versions are inserted, unchanged ones only get last_seen_*.
+// Either way the run is linked to the record it received.
 export async function saveRecords(
 	db: Executor,
 	provider: ProviderName,
@@ -41,8 +64,12 @@ export async function saveRecords(
 				set: { lastSeenRunId: sql`excluded.last_seen_run_id`, lastSeenAt: sql`excluded.last_seen_at` },
 			})
 			// xmax = 0 only for rows this statement inserted (not updated).
-			.returning({ inserted: sql<boolean>`xmax = 0` })
+			.returning({ id: rawRecords.id, inserted: sql<boolean>`xmax = 0` })
 		inserted += rows.filter((row) => row.inserted).length
+		await db
+			.insert(ingestionRunRecords)
+			.values(rows.map((row) => ({ runId, rawRecordId: row.id })))
+			.onConflictDoNothing()
 	}
 	return { new: inserted, unchanged: records.length - inserted }
 }

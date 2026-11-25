@@ -1,67 +1,81 @@
-# Lumina outbound: targeting and postcards (Project 2)
+# Lumina outbound
 
-Pulls company and contact data from Clay, Apollo and FactSet, merges it into one company master, scores companies against an editable ideal customer profile (ICP), and runs a postcard campaign through a print-and-mail API. The three providers and the print partner are fakes served over real HTTP by `fake-world`.
+Turns company data from Clay, Apollo and FactSet into one company master, scores it against an editable ideal customer profile (ICP) and runs a postcard campaign. The providers and the print-and-mail API are fakes served over real HTTP by `fake-world`. Nothing is mailed.
 
-## Run it
+## Run
 
 ```bash
-docker compose up                                # http://localhost:3000, data seeded on first start
-docker compose --profile test run --rm test      # typecheck, lint, unit + Postgres integration, Playwright
+docker compose up                              # http://localhost:3000, seeded on first start
+docker compose --profile test run --rm test    # typecheck, lint, unit, Postgres integration, Playwright
 ```
 
-Pick a user in the header: **Maya Fernandes** is the sales lead (the only role that can approve and send); Tom Okafor and Ana Kowalski are reps. With `ANTHROPIC_API_KEY` set, Claude Haiku (`claude-haiku-5-5`) writes the AI lines; without it a deterministic stub does, and invents a number in about one line in nine so you can see the guard reject it. Fake-world switches (lost responses, 500s, duplicate or shuffled webhooks): `POST localhost:4000/__control`, e.g. `{"mode":"timeout_once"}`; `GET /__calls` lists what it received.
+Without Docker you need Node 24, pnpm and Postgres 17 with a role that can create databases (`CREATE ROLE lumina LOGIN PASSWORD 'lumina' CREATEDB;`); no other credentials. Then `cp .env.example .env`, `pnpm install`, `pnpm dev`, and `pnpm seed:reset` in a second terminal.
 
-Without Docker: Postgres 17, `cp .env.example .env`, `pnpm install`, `pnpm dev` (app, Vite on 5173 and fake-world), then in a second terminal `pnpm seed:reset`, which pulls from fake-world; tests with `pnpm test` and `pnpm test:e2e`.
+Tests: `pnpm test:all` runs all of them. `pnpm test` is typecheck, lint, unit and Postgres integration; `pnpm test:e2e` is Playwright.
 
-## The example conditions, as tests
+Which test covers each condition of the brief, how each step works, the hard-coded rules and a map of the code are in [DETAILS.md](DETAILS.md).
 
-| Condition                                                                                                                          | Test                                                                   |
-| ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| 300 company and 600 contact records; fixtures regenerate byte for byte; seed twice gives the same state                            | `scripts/generate-fixtures.test.ts`, `src/server/seed/seed.db.test.ts` |
-| Exactly 18 merges, no false merges, 7 headcount conflicts                                                                          | `src/server/pipeline/resolve/resolve.db.test.ts`                       |
-| Default ICP puts the expected 50 companies on top                                                                                  | `src/server/pipeline/score/score.db.test.ts`                           |
-| Top 50 → exactly 39 eligible cards (8 suppressed, 3 bad addresses)                                                                 | `src/server/pipeline/campaign/campaign.db.test.ts`                     |
-| Skipped companies stay on the list with their reason, including one with no contact on file                                        | `campaign.db.test.ts`, `e2e/campaigns.spec.ts`                         |
-| Providers that disagree on an address: flagged on the company and on the card, with the source                                     | `src/server/pipeline/resolve/*.test.ts`, `e2e/campaigns.spec.ts`       |
-| A rep cannot approve, through the API or direct SQL; a repeated approve is a no-op                                                 | `campaign.db.test.ts`, `src/server/http/campaigns.db.test.ts`          |
-| An opt-out after approval blocks the send and the mail API gets 0 calls; a timeout plus retry gives one postcard and one `mail_id` | `src/server/pipeline/send/send.db.test.ts`                             |
-| Webhook signature, duplicates, out-of-order events, unknown mail id                                                                | `src/server/http/webhooks.db.test.ts`                                  |
-| A status reaches the UI within 5 s                                                                                                 | `e2e/send.spec.ts`                                                     |
-| A day-35 event is not attributed                                                                                                   | `src/server/pipeline/results/*.test.ts`                                |
-| The guard rejects an uncited number and an unknown citation with the right codes                                                   | `src/server/llm/guard.test.ts`                                         |
+- **Users:** pick one in the header, no passwords. Maya Fernandes is the sales lead, the only role that can approve and send; Tom Okafor and Ana Kowalski are reps.
+- **LLM:** a deterministic stub, by design. The app, the guard and every test were built against it. It writes each line from the evidence it gets and invents a number about once in nine, so the guard has something to reject. A real model is optional: with `ANTHROPIC_API_KEY` in `.env` (read by `pnpm dev` and `docker compose`), the same interface calls Claude Haiku (`claude-haiku-5-5`). We did not develop or tune the app against a real key. Prompts, model choice, cost and latency all have a lot of room for improvement, and that work was out of scope.
+- **Fake world:** `POST localhost:4000/__control` with `{"mode":"timeout_once"}`, `timeout_always`, `error_500_once`, `{"duplicate_rate":0.5}` or `{"shuffle":true}`; `GET /__calls` lists what it received. A postcard moves one status every 5 s; 1 in 5 ends `returned`.
 
-`fixtures/manifest.json` is the ground truth the tests compare against; `pnpm fixtures` regenerates it from a seeded PRNG.
+## Recipient rule
 
-## Decisions
+One card per company. Contacts are grouped into people by normalised work email. The first step that tells two people apart decides:
 
-- **Modular monolith.** Ingest → resolve → score → campaign → send → results are modules that hand data over through tables (pure `core.ts`, I/O in `store.ts`). Separate services would split the transactions that matter (approval plus its audit row; the send re-check plus the submission) and move permission checks out of the database.
-- **The database enforces the rules.** Approved-or-later cards need `approved_by`; a composite FK `(approved_by, approved_by_role) → users(id, role)` plus `CHECK approved_by_role = 'lead'` means even direct SQL cannot record a rep's approval. Launching a send has the same pair. `audit_events` is append-only by trigger and written in the same transaction as each change. ICP versions are immutable.
-- **One card per company, no substitution.** The recipient is chosen by a fixed chain that ignores eligibility: target function (operations, then fleet/plant, procurement, sustainability), seniority, providers corroborating the person, freshest record, contact id. Every card shows the rule that picked its person, and who else was considered, under "Why this person". If that person opted out, was mailed in the last 90 days, or the office address is invalid, the card is blocked with that reason; we never fall back to a colleague. A company with no contact on file is kept as a blocked "no contact" card, so no company leaves the list silently. Suppression and the address are checked again at send time. Cards go to the company office address with the person's name, because no provider has personal postal addresses. The address is not a tie-break: it is the same office for everyone at the company, so it decides whether the company gets a card, not who gets it.
-- **Provenance per field.** Every value names its provider, raw record, the provider's own date and our fetch time. Precedence is set per field (headcount and revenue: FactSet, Apollo, Clay). Headcount and revenue conflict above a 10% difference, other fields when normalised values differ. Choosing a value, merging or splitting needs a reason, is audited, and is keyed on source records so it survives re-pulls. Addresses follow the same rule: a card snapshots where its address came from, and says so when the providers disagree.
-- **Money and scores are exact.** `numeric` in Postgres, `decimal.js` in code. Revenue is converted to GBP with seeded `fx_rates`, and the original amount, rate and date are shown next to every converted value. Scores are exact decimals, displayed rounded half up, ordered by exact value then company id.
-- **The LLM only rephrases evidence.** It gets numbered facts (first name, title, company facts; never email or address) and must answer `{text, cites}`. The guard rejects invalid JSON, empty or long text, missing or unknown citations, any number not in the cited evidence (digits, number words, a changed £/$/% sign), and contact data. A rejected answer is replaced by a template, keeps its raw output and reason codes, shows a badge and writes an audit event. It never picks recipients or changes scores.
-- **Idempotent everywhere:** fixtures and seed, ingestion (raw records unique on content hash), campaign creation (`Idempotency-Key`), approvals and send launch (conditional updates), submission (a per-card key generated at approval), webhooks (unique event id), opt-outs, manual outcomes.
-- **Retries with full jitter** (`lib/retry.ts`, honours `Retry-After`) for provider pulls, mail submissions, LLM calls and fake-world's webhook redelivery. The send worker claims cards with `FOR UPDATE SKIP LOCKED`, re-checks suppression and the address, and records every attempt. A card the printer never answered for is `unconfirmed`, not failed: it holds the person back, and a lead retries it with the same key.
-- **Time is injected.** Seeded mailings, opt-outs and outcomes are dated relative to the seed run, so the 90-day hold and 30-day attribution hold whenever it runs. Provider "as of" dates are fixed, so FactSet figures turn stale as real time passes.
+1. Target function: operations, then fleet or plant, then procurement, then sustainability (provider function labels or title keywords).
+2. Seniority: C-suite, VP, director, head, manager, other.
+3. Known to more providers.
+4. Freshest record, then lowest contact id.
 
-## Manual and automated
-
-**People decide:** approving each card, launching the send, uncertain merges, choosing a value in a conflict, ICP changes, logging replies and meetings, what to do with a `failed` card. **The system does:** ingestion, normalisation, confident merges, scoring, drafting lines (guarded), address validation, suppression, retries, webhooks, attribution.
+Eligibility is not part of the rule, so a suppressed person is never swapped for a colleague. Each card shows "Why this person": the deciding step and the other candidates.
 
 ## Assumptions
 
-Confirmed by the hiring team: one card per company with a recipient rule of our choosing, shown in the UI; no fallback recipient, so the top 50 gives 50 − 11 = 39 cards, and skipped companies are shown with their reason; suppression is checked again at send time; the mailing address is the company office with the contact's name, and address disagreements are treated like any other conflict. Our calls: "300 companies and 600 contacts" are raw records (282 unique companies); A/B alternates in rank order within one campaign; Apollo's `annual_revenue` is USD; FactSet has no industry field, so FactSet-only companies are out with "industry unknown" rather than guessed; we post to GB, IE, FR, DE, NL; ICP signals are static so the top 50 does not drift; real Clay pushes rows, our fake is pulled.
+Confirmed by the hiring team:
 
-## Personal data
+- One card per company, no fallback contact. The top 50 gives 39 cards; the other 11 stay on the list with their reason (5 opted out, 3 mailed in the last 90 days, 3 invalid addresses). A company with no contact stays as a blocked "no contact" card.
+- Suppression is checked when cards are built and again at send time.
+- Cards go to the company office address with the contact's name. Providers that disagree on an address are a conflict, shown with its source on the company and the card.
 
-Lawful basis: B2B legitimate interest. Logs redact names, emails, phones and addresses; opt-outs keep only a SHA-256 of the normalised email, so they outlive the contact record; the LLM never sees an email or address.
+Our own calls:
 
-## Not built yet
+- "300 companies and 600 contacts" are raw records: 282 real companies after 18 merges.
+- Apollo's `annual_revenue` is USD. All revenue is converted to GBP at seeded rates; the original amount and rate are shown.
+- FactSet has no industry, so FactSet-only companies are "industry unknown" and fail the required rule rather than get a guess.
+- Website visits come from seeded history (no tracking script); replies and meetings are logged manually.
+- Real Clay pushes rows; our fake is pulled like the others.
+- Seeded history is dated relative to the seed run, so the 90- and 30-day windows hold whenever it runs.
 
-Re-checking an address after a `returned` postcard, live FX rates, erasure on request, an outcome simulator, FactSet industry classification, a lease so several send workers can run (one worker holds the row lock during retries; marked `shortcut:`), real authentication.
+## Manual and automated
 
-## For the sales lead
+Kept manual:
 
-Go through the menu left to right. Click any number to see where it came from, down to the raw provider data. Build a campaign, read the cards (blocked ones say why), approve, press **Send**; statuses update by themselves. Results compares the two designs and says when the sample is too small to trust.
+- **Approval and launching the send:** they spend money and speak for the brand, and the brief requires it.
+- **Uncertain merges:** a wrong merge mixes two companies' outreach history; a missed duplicate only costs a second look.
+- **Choosing a value in a conflict:** needs judgement; precedence applies until then.
+- **ICP changes:** a business decision, saved as versions.
+- **Replies and meetings:** they arrive by email and phone; there is no CRM integration.
+- **Failed and unconfirmed cards:** the cause should be seen and fixed before a retry.
 
-Built with Claude Code as a pair programmer; every line was reviewed. `CLAUDE.md` holds the working conventions.
+Automated: ingestion, confident merges, scoring, drafting lines, address validation, suppression, retries, webhooks, attribution.
+
+## Engineering decisions
+
+- **Modular monolith on Postgres only.** Jobs are a table, live updates are `LISTEN/NOTIFY` over SSE; no queue, no Redis. An approval and its audit row, or the send re-check and the submission, share one transaction.
+- **The database enforces the rules.** A composite FK on `(approved_by, approved_by_role)` plus `CHECK approved_by_role = 'lead'` blocks a rep's approval even through direct SQL. The audit log is append-only by trigger. Money and scores are `numeric` and `decimal.js`.
+- **The LLM only rephrases evidence.** It gets numbered facts (first name, title, company facts; never email or address) and must cite them. The guard rejects uncited numbers, unknown citations, contact data and bad JSON; a rejected line falls back to a template and is flagged. Logs redact contact details; an opt-out keeps only a SHA-256 of the email.
+
+## Left out on purpose
+
+- **Fuzzy name matching for automatic merges.** A false merge mixes two companies' outreach history; a missed duplicate only costs a second look, so near matches go to a person.
+- **Microservices and a message queue.** One server and Postgres cover the load. Splitting them would break the transactions that pair an approval with its audit row and the send re-check with the submission.
+- **A tracking script, a CRM and an inbox integration.** Website visits come from seeded history; replies and meetings are logged by hand.
+
+## What we would build next
+
+- **Real authentication.** Sign-in through the company's identity provider instead of the user picker, sessions that expire, and roles managed by an admin. Roles are already enforced in the database, so only the sign-in layer changes.
+- **Real models.** Tune the prompts on Claude, choose the model by quality and cost, track how often the guard rejects real output, and cap spend and latency per campaign.
+- **Clearer mail provider errors.** Today every 4xx marks the card `failed`. Next: tell a bad address from rejected content or an account problem, say in plain words what to fix, and let the lead resend once it is fixed. A `returned` card should re-check the address and hold the person.
+- **More than one send worker.** It needs a lease; today one worker holds the card's row lock during retries (marked `shortcut:`).
+- **Data and compliance.** Live FX rates instead of seeded ones, erasure on request (delete the contact, keep only the opt-out hash), and Clay rows received by push, the way real Clay sends them.

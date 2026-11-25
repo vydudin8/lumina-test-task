@@ -15,6 +15,8 @@ export interface MailOptions {
 	rng: () => number
 	now: () => Date
 	timeoutDelayMs: number
+	// Pause between one status webhook and the next; the first goes out at once.
+	webhookDelayMs: number
 	returnedRate: number
 	controls: boolean
 }
@@ -29,9 +31,12 @@ interface Postcard {
 	response: { id: string; status: 'submitted' }
 	cardId: unknown
 	createdAt: string
+	// What schedule() has reached so far, whether or not its webhook got through. GET /v1/postcards/:id shows these.
+	issued: { event_id: string; status: string; occurred_at: string }[]
 }
 
 const STATUSES = ['submitted', 'printed', 'mailed'] as const
+const PROGRESS = ['submitted', 'printed', 'mailed', 'delivered', 'returned']
 const text = (value: unknown) => typeof value === 'string' && value.trim() !== ''
 
 export function mailRoutes(options: MailOptions) {
@@ -39,7 +44,7 @@ export function mailRoutes(options: MailOptions) {
 	const postcards = new Map<string, Postcard>()
 	const submissions: { key: string | null; cardId: unknown; at: string }[] = []
 	const pending = new Set<Promise<unknown>>()
-	const control = { mode: 'normal' as Mode, webhookDelayMs: 0, duplicateRate: 0, shuffle: false }
+	const control = { mode: 'normal' as Mode, webhookDelayMs: options.webhookDelayMs, duplicateRate: 0, shuffle: false }
 
 	const sign = (body: string) => {
 		const t = Math.floor(options.now().getTime() / 1000)
@@ -81,8 +86,10 @@ export function mailRoutes(options: MailOptions) {
 				.map(({ event }) => event)
 
 		const run = (async () => {
-			for (const event of events) {
-				if (control.webhookDelayMs) await options.sleep(control.webhookDelayMs)
+			for (const [index, event] of events.entries()) {
+				if (index > 0 && control.webhookDelayMs) await options.sleep(control.webhookDelayMs)
+				if (!postcard.issued.some((issued) => issued.event_id === event.event_id))
+					postcard.issued.push({ event_id: event.event_id, status: event.status, occurred_at: event.occurred_at })
 				await deliver(event)
 			}
 		})()
@@ -133,7 +140,9 @@ export function mailRoutes(options: MailOptions) {
 			)
 		}
 
-		const id = `psc_${String(postcards.size + 1).padStart(6, '0')}`
+		// From the key, not a counter: postcards live in memory, and a counter restarts at 1 with the process while the
+		// app's database still holds the ids it handed out before.
+		const id = `psc_${createHash('sha256').update(key).digest('hex').slice(0, 16)}`
 		const postcard: Postcard = {
 			id,
 			key,
@@ -141,6 +150,7 @@ export function mailRoutes(options: MailOptions) {
 			response: { id, status: 'submitted' },
 			cardId: body.metadata?.card_id,
 			createdAt: options.now().toISOString(),
+			issued: [],
 		}
 		postcards.set(key, postcard)
 		schedule(postcard)
@@ -151,6 +161,17 @@ export function mailRoutes(options: MailOptions) {
 			await options.stall(options.timeoutDelayMs)
 		}
 		return context.json(postcard.response, 201)
+	})
+
+	app.get('/v1/postcards/:id', (context) => {
+		const postcard = [...postcards.values()].find((candidate) => candidate.id === context.req.param('id'))
+		if (!postcard) return context.json({ error: { code: 'not_found', message: 'No such postcard' } }, 404)
+		// Shuffled webhooks still leave the postcard at its furthest status.
+		const status = postcard.issued.reduce(
+			(furthest, event) => (PROGRESS.indexOf(event.status) > PROGRESS.indexOf(furthest) ? event.status : furthest),
+			'submitted',
+		)
+		return context.json({ id: postcard.id, status, events: postcard.issued })
 	})
 
 	if (options.controls) {

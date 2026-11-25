@@ -33,7 +33,7 @@ describe('seed', () => {
 		const state = await snapshot(t.db)
 		expect(state.users?.rows).toBe(3)
 		expect(state.icp_versions?.rows).toBe(1)
-		expect(state.templates?.rows).toBe(2)
+		expect(state.templates?.rows).toBe(3)
 		expect(state.fx_rates?.rows).toBe(4)
 		expect(state.suppressions?.rows).toBe(7)
 		expect(state.seed_runs?.rows).toBe(1)

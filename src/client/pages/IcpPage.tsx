@@ -1,16 +1,30 @@
-import { api } from '#client/api.ts'
+import { MultiCombobox } from '#client/components/MultiCombobox.tsx'
+import { NumberInput } from '#client/components/NumberInput.tsx'
 import { QueryState } from '#client/components/QueryState.tsx'
 import { Button } from '#client/components/ui/button.tsx'
 import { Checkbox } from '#client/components/ui/checkbox.tsx'
-import { Input } from '#client/components/ui/input.tsx'
+import {
+	Dialog,
+	DialogContent,
+	DialogDescription,
+	DialogFooter,
+	DialogHeader,
+	DialogTitle,
+} from '#client/components/ui/dialog.tsx'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '#client/components/ui/select.tsx'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '#client/components/ui/table.tsx'
-import { formatDateTime } from '#client/format.ts'
-import { useUserName } from '#client/session.ts'
-import { ICP_FIELD_LABELS, icpRulesSchema, type IcpRule } from '#common/icp.ts'
+import { toast } from '#client/components/ui/toast.tsx'
+import { useUserName } from '#client/domain/session.ts'
+import { api } from '#client/lib/api.ts'
+import { COUNTRIES } from '#client/lib/countries.ts'
+import { useDebounced } from '#client/lib/debounce.ts'
+import { formatDateTime, formatGbp, formatInteger } from '#client/lib/format.ts'
+import { useFilterParams } from '#client/lib/lists.ts'
+import { cn } from '#client/lib/utils.ts'
+import { describeRange, ICP_FIELD_LABELS, icpRulesSchema, type IcpRule } from '#common/icp.ts'
 import { INDUSTRY_MAP, SIGNAL_LABELS } from '#common/settings.ts'
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
-import { useEffect, useState } from 'react'
+import { keepPreviousData, useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
+import { useState } from 'react'
 import { Link } from 'react-router'
 
 interface IcpResponse {
@@ -45,7 +59,14 @@ const NEW_RULES: Record<IcpRule['field'], () => IcpRule> = {
 		points: 10,
 		required: false,
 	}),
-	revenueGbp: () => ({ id: 'revenue', field: 'revenueGbp', op: 'gte', value: '10000000', points: 10, required: false }),
+	revenueGbp: () => ({
+		id: 'revenue',
+		field: 'revenueGbp',
+		op: 'between',
+		value: ['10000000', null],
+		points: 10,
+		required: false,
+	}),
 	signals: () => ({
 		id: 'signals',
 		field: 'signals',
@@ -56,39 +77,50 @@ const NEW_RULES: Record<IcpRule['field'], () => IcpRule> = {
 	}),
 }
 
-function useDebounced<T>(value: T, ms: number) {
-	const [debounced, setDebounced] = useState(value)
-	useEffect(() => {
-		const timer = setTimeout(() => setDebounced(value), ms)
-		return () => clearTimeout(timer)
-	}, [value, ms])
-	return debounced
-}
-
 export function IcpPage() {
-	const query = useQuery({ queryKey: ['icp'], queryFn: () => api<IcpResponse>('/api/icp') })
+	const [params] = useFilterParams()
+	const version = params.get('version')
+	const query = useQuery({
+		queryKey: ['icp', version],
+		queryFn: () => api<IcpResponse>(`/api/icp${version ? `?version=${version}` : ''}`),
+		placeholderData: keepPreviousData,
+	})
 	return <QueryState query={query}>{(data) => <IcpEditor key={data.current.id} data={data} />}</QueryState>
 }
 
 function IcpEditor({ data }: { data: IcpResponse }) {
 	const userName = useUserName()
 	const queryClient = useQueryClient()
+	const [, setParams] = useFilterParams()
+	const latestId = data.versions[0]?.id
+	const latest = data.current.id === latestId
+	const [pending, setPending] = useState<number | null>(null)
 	const [rules, setRules] = useState<IcpRule[]>(data.current.rules)
 	const [addField, setAddField] = useState<IcpRule['field']>('industry')
 	const parsed = icpRulesSchema.safeParse(rules)
 	const debounced = useDebounced(rules, 300)
 	const changed = JSON.stringify(rules) !== JSON.stringify(data.current.rules)
+	const total = rules.reduce((sum, rule) => sum + rule.points, 0)
 
 	const preview = useQuery({
 		queryKey: ['icp-preview', debounced],
 		queryFn: () => api<Preview>('/api/icp/preview', { method: 'POST', json: { rules: debounced } }),
 		enabled: icpRulesSchema.safeParse(debounced).success,
+		// Every edit is a new key: keep the last counts on screen instead of flashing "Loading…".
+		placeholderData: keepPreviousData,
 	})
 	const save = useMutation({
 		mutationFn: () => api<{ version: { id: number } }>('/api/icp', { method: 'POST', json: { rules } }),
-		onSuccess: () => queryClient.invalidateQueries(),
+		onSuccess: ({ version }) => {
+			toast({ title: `ICP version ${version.id} saved` })
+			setParams({ version: '' })
+			return queryClient.invalidateQueries()
+		},
+		onError: (error) => toast({ tone: 'error', title: 'Could not save the ICP', description: error.message }),
 	})
 
+	// Opening another version replaces the rules in the editor, so unsaved edits need a yes first.
+	const switchTo = (id: number) => (changed ? setPending(id) : setParams({ version: String(id) }))
 	const update = (index: number, rule: IcpRule) => setRules(rules.map((current, i) => (i === index ? rule : current)))
 	const uniqueId = (base: string) => {
 		let id = base
@@ -98,17 +130,33 @@ function IcpEditor({ data }: { data: IcpResponse }) {
 
 	return (
 		<div className="space-y-8">
-			<div className="space-y-1">
-				<h1 className="text-2xl font-semibold">Ideal customer profile</h1>
-				<p className="max-w-3xl text-muted-foreground">
-					A company is in the profile when it passes every required rule. Its score is the points it earns out of the
-					points available. When we don't know a value, the rule earns nothing and shows as unknown rather than failed;
-					an unknown required value keeps the company out.
-				</p>
-				<p className="text-sm">
-					Version {data.current.id}, saved by {userName(data.current.createdBy)} on{' '}
-					{formatDateTime(data.current.createdAt)}.
-				</p>
+			<div className="flex flex-wrap items-end justify-between gap-4">
+				<div className="space-y-1">
+					<h1 className="text-2xl font-semibold tracking-tight">Ideal customer profile</h1>
+					<p className="max-w-3xl text-muted-foreground">
+						A company is in the profile when it passes every required rule. Its score is the points it earns out of the
+						points available. When we don't know a value, the rule earns nothing and shows as unknown rather than
+						failed; an unknown required value keeps the company out.
+					</p>
+					<p className="text-sm">
+						Version {data.current.id}, saved by {userName(data.current.createdBy)} on{' '}
+						{formatDateTime(data.current.createdAt)}.
+						{!latest && ' This is an older version; saving makes these rules the newest one.'}
+					</p>
+				</div>
+				<Select value={String(data.current.id)} onValueChange={(value) => switchTo(Number(value))}>
+					<SelectTrigger aria-label="ICP version" className="w-44">
+						<SelectValue />
+					</SelectTrigger>
+					<SelectContent>
+						{data.versions.map((option) => (
+							<SelectItem key={option.id} value={String(option.id)}>
+								Version {option.id}
+								{option.id === latestId && ' (current)'}
+							</SelectItem>
+						))}
+					</SelectContent>
+				</Select>
 			</div>
 
 			<section className="space-y-3">
@@ -133,13 +181,11 @@ function IcpEditor({ data }: { data: IcpResponse }) {
 									<ConditionEditor rule={rule} onChange={(next) => update(index, next)} />
 								</TableCell>
 								<TableCell>
-									<Input
-										type="number"
-										min={0}
+									<NumberInput
 										max={100}
 										aria-label={`Points for ${rule.id}`}
-										value={rule.points}
-										onChange={(event) => update(index, { ...rule, points: Number(event.target.value) })}
+										value={String(rule.points)}
+										onValueChange={(points) => update(index, { ...rule, points: Number(points) })}
 									/>
 								</TableCell>
 								<TableCell>
@@ -177,18 +223,17 @@ function IcpEditor({ data }: { data: IcpResponse }) {
 					>
 						Add rule
 					</Button>
-					<span className="flex-1" />
+					<span className="flex-1 px-2 text-sm text-muted-foreground">{total} points available, scaled to 0–100.</span>
 					<Button variant="outline" disabled={!changed} onClick={() => setRules(data.current.rules)}>
-						Undo changes
+						Revert to saved version
 					</Button>
-					<Button disabled={!changed || !parsed.success || save.isPending} onClick={() => save.mutate()}>
+					<Button disabled={(latest && !changed) || !parsed.success || save.isPending} onClick={() => save.mutate()}>
 						{save.isPending ? 'Saving…' : 'Save as a new version'}
 					</Button>
 				</div>
 				{!parsed.success && (
 					<p className="text-sm text-destructive">{parsed.error.issues.map((issue) => issue.message).join('. ')}</p>
 				)}
-				{save.isError && <p className="text-sm text-destructive">{save.error.message}</p>}
 			</section>
 
 			<section className="space-y-2" aria-live="polite">
@@ -219,7 +264,7 @@ function IcpEditor({ data }: { data: IcpResponse }) {
 									<ol className="list-decimal space-y-1 pl-5">
 										{result.top.map((row) => (
 											<li key={row.companyId}>
-												<Link to={`/companies/${row.companyId}`} className="underline-offset-2 hover:underline">
+												<Link to={`/companies/${row.companyId}`} className="link">
 													{row.name}
 												</Link>{' '}
 												<span className="text-muted-foreground">{row.display}</span>
@@ -239,13 +284,50 @@ function IcpEditor({ data }: { data: IcpResponse }) {
 					{data.versions.map((version) => (
 						<li key={version.id}>
 							Version {version.id} · {userName(version.createdBy)} · {formatDateTime(version.createdAt)} ·{' '}
-							<Link to={`/scores?version=${version.id}`} className="underline underline-offset-2">
+							<Link
+								to={`/icp?version=${version.id}`}
+								className="link"
+								onClick={(event) => {
+									if (!changed) return
+									event.preventDefault()
+									setPending(version.id)
+								}}
+							>
+								Load into editor
+							</Link>{' '}
+							·{' '}
+							<Link to={`/scores?version=${version.id}`} className="link">
 								Scores with this version
 							</Link>
 						</li>
 					))}
 				</ul>
 			</section>
+
+			<Dialog open={pending !== null} onOpenChange={(open) => !open && setPending(null)}>
+				<DialogContent>
+					<DialogHeader>
+						<DialogTitle>Discard unsaved changes?</DialogTitle>
+						<DialogDescription>
+							Your edits to the rules are not saved. Opening another version replaces them.
+						</DialogDescription>
+					</DialogHeader>
+					<DialogFooter>
+						<Button variant="outline" onClick={() => setPending(null)}>
+							Keep editing
+						</Button>
+						<Button
+							variant="destructive"
+							onClick={() => {
+								setParams({ version: String(pending) })
+								setPending(null)
+							}}
+						>
+							Discard and switch
+						</Button>
+					</DialogFooter>
+				</DialogContent>
+			</Dialog>
 		</div>
 	)
 }
@@ -286,67 +368,93 @@ function ConditionEditor({ rule, onChange }: { rule: IcpRule; onChange: (rule: I
 			)
 		case 'country':
 			return (
-				<label className="flex items-center gap-2 text-sm">
-					One of
-					<Input
-						className="w-40"
-						aria-label="Country codes"
-						value={rule.value.join(', ')}
-						onChange={(event) =>
-							onChange({
-								...rule,
-								value: event.target.value
-									.split(',')
-									.map((code) => code.trim().toUpperCase())
-									.filter(Boolean),
-							})
-						}
+				<div className="max-w-md">
+					<MultiCombobox
+						label="Countries"
+						placeholder="Search by country name or code"
+						empty="No country matches."
+						options={COUNTRIES}
+						value={rule.value}
+						onChange={(value) => onChange({ ...rule, value })}
 					/>
-					<span className="text-muted-foreground">ISO codes, e.g. GB, IE</span>
-				</label>
+				</div>
 			)
 		case 'headcount':
 			return (
-				<div className="flex items-center gap-2 text-sm">
-					Between
-					<Input
-						className="w-28"
-						type="number"
-						aria-label="Minimum headcount"
-						value={rule.value[0]}
-						onChange={(event) => onChange({ ...rule, value: [Number(event.target.value), rule.value[1]] })}
-					/>
-					and
-					<Input
-						className="w-28"
-						type="number"
-						aria-label="Maximum headcount"
-						value={rule.value[1]}
-						onChange={(event) => onChange({ ...rule, value: [rule.value[0], Number(event.target.value)] })}
-					/>
-				</div>
+				<RangeEditor
+					label="headcount"
+					value={rule.value}
+					onChange={(value) => onChange({ ...rule, value })}
+					parse={(text) => (text ? Number(text) : null)}
+					format={formatInteger}
+				/>
 			)
 		case 'revenueGbp':
 			return (
-				<div className="flex items-center gap-2 text-sm">
-					<Select value={rule.op} onValueChange={(op) => onChange({ ...rule, op: op as 'gte' | 'lte' })}>
-						<SelectTrigger aria-label="Revenue comparison" className="w-32">
-							<SelectValue />
-						</SelectTrigger>
-						<SelectContent>
-							<SelectItem value="gte">At least</SelectItem>
-							<SelectItem value="lte">At most</SelectItem>
-						</SelectContent>
-					</Select>
-					£
-					<Input
-						className="w-40"
-						aria-label="Revenue in pounds"
-						inputMode="decimal"
-						value={rule.value}
-						onChange={(event) => onChange({ ...rule, value: event.target.value.trim() })}
-					/>
-				</div>
+				<RangeEditor
+					label="revenue"
+					prefix="£"
+					value={rule.value}
+					onChange={(value) => onChange({ ...rule, value })}
+					decimal
+					parse={(text) => text || null}
+					format={formatGbp}
+				/>
 			)
 	}
+}
+
+// Two bounds, either one optional: an empty side means no limit.
+function RangeEditor<T extends number | string>({
+	label,
+	value,
+	onChange,
+	parse,
+	format,
+	prefix,
+	decimal = false,
+}: {
+	label: string
+	value: [T | null, T | null]
+	onChange: (value: [T | null, T | null]) => void
+	parse: (text: string) => T | null
+	format: (value: T) => string
+	prefix?: string
+	decimal?: boolean
+}) {
+	const bound = (index: 0 | 1) => (
+		<div className="relative">
+			{prefix && (
+				<span className="pointer-events-none absolute top-1/2 left-3 -translate-y-1/2 text-sm text-muted-foreground">
+					{prefix}
+				</span>
+			)}
+			<NumberInput
+				className={cn('w-36', prefix && 'pl-7')}
+				decimal={decimal}
+				aria-label={`${index === 0 ? 'Minimum' : 'Maximum'} ${label}`}
+				placeholder={index === 0 ? 'No minimum' : 'No maximum'}
+				value={String(value[index] ?? '')}
+				onValueChange={(text) => {
+					const next: [T | null, T | null] = [...value]
+					next[index] = parse(text)
+					onChange(next)
+				}}
+			/>
+		</div>
+	)
+	return (
+		<div className="space-y-1.5">
+			<div className="flex flex-wrap items-center gap-2 text-sm">
+				{bound(0)}
+				<span className="text-muted-foreground">to</span>
+				{bound(1)}
+			</div>
+			<p className="text-xs text-muted-foreground">
+				{value[0] === null && value[1] === null
+					? 'Set a minimum, a maximum or both.'
+					: `Passes when ${label} is ${describeRange(value, format)}. An empty side means no limit.`}
+			</p>
+		</div>
+	)
 }

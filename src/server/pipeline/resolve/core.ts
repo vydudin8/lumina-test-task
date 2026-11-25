@@ -1,6 +1,7 @@
 import {
 	CONFLICT_RELATIVE_DIFFERENCE,
 	FIELD_PRECEDENCE,
+	FIELDS,
 	INDUSTRY_MAP,
 	STALE_AFTER_MONTHS,
 	type FieldName,
@@ -296,7 +297,8 @@ const pairKey = (a: number, b: number) => (a < b ? `${a}:${b}` : `${b}:${a}`)
 type Matchable = Pick<SourceCompany, 'id' | 'normalisedName' | 'domain' | 'country'>
 
 // Union-find over three kinds of edges, strongest first: manual merges, equal domains, equal name + country.
-// Two groups are never joined automatically if that would put two different domains, or a split pair, together.
+// Two groups are never joined automatically if that would add a domain to a group that has one, or put a split pair
+// together.
 export function cluster(sources: Matchable[], decisions: MatchDecision[]) {
 	const sorted = [...sources].sort((a, b) => a.id - b.id)
 	const byId = new Map(sorted.map((source) => [source.id, source]))
@@ -318,8 +320,10 @@ export function cluster(sources: Matchable[], decisions: MatchDecision[]) {
 		const [mx, my] = [members.get(rx)!, members.get(ry)!]
 		if (mx.some((a) => my.some((b) => splits.has(pairKey(a, b))))) return
 		if (!manual) {
-			const domains = new Set([...mx, ...my].map((id) => byId.get(id)!.domain).filter(Boolean))
-			if (domains.size > 1) return
+			const domainsOf = (ids: number[]) => new Set(ids.map((id) => byId.get(id)!.domain).filter(Boolean))
+			const [dx, dy] = [domainsOf(mx), domainsOf(my)]
+			// Only a person puts two domains in one company; a record joins it automatically with a domain it already has.
+			if (new Set([...dx, ...dy]).size > Math.max(dx.size, dy.size)) return
 		}
 		const [keep, drop] = rx < ry ? [rx, ry] : [ry, rx]
 		root.set(drop, keep)
@@ -507,6 +511,45 @@ export function resolveFields(sources: SourceCompany[], overrides: Override[], n
 		revenue: resolveOne('revenue'),
 		address: resolveOne('address'),
 		signals: resolveOne('signals'),
+	}
+}
+
+// --- Stored profiles ---------------------------------------------------------------------------------
+
+// Staleness depends on the day, so profiles are stored with it off (threshold null) and get it back when read.
+export function withStale(fields: ResolvedFields, threshold: string | null): ResolvedFields {
+	return Object.fromEntries(
+		FIELDS.map((field) => [
+			field,
+			{ ...fields[field], stale: Boolean(threshold && fields[field].asOf && fields[field].asOf < threshold) },
+		]),
+	) as unknown as ResolvedFields
+}
+
+// The typed columns of a stored profile: everything the lists filter, sort or search on, and the scoring facts.
+export function profileOf(sources: SourceCompany[], fields: ResolvedFields) {
+	return {
+		name: fields.name.value,
+		domain: fields.domain.value,
+		country: fields.country.value,
+		industry: fields.industry.value,
+		industryLabel:
+			fields.industry.candidates[0]?.value === undefined
+				? (sources.find((source) => source.industryLabel)?.industryLabel ?? null)
+				: null,
+		headcount: fields.headcount.value,
+		revenueGbp: fields.revenue.value?.gbp ?? null,
+		signals: fields.signals.value ?? [],
+		providers: [...new Set(sources.map((source) => source.provider))],
+		sourceCount: sources.length,
+		conflicts: FIELDS.filter((field) => fields[field].conflict),
+		overridden: FIELDS.filter((field) => fields[field].override),
+		// Aligned with FIELDS, so the database can count stale values for any day.
+		fieldAsOf: FIELDS.map((field) => fields[field].asOf),
+		search: [fields.name.value, fields.domain.value, ...sources.map((source) => source.name)]
+			.filter((value) => value !== null)
+			.map((value) => value.toLowerCase())
+			.join('\n'),
 	}
 }
 

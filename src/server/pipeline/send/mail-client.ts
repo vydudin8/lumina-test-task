@@ -1,3 +1,4 @@
+import { z } from 'zod'
 import { HttpError, parseRetryAfter } from '../../lib/retry.ts'
 import type { Fetch } from '../ingest/fetch.ts'
 
@@ -65,13 +66,40 @@ export async function submitPostcard(
 		body: JSON.stringify(body),
 		signal: AbortSignal.timeout(client.timeoutMs),
 	})
-	if (!response.ok) {
-		const detail = await response.text().catch(() => '')
-		throw new HttpError(
-			response.status,
-			`mail API answered ${response.status}: ${detail.slice(0, 200)}`,
-			parseRetryAfter(response.headers.get('retry-after'), new Date()),
-		)
-	}
+	await throwUnlessOk(response)
 	return { ...((await response.json()) as { id: string; status: string }), httpStatus: response.status }
+}
+
+async function throwUnlessOk(response: Response) {
+	if (response.ok) return
+	const detail = await response.text().catch(() => '')
+	throw new HttpError(
+		response.status,
+		`mail API answered ${response.status}: ${detail.slice(0, 200)}`,
+		parseRetryAfter(response.headers.get('retry-after'), new Date()),
+	)
+}
+
+export const MAIL_STATUSES = ['submitted', 'printed', 'mailed', 'delivered', 'returned'] as const
+export type MailStatus = (typeof MAIL_STATUSES)[number]
+
+const postcardSchema = z.object({
+	id: z.string().min(1),
+	status: z.enum(MAIL_STATUSES),
+	events: z.array(
+		z.object({
+			event_id: z.string().min(1),
+			status: z.enum(MAIL_STATUSES),
+			occurred_at: z.iso.datetime({ offset: true }),
+		}),
+	),
+})
+
+// What the provider says happened to a postcard so far: the same events its webhooks carry.
+export async function getPostcard(client: MailClient, mailId: string) {
+	const response = await client.fetch(`${client.baseUrl}/v1/postcards/${encodeURIComponent(mailId)}`, {
+		signal: AbortSignal.timeout(client.timeoutMs),
+	})
+	await throwUnlessOk(response)
+	return postcardSchema.parse(await response.json())
 }

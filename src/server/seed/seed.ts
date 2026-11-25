@@ -1,7 +1,7 @@
 import { count, eq, sql } from 'drizzle-orm'
 import { audit, systemActor } from '../audit.ts'
 import type { Db } from '../db/client.ts'
-import { fxRates, icpVersions, seedRuns, suppressions, templates } from '../db/schema.ts'
+import { fxRates, icpVersions, scoredIcpVersions, seedRuns, suppressions, templates } from '../db/schema.ts'
 import { personKey, personKeyHash } from '../policy/person-key.ts'
 import { DEFAULT_ICP_RULES, DEFAULT_TEMPLATES } from './defaults.ts'
 import { fixturesChecksum, readFixture, type History } from './fixtures.ts'
@@ -38,7 +38,12 @@ export async function seed(db: Db, { now }: { now: Date }) {
 		const [{ icpCount }] = (await tx.select({ icpCount: count() }).from(icpVersions)) as [{ icpCount: number }]
 		if (icpCount === 0) {
 			const lead = SEED_USERS.find((user) => user.role === 'lead')!
-			await tx.insert(icpVersions).values({ rules: DEFAULT_ICP_RULES, createdBy: lead.id, createdAt: now })
+			const [icp] = await tx
+				.insert(icpVersions)
+				.values({ rules: DEFAULT_ICP_RULES, createdBy: lead.id, createdAt: now })
+				.returning({ id: icpVersions.id })
+			// No profiles yet: the pulls that create them score them for this version.
+			await tx.insert(scoredIcpVersions).values({ icpVersionId: icp!.id })
 		}
 
 		const added = await tx
